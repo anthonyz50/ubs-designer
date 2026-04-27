@@ -3,7 +3,22 @@
  *
  * Service layer for generating UBS-branded UI from natural language prompts.
  *
- * Currently uses local mock generation.
+ * Currently uses local mock generation. All mock content follows the UBS
+ * tone of voice pillars: clear (simple, direct, scannable), convincing
+ * (benefit-led, no jargon), and with charm (engaging, personal).
+ *
+ * The ubsStyleGuide (src/config/ubs-style-guide.ts) contains the full
+ * UBS design system reference, including:
+ *   - Complete colour palette (corporate, grays, bordeaux, bronze, pastels,
+ *     dark mode, RAG status, trading, metallic silver, 20 chart colours)
+ *   - Typography: Frutiger font family, 5 weights, 16-level hierarchy,
+ *     web-optimised sizes, and typography rules
+ *   - Accessibility: WCAG 2.2 Level AA, contrast ratios (4.5:1 text,
+ *     3:1 large text, 3:1 icons/graphics)
+ *   - Tone of voice: three pillars (clear, convincing, with charm),
+ *     brand personality traits, messaging principle (1-2 punch)
+ *   - Layout: impulse, logo, key symbol, moving frame, grid rules
+ *   - 4px spacing grid, breakpoints (320, 768, 1024, 1440)
  *
  * Integration points for future AI backends:
  *
@@ -28,12 +43,16 @@
  *   Replace with a call to the Claude Messages API or via AWS Bedrock.
  *   Include the UBS style guide and UI model schema in the system prompt.
  *   Request JSON output matching the UiModel interface.
+ *
+ * When building the system prompt, include:
+ *   1. The full ubsStyleGuide object (colours, typography, accessibility)
+ *   2. The UiModel TypeScript interface as the response schema
+ *   3. Tone of voice pillars as writing instructions
+ *   4. Typography hierarchy for heading and text sizing decisions
+ *   5. Accessibility rules (WCAG 2.2 AA, contrast ratios, alt text)
  */
 
 import type { UiModel, OutputType, PageType, GenerationResult } from '../types';
-
-// Reference to style guide for future AI integration
-// import { ubsStyleGuide } from '../config/ubs-style-guide';
 
 // ─── Mock Prompt Analysis ────────────────────────────────────────────
 
@@ -49,6 +68,11 @@ function inferPageType(prompt: string): PageType {
 }
 
 // ─── Mock Generators ─────────────────────────────────────────────────
+//
+// All mock text follows the UBS tone of voice:
+//   Clear: short sentences, main point first, no jargon
+//   Convincing: benefit-led, concrete, from the reader's view
+//   With charm: personal ("we", "you"), engaging, natural
 
 function generateDashboardMock(prompt: string): UiModel {
   const services: string[] = [];
@@ -81,17 +105,17 @@ function generateDashboardMock(prompt: string): UiModel {
   }
 
   const statuses: Array<{ status: 'operational' | 'degraded' | 'outage' | 'maintenance'; message: string; incidents: number }> = [
-    { status: 'operational', message: 'All systems running normally.', incidents: 0 },
-    { status: 'degraded', message: 'Some users may experience slower response times.', incidents: 3 },
-    { status: 'operational', message: 'Service fully available.', incidents: 0 },
-    { status: 'outage', message: 'Service currently unavailable. Engineers are investigating.', incidents: 12 },
-    { status: 'maintenance', message: 'Scheduled maintenance window active.', incidents: 0 },
+    { status: 'operational', message: 'Everything is running smoothly.', incidents: 0 },
+    { status: 'degraded', message: 'Some users may notice slower responses. We are on it.', incidents: 3 },
+    { status: 'operational', message: 'Fully available. No issues to report.', incidents: 0 },
+    { status: 'outage', message: 'Currently unavailable. Our engineers are investigating.', incidents: 12 },
+    { status: 'maintenance', message: 'Planned maintenance is under way. We will be back shortly.', incidents: 0 },
   ];
 
   return {
     pageType: 'dashboard',
-    title: 'Technology service overview',
-    intro: 'Review service status, key actions and current support information.',
+    title: 'Your technology services at a glance',
+    intro: 'See what is working, what needs attention, and how to get help.',
     cards: services.map((name, i) => ({
       title: name,
       status: statuses[i % statuses.length].status,
@@ -103,43 +127,43 @@ function generateDashboardMock(prompt: string): UiModel {
     })),
     recommendations: [
       {
-        title: 'Clear browser cache',
-        description: 'If you are experiencing slow page loads, clearing your browser cache often resolves the issue.',
+        title: 'Clear your browser cache',
+        description: 'Slow page loads? Clearing your cache usually fixes it in seconds.',
         action: 'View instructions',
       },
       {
         title: 'Check service announcements',
-        description: 'Planned maintenance and known issues are published on the service health portal.',
+        description: 'Planned maintenance and known issues are published here first.',
         action: 'Open portal',
       },
       {
         title: 'Restart your device',
-        description: 'A simple restart can resolve many common connectivity and performance issues.',
+        description: 'A quick restart resolves most connectivity and performance issues.',
       },
     ],
-    supportMessage: 'For immediate assistance, contact the Global Service Desk on +44 20 7568 0000 or raise a ticket through ServiceNow.',
+    supportMessage: 'Need help now? Call us on +44 20 7568 0000 or raise a ticket through ServiceNow.',
   };
 }
 
 function generateFormMock(_prompt: string): UiModel {
   return {
     pageType: 'form',
-    title: 'Submit a request',
-    intro: 'Complete the form below to submit your request. Required fields are marked with an asterisk.',
+    title: 'Tell us what you need',
+    intro: 'Fill in the details below and we will get back to you. Required fields are marked with an asterisk.',
     form: {
-      title: 'Request details',
-      description: 'Provide the relevant information for your request.',
+      title: 'Your request',
+      description: 'The more detail you provide, the faster we can help.',
       fields: [
         { label: 'Full name', type: 'text', placeholder: 'Enter your full name', required: true },
         { label: 'Email address', type: 'email', placeholder: 'name@ubs.com', required: true },
         { label: 'Department', type: 'select', options: ['Technology', 'Operations', 'Finance', 'Risk', 'HR', 'Other'], required: true },
-        { label: 'Request type', type: 'select', options: ['Access request', 'Equipment', 'Software', 'Support', 'Other'] },
-        { label: 'Description', type: 'textarea', placeholder: 'Describe your request in detail', required: true },
+        { label: 'What do you need?', type: 'select', options: ['Access request', 'Equipment', 'Software', 'Support', 'Other'] },
+        { label: 'Description', type: 'textarea', placeholder: 'Describe what you need and why', required: true },
         { label: 'Priority', type: 'select', options: ['Low', 'Medium', 'High', 'Critical'] },
-        { label: 'Preferred contact date', type: 'date' },
+        { label: 'Best date to contact you', type: 'date' },
         { label: 'I confirm this information is accurate', type: 'checkbox', required: true },
       ],
-      submitLabel: 'Submit request',
+      submitLabel: 'Send request',
     },
   };
 }
@@ -148,7 +172,7 @@ function generateDataTableMock(_prompt: string): UiModel {
   return {
     pageType: 'data-table',
     title: 'Service inventory',
-    intro: 'A summary of all registered technology services and their current status.',
+    intro: 'All registered technology services and their current status, in one place.',
     table: {
       columns: [
         { key: 'name', label: 'Service name' },
@@ -173,13 +197,13 @@ function generateDataTableMock(_prompt: string): UiModel {
 function generateNotificationMock(_prompt: string): UiModel {
   return {
     pageType: 'notification',
-    title: 'System notifications',
-    intro: 'Current alerts and notifications for your attention.',
+    title: 'What you need to know right now',
+    intro: 'Current alerts and updates that may affect you.',
     notifications: [
-      { type: 'warning', title: 'Outlook performance degradation', message: 'Some users are experiencing delayed email delivery. The team is actively investigating. Expected resolution by 14:00 GMT.' },
-      { type: 'info', title: 'Scheduled maintenance', message: 'SharePoint will undergo planned maintenance on Saturday 3 May from 02:00 to 06:00 GMT. Service may be intermittently unavailable.' },
-      { type: 'success', title: 'VPN upgrade complete', message: 'The VPN infrastructure upgrade has been completed successfully. All regions are now running on the updated platform.' },
-      { type: 'error', title: 'Printing service outage', message: 'Floor 3 and Floor 5 printers in the London office are currently offline. Engineers are on site.' },
+      { type: 'warning', title: 'Outlook is slower than usual', message: 'Some emails are taking longer to deliver. We are investigating and expect this to be resolved by 14:00 GMT.' },
+      { type: 'info', title: 'SharePoint maintenance this Saturday', message: 'We are upgrading SharePoint on 3 May from 02:00 to 06:00 GMT. You may not be able to access files during this time.' },
+      { type: 'success', title: 'VPN upgrade complete', message: 'Good news: the VPN upgrade is finished. All regions are now on the new platform, and connections should feel faster.' },
+      { type: 'error', title: 'Printers offline in London', message: 'Floor 3 and Floor 5 printers are currently down. Our engineers are on site and working to bring them back.' },
     ],
   };
 }
@@ -187,13 +211,13 @@ function generateNotificationMock(_prompt: string): UiModel {
 function generateCardMock(_prompt: string): UiModel {
   return {
     pageType: 'card',
-    title: 'Quick actions',
-    intro: 'Commonly used services and actions.',
+    title: 'What would you like to do?',
+    intro: 'Pick an action to get started.',
     cards: [
-      { title: 'Raise a support ticket', message: 'Submit a request to the service desk for technical assistance.', primaryAction: 'Create ticket' },
-      { title: 'Book a meeting room', message: 'Reserve a meeting room or collaboration space at your office.', primaryAction: 'Book now' },
-      { title: 'Request software', message: 'Request installation of approved software from the catalogue.', primaryAction: 'Browse catalogue' },
-      { title: 'Report an issue', message: 'Flag a problem with a technology service or application.', primaryAction: 'Report', secondaryAction: 'Known issues' },
+      { title: 'Raise a support ticket', message: 'Got a problem? Tell us and we will sort it out.', primaryAction: 'Create ticket' },
+      { title: 'Book a meeting room', message: 'Find and reserve a room at your office.', primaryAction: 'Book now' },
+      { title: 'Request software', message: 'Browse our catalogue and request the tools you need.', primaryAction: 'Browse catalogue' },
+      { title: 'Report an issue', message: 'Something not working? Let us know so we can fix it.', primaryAction: 'Report', secondaryAction: 'Known issues' },
     ],
   };
 }
@@ -202,34 +226,34 @@ function generateLandingPageMock(_prompt: string): UiModel {
   return {
     pageType: 'landing-page',
     title: 'Technology Services Hub',
-    intro: 'Your central destination for technology support, tools and resources across UBS.',
+    intro: 'Your starting point for tech support, tools and resources.',
     cards: [
-      { title: 'Service status', message: 'Check the current health of all technology services.', primaryAction: 'View status', metric: '98.5%', metricLabel: 'Overall availability' },
-      { title: 'Self-service portal', message: 'Resolve common issues quickly using our guided troubleshooting tools.', primaryAction: 'Get started' },
-      { title: 'Knowledge base', message: 'Browse articles, guides and FAQs for all supported applications.', primaryAction: 'Search articles', metric: '2,400+', metricLabel: 'Articles' },
+      { title: 'Service status', message: 'See how our services are performing right now.', primaryAction: 'View status', metric: '98.5%', metricLabel: 'Overall availability' },
+      { title: 'Fix it yourself', message: 'Our guided tools help you resolve common issues in minutes.', primaryAction: 'Get started' },
+      { title: 'Knowledge base', message: 'Answers to your questions, written in plain language.', primaryAction: 'Search articles', metric: '2,400+', metricLabel: 'Articles' },
     ],
     recommendations: [
-      { title: 'New: Microsoft Copilot', description: 'Microsoft Copilot is now available for all employees. Learn how to get started.', action: 'Learn more' },
-      { title: 'Security awareness training', description: 'Complete your mandatory security awareness training by 30 May 2026.', action: 'Start training' },
+      { title: 'New: Microsoft Copilot', description: 'Copilot is now available for everyone. It saves you time on everyday tasks.', action: 'Learn more' },
+      { title: 'Security training due', description: 'Complete your mandatory security awareness training by 30 May 2026.', action: 'Start training' },
     ],
-    supportMessage: 'Need help? Contact the Global Service Desk on +44 20 7568 0000, available 24/7.',
+    supportMessage: 'Need help? Call us on +44 20 7568 0000. We are here 24/7.',
   };
 }
 
 function generateSupportJourneyMock(_prompt: string): UiModel {
   return {
     pageType: 'support-journey',
-    title: 'Get help with your issue',
-    intro: 'Select the category that best describes your problem and we will guide you to a resolution.',
+    title: 'How can we help?',
+    intro: 'Choose the topic that best describes your problem. We will guide you to a fix.',
     cards: [
-      { title: 'Connectivity', message: 'Wi-Fi, VPN, network access and remote working issues.', primaryAction: 'Start', icon: 'wifi' },
+      { title: 'Connectivity', message: 'Wi-Fi, VPN, network access and remote working.', primaryAction: 'Start', icon: 'wifi' },
       { title: 'Email and calendar', message: 'Outlook, Teams meetings, calendar sync and mail delivery.', primaryAction: 'Start', icon: 'mail' },
-      { title: 'Software and applications', message: 'Installation, licensing, access requests and crashes.', primaryAction: 'Start', icon: 'apps' },
-      { title: 'Hardware', message: 'Laptop, monitor, headset, docking station and peripherals.', primaryAction: 'Start', icon: 'device' },
-      { title: 'Account and access', message: 'Password resets, MFA, permissions and account lockouts.', primaryAction: 'Start', icon: 'lock' },
-      { title: 'Something else', message: 'Raise a general support request for anything not listed above.', primaryAction: 'Start', icon: 'help' },
+      { title: 'Software', message: 'Installation, licensing, access and crashes.', primaryAction: 'Start', icon: 'apps' },
+      { title: 'Hardware', message: 'Laptop, monitor, headset and peripherals.', primaryAction: 'Start', icon: 'device' },
+      { title: 'Account and access', message: 'Passwords, MFA, permissions and lockouts.', primaryAction: 'Start', icon: 'lock' },
+      { title: 'Something else', message: 'Not listed above? We can still help.', primaryAction: 'Start', icon: 'help' },
     ],
-    supportMessage: 'If your issue is urgent or you are unable to work, call the priority line on +44 20 7568 0001.',
+    supportMessage: 'Urgent and unable to work? Call our priority line on +44 20 7568 0001.',
   };
 }
 
@@ -240,8 +264,16 @@ function generateSupportJourneyMock(_prompt: string): UiModel {
  *
  * Future AI integration point:
  * Replace the mock generation below with a call to Azure AI Foundry or Claude.
- * Send the ubsStyleGuide as system context with the UiModel schema,
+ * Send the full ubsStyleGuide (colours, typography hierarchy, accessibility
+ * rules, tone of voice pillars) as system context with the UiModel schema,
  * and parse the AI response into a UiModel object.
+ *
+ * The system prompt should instruct the AI to:
+ *   - Follow WCAG 2.2 Level AA (4.5:1 text contrast, 3:1 large text)
+ *   - Use the 16-level typography hierarchy for heading decisions
+ *   - Write copy using the three tone pillars (clear, convincing, with charm)
+ *   - Apply the 4px spacing grid and UBS colour palette
+ *   - Never use UBS Red for numbers
  */
 export async function generateUiFromPrompt(
   prompt: string,
@@ -274,8 +306,9 @@ export async function generateUiFromPrompt(
  * Refine an existing UiModel based on a natural language instruction.
  *
  * Future AI integration point:
- * Send the current model JSON plus the refinement instruction to the AI.
- * The AI should return an updated UiModel.
+ * Send the current model JSON plus the refinement instruction to the AI,
+ * along with the ubsStyleGuide for context. The AI should return an
+ * updated UiModel that still meets accessibility and tone requirements.
  */
 export async function refineUiFromInstruction(
   currentModel: UiModel,
@@ -293,8 +326,9 @@ export async function refineUiFromInstruction(
  *
  * Future AI integration point:
  * Send the input (HTML, screenshot description, or component config)
- * to the AI along with UBS style guidelines. The AI returns
- * suggestions and an improved UiModel.
+ * to the AI along with the full ubsStyleGuide. The AI returns
+ * suggestions covering accessibility, tone, colour usage, typography,
+ * and an improved UiModel.
  */
 export async function reviewExistingPage(
   _input: string,
@@ -302,10 +336,12 @@ export async function reviewExistingPage(
   await new Promise(resolve => setTimeout(resolve, 600));
   return {
     suggestions: [
-      'Consider using UBS RAG status colours for service health indicators.',
-      'Ensure all interactive elements have visible focus states.',
-      'Spacing should follow the 4px grid consistently.',
-      'Use the Frutiger typeface (or Arial fallback) for all text.',
+      'Use RAG status colours (red #BD000C, amber #E4A911, green #6F7A1A) for service health.',
+      'Check all text meets WCAG 2.2 AA contrast: 4.5:1 for standard text, 3:1 for large text (over 25px).',
+      'Follow the 4px spacing grid consistently.',
+      'Use Frutiger (or Arial fallback) for all text.',
+      'Ensure copy follows the tone of voice: clear, benefit-led, no jargon.',
+      'Never use UBS Red for numbers or for highlighting in messages.',
     ],
   };
 }

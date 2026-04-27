@@ -3,6 +3,11 @@
  *
  * Converts a UiModel into a complete, self-contained HTML document
  * with inline UBS styles. The output works as a standalone file.
+ *
+ * Accessibility: all generated HTML targets WCAG 2.2 Level AA.
+ * Colour tokens include the full UBS palette: corporate, grays,
+ * bordeaux, bronze, pastels, dark mode, RAG status, trading,
+ * chart colours (20-colour sequence), and metallic silver.
  */
 
 import type { UiModel, UiCard, UiFormField, UiTableColumn, UiTableRow, UiNotification, UiRecommendation } from '../types';
@@ -27,6 +32,35 @@ function getInlineStyles(): string {
       --ubs-rag-amber: #E4A911;
       --ubs-rag-green: #6F7A1A;
       --ubs-bronze-i: #B98E2C;
+      --ubs-bronze-ii: #946F29;
+      --ubs-bronze-iii: #6C5312;
+      --ubs-bordeaux-ii: #8A000A;
+      --ubs-bordeaux-iii: #620004;
+      --ubs-dark-mode-primary-red: #D83B31;
+      --ubs-dark-mode-secondary-red: #FE6F5D;
+      --ubs-trading-green: #498100;
+      --ubs-trading-red: #C81219;
+      --ubs-metallic-silver: #BEBEBE;
+      --ubs-chart-01: #AF8626;
+      --ubs-chart-02: #00759E;
+      --ubs-chart-03: #879420;
+      --ubs-chart-04: #4B2D58;
+      --ubs-chart-05: #9F8865;
+      --ubs-chart-06: #2E476B;
+      --ubs-chart-07: #469A6C;
+      --ubs-chart-08: #AD3E4A;
+      --ubs-chart-09: #8489BD;
+      --ubs-chart-10: #0C7EC6;
+      --ubs-chart-11: #654D16;
+      --ubs-chart-12: #804C95;
+      --ubs-chart-13: #45999C;
+      --ubs-chart-14: #4972AC;
+      --ubs-chart-15: #CC707A;
+      --ubs-chart-16: #295B40;
+      --ubs-chart-17: #545A9C;
+      --ubs-chart-18: #785E4A;
+      --ubs-chart-19: #07476F;
+      --ubs-chart-20: #620004;
     }
 
     /* Reset */
@@ -346,6 +380,13 @@ function tableHtml(columns: UiTableColumn[], rows: UiTableRow[]): string {
 export function generateHtmlCode(model: UiModel): string {
   const lines: string[] = [];
 
+  lines.push(`<!--`);
+  lines.push(`  UBS Design System: Generated UI`);
+  lines.push(`  Accessibility: WCAG 2.2 Level AA`);
+  lines.push(`  Contrast: 4.5:1 standard text, 3:1 large text (over 25px), 3:1 icons/graphics`);
+  lines.push(`  Typography: Frutiger (Arial fallback), 16-level hierarchy`);
+  lines.push(`  Colour: never use UBS Red for numbers. No red highlighting in messages.`);
+  lines.push(`-->`);
   lines.push(`<!DOCTYPE html>`);
   lines.push(`<html lang="en">`);
   lines.push(`<head>`);

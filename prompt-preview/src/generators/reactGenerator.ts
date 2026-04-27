@@ -3,6 +3,19 @@
  *
  * Converts a UiModel into a complete React functional component string.
  * Output uses UBS CSS class names and follows TypeScript conventions.
+ *
+ * UBS Typography Hierarchy (16 levels):
+ *   keyline, infoline, subheadline1-4, leadText1-2, quotes, subtitles,
+ *   copyText, pageNumbers, senderInfo, smallCopyText, environmentalInfo,
+ *   captions, footnote.
+ *   Font: Frutiger (Arial fallback). Weights: light, lightItalic,
+ *   lightBold, roman, lightCondensed.
+ *   Web: min 14px, body 16px, body line-height 22px, large text 25px+.
+ *
+ * Accessibility: WCAG 2.2 Level AA.
+ *   Text contrast: 4.5:1. Large text (over 25px): 3:1.
+ *   Icons and graphics: 3:1. Colour alone must never convey meaning.
+ *   All non-decorative images require alternative text.
  */
 
 import type { UiModel, UiCard, UiFormField, UiTableColumn, UiTableRow, UiNotification, UiRecommendation } from '../types';
@@ -145,6 +158,12 @@ export function generateReactCode(model: UiModel): string {
   lines.push(` *`);
   lines.push(` * Auto-generated UBS-branded React component.`);
   lines.push(` * Page type: ${model.pageType}`);
+  lines.push(` *`);
+  lines.push(` * UBS Design System`);
+  lines.push(` * Accessibility: WCAG 2.2 Level AA`);
+  lines.push(` * Typography: Frutiger (Arial fallback), 16-level hierarchy`);
+  lines.push(` * Contrast: 4.5:1 text, 3:1 large text (25px+), 3:1 icons/graphics`);
+  lines.push(` * Colour rules: never use UBS Red for numbers, no red highlighting in messages`);
   lines.push(` */`);
   lines.push(``);
 

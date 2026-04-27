@@ -33,6 +33,39 @@
   --ubs-rag-amber: #E4A911;
   --ubs-rag-green: #6F7A1A;
 
+  /* Dark Mode */
+  --ubs-dark-mode-primary-red: #D83B31;
+  --ubs-dark-mode-secondary-red: #FE6F5D;
+
+  /* Trading */
+  --ubs-trading-green: #498100;
+  --ubs-trading-red: #C81219;
+
+  /* Metallic */
+  --ubs-metallic-silver: #BEBEBE;
+
+  /* Chart Colours (20-colour sequence, use in order) */
+  --ubs-chart-01: #AF8626;
+  --ubs-chart-02: #00759E;
+  --ubs-chart-03: #879420;
+  --ubs-chart-04: #4B2D58;
+  --ubs-chart-05: #9F8865;
+  --ubs-chart-06: #2E476B;
+  --ubs-chart-07: #469A6C;
+  --ubs-chart-08: #AD3E4A;
+  --ubs-chart-09: #8489BD;
+  --ubs-chart-10: #0C7EC6;
+  --ubs-chart-11: #654D16;
+  --ubs-chart-12: #804C95;
+  --ubs-chart-13: #45999C;
+  --ubs-chart-14: #4972AC;
+  --ubs-chart-15: #CC707A;
+  --ubs-chart-16: #295B40;
+  --ubs-chart-17: #545A9C;
+  --ubs-chart-18: #785E4A;
+  --ubs-chart-19: #07476F;
+  --ubs-chart-20: #620004;
+
   /* Semantic */
   --ubs-bg-primary: var(--ubs-white);
   --ubs-bg-secondary: var(--ubs-pastel-i);
