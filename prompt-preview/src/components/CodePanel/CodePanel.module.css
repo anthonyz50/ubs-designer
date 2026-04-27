@@ -1,0 +1,65 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--ubs-bg-primary);
+  border-top: 1px solid var(--ubs-border);
+  max-height: 400px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-1);
+  padding: var(--ubs-space-2) var(--ubs-space-4);
+  background: var(--ubs-bg-secondary);
+  border-bottom: 1px solid var(--ubs-border);
+  flex-shrink: 0;
+}
+
+.tab {
+  padding: var(--ubs-space-1) var(--ubs-space-3);
+  font-size: var(--ubs-font-size-xs);
+  font-weight: var(--ubs-font-weight-medium);
+  border: none;
+  border-radius: var(--ubs-radius-sm);
+  background: transparent;
+  color: var(--ubs-text-secondary);
+  cursor: pointer;
+  transition: all var(--ubs-transition-fast);
+  font-family: var(--ubs-font-family);
+}
+
+.tab:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--ubs-text-primary);
+}
+
+.tabActive {
+  background: var(--ubs-bg-primary);
+  color: var(--ubs-text-primary);
+  box-shadow: var(--ubs-shadow-sm);
+}
+
+.copyBtn {
+  margin-left: auto;
+}
+
+.copySuccess {
+  color: var(--ubs-rag-green);
+}
+
+.codeArea {
+  flex: 1;
+  overflow: auto;
+  padding: var(--ubs-space-4);
+}
+
+.codeBlock {
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  font-size: var(--ubs-font-size-xs);
+  line-height: 1.6;
+  white-space: pre;
+  color: var(--ubs-text-primary);
+  tab-size: 2;
+  margin: 0;
+}

@@ -1,0 +1,100 @@
+/* UBS Design Tokens - CSS Custom Properties */
+
+:root {
+  /* Corporate */
+  --ubs-white: #FFFFFF;
+  --ubs-red: #E60000;
+  --ubs-black: #000000;
+
+  /* Grays */
+  --ubs-gray-i: #CCCABC;
+  --ubs-gray-ii: #B8B3A2;
+  --ubs-gray-iii: #8E8D83;
+  --ubs-gray-iv: #7A7870;
+  --ubs-gray-v: #5A5D5C;
+  --ubs-gray-vi: #404040;
+
+  /* Bordeaux */
+  --ubs-bordeaux-i: #BD000C;
+  --ubs-bordeaux-ii: #8A000A;
+  --ubs-bordeaux-iii: #620004;
+
+  /* Bronze */
+  --ubs-bronze-i: #B98E2C;
+  --ubs-bronze-ii: #946F29;
+  --ubs-bronze-iii: #6C5312;
+
+  /* Pastels */
+  --ubs-pastel-i: #ECEBE4;
+  --ubs-pastel-ii: #F5F0E1;
+
+  /* Status (RAG) */
+  --ubs-rag-red: #BD000C;
+  --ubs-rag-amber: #E4A911;
+  --ubs-rag-green: #6F7A1A;
+
+  /* Semantic */
+  --ubs-bg-primary: var(--ubs-white);
+  --ubs-bg-secondary: var(--ubs-pastel-i);
+  --ubs-bg-tertiary: var(--ubs-pastel-ii);
+  --ubs-text-primary: var(--ubs-black);
+  --ubs-text-secondary: var(--ubs-gray-v);
+  --ubs-text-tertiary: var(--ubs-gray-iii);
+  --ubs-border: var(--ubs-gray-i);
+  --ubs-border-strong: var(--ubs-gray-iii);
+  --ubs-accent: var(--ubs-red);
+  --ubs-focus: var(--ubs-red);
+
+  /* Typography */
+  --ubs-font-family: "Frutiger", Arial, sans-serif;
+  --ubs-font-size-xs: 0.75rem;
+  --ubs-font-size-sm: 0.8125rem;
+  --ubs-font-size-base: 1rem;
+  --ubs-font-size-md: 1.125rem;
+  --ubs-font-size-lg: 1.375rem;
+  --ubs-font-size-xl: 1.75rem;
+  --ubs-font-size-2xl: 2.25rem;
+  --ubs-font-size-3xl: 3rem;
+
+  --ubs-font-weight-light: 300;
+  --ubs-font-weight-regular: 400;
+  --ubs-font-weight-medium: 500;
+  --ubs-font-weight-bold: 700;
+
+  --ubs-line-height-tight: 1.2;
+  --ubs-line-height-base: 1.5;
+  --ubs-line-height-relaxed: 1.75;
+
+  /* Spacing (4px grid) */
+  --ubs-space-0: 0;
+  --ubs-space-1: 0.25rem;
+  --ubs-space-2: 0.5rem;
+  --ubs-space-3: 0.75rem;
+  --ubs-space-4: 1rem;
+  --ubs-space-5: 1.5rem;
+  --ubs-space-6: 2rem;
+  --ubs-space-7: 3rem;
+  --ubs-space-8: 4rem;
+  --ubs-space-9: 6rem;
+
+  /* Border radius */
+  --ubs-radius-sm: 4px;
+  --ubs-radius-md: 8px;
+  --ubs-radius-lg: 12px;
+  --ubs-radius-full: 9999px;
+
+  /* Shadows */
+  --ubs-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --ubs-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --ubs-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* Transitions */
+  --ubs-transition-fast: 150ms ease;
+  --ubs-transition-base: 250ms ease;
+  --ubs-transition-slow: 400ms ease;
+
+  /* Z-index */
+  --ubs-z-dropdown: 100;
+  --ubs-z-modal: 200;
+  --ubs-z-toast: 300;
+}

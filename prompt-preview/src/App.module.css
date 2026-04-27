@@ -1,0 +1,141 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  font-family: var(--ubs-font-family);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-4);
+  padding: var(--ubs-space-3) var(--ubs-space-5);
+  background: var(--ubs-bg-primary);
+  border-bottom: 1px solid var(--ubs-border);
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-2);
+}
+
+.logoText {
+  font-size: var(--ubs-font-size-xl);
+  font-weight: var(--ubs-font-weight-bold);
+  color: var(--ubs-text-primary);
+  letter-spacing: 0.05em;
+}
+
+.logoAccent {
+  width: 3px;
+  height: 24px;
+  background: var(--ubs-red);
+  border-radius: 2px;
+}
+
+.headerTitle {
+  font-size: var(--ubs-font-size-sm);
+  font-weight: var(--ubs-font-weight-medium);
+  color: var(--ubs-text-secondary);
+}
+
+.versionBadge {
+  margin-left: auto;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: var(--ubs-font-weight-medium);
+  color: var(--ubs-text-tertiary);
+  background: var(--ubs-bg-secondary);
+  border-radius: var(--ubs-radius-full);
+  border: 1px solid var(--ubs-border);
+}
+
+/* Main layout */
+.main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Left panel */
+.leftPanel {
+  width: 360px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Centre panel */
+.centrePanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.previewSection {
+  flex: 1;
+  overflow: hidden;
+}
+
+.codeSection {
+  flex-shrink: 0;
+}
+
+/* Right panel */
+.rightPanel {
+  width: 340px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Responsive: tablet */
+@media (max-width: 1199px) {
+  .rightPanel {
+    width: 300px;
+  }
+  .leftPanel {
+    width: 320px;
+  }
+}
+
+/* Responsive: smaller tablet */
+@media (max-width: 1023px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .leftPanel {
+    width: 100%;
+    max-height: 300px;
+    border-right: none;
+    border-bottom: 1px solid var(--ubs-border);
+  }
+
+  .centrePanel {
+    flex: 1;
+  }
+
+  .rightPanel {
+    width: 100%;
+    max-height: 400px;
+    border-left: none;
+    border-top: 1px solid var(--ubs-border);
+  }
+}
+
+/* Responsive: mobile */
+@media (max-width: 767px) {
+  .header {
+    padding: var(--ubs-space-2) var(--ubs-space-3);
+    gap: var(--ubs-space-2);
+  }
+
+  .headerTitle {
+    display: none;
+  }
+}
