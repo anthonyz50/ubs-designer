@@ -73,8 +73,25 @@ export interface GenerationRequest {
   pageType?: PageType;
 }
 
+export interface DesignCritique {
+  category: 'accessibility' | 'branding' | 'typography' | 'layout' | 'tone' | 'colour' | 'spacing' | 'interaction';
+  severity: 'error' | 'warning' | 'suggestion';
+  title: string;
+  description: string;
+  recommendation: string;
+}
+
+export interface DesignAlternative {
+  title: string;
+  rationale: string;
+  model: UiModel;
+}
+
 export interface GenerationResult {
   model: UiModel;
   outputType: OutputType;
   generatedAt: string;
+  critique?: DesignCritique[];
+  alternatives?: DesignAlternative[];
+  reasoning?: string;
 }

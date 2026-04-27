@@ -1,60 +1,165 @@
 /**
  * AI Generation Service
  *
- * Service layer for generating UBS-branded UI from natural language prompts.
+ * Generates UBS-branded UI from natural language prompts using Claude Opus
+ * via Azure AI Foundry (Anthropic Messages API).
  *
- * Currently uses local mock generation. All mock content follows the UBS
- * tone of voice pillars: clear (simple, direct, scannable), convincing
- * (benefit-led, no jargon), and with charm (engaging, personal).
+ * Falls back to local mock generation when no API key is configured.
  *
- * The ubsStyleGuide (src/config/ubs-style-guide.ts) contains the full
- * UBS design system reference, including:
- *   - Complete colour palette (corporate, grays, bordeaux, bronze, pastels,
- *     dark mode, RAG status, trading, metallic silver, 20 chart colours)
- *   - Typography: Frutiger font family, 5 weights, 16-level hierarchy,
- *     web-optimised sizes, and typography rules
- *   - Accessibility: WCAG 2.2 Level AA, contrast ratios (4.5:1 text,
- *     3:1 large text, 3:1 icons/graphics)
- *   - Tone of voice: three pillars (clear, convincing, with charm),
- *     brand personality traits, messaging principle (1-2 punch)
- *   - Layout: impulse, logo, key symbol, moving frame, grid rules
- *   - 4px spacing grid, breakpoints (320, 768, 1024, 1440)
- *
- * Integration points for future AI backends:
- *
- * Azure AI Foundry:
- *   Replace the mock logic in generateUiFromPrompt() with a call to
- *   the Azure OpenAI endpoint. Pass the ubsStyleGuide as system context
- *   and the user prompt as the user message. Parse the response as UiModel JSON.
- *
- *   Example:
- *   const response = await fetch(AZURE_ENDPOINT, {
- *     method: 'POST',
- *     headers: { 'api-key': AZURE_API_KEY, 'Content-Type': 'application/json' },
- *     body: JSON.stringify({
- *       messages: [
- *         { role: 'system', content: buildSystemPrompt(ubsStyleGuide) },
- *         { role: 'user', content: prompt }
- *       ]
- *     })
- *   });
- *
- * Claude (Anthropic):
- *   Replace with a call to the Claude Messages API or via AWS Bedrock.
- *   Include the UBS style guide and UI model schema in the system prompt.
- *   Request JSON output matching the UiModel interface.
- *
- * When building the system prompt, include:
- *   1. The full ubsStyleGuide object (colours, typography, accessibility)
- *   2. The UiModel TypeScript interface as the response schema
- *   3. Tone of voice pillars as writing instructions
- *   4. Typography hierarchy for heading and text sizing decisions
- *   5. Accessibility rules (WCAG 2.2 AA, contrast ratios, alt text)
+ * Capabilities:
+ *   - Generate: create a UiModel from a prompt
+ *   - Critique: analyse a design against UBS brand rules and WCAG 2.2 AA
+ *   - Suggest alternatives: propose 2-3 design variations with rationale
+ *   - Refine: modify an existing design based on instructions
+ *   - Review: assess existing HTML/component code for UBS compliance
  */
 
-import type { UiModel, OutputType, PageType, GenerationResult } from '../types';
+import type {
+  UiModel,
+  OutputType,
+  PageType,
+  GenerationResult,
+  DesignCritique,
+  DesignAlternative,
+} from '../types';
+import { ubsStyleGuide } from '../config/ubs-style-guide';
 
-// ─── Mock Prompt Analysis ────────────────────────────────────────────
+// ─── Configuration ───────────────────────────────────────────────────
+
+const AZURE_ENDPOINT = import.meta.env.VITE_AZURE_ENDPOINT ?? '';
+const AZURE_API_KEY = import.meta.env.VITE_AZURE_API_KEY ?? '';
+const AZURE_MODEL = import.meta.env.VITE_AZURE_MODEL ?? 'claude-opus-4-7';
+
+/** Check whether AI is configured and available. */
+export function isAiConfigured(): boolean {
+  return Boolean(AZURE_ENDPOINT && AZURE_API_KEY);
+}
+
+// ─── System Prompt ───────────────────────────────────────────────────
+
+function buildSystemPrompt(): string {
+  return `You are the world's best UX/UI designer specialising in enterprise banking interfaces for UBS.
+
+You have deep expertise in:
+- UBS brand guidelines and visual identity
+- WCAG 2.2 Level AA accessibility
+- Enterprise dashboard, form, and portal design
+- Information architecture and user flows
+- Typography, colour theory, and spatial design
+
+## UBS Design System Reference
+
+${JSON.stringify(ubsStyleGuide, null, 2)}
+
+## Your Role
+
+When generating UI, you must:
+1. Follow all UBS brand rules exactly (colours, typography, spacing, accessibility)
+2. Write copy using the three tone pillars: clear, convincing, with charm
+3. Use the 4px spacing grid consistently
+4. Ensure all colour combinations meet WCAG 2.2 AA contrast ratios
+5. Never use UBS Red (#E60000) for numbers
+6. Never use red highlighting in messages
+7. Use Frutiger font family with Arial fallback
+8. Use RAG colours for status: red (#BD000C), amber (#E4A911), green (#6F7A1A)
+
+When critiquing designs, evaluate against:
+- Accessibility (contrast, alt text, heading structure, colour reliance)
+- Brand compliance (correct colours, typography rules, logo/impulse rules)
+- Tone of voice (clear, benefit-led, personal, no jargon)
+- Layout (spacing grid, visual hierarchy, responsive behaviour)
+- Interaction design (clear CTAs, logical flow, feedback states)
+
+When suggesting alternatives, provide genuinely different approaches:
+- Different layout structures (grid vs list, card vs table)
+- Different content hierarchies (what to emphasise)
+- Different interaction patterns (progressive disclosure, tabs, accordions)
+Always explain your reasoning.
+
+## Response Format
+
+Always respond with valid JSON matching the requested schema. No markdown wrapping, no code fences, just raw JSON.
+
+Use UK English throughout (colour, centre, organisation, etc.).`;
+}
+
+// ─── UiModel Schema for Claude ───────────────────────────────────────
+
+function getUiModelSchema(): string {
+  return `{
+  "pageType": "dashboard" | "form" | "card" | "landing-page" | "support-journey" | "data-table" | "notification",
+  "title": "string",
+  "intro": "string (optional)",
+  "cards": [{ "title": "string", "status": "operational|degraded|outage|maintenance (optional)", "message": "string (optional)", "primaryAction": "string (optional)", "secondaryAction": "string (optional)", "metric": "string (optional)", "metricLabel": "string (optional)", "icon": "string (optional)" }],
+  "form": { "title": "string (optional)", "description": "string (optional)", "fields": [{ "label": "string", "type": "text|email|select|textarea|checkbox|date", "placeholder": "string (optional)", "required": "boolean (optional)", "options": ["string"] }], "submitLabel": "string (optional)" },
+  "table": { "columns": [{ "key": "string", "label": "string", "align": "left|centre|right (optional)" }], "rows": [{ "key": "value" }] },
+  "notifications": [{ "type": "info|success|warning|error", "title": "string", "message": "string", "action": "string (optional)" }],
+  "recommendations": [{ "title": "string", "description": "string", "action": "string (optional)" }],
+  "supportMessage": "string (optional)",
+  "footerText": "string (optional)"
+}`;
+}
+
+// ─── Claude API Call ─────────────────────────────────────────────────
+
+interface ClaudeMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+async function callClaude(
+  messages: ClaudeMessage[],
+  maxTokens: number = 8192,
+): Promise<string> {
+  const response = await fetch(AZURE_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'api-key': AZURE_API_KEY,
+      'anthropic-version': '2023-06-01',
+    },
+    body: JSON.stringify({
+      model: AZURE_MODEL,
+      max_tokens: maxTokens,
+      system: buildSystemPrompt(),
+      messages,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Claude API error (${response.status}): ${errorText}`);
+  }
+
+  const data = await response.json();
+
+  // Anthropic Messages API response format
+  if (data.content && Array.isArray(data.content)) {
+    const textBlock = data.content.find(
+      (block: { type: string; text?: string }) => block.type === 'text',
+    );
+    if (textBlock?.text) {
+      return textBlock.text;
+    }
+  }
+
+  throw new Error('Unexpected Claude response format');
+}
+
+/** Extract JSON from a response that might have markdown fences or extra text. */
+function extractJson(text: string): string {
+  // Try to find JSON in code fences first
+  const fenceMatch = text.match(/```(?:json)?\s*\n?([\s\S]*?)\n?```/);
+  if (fenceMatch) return fenceMatch[1].trim();
+
+  // Try to find a JSON object or array
+  const jsonMatch = text.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
+  if (jsonMatch) return jsonMatch[1].trim();
+
+  return text.trim();
+}
+
+// ─── Mock Fallback (when AI is not configured) ───────────────────────
 
 function inferPageType(prompt: string): PageType {
   const lower = prompt.toLowerCase();
@@ -66,13 +171,6 @@ function inferPageType(prompt: string): PageType {
   if (lower.includes('notification') || lower.includes('alert') || lower.includes('message')) return 'notification';
   return 'card';
 }
-
-// ─── Mock Generators ─────────────────────────────────────────────────
-//
-// All mock text follows the UBS tone of voice:
-//   Clear: short sentences, main point first, no jargon
-//   Convincing: benefit-led, concrete, from the reader's view
-//   With charm: personal ("we", "you"), engaging, natural
 
 function generateDashboardMock(prompt: string): UiModel {
   const services: string[] = [];
@@ -145,7 +243,7 @@ function generateDashboardMock(prompt: string): UiModel {
   };
 }
 
-function generateFormMock(_prompt: string): UiModel {
+function generateFormMock(): UiModel {
   return {
     pageType: 'form',
     title: 'Tell us what you need',
@@ -168,7 +266,7 @@ function generateFormMock(_prompt: string): UiModel {
   };
 }
 
-function generateDataTableMock(_prompt: string): UiModel {
+function generateDataTableMock(): UiModel {
   return {
     pageType: 'data-table',
     title: 'Service inventory',
@@ -186,15 +284,12 @@ function generateDataTableMock(_prompt: string): UiModel {
         { name: 'Microsoft Teams', owner: 'Unified Comms', status: 'Operational', uptime: '99.98%', incidents: 0, lastReviewed: '25 Apr 2026' },
         { name: 'Outlook', owner: 'Messaging', status: 'Degraded', uptime: '99.71%', incidents: 3, lastReviewed: '24 Apr 2026' },
         { name: 'Wi-Fi', owner: 'Network Infra', status: 'Operational', uptime: '99.99%', incidents: 0, lastReviewed: '25 Apr 2026' },
-        { name: 'VPN', owner: 'Network Infra', status: 'Operational', uptime: '99.95%', incidents: 1, lastReviewed: '23 Apr 2026' },
-        { name: 'SharePoint', owner: 'Collaboration', status: 'Maintenance', uptime: '99.80%', incidents: 0, lastReviewed: '22 Apr 2026' },
-        { name: 'Citrix', owner: 'Desktop Services', status: 'Operational', uptime: '99.92%', incidents: 2, lastReviewed: '25 Apr 2026' },
       ],
     },
   };
 }
 
-function generateNotificationMock(_prompt: string): UiModel {
+function generateNotificationMock(): UiModel {
   return {
     pageType: 'notification',
     title: 'What you need to know right now',
@@ -202,13 +297,13 @@ function generateNotificationMock(_prompt: string): UiModel {
     notifications: [
       { type: 'warning', title: 'Outlook is slower than usual', message: 'Some emails are taking longer to deliver. We are investigating and expect this to be resolved by 14:00 GMT.' },
       { type: 'info', title: 'SharePoint maintenance this Saturday', message: 'We are upgrading SharePoint on 3 May from 02:00 to 06:00 GMT. You may not be able to access files during this time.' },
-      { type: 'success', title: 'VPN upgrade complete', message: 'Good news: the VPN upgrade is finished. All regions are now on the new platform, and connections should feel faster.' },
-      { type: 'error', title: 'Printers offline in London', message: 'Floor 3 and Floor 5 printers are currently down. Our engineers are on site and working to bring them back.' },
+      { type: 'success', title: 'VPN upgrade complete', message: 'Good news: the VPN upgrade is finished. All regions are now on the new platform.' },
+      { type: 'error', title: 'Printers offline in London', message: 'Floor 3 and Floor 5 printers are currently down. Our engineers are on site.' },
     ],
   };
 }
 
-function generateCardMock(_prompt: string): UiModel {
+function generateCardMock(): UiModel {
   return {
     pageType: 'card',
     title: 'What would you like to do?',
@@ -222,7 +317,7 @@ function generateCardMock(_prompt: string): UiModel {
   };
 }
 
-function generateLandingPageMock(_prompt: string): UiModel {
+function generateLandingPageMock(): UiModel {
   return {
     pageType: 'landing-page',
     title: 'Technology Services Hub',
@@ -240,7 +335,7 @@ function generateLandingPageMock(_prompt: string): UiModel {
   };
 }
 
-function generateSupportJourneyMock(_prompt: string): UiModel {
+function generateSupportJourneyMock(): UiModel {
   return {
     pageType: 'support-journey',
     title: 'How can we help?',
@@ -257,93 +352,280 @@ function generateSupportJourneyMock(_prompt: string): UiModel {
   };
 }
 
-// ─── Main Service Functions ──────────────────────────────────────────
+function generateMock(prompt: string, pageType?: PageType): UiModel {
+  const resolvedType = pageType ?? inferPageType(prompt);
+  switch (resolvedType) {
+    case 'dashboard': return generateDashboardMock(prompt);
+    case 'form': return generateFormMock();
+    case 'data-table': return generateDataTableMock();
+    case 'notification': return generateNotificationMock();
+    case 'landing-page': return generateLandingPageMock();
+    case 'support-journey': return generateSupportJourneyMock();
+    default: return generateCardMock();
+  }
+}
+
+// ─── AI-Powered Generation ──────────────────────────────────────────
+
+async function generateWithAi(
+  prompt: string,
+  outputType: OutputType,
+  pageType?: PageType,
+): Promise<GenerationResult> {
+  const pageTypeHint = pageType ? `\nPage type: ${pageType}` : '';
+
+  const userMessage = `Generate a UBS-branded UI for the following request. Return a JSON object with this exact structure:
+
+{
+  "model": <UiModel matching the schema below>,
+  "critique": [
+    {
+      "category": "accessibility" | "branding" | "typography" | "layout" | "tone" | "colour" | "spacing" | "interaction",
+      "severity": "error" | "warning" | "suggestion",
+      "title": "short title",
+      "description": "what the issue is",
+      "recommendation": "how to fix or improve it"
+    }
+  ],
+  "alternatives": [
+    {
+      "title": "short name for this alternative approach",
+      "rationale": "why this alternative could work better",
+      "model": <UiModel>
+    }
+  ],
+  "reasoning": "brief explanation of your design decisions"
+}
+
+UiModel schema:
+${getUiModelSchema()}
+
+User request: ${prompt}${pageTypeHint}
+Output type preference: ${outputType}
+
+Requirements:
+- Generate the primary model that best fits the request
+- Include 3-5 critique points evaluating your own design against UBS rules
+- Include 2 alternative approaches with different layouts or content strategies
+- Use UK English throughout
+- All copy must follow the UBS tone of voice (clear, convincing, with charm)
+- Ensure WCAG 2.2 AA compliance in colour and structure choices`;
+
+  const responseText = await callClaude([{ role: 'user', content: userMessage }]);
+  const json = extractJson(responseText);
+  const parsed = JSON.parse(json);
+
+  // Validate and extract
+  const model: UiModel = parsed.model ?? parsed;
+  const critique: DesignCritique[] = parsed.critique ?? [];
+  const alternatives: DesignAlternative[] = parsed.alternatives ?? [];
+  const reasoning: string = parsed.reasoning ?? '';
+
+  return {
+    model,
+    outputType,
+    generatedAt: new Date().toISOString(),
+    critique,
+    alternatives,
+    reasoning,
+  };
+}
+
+// ─── Public API ──────────────────────────────────────────────────────
 
 /**
  * Generate a UiModel from a natural language prompt.
  *
- * Future AI integration point:
- * Replace the mock generation below with a call to Azure AI Foundry or Claude.
- * Send the full ubsStyleGuide (colours, typography hierarchy, accessibility
- * rules, tone of voice pillars) as system context with the UiModel schema,
- * and parse the AI response into a UiModel object.
- *
- * The system prompt should instruct the AI to:
- *   - Follow WCAG 2.2 Level AA (4.5:1 text contrast, 3:1 large text)
- *   - Use the 16-level typography hierarchy for heading decisions
- *   - Write copy using the three tone pillars (clear, convincing, with charm)
- *   - Apply the 4px spacing grid and UBS colour palette
- *   - Never use UBS Red for numbers
+ * Uses Claude Opus via Azure AI Foundry when configured,
+ * falls back to local mock generation otherwise.
  */
 export async function generateUiFromPrompt(
   prompt: string,
   outputType: OutputType,
   pageType?: PageType,
 ): Promise<GenerationResult> {
-  await new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 600));
-
-  const resolvedType = pageType ?? inferPageType(prompt);
-
-  let model: UiModel;
-  switch (resolvedType) {
-    case 'dashboard': model = generateDashboardMock(prompt); break;
-    case 'form': model = generateFormMock(prompt); break;
-    case 'data-table': model = generateDataTableMock(prompt); break;
-    case 'notification': model = generateNotificationMock(prompt); break;
-    case 'landing-page': model = generateLandingPageMock(prompt); break;
-    case 'support-journey': model = generateSupportJourneyMock(prompt); break;
-    default: model = generateCardMock(prompt); break;
+  if (isAiConfigured()) {
+    return generateWithAi(prompt, outputType, pageType);
   }
 
+  // Mock fallback
+  await new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 600));
   return {
-    model,
+    model: generateMock(prompt, pageType),
     outputType,
     generatedAt: new Date().toISOString(),
   };
 }
 
 /**
- * Refine an existing UiModel based on a natural language instruction.
+ * Critique an existing design against UBS guidelines.
  *
- * Future AI integration point:
- * Send the current model JSON plus the refinement instruction to the AI,
- * along with the ubsStyleGuide for context. The AI should return an
- * updated UiModel that still meets accessibility and tone requirements.
+ * Analyses the model for accessibility, branding, typography, layout,
+ * tone of voice, and interaction design issues.
  */
-export async function refineUiFromInstruction(
-  currentModel: UiModel,
-  _instruction: string,
-): Promise<UiModel> {
-  await new Promise(resolve => setTimeout(resolve, 500));
+export async function critiqueDesign(
+  model: UiModel,
+): Promise<{ critique: DesignCritique[]; summary: string }> {
+  if (!isAiConfigured()) {
+    return {
+      critique: [
+        { category: 'accessibility', severity: 'warning', title: 'Check contrast ratios', description: 'Ensure all text meets WCAG 2.2 AA: 4.5:1 for standard text, 3:1 for large text.', recommendation: 'Test all colour combinations with the Colour Contrast Analyser.' },
+        { category: 'tone', severity: 'suggestion', title: 'Review copy tone', description: 'Ensure all copy follows the three pillars: clear, convincing, with charm.', recommendation: 'Read copy aloud. If it sounds like a robot, rewrite it.' },
+        { category: 'branding', severity: 'error', title: 'Verify UBS Red usage', description: 'UBS Red must never be used for numbers or for highlighting in messages.', recommendation: 'Check all red-coloured elements. Use RAG colours for status instead.' },
+        { category: 'spacing', severity: 'suggestion', title: 'Check 4px grid alignment', description: 'All spacing should follow the 4px grid: 0, 4, 8, 12, 16, 24, 32, 48, 64, 96.', recommendation: 'Inspect spacing values and round to the nearest grid value.' },
+      ],
+      summary: 'AI not configured. Showing standard UBS compliance checklist. Connect Claude Opus for detailed design-specific analysis.',
+    };
+  }
+
+  const userMessage = `Critique the following UBS UI design. Evaluate it thoroughly against:
+
+1. WCAG 2.2 Level AA accessibility (contrast, heading structure, alt text, colour reliance)
+2. UBS brand compliance (colours, typography rules, logo/impulse rules)
+3. Tone of voice (clear, convincing, with charm pillars)
+4. Layout and spacing (4px grid, visual hierarchy, responsive considerations)
+5. Interaction design (CTAs, flow, feedback states)
+6. Typography (hierarchy usage, font weights, size rules)
+
+Return a JSON object:
+{
+  "critique": [
+    {
+      "category": "accessibility" | "branding" | "typography" | "layout" | "tone" | "colour" | "spacing" | "interaction",
+      "severity": "error" | "warning" | "suggestion",
+      "title": "short title",
+      "description": "what the issue is",
+      "recommendation": "specific, actionable fix"
+    }
+  ],
+  "summary": "2-3 sentence overall assessment"
+}
+
+Be thorough but constructive. Prioritise errors over warnings over suggestions.
+
+Design to critique:
+${JSON.stringify(model, null, 2)}`;
+
+  const responseText = await callClaude([{ role: 'user', content: userMessage }]);
+  const json = extractJson(responseText);
+  const parsed = JSON.parse(json);
+
   return {
-    ...currentModel,
-    title: currentModel.title,
+    critique: parsed.critique ?? [],
+    summary: parsed.summary ?? '',
   };
 }
 
 /**
- * Review an existing page or component and suggest improvements.
+ * Suggest alternative design approaches for the same requirements.
  *
- * Future AI integration point:
- * Send the input (HTML, screenshot description, or component config)
- * to the AI along with the full ubsStyleGuide. The AI returns
- * suggestions covering accessibility, tone, colour usage, typography,
- * and an improved UiModel.
+ * Returns 2-3 genuinely different layouts with rationale.
+ */
+export async function suggestAlternatives(
+  model: UiModel,
+  originalPrompt: string,
+): Promise<DesignAlternative[]> {
+  if (!isAiConfigured()) {
+    return [];
+  }
+
+  const userMessage = `Given this UBS UI design and the original prompt, suggest 3 genuinely different alternative approaches.
+
+Each alternative should use a different:
+- Layout structure (grid vs list, card vs table, single-column vs multi-column)
+- Content hierarchy (what to emphasise, what to de-emphasise)
+- Interaction pattern (progressive disclosure, tabs, accordions, wizards)
+
+Return a JSON array:
+[
+  {
+    "title": "short name for this approach",
+    "rationale": "2-3 sentences explaining why this approach could work better for certain users or contexts",
+    "model": <UiModel matching the standard schema>
+  }
+]
+
+Original prompt: ${originalPrompt}
+
+Current design:
+${JSON.stringify(model, null, 2)}
+
+UiModel schema:
+${getUiModelSchema()}`;
+
+  const responseText = await callClaude([{ role: 'user', content: userMessage }]);
+  const json = extractJson(responseText);
+  return JSON.parse(json);
+}
+
+/**
+ * Refine an existing UiModel based on a natural language instruction.
+ */
+export async function refineUiFromInstruction(
+  currentModel: UiModel,
+  instruction: string,
+): Promise<UiModel> {
+  if (!isAiConfigured()) {
+    await new Promise(resolve => setTimeout(resolve, 500));
+    return { ...currentModel };
+  }
+
+  const userMessage = `Modify this UBS UI design based on the following instruction. Return the complete updated UiModel as JSON.
+
+Instruction: ${instruction}
+
+Current design:
+${JSON.stringify(currentModel, null, 2)}
+
+UiModel schema:
+${getUiModelSchema()}
+
+Apply the change while maintaining UBS brand compliance, WCAG 2.2 AA accessibility, and tone of voice standards.`;
+
+  const responseText = await callClaude([{ role: 'user', content: userMessage }]);
+  const json = extractJson(responseText);
+  return JSON.parse(json);
+}
+
+/**
+ * Review existing HTML/code and suggest UBS-compliant improvements.
  */
 export async function reviewExistingPage(
-  _input: string,
+  input: string,
 ): Promise<{ suggestions: string[]; model?: UiModel }> {
-  await new Promise(resolve => setTimeout(resolve, 600));
-  return {
-    suggestions: [
-      'Use RAG status colours (red #BD000C, amber #E4A911, green #6F7A1A) for service health.',
-      'Check all text meets WCAG 2.2 AA contrast: 4.5:1 for standard text, 3:1 for large text (over 25px).',
-      'Follow the 4px spacing grid consistently.',
-      'Use Frutiger (or Arial fallback) for all text.',
-      'Ensure copy follows the tone of voice: clear, benefit-led, no jargon.',
-      'Never use UBS Red for numbers or for highlighting in messages.',
-    ],
-  };
+  if (!isAiConfigured()) {
+    await new Promise(resolve => setTimeout(resolve, 600));
+    return {
+      suggestions: [
+        'Use RAG status colours (red #BD000C, amber #E4A911, green #6F7A1A) for service health.',
+        'Check all text meets WCAG 2.2 AA contrast: 4.5:1 for standard text, 3:1 for large text.',
+        'Follow the 4px spacing grid consistently.',
+        'Use Frutiger (or Arial fallback) for all text.',
+        'Ensure copy follows the tone of voice: clear, benefit-led, no jargon.',
+        'Never use UBS Red for numbers or for highlighting in messages.',
+      ],
+    };
+  }
+
+  const userMessage = `Review this existing page/component and suggest improvements to make it UBS-compliant.
+
+Evaluate against the full UBS style guide (colours, typography, accessibility, tone, layout).
+
+Return a JSON object:
+{
+  "suggestions": ["actionable improvement 1", "actionable improvement 2", ...],
+  "model": <optional UiModel representing the improved version>
+}
+
+Input to review:
+${input}
+
+UiModel schema (for the improved version):
+${getUiModelSchema()}`;
+
+  const responseText = await callClaude([{ role: 'user', content: userMessage }]);
+  const json = extractJson(responseText);
+  return JSON.parse(json);
 }
 
 /**
