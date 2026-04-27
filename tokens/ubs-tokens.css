@@ -1,0 +1,181 @@
+/**
+ * UBS Design System — CSS Custom Properties
+ * Generated from ubs.frontify.com brand guidelines
+ * Version: 1.0.0 | Date: 2026-03-30
+ *
+ * Usage: Include this file in any web project, then reference
+ * variables as var(--ubs-color-red), var(--ubs-font-size-copy), etc.
+ */
+
+:root {
+  /* ========================================
+     CORPORATE COLOURS
+     ======================================== */
+  --ubs-color-white: #FFFFFF;
+  --ubs-color-red: #E60000;
+  --ubs-color-black: #000000;
+
+  /* ========================================
+     SECONDARY — GRAYS
+     ======================================== */
+  --ubs-color-gray-1: #CCCABC;
+  --ubs-color-gray-2: #B8B3A2;
+  --ubs-color-gray-3: #8E8D83;
+  --ubs-color-gray-4: #7A7870;
+  --ubs-color-gray-5: #5A5D5C;
+  --ubs-color-gray-6: #404040;
+
+  /* ========================================
+     SECONDARY — BORDEAUX
+     ======================================== */
+  --ubs-color-bordeaux-1: #BD000C;
+  --ubs-color-bordeaux-2: #8A000A;
+  --ubs-color-bordeaux-3: #620004;
+
+  /* ========================================
+     SECONDARY — BRONZE
+     ======================================== */
+  --ubs-color-bronze-1: #B98E2C;
+  --ubs-color-bronze-2: #946F29;
+  --ubs-color-bronze-3: #6C5312;
+
+  /* ========================================
+     SECONDARY — PASTELS
+     ======================================== */
+  --ubs-color-pastel-1: #ECEBE4;
+  --ubs-color-pastel-2: #F5F0E1;
+
+  /* ========================================
+     DARK MODE
+     ======================================== */
+  --ubs-color-dark-red-primary: #D83B31;
+  --ubs-color-dark-red-secondary: #FE6F5D;
+
+  /* ========================================
+     RAG (STATUS) COLOURS
+     ======================================== */
+  --ubs-color-rag-red: #BD000C;
+  --ubs-color-rag-amber: #E4A911;
+  --ubs-color-rag-green: #6F7A1A;
+
+  /* ========================================
+     TRADING COLOURS
+     Note: Meaning REVERSED in APAC
+     ======================================== */
+  --ubs-color-trading-green: #498100;
+  --ubs-color-trading-red: #C81219;
+
+  /* ========================================
+     METALLIC
+     ======================================== */
+  --ubs-color-metallic-silver: #BEBEBE;
+
+  /* ========================================
+     CHART COLOURS (20-colour sequence)
+     ======================================== */
+  --ubs-chart-01-bronze50: #AF8626;
+  --ubs-chart-02-lagoon60: #00759E;
+  --ubs-chart-03-kiwi60: #879420;
+  --ubs-chart-04-aubergine90: #4B2D58;
+  --ubs-chart-05-sand50: #9F8865;
+  --ubs-chart-06-plum90: #2E476B;
+  --ubs-chart-07-sage50: #469A6C;
+  --ubs-chart-08-blush60: #AD3E4A;
+  --ubs-chart-09-lavender50: #8489BD;
+  --ubs-chart-10-lake50: #0C7EC6;
+  --ubs-chart-11-bronze80: #654D16;
+  --ubs-chart-12-aubergine60: #804C95;
+  --ubs-chart-13-mint50: #45999C;
+  --ubs-chart-14-plum60: #4972AC;
+  --ubs-chart-15-blush40: #CC707A;
+  --ubs-chart-16-sage80: #295B40;
+  --ubs-chart-17-lavender70: #545A9C;
+  --ubs-chart-18-chocolate60: #785E4A;
+  --ubs-chart-19-lake90: #07476F;
+  --ubs-chart-20-bordeaux90: #620004;
+
+  /* ========================================
+     TYPOGRAPHY — FONT FAMILIES
+     ======================================== */
+  --ubs-font-family: 'Frutiger', Arial, sans-serif;
+  --ubs-font-family-fallback: Arial, sans-serif;
+
+  /* ========================================
+     TYPOGRAPHY — FONT SIZES & LINE HEIGHTS
+     Based on print spec (pt). Convert for web:
+     1pt ≈ 1.333px at 96dpi
+     ======================================== */
+
+  /* Subheadline 1 / Lead Text 1 */
+  --ubs-font-size-h1: 20pt;
+  --ubs-line-height-h1: 24pt;
+
+  /* Subheadline 2 / Lead Text 2 / Quotes */
+  --ubs-font-size-h2: 13.5pt;
+  --ubs-line-height-h2: 16pt;
+
+  /* Subheadline 3-4 / Copy Text / Subtitles / Page numbers / Sender info */
+  --ubs-font-size-body: 9.5pt;
+  --ubs-line-height-body: 12pt;
+
+  /* Small Copy Text / Environmental Info */
+  --ubs-font-size-small: 8pt;
+  --ubs-line-height-small: 10pt;
+
+  /* Captions / Spine / Marginalia */
+  --ubs-font-size-caption: 7.5pt;
+  --ubs-line-height-caption: 9.5pt;
+
+  /* Footnotes / Data Visualisation */
+  --ubs-font-size-footnote: 6.5pt;
+  --ubs-line-height-footnote: 7.5pt;
+
+  /* Web-optimised sizes (CSS px) */
+  --ubs-font-size-web-min: 14px;        /* 10.5pt — absolute minimum */
+  --ubs-font-size-web-body: 16px;       /* 12pt — recommended body */
+  --ubs-line-height-web-body: 22px;     /* 17pt — recommended line height */
+  --ubs-font-size-web-large: 25px;      /* Threshold for 3:1 contrast */
+
+  /* ========================================
+     ACCESSIBILITY — CONTRAST RATIOS
+     ======================================== */
+  --ubs-contrast-text: 4.5;             /* Minimum for standard text */
+  --ubs-contrast-large-text: 3;         /* Minimum for text ≥25px */
+  --ubs-contrast-graphics: 3;           /* Minimum for icons and graphics */
+
+  /* ========================================
+     DATA VISUALISATION — GAPS
+     ======================================== */
+  --ubs-chart-gap-screen: 2px;
+
+  /* ========================================
+     LAYOUT — A4 REFERENCE (most common)
+     ======================================== */
+  --ubs-margin-a4: 15.5mm;
+  --ubs-impulse-width-a4: 4.5pt;
+  --ubs-impulse-space-a4: 7mm;
+  --ubs-logo-size-a4: 26%;
+
+  /* ========================================
+     MOVING FRAME
+     ======================================== */
+  --ubs-moving-frame-opacity-transparent: 0.8;
+  --ubs-moving-frame-opacity-opaque: 1.0;
+
+  /* ========================================
+     ICONS — WEB APP SIZES
+     ======================================== */
+  --ubs-icon-size-sm: 12px;
+  --ubs-icon-size-md: 16px;
+  --ubs-icon-size-lg: 24px;
+}
+
+/* ==========================================
+   DARK MODE OVERRIDES
+   ========================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ubs-color-red: var(--ubs-color-dark-red-primary);
+    --ubs-color-red-accent: var(--ubs-color-dark-red-secondary);
+  }
+}

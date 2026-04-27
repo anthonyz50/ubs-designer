@@ -1,0 +1,31 @@
+{
+  "name": "eslint-plugin-ubs",
+  "version": "1.0.0",
+  "description": "ESLint plugin enforcing UBS brand rules in React/JSX/TSX code",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "eslint": ">=9"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "@types/eslint": "^9.6.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "ubs",
+    "brand",
+    "design-system"
+  ],
+  "license": "UNLICENSED"
+}

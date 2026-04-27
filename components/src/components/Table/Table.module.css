@@ -1,0 +1,205 @@
+/* ─── Table ─── UBS Design System ─── */
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  overflow: auto;
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+/* ─── Base table ─── */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+  background: #ffffff;
+}
+
+/* ─── Header ─── */
+.thead {
+  background: #ffffff;
+}
+
+.th {
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: left;
+  color: #404040;
+  border-bottom: 2px solid #000000;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+}
+
+.th.alignCenter {
+  text-align: center;
+}
+
+.th.alignRight {
+  text-align: right;
+}
+
+/* ─── Sortable header ─── */
+.sortableHeader {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.sortableHeader:hover {
+  background-color: #ecebe4;
+}
+
+.sortableHeader:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.headerContent {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sortIndicator {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  line-height: 1;
+  color: #b8b3a2;
+  gap: 0;
+}
+
+.sortArrow {
+  display: block;
+  line-height: 1;
+  color: #b8b3a2;
+}
+
+.sortArrowActive {
+  color: #000000;
+}
+
+/* ─── Body ─── */
+.td {
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  vertical-align: middle;
+  border-bottom: 1px solid #ecebe4;
+  text-align: left;
+}
+
+.td.alignCenter {
+  text-align: center;
+}
+
+.td.alignRight {
+  text-align: right;
+}
+
+/* ─── Checkbox cell ─── */
+.checkboxCell {
+  width: 40px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #e60000;
+}
+
+.checkbox:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* ─── Row ─── */
+.row {
+  transition: background-color 0.15s ease;
+}
+
+.rowSelected {
+  background-color: #f5f0e1;
+}
+
+/* ─── Variants ─── */
+.striped .tbody .row:nth-child(even) {
+  background-color: #ecebe4;
+}
+
+.striped .tbody .row:nth-child(even).rowSelected {
+  background-color: #f5f0e1;
+}
+
+.bordered .th,
+.bordered .td {
+  border: 1px solid #cccabc;
+}
+
+.compact .th {
+  padding: 8px 12px;
+}
+
+.compact .td {
+  padding: 8px 12px;
+}
+
+.hoverable .row:hover {
+  background-color: #ecebe4;
+}
+
+.hoverable .row.rowSelected:hover {
+  background-color: #f5f0e1;
+}
+
+/* ─── Sticky header ─── */
+.stickyHeader .th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #ffffff;
+  box-shadow: 0 2px 0 0 #000000;
+}
+
+.stickyHeader.bordered .th {
+  box-shadow: none;
+}
+
+/* ─── Loading skeleton ─── */
+.skeletonRow .td {
+  padding: 12px 16px;
+}
+
+.skeletonCell {
+  height: 16px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ecebe4 25%, #f5f0e1 50%, #ecebe4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ─── Empty state ─── */
+.emptyRow .td {
+  text-align: center;
+  padding: 48px 16px;
+  color: #7a7870;
+  font-size: 14px;
+}

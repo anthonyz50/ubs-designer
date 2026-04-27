@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{display:inline;opacity:0.6;}
+	.st2{fill:none;stroke:#000000;stroke-width:6;stroke-miterlimit:10;}
+	.st3{fill:none;stroke:#E60000;stroke-width:12;stroke-miterlimit:10;}
+	.st4{fill:#E60000;}
+	.st5{fill:none;stroke:#000000;stroke-width:6;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st6{fill:none;stroke:#E60000;stroke-width:12;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st7{fill:none;stroke:#E60000;stroke-width:12;stroke-miterlimit:10;stroke-dasharray:20.2886,20.2886;}
+	.st8{fill:none;stroke:#000000;stroke-width:12;stroke-miterlimit:10;}
+	.st9{fill:#E60000;stroke:#E60000;stroke-width:6;stroke-miterlimit:10;}
+	.st10{fill:#FFFFFF;}
+	.st11{enable-background:new    ;}
+	.st12{clip-path:url(#SVGID_5_);}
+	.st13{clip-path:url(#SVGID_13_);}
+	.st14{clip-path:url(#SVGID_19_);}
+	.st15{fill:none;stroke:#000000;stroke-width:6;stroke-miterlimit:10;stroke-dasharray:5.1921;}
+	.st16{fill:#1D1D1B;}
+	.st17{fill:none;stroke:#E60000;stroke-width:12;stroke-miterlimit:10;stroke-dasharray:5;}
+	.st18{fill:none;stroke:#000000;stroke-width:6.3998;stroke-miterlimit:10;}
+	.st19{stroke:#000000;stroke-width:6;stroke-miterlimit:10;}
+	.st20{fill:none;stroke:#000000;stroke-width:6;stroke-linecap:square;stroke-miterlimit:10;}
+	.st21{fill:none;}
+	.st22{fill:none;stroke:#000000;stroke-width:7.187;stroke-miterlimit:10;}
+	.st23{clip-path:url(#SVGID_27_);}
+	.st24{clip-path:url(#SVGID_33_);}
+	.st25{clip-path:url(#SVGID_39_);}
+	.st26{clip-path:url(#SVGID_45_);}
+	.st27{clip-path:url(#SVGID_55_);}
+	.st28{clip-path:url(#SVGID_63_);}
+	.st29{clip-path:url(#SVGID_69_);}
+	.st30{stroke:#E60000;stroke-width:12;stroke-linejoin:bevel;stroke-miterlimit:10;}
+	.st31{clip-path:url(#SVGID_77_);}
+	.st32{clip-path:url(#SVGID_85_);}
+	.st33{clip-path:url(#SVGID_91_);}
+	.st34{fill:none;stroke:#000000;stroke-width:6;stroke-miterlimit:10;stroke-dasharray:50.916,20.3664;}
+	.st35{fill:none;stroke:#E60000;stroke-width:12;stroke-miterlimit:10;stroke-dasharray:41.4871,20.7435;}
+	.st36{fill:none;stroke:#000000;stroke-width:6;}
+	.st37{fill:none;stroke:#E60000;stroke-width:12;}
+	.st38{fill:none;stroke:#E60000;stroke-width:12;stroke-linecap:square;stroke-miterlimit:10;}
+	.st39{fill:none;stroke:#E60000;stroke-width:12;stroke-miterlimit:10;stroke-dasharray:15.2543,15.2543;}
+	.st40{fill:none;stroke:#000000;stroke-width:6;stroke-miterlimit:10;stroke-dasharray:6,6;}
+	.st41{fill:none;stroke:#000000;stroke-width:7.1099;stroke-miterlimit:10;}
+	.st42{fill:#FF0000;}
+	.st43{fill:none;stroke:#000000;stroke-width:6;stroke-miterlimit:10;stroke-dasharray:8,8;}
+	.st44{fill:none;stroke:#000000;stroke-width:6;stroke-linejoin:bevel;stroke-miterlimit:10;}
+	.st45{fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-miterlimit:10;}
+	.st46{display:inline;}
+	.st47{fill:#E80A0A;}
+</style>
+<g id="Guides" class="st0">
+</g>
+<g id="Icons">
+	<g id="Active_allocation">
+	</g>
+	<g id="Additional_offer">
+	</g>
+	<g id="Administration_budget_wrench">
+	</g>
+	<g id="Administration_security_wrench">
+	</g>
+	<g id="Airplane_take_off">
+	</g>
+	<g id="Airplane_x2C__flight">
+	</g>
+	<g id="Alpha">
+	</g>
+	<g id="Apply">
+	</g>
+	<g id="Archive">
+	</g>
+	<g id="Armchair_x2C__chair">
+	</g>
+	<g id="Arrow_back">
+	</g>
+	<g id="Arrow_down">
+	</g>
+	<g id="Arrow_move_to_bottom">
+	</g>
+	<g id="Arrow_move_down">
+	</g>
+	<g id="Arrow_move_up_right">
+	</g>
+	<g id="Arrow_move_up">
+	</g>
+	<g id="Arrow_next">
+	</g>
+	<g id="Asset_management">
+	</g>
+	<g id="Attachment">
+	</g>
+	<g id="Attention">
+	</g>
+	<g id="Signing">
+	</g>
+	<g id="Flag">
+	</g>
+	<g id="Baggage_x2C__suitcase">
+	</g>
+	<g id="Balance_forecast">
+	</g>
+	<g id="Balloon">
+	</g>
+	<g id="Basket">
+	</g>
+	<g id="Bed_x2C__bed_front">
+	</g>
+	<g id="Bed">
+	</g>
+	<g id="Bill">
+	</g>
+	<g id="BLE_cards">
+	</g>
+	<g id="Blog">
+	</g>
+	<g id="Bluetooth">
+	</g>
+	<g id="Bonds">
+	</g>
+	<g id="Book_x2C__Search">
+	</g>
+	<g id="Budget_overview">
+	</g>
+	<g id="Weights_x2C__barbells">
+	</g>
+	<g id="Buy">
+	</g>
+	<g id="Temple">
+	</g>
+	<g id="Access_card_x2C__display">
+	</g>
+	<g id="Access_card">
+	</g>
+	<g id="Account_transfer_x2C__money_transfer">
+	</g>
+	<g id="Declined">
+	</g>
+	<g id="Delay_none_clock">
+	</g>
+	<g id="Delay_None">
+	</g>
+	<g id="Demand_money">
+	</g>
+	<g id="Screen_x2C__computer">
+	</g>
+	<g id="Destination">
+	</g>
+	<g id="Dialogue_box_inverted">
+	</g>
+	<g id="Dialog_box">
+	</g>
+	<g id="Dictionary_x2C__book">
+	</g>
+	<g id="Direct_marketing_x2C__bullhorn">
+	</g>
+	<g id="Doctor_x2C__stethoscope_x2C__health_x2C__safe_x2C__Corona_x2C__COVID-19">
+	</g>
+	<g id="Document_approved">
+	</g>
+	<g id="Document_Excel">
+	</g>
+	<g id="Document_PPT">
+	</g>
+	<g id="Document">
+	</g>
+	<g id="Documents_x2C__folder">
+	</g>
+	<g id="Download">
+	</g>
+	<g id="Drilldown_arrow_down">
+	</g>
+	<g id="Drilldown_arrow_left">
+	</g>
+	<g id="Drilldown_arrow_right">
+	</g>
+	<g id="Drop">
+	</g>
+	<g id="DVD">
+	</g>
+	<g id="Data_transfer">
+	</g>
+	<g id="Debit_card_self_service">
+	</g>
+	<g id="Debit_card">
+	</g>
+	<g id="Calculator">
+	</g>
+	<g id="Calendar_add">
+	</g>
+	<g id="Calendar_day">
+	</g>
+	<g id="Calendar_month">
+	</g>
+	<g id="Call_back_x2C__telephone">
+	</g>
+	<g id="Camera">
+	</g>
+	<g id="Campaign">
+	</g>
+	<g id="Card_index">
+	</g>
+	<g id="Card_reader_and_display">
+	</g>
+	<g id="Card_reader">
+	</g>
+	<g id="Cash_withdrawls_x2C__money">
+	</g>
+	<g id="Categorize">
+	</g>
+	<g id="Certificate_x2C__prize_x2C__award">
+	</g>
+	<g id="Change_password">
+	</g>
+	<g id="Charity_x2C__care_x2C__philanthropy">
+	</g>
+	<g id="Chart">
+	</g>
+	<g id="Tears">
+	</g>
+	<g id="Climate_change">
+	</g>
+	<g id="Close">
+	</g>
+	<g id="Closed_user_group">
+	</g>
+	<g id="Power_plant">
+	</g>
+	<g id="Coal_mining">
+	</g>
+	<g id="Coffee">
+	</g>
+	<g id="Communications">
+	</g>
+	<g id="Compass">
+	</g>
+	<g id="Computer">
+	</g>
+	<g id="Confirm">
+	</g>
+	<g id="Missile">
+	</g>
+	<g id="Crane">
+	</g>
+	<g id="Credit_card_self_service">
+	</g>
+	<g id="Credit_card">
+	</g>
+	<g id="Currencies">
+	</g>
+	<g id="Eco_power_x2C__E-mobility">
+	</g>
+	<g id="Economics">
+	</g>
+	<g id="Edit">
+	</g>
+	<g id="E-documents">
+	</g>
+	<g id="Education">
+	</g>
+	<g id="Email_Security">
+	</g>
+	<g id="Energy">
+	</g>
+	<g id="Envelope_open_x2C__mail_open_x2C__e-mail_open">
+	</g>
+	<g id="Envelope_x2C__mail_x2C__e-mail">
+	</g>
+	<g id="E-paper">
+	</g>
+	<g id="Equities">
+	</g>
+	<g id="Exchange">
+	</g>
+	<g id="External_link">
+	</g>
+	<g id="Facilities_x2C__sofa_x2C__couch">
+	</g>
+	<g id="Family">
+	</g>
+	<g id="Fax">
+	</g>
+	<g id="Filter">
+	</g>
+	<g id="Fight_board_x2C__destination_board">
+	</g>
+	<g id="Plane_ticket_x2C__flight_ticket">
+	</g>
+	<g id="Focus">
+	</g>
+	<g id="Folder_closed">
+	</g>
+	<g id="Folder_open">
+	</g>
+	<g id="Follow">
+	</g>
+	<g id="Weather_x2C__forecast_x2C__cloudy">
+	</g>
+	<g id="Foreign_exchange">
+	</g>
+	<g id="Forest_x2C__timber_x2C__forestry">
+	</g>
+	<g id="Fullscreen_off_x2C__button">
+	</g>
+	<g id="Fullscreen_off">
+	</g>
+	<g id="Fullscreen_on_x2C__button">
+	</g>
+	<g id="Fullscreen_on">
+	</g>
+	<g id="Alert_none_x2C__bell">
+	</g>
+	<g id="Alert_x2C__bell">
+	</g>
+	<g id="Back_to_top">
+	</g>
+	<g id="Funds_mandate">
+	</g>
+	<g id="Earth_x2C__globe_x2C__global">
+	</g>
+	<g id="E-banking_x2C__ebanking_x2C__digital_banking">
+	</g>
+	<g id="E-Bill">
+	</g>
+	<g id="Eco_grow_x2C__growth_x2C__hand_x2C__plant">
+	</g>
+	<g id="Gasoline_x2C__gaz_x2C__petrol">
+	</g>
+	<g id="Gear_x2C__cog_wheel">
+	</g>
+	<g id="Gears_x2C__cog_wheels">
+	</g>
+	<g id="Gift_x2C__present_x2C__prize">
+	</g>
+	<g id="Global_clients_x2C__people">
+	</g>
+	<g id="Globe_x2C__global_x2C__earth_x2C__protect">
+	</g>
+	<g id="Home_menu">
+	</g>
+	<g id="Home_x2C__house">
+	</g>
+	<g id="Hot_spot_x2C__circles">
+	</g>
+	<g id="Hotline_x2C__headphones_x2C__telephone">
+	</g>
+	<g id="Household_x2C__shopping_cart_x2C__shop_x2C__shopping_trolley">
+	</g>
+	<g id="Health_x2C__healthy">
+	</g>
+	<g id="Leaf_x2C__green">
+	</g>
+	<g id="Savings">
+	</g>
+	<g id="Icon_trade_finance">
+	</g>
+	<g id="Idea_x2C__light_bulb_x2C__light_x2C__brilliant">
+	</g>
+	<g id="Ideas_new">
+	</g>
+	<g id="Ideas_switch">
+	</g>
+	<g id="Ideas_update">
+	</g>
+	<g id="Web_browser">
+	</g>
+	<g id="Improve_Stamina_x2C__run_x2C__runner">
+	</g>
+	<g id="Income_x2C__money">
+	</g>
+	<g id="Index_funds">
+	</g>
+	<g id="Info_documents">
+	</g>
+	<g id="Interest_rate">
+	</g>
+	<g id="Jewellery">
+	</g>
+	<g id="Keyclub">
+	</g>
+	<g id="Keylink_app_x2C__globe">
+	</g>
+	<g id="Keypad">
+	</g>
+	<g id="Keys">
+	</g>
+	<g id="Lab">
+	</g>
+	<g id="Laurel_wreath_x2C__prize_x2C__winner_x2C__award">
+	</g>
+	<g id="Legal_x2C__paragraph">
+	</g>
+	<g id="Leisure_x2C__hobby_x2C__painting_x2C__colors">
+	</g>
+	<g id="Leisure_x2C__spectacles_x2C__glasses">
+	</g>
+	<g id="Lifesaver_x2C__life-saver_x2C__lifebelt_x2C__ring">
+	</g>
+	<g id="Lighthouse">
+	</g>
+	<g id="Line_chart">
+	</g>
+	<g id="List_icon_x2C__tick">
+	</g>
+	<g id="List_option">
+	</g>
+	<g id="List">
+	</g>
+	<g id="Live_quote_x2C__price">
+	</g>
+	<g id="Locked_x2C__lock">
+	</g>
+	<g id="Logging_x2C__saw">
+	</g>
+	<g id="Logout">
+	</g>
+	<g id="Machine_x2C__robot_arm">
+	</g>
+	<g id="Magic_x2C__wizard">
+	</g>
+	<g id="Magic_restore_x2C__wizard">
+	</g>
+	<g id="Markets_instruments_x2C__global">
+	</g>
+	<g id="Markets_x2C__globe_x2C__global">
+	</g>
+	<g id="Match_x2C__fire">
+	</g>
+	<g id="Minus">
+	</g>
+	<g id="Mobile_alerts">
+	</g>
+	<g id="Mobile_banking_x2C__e-banking">
+	</g>
+	<g id="Mobile_NFC">
+	</g>
+	<g id="Mobile_security">
+	</g>
+	<g id="Mobile_services">
+	</g>
+	<g id="Money">
+	</g>
+	<g id="Morning_news_x2C__newspaper_x2C__coffee">
+	</g>
+	<g id="Mortgage_x2C__house">
+	</g>
+	<g id="Mountain_x2C__peak_x2C__top">
+	</g>
+	<g id="Moving_x2C__truck_x2C__house">
+	</g>
+	<g id="Highrise_x2C__skyscraper_x2C__multi_family_x2C__house">
+	</g>
+	<g id="Multimedia">
+	</g>
+	<g id="Multiple_cards_x2C__several_cards">
+	</g>
+	<g id="New_issues">
+	</g>
+	<g id="New_window">
+	</g>
+	<g id="News">
+	</g>
+	<g id="NFC_card">
+	</g>
+	<g id="Nuclear_power">
+	</g>
+	<g id="Obesity_x2C__fat_x2C__obese_x2C__big">
+	</g>
+	<g id="ODP">
+	</g>
+	<g id="Oil_barrel">
+	</g>
+	<g id="Oil_x2C__rig_x2C__derrick">
+	</g>
+	<g id="Ok_button_x2C__tick">
+	</g>
+	<g id="Order_book">
+	</g>
+	<g id="Order_overview">
+	</g>
+	<g id="Order_replacement_card">
+	</g>
+	<g id="Orientation_x2C__where_to_x2C__street_sign">
+	</g>
+	<g id="Other_expenses_x2C__money">
+	</g>
+	<g id="Overflow">
+	</g>
+	<g id="Natural_gas_x2C__gaz">
+	</g>
+	<g id="Navigation">
+	</g>
+	<g id="New_entry_x2C__document_x2C__plus">
+	</g>
+	<g id="New_favorite_x2C__star_x2C__plus">
+	</g>
+	<g id="Paper_new">
+	</g>
+	<g id="Payment_slip_x2C__Fisca">
+	</g>
+	<g id="Payments_credit_card">
+	</g>
+	<g id="Payments_credit_card_x2C__money">
+	</g>
+	<g id="Payments_international_x2C__globe_x2C__global">
+	</g>
+	<g id="Payments_templates">
+	</g>
+	<g id="Payments_templates_x5F_2">
+	</g>
+	<g id="Pension_CHF">
+	</g>
+	<g id="Pension_expend_x2C__money">
+	</g>
+	<g id="Pension_saving_x2C__money">
+	</g>
+	<g id="Pension">
+	</g>
+	<g id="Percentage">
+	</g>
+	<g id="Personality_x2C__heart">
+	</g>
+	<g id="Phone">
+	</g>
+	<g id="Pie_chart">
+	</g>
+	<g id="Pig_x2C__piggy_bank_x2C__saving">
+	</g>
+	<g id="Pinboard_x2C__drawing_pin_x2C__pin">
+	</g>
+	<g id="Pipeline">
+	</g>
+	<g id="Planned_income_expenses">
+	</g>
+	<g id="Planned_income_expenses_1_">
+	</g>
+	<g id="Pedestal_x2C__top_x2C__finish_x2C__sinner_x2C__cup_x2C__trophy">
+	</g>
+	<g id="Trophy_x2C__goblet_x2C__price_x2C__prize_x2C__cup_x2C__winner_x2C__award">
+	</g>
+	<g id="Pollution_x2C__storm">
+	</g>
+	<g id="Popular_x2C__star">
+	</g>
+	<g id="Portfolio_x2C__add_x2C__plus">
+	</g>
+	<g id="Portfolio_preview">
+	</g>
+	<g id="Portfolio">
+	</g>
+	<g id="Power_plant_x2C__factory">
+	</g>
+	<g id="Precious_metal_x2C__bars">
+	</g>
+	<g id="Print_x2C__printer">
+	</g>
+	<g id="Process">
+	</g>
+	<g id="Products_investment">
+	</g>
+	<g id="Product_label">
+	</g>
+	<g id="Products">
+	</g>
+	<g id="Ribbon_x2C__prize_x2C__price_x2C__win_x2C__winner_x2C__award">
+	</g>
+	<g id="Rice_bowl_x2C__food_x2C__eat">
+	</g>
+	<g id="RSS_feed">
+	</g>
+	<g id="Question_mark">
+	</g>
+	<g id="Rate_this_page_x2C__stars">
+	</g>
+	<g id="Rating_neutral">
+	</g>
+	<g id="Rating_overweight_x2C__weighing">
+	</g>
+	<g id="Reader_x2C__read">
+	</g>
+	<g id="Recycle_truck_x2C__truck">
+	</g>
+	<g id="Registration_information_x2C__pencil">
+	</g>
+	<g id="Regular_income_x2C__retangular_x2C__dotted_line">
+	</g>
+	<g id="Regular_income_x2C__arrows_x2C__circle">
+	</g>
+	<g id="Related_funds_x2C__chain_link">
+	</g>
+	<g id="Renew_x2C__refresh">
+	</g>
+	<g id="Restaurant_x2C__cutlery_x2C__fork_x2C__knife">
+	</g>
+	<g id="Scales_x2C__imbalance">
+	</g>
+	<g id="Search">
+	</g>
+	<g id="Search_x2C__magnifying_glass">
+	</g>
+	<g id="Securities_Buy">
+	</g>
+	<g id="Securities_sell">
+	</g>
+	<g id="Securities_trading">
+	</g>
+	<g id="Security">
+	</g>
+	<g id="See_your_ticket_x2C__document_x2C__landscape">
+	</g>
+	<g id="Send_a_ticket">
+	</g>
+	<g id="Settings_assets_x2C__money_x2C__coins_x2C__cog_wheel_x2C__gear">
+	</g>
+	<g id="Settings_house_x2C__house_x2C__cog_wheel_x2C__gear">
+	</g>
+	<g id="Settings_payments_transfer_x2C__cog_wheel_x2C__gear">
+	</g>
+	<g id="Settings_payments_x2C__cog_wheel_x2C__gear">
+	</g>
+	<g id="Settings_securities_trading_x2C__arrow_x2C__cog_wheel_x2C__gear">
+	</g>
+	<g id="Settings_user_x2C__cog_wheel_x2C__gear_x2C__person">
+	</g>
+	<g id="Share_idea">
+	</g>
+	<g id="Shopping_bag_x2C__tote_x2C__bag">
+	</g>
+	<g id="Shopping_x2C__online_shopping">
+	</g>
+	<g id="slider_back_x2C__arrow_backwards">
+	</g>
+	<g id="Slider_next_x2C__arrow_forward">
+	</g>
+	<g id="Slider_paging_x2C__circle">
+	</g>
+	<g id="Slide_show">
+	</g>
+	<g id="Smiley_excited">
+	</g>
+	<g id="Smiley_happy">
+	</g>
+	<g id="Smiley_negative">
+	</g>
+	<g id="Text_message_x2C__SMS">
+	</g>
+	<g id="Social_bookmarks_x2C__share">
+	</g>
+	<g id="Solar_power_x2C__solar_panel">
+	</g>
+	<g id="Sort_top_flop">
+	</g>
+	<g id="Speaker_x2C__megaphone">
+	</g>
+	<g id="Speech_bubble">
+	</g>
+	<g id="Split">
+	</g>
+	<g id="Spyglass_x2C__binoculars">
+	</g>
+	<g id="Stamp">
+	</g>
+	<g id="Standing_orders">
+	</g>
+	<g id="Start_Up_x2C__Startup_x2C__Start-up_x2C__Rocket">
+	</g>
+	<g id="Statement_assets">
+	</g>
+	<g id="Stock_quotes_down">
+	</g>
+	<g id="Stock_quotes_up">
+	</g>
+	<g id="Stop">
+	</g>
+	<g id="Stop_x5F_2">
+	</g>
+	<g id="Strategy_x2C__chess_x2C__knight_x2C__pawn">
+	</g>
+	<g id="Structured_products">
+	</g>
+	<g id="Subscription_cancel">
+	</g>
+	<g id="Subscription_manager">
+	</g>
+	<g id="Subscription_new">
+	</g>
+	<g id="Sugar_x2C__spoon">
+	</g>
+	<g id="Suitability_documents">
+	</g>
+	<g id="Summary_of_call_x2C__telephone">
+	</g>
+	<g id="Swiss_flag">
+	</g>
+	<g id="Switch_list">
+	</g>
+	<g id="Switch_single">
+	</g>
+	<g id="Satellite_x5F_2">
+	</g>
+	<g id="Satellite">
+	</g>
+	<g id="Save">
+	</g>
+	<g id="Savings_goal">
+	</g>
+	<g id="Scales_add">
+	</g>
+	<g id="Scales_balance">
+	</g>
+	<g id="Bar_chart_horizontal">
+	</g>
+	<g id="_x33_31">
+	</g>
+	<g id="Bar_chart_vertical_x2C__axis">
+	</g>
+	<g id="Pie_chart_1_">
+	</g>
+	<g id="Grid_x2C__squares">
+	</g>
+	<g id="List_x2C__tick_box">
+	</g>
+	<g id="List_thumbnail">
+	</g>
+	<g id="Villa_x2C__house">
+	</g>
+	<g id="Virtual_portfolio_x2C__add">
+	</g>
+	<g id="Volume">
+	</g>
+	<g id="Wetlands_x2C__bog_x2C__marsh">
+	</g>
+	<g id="Who_is_Who_Search">
+	</g>
+	<g id="Wind_power_x2C__wind_generator_x2C__whell_x2C__turbine">
+	</g>
+	<g id="Wireless_error">
+	</g>
+	<g id="Wireless">
+	</g>
+	<g id="Woman_x2C__man_x2C__couple">
+	</g>
+	<g id="Zoom_in">
+	</g>
+	<g id="Zoom_out">
+	</g>
+	<g id="Target">
+	</g>
+	<g id="Taxes_duties">
+	</g>
+	<g id="Thumbs_down">
+	</g>
+	<g id="Thumbs_up_x2C__ok">
+	</g>
+	<g id="Timber_x2C__log_x2C__wood">
+	</g>
+	<g id="Time_deposit">
+	</g>
+	<g id="Time_x2C__clock_1_">
+	</g>
+	<g id="Time_x2C__clock">
+	</g>
+	<g id="To_Do_list">
+	</g>
+	<g id="Tools">
+	</g>
+	<g id="Trade__x28_not_securities_trading_x29_">
+	</g>
+	<g id="Train">
+	</g>
+	<g id="Call_x2C__transcript">
+	</g>
+	<g id="Collapse_all">
+	</g>
+	<g id="Expand_all">
+	</g>
+	<g id="Tree_x2C__forest_x2C__timber">
+	</g>
+	<g id="Trophy_x2C__prize_x2C__cup_x2C__win_x2C__winner_x2C__award">
+	</g>
+	<g id="Locator_x2C__location_x2C__pin">
+	</g>
+	<g id="UBS_Safe">
+	</g>
+	<g id="Unlocked">
+	</g>
+	<g id="Upload">
+	</g>
+	<g id="User_x2C__group_x2C__people">
+	</g>
+	<g id="User_alert">
+	</g>
+	<g id="User_company_x2C__high_rise_x2C__building">
+	</g>
+	<g id="User_locked">
+	</g>
+	<g id="User_x2C__person_x2C__man_x2C__human">
+	</g>
+	<g id="Vacation_x2C__island_x2C__palm_tree_x2C__holidays">
+	</g>
+	<g id="Car_insurance_x2C__car_x2C__key">
+	</g>
+	<g id="Bar_chart_vertical_x2C__negative_x2C__axis">
+	</g>
+	<g id="Bar_chart_x2C__vertical_x2C__negative">
+	</g>
+	<g id="Bar_chart_x2C__horizontal_x2C__negative">
+	</g>
+	<g id="Bar_chart_x2C__horizontal_x2C__negative_x2C__axis">
+	</g>
+	<g id="Bar_chart_x2C__horizontal">
+	</g>
+	<g id="Foot">
+	</g>
+	<g id="Virus_x2C__Corona_x2C__pandemic_x2C__COVID-19">
+	</g>
+	<g id="Wash_your_hands_x5F_1_x2C__wash_hands_x2C__hand_washing_x2C__hygiene_x2C__Corona_x2C__COVID-19_x2C__virus">
+		<circle class="st2" cx="51.4" cy="38.6" r="5.6"/>
+		<circle class="st2" cx="31.3" cy="62.5" r="11.5"/>
+		<circle class="st2" cx="162.5" cy="17.9" r="8.7"/>
+		<circle class="st2" cx="42.7" cy="186.4" r="7.2"/>
+		<circle class="st2" cx="193.2" cy="47.6" r="7.8"/>
+		<g id="Icons_11_">
+			<g>
+				<path class="st2" d="M152.9,77.6V52.9c0-5.5-4.5-10.1-10.1-10.1l0,0c-5.5,0-10.1,4.5-10.1,10.1v13.3V32.7
+					c0-5.5-4.5-10.1-10.1-10.1l0,0c-5.5,0-10.1,4.5-10.1,10.1v29.4V19.3c0-5.5-4.5-10.1-10.1-10.1l0,0c-5.5,0-10.1,4.5-10.1,10.1
+					v55.4V32.7c0-5.5-4.5-10.1-10.1-10.1l0,0c-5.5,0-10.1,4.5-10.1,10.1V103V79.8c0-5.5-4.5-10.1-10.1-10.1l0,0
+					c-5.5,0-10.1,4.5-10.1,10.1v53.8c0,11.2,3.7,21.6,9.9,29.9c1.1,1.5,2.3,2.9,3.6,4.3"/>
+			</g>
+		</g>
+		<g id="Icons_10_">
+			<g>
+				<path class="st2" d="M112.9,176.8c-5.4,11.7-5.8,24.5-2.1,35.8c4.1,12.6,13.2,23.4,26.1,29.4l0,0c24.7,11.4,53.9,0.7,65.3-24
+					l15.2-32.7l17.9-38.7c2.3-4.9,0.1-10.8-4.8-13l0,0c-4.9-2.3-10.8-0.1-13,4.8l-17.9,38.7l26.2-56.5c2.3-4.9,0.1-10.8-4.8-13l0,0
+					c-4.9-2.3-10.8-0.1-13,4.8l-26.2,56.5l31.7-68.4c2.3-4.9,0.1-10.8-4.8-13l0,0c-4.9-2.3-10.8-0.1-13,4.8l-31.7,68.4L190,104
+					c2.3-4.9,0.1-10.8-4.8-13l0,0c-4.9-2.3-10.8-0.1-13,4.8L143.4,158l9.5-20.6c2.3-4.9,0.1-10.8-4.8-13l0,0
+					c-4.9-2.3-10.8-0.1-13,4.8l-15.2,32.7"/>
+			</g>
+		</g>
+		<path class="st3" d="M156.9,84c-1.5-4.2-4.3-7.9-8.3-10.5c-9.7-6.3-22.7-3.5-29,6.2c-1.9,3-3,6.3-3.3,9.6
+			c-8.2-2.8-17.5,0.2-22.4,7.8c-4.3,6.7-4,15.1,0.2,21.3c-3.4,1.9-6.4,4.6-8.7,8.1c-4.1,6.4-4.9,14-2.6,20.7
+			c-5.3,1.6-10.2,5.1-13.4,10.2c-7,10.8-4.4,25.1,5.7,32.8c-3.2,6.9-0.9,15.3,5.7,19.6c3.5,2.3,7.6,3,11.3,2.3"/>
+	</g>
+	<g id="Wash_your_hands_x5F_2_x2C__wash_hands_x2C__hand_washing_x2C__Corona_x2C__hygiene_x2C__COVID-19_x2C__virus">
+	</g>
+	<g id="Cough_and_sneeze_into_inner_elbow_x2C__danger_x2C__Corona_x2C__health_x2C__COVID-19_x2C__virus">
+	</g>
+	<g id="Keep_distance_x2C__social_distancing_x2C__Corona_x2C__health_x2C__keep_safe_x2C__COVID-19_x2C__virus">
+	</g>
+	<g id="Avoid_handshake_x2C__hygiene_x2C__safe_x2C__Corona_x2C__COVID-19_x2C__virus">
+	</g>
+	<g id="Stay_at_home_x2C__house_x2C__home_x2C__Corona_x2C__COVID-19_x2C__virus">
+	</g>
+	<g id="Rice_bowl_x2C__food_x2C__eat_x5F_2">
+	</g>
+	<g id="Smiley_neutral">
+	</g>
+	<g id="Accessibility_group_x2C__accessibility">
+	</g>
+	<g id="Auditory_x2C__deafness_x2C__accessibility_x2C__ear_x2C__hearing">
+	</g>
+	<g id="Cognitive_x2C__accessibility_x2C__learning_disability_x2C__brain_x2C__think">
+	</g>
+	<g id="Motor_x2C__fine_motor_control_x2C__motor_control_x2C__accessibility">
+	</g>
+	<g id="Speech_x2C__mute_x2C__muteness_x2C__accessibility">
+	</g>
+	<g id="Preview_x2C__visual_x2C__accessibility_x2C__eye_x2C__see_x2C__blindness_x2C__vision">
+	</g>
+	<g id="Podcast_x2C__mic_x2C__microphone">
+	</g>
+	<g id="Firewall">
+	</g>
+	<g id="Handshake">
+	</g>
+	<g id="Bot_x2C__Robot">
+	</g>
+	<g id="Package_x2C__box">
+	</g>
+	<g id="Parachute">
+	</g>
+	<g id="Parachute_with_parcel_x2C__delivery_x2C__package">
+	</g>
+	<g id="Access_to_health">
+	</g>
+	<g id="Child">
+	</g>
+	<g id="Children">
+	</g>
+	<g id="Disease_x2C__infection">
+	</g>
+	<g id="Disease_x2C__infection_x5F_2">
+	</g>
+	<g id="Neonatal_x2C__fetus">
+	</g>
+	<g id="Newborn_x2C__baby">
+	</g>
+	<g id="Pregnancy_x2C__pregnant_woman">
+	</g>
+	<g id="Sick_x2C__illness_x2C__flu_x2C__cough">
+	</g>
+	<g id="Heating_x2C___x2B_temperature">
+	</g>
+	<g id="Agile_x2C__agility">
+	</g>
+	<g id="Leverage_effect">
+	</g>
+	<g id="Sideways_trend">
+	</g>
+	<g id="Umbrella_1_">
+	</g>
+	<g id="Team_member_x2C__person">
+	</g>
+</g>
+<g id="Layer_422">
+</g>
+<g id="Guides2">
+</g>
+<g id="Guides_2_" class="st0">
+	<g class="st46">
+		<g>
+			<g>
+				<g>
+					<rect y="0" class="st47" width="6" height="6"/>
+					<rect x="250" y="0" class="st47" width="6" height="6"/>
+					<rect y="250" class="st47" width="6" height="6"/>
+					<rect x="250" y="250" class="st47" width="6" height="6"/>
+				</g>
+				<rect x="6" y="6" class="st47" width="244" height="244"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

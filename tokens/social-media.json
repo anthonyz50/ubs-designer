@@ -1,0 +1,45 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "UBS Design System — Social Media Tokens. Source: ubs.frontify.com",
+  "socialMedia": {
+    "static": {
+      "logoPosition": "right-aligned Logo Tab (bottom-right corner)",
+      "logoOnGallery": "No logo on gallery uploads where cropped in preview",
+      "logoOnSlider": "Logo on first and last image"
+    },
+    "animated": {
+      "logoPosition": "left-aligned Logo Tab animation with watermark (top-left corner)",
+      "logoOutro": "Logo outro with sound per motion design guidelines"
+    },
+    "colourDirections": {
+      "basis": {
+        "name": "Gray",
+        "colours": ["Warm Gray", "Pastel I"]
+      },
+      "specificI": {
+        "name": "Bordeaux",
+        "colours": ["Warm Gray", "Bordeaux accents", "Pastel I or Pastel II"]
+      },
+      "specificII": {
+        "name": "Bronze",
+        "colours": ["Warm Gray", "Bronze accents", "Pastel II"]
+      }
+    },
+    "platforms": {
+      "instagram": ["Feed", "Feed with source", "Story", "Story with source", "Reel with source", "Paid ad", "Reel with chart"],
+      "facebook": ["Cover", "Post", "Video", "Carousel", "Gallery", "Single image"],
+      "youtube": ["Video", "Short", "Thumbnail"],
+      "x": ["Single image", "Multiple images"],
+      "linkedin": ["Post", "Gallery", "Single image", "Slideshow"]
+    },
+    "templateFormats": ["Square 1:1", "Portrait 4:5", "Vertical 9:16", "Wide 16:9"],
+    "rules": {
+      "noCroppedLogoTabInGallery": true,
+      "noWatermarkOnStaticContent": true,
+      "noLogoTabOnMultipleImages": true,
+      "noOverlayOfPermanentNavElements": true,
+      "noCollageLayouts": true,
+      "noSourceConnectedToImpulse": true
+    }
+  }
+}

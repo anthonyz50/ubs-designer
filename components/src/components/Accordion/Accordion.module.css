@@ -1,0 +1,113 @@
+/* ─── Accordion ─── UBS Design System ─── */
+
+.accordion {
+  font-family: 'Frutiger', Arial, sans-serif;
+  width: 100%;
+}
+
+/* ─── Item ─── */
+.item {
+  border-bottom: 1px solid transparent;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+/* ─── Bordered variant ─── */
+.bordered .item {
+  border-bottom-color: #cccabc;
+}
+
+.bordered .item:last-child {
+  border-bottom-color: #cccabc;
+}
+
+.bordered {
+  border-top: 1px solid #cccabc;
+}
+
+/* ─── Trigger button ─── */
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 0;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.5;
+  transition: background-color 0.15s ease;
+}
+
+.bordered .trigger {
+  padding: 16px;
+}
+
+.trigger:hover {
+  background-color: #ecebe4;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.trigger[aria-disabled='true'] {
+  color: #8e8d83;
+  cursor: not-allowed;
+}
+
+.trigger[aria-disabled='true']:hover {
+  background-color: transparent;
+}
+
+/* ─── Chevron ─── */
+.chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  color: #5a5d5c;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.trigger[aria-disabled='true'] .chevron {
+  color: #b8b3a2;
+}
+
+/* ─── Panel ─── */
+.panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+  opacity: 0;
+}
+
+.panelOpen {
+  opacity: 1;
+}
+
+.panelContent {
+  padding: 0 0 16px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #404040;
+  line-height: 1.6;
+}
+
+.bordered .panelContent {
+  padding: 0 16px 16px;
+}

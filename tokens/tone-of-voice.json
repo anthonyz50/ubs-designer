@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "UBS Design System — Tone of Voice Tokens. Source: ubs.frontify.com",
+  "toneOfVoice": {
+    "pillars": {
+      "clear": {
+        "principles": [
+          "Write like you speak",
+          "Use contractions (we've, it's)",
+          "Short sentences",
+          "Put the main point first",
+          "No business speak or jargon",
+          "Use everyday words and phrases",
+          "Break content up with subheadings",
+          "Use bullet points for instructions (each starting with a verb)"
+        ]
+      },
+      "convincing": {
+        "principles": [
+          "Only say what you need to",
+          "Lead on the benefit to users, not the process",
+          "Remove empty adjectives (global, unique, robust, state-of-the-art)",
+          "Remove jargon (leverage, solutions)",
+          "Talk about what matters to readers first",
+          "Be concrete and less abstract",
+          "See things from the reader's point of view"
+        ]
+      },
+      "withCharm": {
+        "principles": [
+          "Draw readers in with an observation or intriguing headline",
+          "Be personal: use 'we' and 'us', not 'UBS'",
+          "Create rhythm with repetition and mixed sentence lengths",
+          "Ask questions to intrigue readers",
+          "Use natural-sounding phrases that paint pictures",
+          "Be memorable through personality"
+        ]
+      }
+    },
+    "brandPersonality": {
+      "traits": [
+        { "trait": "Positive", "description": "We are optimistic by nature" },
+        { "trait": "Forward looking", "description": "We are contemporary with purposeful intelligence" },
+        { "trait": "Empowering", "description": "We inspire connections in the hands of our clients" },
+        { "trait": "Warm and human", "description": "We are always listening to clients' unique needs to realise their ambitions" }
+      ]
+    },
+    "messaging": {
+      "principle": "1-2 punch: big catchy keyline + smaller informative infoline",
+      "styles": [
+        { "level": 1, "name": "Just the Facts", "description": "Infoline black only" },
+        { "level": 2, "name": "Facts Plus / Catchy", "description": "Keyline hooks, infoline explains" },
+        { "level": 3, "name": "Communicative", "description": "Tells a story" }
+      ],
+      "rules": {
+        "noRedHighlightInMessages": true,
+        "$description": "Red highlighting in infoline/keyline no longer permitted for accessibility."
+      }
+    }
+  }
+}

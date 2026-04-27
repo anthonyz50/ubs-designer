@@ -1,0 +1,170 @@
+/* Toast — UBS Design System */
+
+/* ── Container for all toasts ─────────────── */
+
+.container {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+  max-width: min(400px, calc(100vw - 32px));
+}
+
+/* ── Individual toast ─────────────────────── */
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 4px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  min-width: 280px;
+}
+
+.toastExiting {
+  animation: slideOut 200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* ── Variants ─────────────────────────────── */
+
+.success {
+  background-color: #6f7a1a;
+}
+
+.error {
+  background-color: #bd000c;
+}
+
+.warning {
+  background-color: #e4a911;
+  color: #000000;
+}
+
+.info {
+  background-color: #5a5d5c;
+}
+
+/* ── Content ──────────────────────────────── */
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.message {
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* ── Action button ────────────────────────── */
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  margin-top: 8px;
+  min-height: 32px;
+  border: 1px solid currentColor;
+  background: none;
+  color: inherit;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.action:hover {
+  opacity: 0.8;
+}
+
+.action:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.warning .action:focus-visible {
+  outline-color: #000000;
+}
+
+/* ── Close button ─────────────────────────── */
+
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 4px;
+  flex-shrink: 0;
+  font-size: 18px;
+  line-height: 1;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close:hover {
+  opacity: 0.8;
+}
+
+.close:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.warning .close:focus-visible {
+  outline-color: #000000;
+}
+
+/* ── Progress bar ─────────────────────────── */
+
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: width linear;
+}
+
+.warning .progress {
+  background-color: rgba(0, 0, 0, 0.3);
+}

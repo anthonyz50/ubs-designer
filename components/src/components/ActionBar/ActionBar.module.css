@@ -1,0 +1,62 @@
+/* ─── UBS ActionBar ───────────────────────────────────────────────── */
+/* Fixed/sticky bottom bar for form pages and multi-step workflows.   */
+
+.actionBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background-color: #FFFFFF;
+  border-top: 1px solid #CCCABC;
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-shadow: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Sticky ──────────────────────────────────────────────────────── */
+
+.sticky {
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+}
+
+/* ─── Alignment ───────────────────────────────────────────────────── */
+
+.alignLeft {
+  justify-content: flex-start;
+}
+
+.alignRight {
+  justify-content: flex-end;
+}
+
+.alignCenter {
+  justify-content: center;
+}
+
+.alignBetween {
+  justify-content: space-between;
+}
+
+/* ─── Action groups ───────────────────────────────────────────────── */
+
+.startGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.endGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .actionBar {
+  background-color: #1A1A1A;
+  border-top-color: #5A5D5C;
+}

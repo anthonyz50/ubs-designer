@@ -1,0 +1,180 @@
+/* ─── UBS Card ────────────────────────────────────────────────────── */
+/* Clean, flat design. No box shadows per UBS brand.                  */
+
+.card {
+  font-family: 'Frutiger', Arial, sans-serif;
+  border: 1px solid #CCCABC;
+  border-radius: 4px;
+  overflow: hidden;
+  text-shadow: none;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Variants ────────────────────────────────────────────────────── */
+
+.default {
+  background-color: #FFFFFF;
+  border-color: #CCCABC;
+  color: #000000;
+}
+
+.pastel1 {
+  background-color: #ECEBE4;
+  border-color: #CCCABC;
+  color: #000000;
+}
+
+.pastel2 {
+  background-color: #F5F0E1;
+  border-color: #CCCABC;
+  color: #000000;
+}
+
+.gray {
+  background-color: #CCCABC;
+  border-color: #B8B3A2;
+  color: #000000;
+}
+
+/* ─── Padding ─────────────────────────────────────────────────────── */
+
+.padding-none {
+  /* no padding */
+}
+
+.padding-small > .header,
+.padding-small > .body,
+.padding-small > .footer {
+  padding: 12px 16px;
+}
+
+.padding-medium > .header,
+.padding-medium > .body,
+.padding-medium > .footer {
+  padding: 20px 24px;
+}
+
+.padding-large > .header,
+.padding-large > .body,
+.padding-large > .footer {
+  padding: 28px 32px;
+}
+
+/* ─── Slots ───────────────────────────────────────────────────────── */
+
+.header {
+  border-bottom: 1px solid #CCCABC;
+}
+
+.pastel1 > .header,
+.pastel2 > .header,
+.gray > .header {
+  border-bottom-color: #B8B3A2;
+}
+
+.body {
+  /* Main content area */
+}
+
+.footer {
+  border-top: 1px solid #CCCABC;
+}
+
+.pastel1 > .footer,
+.pastel2 > .footer,
+.gray > .footer {
+  border-top-color: #B8B3A2;
+}
+
+/* ─── Interactive ─────────────────────────────────────────────────── */
+
+.interactive {
+  cursor: pointer;
+  transition: border-color 200ms ease, background-color 200ms ease, transform 200ms ease;
+}
+
+.interactive:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.hoverable:hover {
+  border-color: #B8B3A2;
+  transform: translateY(-2px);
+}
+
+.hoverable.default:hover {
+  background-color: #F9F9F7;
+}
+
+.hoverable.pastel1:hover {
+  background-color: #E3E2D9;
+}
+
+.hoverable.pastel2:hover {
+  background-color: #EDE7D6;
+}
+
+.hoverable.gray:hover {
+  background-color: #C0BEB1;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .card {
+  border-color: #5A5D5C;
+}
+
+[data-ubs-theme="dark"] .default {
+  background-color: #1A1A1A;
+  border-color: #5A5D5C;
+  color: #FFFFFF;
+}
+
+[data-ubs-theme="dark"] .pastel1 {
+  background-color: #2A2A2A;
+  border-color: #5A5D5C;
+  color: #FFFFFF;
+}
+
+[data-ubs-theme="dark"] .pastel2 {
+  background-color: #2E2B24;
+  border-color: #5A5D5C;
+  color: #FFFFFF;
+}
+
+[data-ubs-theme="dark"] .gray {
+  background-color: #404040;
+  border-color: #5A5D5C;
+  color: #FFFFFF;
+}
+
+[data-ubs-theme="dark"] .header {
+  border-bottom-color: #5A5D5C;
+}
+
+[data-ubs-theme="dark"] .footer {
+  border-top-color: #5A5D5C;
+}
+
+[data-ubs-theme="dark"] .hoverable.default:hover {
+  background-color: #242424;
+}
+
+[data-ubs-theme="dark"] .hoverable.pastel1:hover {
+  background-color: #333333;
+}
+
+[data-ubs-theme="dark"] .hoverable.pastel2:hover {
+  background-color: #38342C;
+}
+
+[data-ubs-theme="dark"] .hoverable.gray:hover {
+  background-color: #4A4A4A;
+}
+
+[data-ubs-theme="dark"] .interactive:focus-visible {
+  outline-color: #FFFFFF;
+}

@@ -1,0 +1,108 @@
+/* ─── Footer ─── UBS Design System Template Component ─── */
+
+.footer {
+  background-color: #ecebe4; /* Pastel I */
+  font-family: 'Frutiger', Arial, sans-serif;
+  padding: 48px 0 24px;
+  margin-top: auto;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Top Section ─── */
+
+.top {
+  display: flex;
+  gap: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #cccabc; /* Gray I */
+}
+
+.logoArea {
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+
+/* ─── Link Columns ─── */
+
+.linkColumns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  flex: 1;
+}
+
+.linkGroup {
+  min-width: 160px;
+}
+
+.groupTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  margin: 0 0 12px;
+  line-height: 1.4;
+}
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.linkList li {
+  margin-bottom: 8px;
+}
+
+.link {
+  font-size: 13px;
+  font-weight: 400;
+  color: #5a5d5c; /* Gray V */
+  text-decoration: none;
+  transition: color 150ms;
+  line-height: 1.5;
+}
+
+.link:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.link:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* ─── Bottom Section ─── */
+
+.bottom {
+  padding-top: 20px;
+}
+
+.copyright {
+  font-size: 12px;
+  color: #7a7870; /* Gray IV */
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ─── Responsive ─── */
+
+@media (max-width: 767px) {
+  .top {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .linkColumns {
+    gap: 24px;
+  }
+
+  .linkGroup {
+    min-width: 140px;
+  }
+}

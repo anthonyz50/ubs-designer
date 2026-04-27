@@ -1,0 +1,80 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "UBS Design System — Pattern Tokens. Inspired by key symbol. Source: ubs.frontify.com",
+  "pattern": {
+    "variants": ["solid", "outline", "solid animated", "outline animated"],
+    "ratio": {
+      "$description": "Always measure against the short side of the format.",
+      "maximum": "3h (h = height of base element)",
+      "minimum": "⅓h"
+    },
+    "colourCombinations": {
+      "gray": {
+        "$description": "Standard. Lighter pattern on next-tone background.",
+        "pairs": [
+          ["#FFFFFF", "#ECEBE4"],
+          ["#ECEBE4", "#CCCABC"],
+          ["#CCCABC", "#B8B3A2"],
+          ["#B8B3A2", "#8E8D83"],
+          ["#8E8D83", "#7A7870"],
+          ["#7A7870", "#5A5D5C"],
+          ["#5A5D5C", "#404040"]
+        ]
+      },
+      "bordeaux": {
+        "pairs": [
+          ["#E60000", "#BD000C"],
+          ["#BD000C", "#8A000A"],
+          ["#8A000A", "#620004"]
+        ]
+      },
+      "bronze": {
+        "pairs": [
+          ["#FFFFFF", "#F5F0E1"],
+          ["#B98E2C", "#946F29"],
+          ["#946F29", "#6C5312"]
+        ]
+      }
+    },
+    "colourDirections": {
+      "basis": {
+        "name": "Gray",
+        "colours": ["White", "Pastel I", "Gray I-VI", "Black"]
+      },
+      "specificI": {
+        "name": "Bordeaux",
+        "colours": ["White", "Pastel I", "Gray I-VI", "Black", "UBS Red", "Bordeaux I-III"]
+      },
+      "specificII": {
+        "name": "Bronze",
+        "colours": ["White", "Gray I-VI", "Black", "Pastel I", "Bronze I-III"]
+      }
+    },
+    "materialApplications": {
+      "stainlessSteel": "engraving",
+      "stone": "embossing",
+      "leather": "embossing",
+      "fabric": "embroidery",
+      "cardboard": "wrapping",
+      "foilGlass": "wrapping",
+      "wood": "milling",
+      "paper": "watermarking"
+    },
+    "rules": {
+      "noDistortion": true,
+      "noLogoTabOnWhiteBackground": true,
+      "noKeySymbolOnPattern": true,
+      "noWrongFormatRatio": true,
+      "noFrontPageAndImpulseOnPattern": true,
+      "noMultipleVariations": true,
+      "noMirroring": true,
+      "noBackgroundForPortraitPhotography": true,
+      "noOtherColours": true,
+      "noCombinationOfTwoColourDirections": true,
+      "noRotation": true,
+      "noIconIllustrationChartOnPattern": true,
+      "noBleedingOnOneTwoThreeSides": true,
+      "noWrongColourContrast": true
+    }
+  }
+}

@@ -1,0 +1,134 @@
+/* ─── UBS PageHeader ──────────────────────────────────────────────── */
+/* Composite page header with title, subtitle, breadcrumbs, actions.  */
+
+.pageHeader {
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-shadow: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* ─── Impulse variant ─────────────────────────────────────────────── */
+
+.impulse .titleBlock {
+  border-left: 4px solid #E60000;
+  padding-left: 20px;
+}
+
+/* ─── Breadcrumbs ─────────────────────────────────────────────────── */
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #5A5D5C;
+}
+
+.breadcrumbItem {
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumbLink {
+  color: #5A5D5C;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.breadcrumbLink:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.breadcrumbLink:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.breadcrumbCurrent {
+  color: #000000;
+  font-weight: 400;
+}
+
+.breadcrumbSeparator {
+  margin: 0 8px;
+  color: #B8B3A2;
+  user-select: none;
+}
+
+/* ─── Title Block ─────────────────────────────────────────────────── */
+
+.titleBlock {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 300;
+  font-size: 56px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0;
+}
+
+.subtitle {
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 1.25;
+  color: #5A5D5C;
+  margin: 8px 0 0;
+}
+
+/* ─── Actions ─────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .title {
+  color: #FFFFFF;
+}
+
+[data-ubs-theme="dark"] .subtitle {
+  color: #8E8D83;
+}
+
+[data-ubs-theme="dark"] .breadcrumbLink {
+  color: #8E8D83;
+}
+
+[data-ubs-theme="dark"] .breadcrumbLink:hover {
+  color: #FFFFFF;
+}
+
+[data-ubs-theme="dark"] .breadcrumbCurrent {
+  color: #FFFFFF;
+}
+
+[data-ubs-theme="dark"] .breadcrumbSeparator {
+  color: #5A5D5C;
+}
+
+[data-ubs-theme="dark"] .impulse .titleBlock {
+  border-left-color: #D83B31;
+}
+
+[data-ubs-theme="dark"] .breadcrumbLink:focus-visible {
+  outline-color: #FFFFFF;
+}

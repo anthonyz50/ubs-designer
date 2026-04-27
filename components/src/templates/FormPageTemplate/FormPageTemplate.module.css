@@ -1,0 +1,41 @@
+/* ─── FormPageTemplate ─── UBS Design System ─── */
+
+.formPage {
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+/* ─── Alert Wrapper ─── */
+
+.alertWrapper {
+  max-width: 960px;
+  margin: 16px auto 0;
+  padding: 0 24px;
+}
+
+/* ─── Form ─── */
+
+.form {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 120px; /* Extra bottom padding for sticky action bar */
+}
+
+/* ─── Field Grid ─── */
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 767px) {
+  .fieldGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    padding: 0 16px 120px;
+  }
+}

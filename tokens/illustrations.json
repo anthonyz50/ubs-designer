@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "UBS Design System — Illustration Tokens. Source: ubs.frontify.com",
+  "illustrations": {
+    "style": {
+      "technique": "Hand-drawn characteristics created digitally",
+      "lineWeight": "Firm pen stroke. Minimum 1px in digital. Optically adjust when scaling.",
+      "levelOfDetail": "Abstract where possible, accurate where appropriate. Grasp the essence.",
+      "humanProportions": "NOT realistic: small head, short torso, long legs, large feet",
+      "noFacialExpressions": true
+    },
+    "colourLayering": {
+      "$description": "Apply in this order, building up from simple to complex.",
+      "layers": [
+        "1. Black lines with accent Red lines",
+        "2. Black lines with accent Red fill",
+        "3. Black lines, Red accent fill, Black fill",
+        "4. Black lines, Red accent fill, Black and Warm Grays fill"
+      ],
+      "dominantColour": "white (always)",
+      "additionalColour": {
+        "name": "Bordeaux II",
+        "hex": "#8A000A",
+        "usage": "~10% of illustration. For large/complex illustrations only."
+      }
+    },
+    "animation": {
+      "style": "2D animation maintaining flat illustration style",
+      "movement": "Natural, human-like. No stiffness or cartoonish.",
+      "easing": "Vary speed for realistic movement",
+      "boilingLineEffect": "Subtle, for hand-drawn charm",
+      "rules": {
+        "noDisruptionOfShape": true,
+        "noCartoonishMovement": true,
+        "noOvercomplicatedAnimation": true,
+        "animateOnlyEssential": true
+      }
+    },
+    "rules": {
+      "noOveruseOfColours": true,
+      "noTooManyFilledAreas": true,
+      "noOtherColoursBeyondPalette": true,
+      "noTooThinAndRigid": true,
+      "noTooThickAndRigid": true,
+      "noTooWobbly": true,
+      "noDifferentLineWidths": true,
+      "noTooManyDetails": true,
+      "noTooCartoonish": true,
+      "noFilledWithBackgroundColour": true,
+      "noCloseUps": true,
+      "noObvious3D": true,
+      "noCombinationWithPhotography": true,
+      "noIllustrationsAsIcons": true,
+      "noTooSketchy": true
+    }
+  }
+}

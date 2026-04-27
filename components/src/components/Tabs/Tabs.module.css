@@ -1,0 +1,119 @@
+/* Tabs — UBS Design System */
+
+.tablist {
+  display: flex;
+  gap: 0;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  position: relative;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.fullWidth .tab {
+  flex: 1;
+}
+
+/* ── Underline variant ────────────────────── */
+
+.underline {
+  border-bottom: 1px solid #ecebe4;
+}
+
+.underline .tab {
+  padding: 12px 16px;
+  min-height: 44px;
+  min-width: 44px;
+  border: none;
+  background: none;
+  color: #5a5d5c;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  position: relative;
+  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 4px 4px 0 0;
+}
+
+.underline .tab:hover:not(:disabled) {
+  color: #000000;
+}
+
+.underline .tabActive {
+  color: #000000;
+  font-weight: 700;
+}
+
+.underline .tabActive::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #e60000;
+}
+
+/* ── Contained variant ────────────────────── */
+
+.contained {
+  background-color: #ecebe4;
+  border-radius: 4px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.contained .tab {
+  padding: 8px 16px;
+  min-height: 44px;
+  min-width: 44px;
+  border: none;
+  background: none;
+  color: #5a5d5c;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.contained .tab:hover:not(:disabled) {
+  color: #000000;
+}
+
+.contained .tabActive {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 700;
+}
+
+/* ── Shared states ────────────────────────── */
+
+.tab:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.tab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tabIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}

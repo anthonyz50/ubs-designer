@@ -1,0 +1,212 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundation/Typography" />
+
+# UBS Typography System
+
+The UBS type hierarchy consists of 16 levels, all based on the Frutiger typeface (Arial fallback). This specimen sheet shows each level with its specification and sample text.
+
+export const Specimen = ({ name, spec, weight, colour, sample, style }) => (
+  <div style={{ marginBottom: 24, paddingBottom: 16, borderBottom: '1px solid #ECEBE4' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
+      <span style={{ fontFamily: 'Arial, sans-serif', fontSize: 12, fontWeight: 700, color: '#7A7870', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        {name}
+      </span>
+      <span style={{ fontFamily: 'monospace', fontSize: 11, color: '#8E8D83' }}>
+        {spec} · {weight}{colour ? ` · ${colour}` : ''}
+      </span>
+    </div>
+    <div style={{ fontFamily: "'Frutiger', Arial, sans-serif", ...style }}>
+      {sample}
+    </div>
+  </div>
+);
+
+---
+
+## Font Family
+
+| Priority | Font | Usage |
+|----------|------|-------|
+| Primary | **Frutiger** | UBS corporate typeface (Monotype licence) |
+| Fallback | **Arial** | Mandatory replacement when Frutiger unavailable |
+| Mono | **Frutiger Mono** / SF Mono | Code, data tables |
+
+## Font Weights
+
+| Name | Weight | Usage |
+|------|--------|-------|
+| Light | 300 | General body text (Frutiger 45 Light) |
+| Light Italic | 300i | Call-outs within body copy |
+| Roman | 400 | Extra-small text for legibility (Frutiger 55 Roman) |
+| Bold | 700 | Subheadlines, emphasis |
+| Light Condensed | — | Diagrams only (Frutiger 47 Light CN) |
+
+---
+
+## 16-Level Type Hierarchy
+
+<Specimen
+  name="Keyline"
+  spec="Free selectable size"
+  weight="Light (300)"
+  sample="Welcome to UBS"
+  style={{ fontSize: 40, fontWeight: 300, lineHeight: 1.05 }}
+/>
+
+<Specimen
+  name="Infoline"
+  spec="Max ½ keyline size"
+  weight="Light (300)"
+  sample="Wealth Management · Global Insights"
+  style={{ fontSize: 20, fontWeight: 300, lineHeight: 1.2 }}
+/>
+
+<Specimen
+  name="Subheadline 1"
+  spec="20pt / 24pt"
+  weight="Light (300)"
+  sample="Portfolio Performance Overview"
+  style={{ fontSize: 27, fontWeight: 300, lineHeight: 1.2 }}
+/>
+
+<Specimen
+  name="Subheadline 2"
+  spec="13.5pt / 16pt"
+  weight="Light (300)"
+  sample="Quarterly Asset Allocation Report"
+  style={{ fontSize: 18, fontWeight: 300, lineHeight: 1.185 }}
+/>
+
+<Specimen
+  name="Subheadline 3"
+  spec="9.5pt / 12pt"
+  weight="Bold (700)"
+  sample="Key Market Indicators"
+  style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.263 }}
+/>
+
+<Specimen
+  name="Subheadline 4"
+  spec="9.5pt / 12pt"
+  weight="Bold (700)"
+  colour="UBS Red"
+  sample="Investment Strategy Update"
+  style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.263, color: '#E60000' }}
+/>
+
+<Specimen
+  name="Lead Text 1"
+  spec="20pt / 24pt"
+  weight="Light (300)"
+  sample="In a world of constant change, the value of trusted advice has never been more apparent."
+  style={{ fontSize: 27, fontWeight: 300, lineHeight: 1.2 }}
+/>
+
+<Specimen
+  name="Lead Text 2"
+  spec="13.5pt / 16pt"
+  weight="Light (300)"
+  sample="Our commitment to understanding your unique circumstances drives every recommendation we make."
+  style={{ fontSize: 18, fontWeight: 300, lineHeight: 1.185 }}
+/>
+
+<Specimen
+  name="Quotes"
+  spec="13.5pt / 16pt"
+  weight="Light (300)"
+  sample={'"Excellence in everything we do — that is the standard we hold ourselves to."'}
+  style={{ fontSize: 18, fontWeight: 300, lineHeight: 1.185, fontStyle: 'italic' }}
+/>
+
+<Specimen
+  name="Subtitles"
+  spec="9.5pt / 12pt"
+  weight="Bold (700)"
+  colour="Black or Red"
+  sample="Section Title"
+  style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.263 }}
+/>
+
+<Specimen
+  name="Copy Text"
+  spec="9.5pt / 12pt"
+  weight="Light (300)"
+  sample="UBS provides financial advice and solutions to wealthy, institutional and corporate clients worldwide, as well as private clients in Switzerland. UBS's strategy is centred on our leading global wealth management business and our premier universal bank in Switzerland."
+  style={{ fontSize: 13, fontWeight: 300, lineHeight: 1.263 }}
+/>
+
+<Specimen
+  name="Page Numbers"
+  spec="9.5pt / 12pt"
+  weight="Light (300)"
+  sample="42"
+  style={{ fontSize: 13, fontWeight: 300, lineHeight: 1.263 }}
+/>
+
+<Specimen
+  name="Sender Info"
+  spec="9.5pt / 12pt"
+  weight="Light (300)"
+  sample="John Smith · UBS AG, Bahnhofstrasse 45, 8001 Zurich"
+  style={{ fontSize: 13, fontWeight: 300, lineHeight: 1.263 }}
+/>
+
+<Specimen
+  name="Small Copy Text"
+  spec="8pt / 10pt"
+  weight="Light (300)"
+  sample="Past performance is not a reliable indicator of future results. The value of investments and the income derived from them may go down as well as up."
+  style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.25 }}
+/>
+
+<Specimen
+  name="Environmental Info"
+  spec="8pt / 10pt"
+  weight="Light (300)"
+  sample="Printed on 100% recycled paper using vegetable-based inks."
+  style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.25 }}
+/>
+
+<Specimen
+  name="Captions"
+  spec="7.5pt / 9.5pt"
+  weight="Light (300)"
+  colour="Black or Red"
+  sample="Fig. 1: Regional asset allocation breakdown, Q4 2024"
+  style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.267 }}
+/>
+
+<Specimen
+  name="Footnote"
+  spec="6.5pt / 7.5pt"
+  weight="Light (300)"
+  sample="¹ Source: UBS Chief Investment Office. Data as of 31 December 2024. All figures in CHF unless stated otherwise."
+  style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.154 }}
+/>
+
+---
+
+## Typography Rules
+
+| Rule | Description |
+|------|-------------|
+| No red for numbers | UBS Red must **never** be used for numbers |
+| No opacity | Never apply transparency to text |
+| No small caps | Small caps are not permitted |
+| No justification | Always left-aligned (RTL: right-aligned) |
+| No right alignment | Except for RTL scripts |
+| No text shadows | Drop shadows are prohibited |
+| No centred blocks | Centred text blocks are not allowed |
+| No mixed sizes | Never mix font sizes within one sentence |
+| No text wrapping | Text must not wrap around objects |
+| No red highlighting | Red highlighting in messages is no longer permitted |
+
+## Web-Optimised Sizes
+
+| Metric | Value |
+|--------|-------|
+| Minimum font size | 14px (10.5pt) |
+| Recommended body | 16px (12pt) |
+| Body line height | 22px (17pt) |
+| Large text threshold | 25px (18pt) for WCAG contrast |

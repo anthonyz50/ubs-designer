@@ -1,0 +1,4502 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Components Manifest</title>
+  <style>
+      :root {
+          --bg: #0b0c10;
+          --panel: #121318;
+          --muted: #9aa0a6;
+          --fg: #e8eaed;
+          --ok: #22c55e;
+          --info: #1e88e5;
+          --err: #c62828;
+          --ok-bg: #0c1a13;
+          --info-bg: #0c1624;
+          --err-bg: #1a0e0e;
+          --chip: #1f2330;
+          --border: #2b2f3a;
+          --link: #8ab4f8;
+          --active-ring: 1px; /* 1px active ring for pills and toggles */
+      }
+
+      * {
+          box-sizing: border-box;
+      }
+
+      html,
+      body {
+          margin: 0;
+          background: var(--bg);
+          color: var(--fg);
+          font: 14px/1.5 system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Ubuntu,
+          Cantarell,
+          'Helvetica Neue',
+          Arial,
+          'Noto Sans';
+      }
+
+      .wrap {
+          max-width: 1100px;
+          margin: 0 auto;
+          padding: 16px 20px;
+      }
+
+      header {
+          position: sticky;
+          top: 0;
+          backdrop-filter: blur(6px);
+          background: color-mix(in srgb, var(--bg) 84%, transparent);
+          border-bottom: 1px solid var(--border);
+          z-index: 10;
+      }
+
+      h1 {
+          font-size: 20px;
+          margin: 0 0 6px;
+      }
+
+      .summary {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+          align-items: center;
+      }
+
+      /* Top filter pills */
+      .filter-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 12px;
+          border: 1px solid var(--border);
+          border-radius: 999px;
+          background: var(--panel);
+          text-decoration: none;
+          cursor: pointer;
+          user-select: none;
+          color: var(--fg);
+      }
+
+      .filter-pill.ok {
+          color: #b9f6ca;
+          border-color: color-mix(in srgb, var(--ok) 55%, var(--border));
+          background: color-mix(in srgb, var(--ok) 18%, #000);
+      }
+
+      .filter-pill.info {
+          color: #b3d9ff;
+          border-color: color-mix(in srgb, var(--info) 55%, var(--border));
+          background: var(--info-bg);
+      }
+
+      .filter-pill.err {
+          color: #ff9aa0;
+          border-color: color-mix(in srgb, var(--err) 55%, var(--border));
+          background: var(--err-bg);
+      }
+
+      .filter-pill.all {
+          color: #d7dbe0;
+          border-color: var(--border);
+          background: var(--panel);
+      }
+
+      .filter-pill[aria-disabled='true'] {
+          cursor: default;
+          text-decoration: none;
+      }
+
+      .filter-pill:focus,
+      .filter-pill:active {
+          outline: none;
+          box-shadow: none;
+      }
+
+      /* Selected top pill ring via :target */
+      #filter-all:target ~ header .filter-pill[data-k='all'],
+      #filter-errors:target ~ header .filter-pill[data-k='errors'],
+      #filter-infos:target ~ header .filter-pill[data-k='infos'],
+      #filter-story-errors:target ~ header .filter-pill[data-k='story-errors'],
+      #filter-doc-errors:target ~ header .filter-pill[data-k='docs'],
+      #filter-docs:target ~ header .filter-pill[data-k='docs'] {
+          box-shadow: 0 0 0 var(--active-ring) currentColor;
+          border-color: currentColor;
+      }
+
+      /* Hidden targets for filtering */
+      #filter-all,
+      #filter-errors,
+      #filter-infos,
+      #filter-story-errors,
+      #filter-doc-errors,
+      #filter-docs {
+          display: none;
+      }
+
+      main {
+          padding: 36px 0 40px;
+      }
+
+      .grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 18px;
+      }
+
+      /* one card per row */
+
+      .card {
+          border: 1px solid var(--border);
+          background: var(--panel);
+          border-radius: 14px;
+          padding: 14px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+      }
+
+      .head {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+      }
+
+      .title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+      }
+
+      .title h2 {
+          font-size: 16px;
+          margin: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+      }
+
+      .meta {
+          font-size: 12px;
+          color: var(--muted);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+      }
+
+      .kv {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+      }
+
+      .chip {
+          font-size: 12px;
+          padding: 4px 8px;
+          border-radius: 999px;
+          background: var(--chip);
+          border: 1px solid var(--border);
+      }
+
+      .hint {
+          color: var(--muted);
+          font-size: 12px;
+      }
+
+      .badges {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+      }
+
+      /* Per-card badges: labels become toggles when clickable */
+      .badge {
+          font-size: 12px;
+          padding: 3px 8px;
+          border-radius: 999px;
+          border: 1px solid var(--border);
+          background: var(--chip);
+          color: #d7dbe0;
+      }
+
+      .badge.ok {
+          color: #b9f6ca;
+          border-color: color-mix(in srgb, var(--ok) 55%, var(--border));
+      }
+
+      .badge.info {
+          color: #b3d9ff;
+          border-color: color-mix(in srgb, var(--info) 55%, var(--border));
+      }
+
+      .badge.err {
+          color: #ff9aa0;
+          border-color: color-mix(in srgb, var(--err) 55%, var(--border));
+      }
+
+      .as-toggle {
+          cursor: pointer;
+      }
+
+      /* 1px ring on active toggle */
+      .tg-err:checked + label.as-toggle,
+      .tg-info:checked + label.as-toggle,
+      .tg-stories:checked + label.as-toggle,
+      .tg-docs:checked + label.as-toggle,
+      .tg-content:checked + label.as-toggle,
+      .tg-props:checked + label.as-toggle {
+          box-shadow: 0 0 0 var(--active-ring) currentColor;
+          border-color: currentColor;
+      }
+
+      /* Panels: hidden by default, shown when respective toggle checked */
+      .panels {
+          display: grid;
+          gap: 10px;
+      }
+
+      .panel {
+          display: none;
+      }
+
+      .tg-err:checked ~ .panels .panel-err {
+          display: grid;
+      }
+
+      .tg-info:checked ~ .panels .panel-info {
+          display: grid;
+          gap: 8px;
+      }
+
+      .tg-stories:checked ~ .panels .panel-stories {
+          display: grid;
+          gap: 8px;
+      }
+
+      .tg-docs:checked ~ .panels .panel-docs {
+          display: grid;
+          gap: 8px;
+      }
+
+      .tg-content:checked ~ .panels .panel-content {
+          display: grid;
+          gap: 8px;
+      }
+
+      .tg-props:checked ~ .panels .panel-props {
+          display: grid;
+      }
+
+      /* Colored notes for prop type error + info */
+      .note {
+          padding: 12px;
+          border: 1px solid var(--border);
+          border-radius: 10px;
+      }
+
+      .note.err {
+          border-color: color-mix(in srgb, var(--err) 55%, var(--border));
+          background: var(--err-bg);
+          color: #ffd1d4;
+      }
+
+      .note.info {
+          border-color: color-mix(in srgb, var(--info) 55%, var(--border));
+          background: var(--info-bg);
+          color: #d6e8ff;
+      }
+
+      .note.ok {
+          border-color: color-mix(in srgb, var(--ok) 55%, var(--border));
+          background: var(--ok-bg);
+          color: var(--fg);
+      }
+
+      .note-title {
+          font-weight: 600;
+          margin-bottom: 6px;
+      }
+
+      .note-body {
+          white-space: normal;
+      }
+
+      /* Story error cards */
+      .ex {
+          padding: 10px;
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          background: #0f131b;
+      }
+
+      .ex.err {
+          border-color: color-mix(in srgb, var(--err) 55%, var(--border));
+      }
+
+      .row {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex-wrap: wrap;
+      }
+
+      .status-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          display: inline-block;
+      }
+
+      .dot-ok {
+          background: var(--ok);
+      }
+
+      .dot-err {
+          background: var(--err);
+      }
+
+      .ex-name {
+          font-weight: 600;
+      }
+
+      /* Error groups (visible in errors filter) */
+      .error-groups {
+          display: none;
+          margin-bottom: 16px;
+      }
+
+      .group {
+          border: 1px solid var(--border);
+          background: var(--panel);
+          border-radius: 14px;
+          overflow: hidden;
+      }
+
+      .group + .group {
+          margin-top: 12px;
+      }
+
+      .group-header {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 12px 14px;
+          cursor: pointer;
+          border-bottom: 1px solid var(--border);
+      }
+
+      .group-header:hover {
+          background: #141722;
+      }
+
+      .group-title {
+          font-weight: 600;
+          flex: 1;
+      }
+
+      .group-count {
+          font-size: 12px;
+          color: var(--muted);
+      }
+
+      .group-cards {
+          display: none;
+          padding: 12px;
+      }
+
+      .group .card {
+          margin: 12px 0;
+      }
+
+      .group .card:first-child {
+          margin-top: 0;
+      }
+
+      .group .card:last-child {
+          margin-bottom: 0;
+      }
+
+      /* caret rotation */
+      .group-tg:checked + label .caret {
+          transform: rotate(90deg);
+      }
+
+      .caret {
+          transition: transform 0.15s ease;
+      }
+
+      /* toggle body */
+      .group-tg:checked ~ .group-cards {
+          display: block;
+      }
+
+      /* CSS-only filtering of cards via top pills */
+      #filter-errors:target ~ main .card:not(.has-error):not(.has-story-error) {
+          display: none;
+      }
+
+      #filter-infos:target ~ main .card:not(.has-info) {
+          display: none;
+      }
+
+      #filter-story-errors:target ~ main .card:not(.has-story-error) {
+          display: none;
+      }
+
+      #filter-doc-errors:target ~ main .card:not(.has-doc-error) {
+          display: none;
+      }
+
+      #filter-docs:target ~ main .card:has(> .tg-docs),
+      #filter-docs:target ~ main .card.is-doc {
+          display: block;
+      }
+
+      #filter-docs:target ~ main .card:not(:has(> .tg-docs)):not(.is-doc) {
+          display: none;
+      }
+
+      #filter-all:target ~ main .card {
+          display: block;
+      }
+
+      /* In errors view, hide standalone component-error cards in the regular grid (they will appear in groups) */
+      #filter-errors:target ~ main .grid .card.has-error {
+          display: none;
+      }
+
+      /* Show grouped section only in errors view */
+      #filter-errors:target ~ main .error-groups {
+          display: block;
+      }
+
+      /* Section titles */
+      .section-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: var(--muted);
+          margin: 24px 0 12px;
+          padding-bottom: 8px;
+          border-bottom: 1px solid var(--border);
+      }
+      .section-title:first-child {
+          margin-top: 0;
+      }
+
+      /* When a toggle is checked, show the corresponding panel */
+      .card > .tg-err:checked ~ .panels .panel-err {
+          display: grid;
+      }
+      
+      .card > .tg-info:checked ~ .panels .panel-info {
+          display: grid;
+      }
+      
+      .card > .tg-stories:checked ~ .panels .panel-stories {
+          display: grid;
+      }
+
+      .card > .tg-docs:checked ~ .panels .panel-docs {
+          display: grid;
+      }
+
+      .card > .tg-content:checked ~ .panels .panel-content {
+          display: grid;
+      }
+
+      /* Add vertical spacing around panels only when any panel is visible */
+      .card > .tg-err:checked ~ .panels,
+      .card > .tg-info:checked ~ .panels,
+      .card > .tg-stories:checked ~ .panels,
+      .card > .tg-docs:checked ~ .panels,
+      .card > .tg-content:checked ~ .panels,
+      .card > .tg-props:checked ~ .panels {
+          margin: 10px 0;
+      }
+
+      /* Optional: a subtle 1px ring on the active badge, using :has() if available */
+      @supports selector(.card:has(.tg-err:checked)) {
+          .card:has(.tg-err:checked) label[for$='-err'],
+          .card:has(.tg-info:checked) label[for$='-info'],
+          .card:has(.tg-stories:checked) label[for$='-stories'],
+          .card:has(.tg-docs:checked) label[for$='-docs'],
+          .card:has(.tg-content:checked) label[for$='-content'],
+          .card:has(.tg-props:checked) label[for$='-props'] {
+              box-shadow: 0 0 0 1px currentColor;
+              border-color: currentColor;
+          }
+      }
+
+      /* Wrap long lines in code blocks at ~120 characters */
+      pre, code {
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      }
+      pre {
+          white-space: pre-wrap;
+          overflow-wrap: anywhere;
+          word-break: break-word;
+          overflow-x: auto; /* fallback for extremely long tokens */
+          margin: 8px 0 0;
+      }
+      pre > code {
+          display: block;
+          white-space: inherit;
+          overflow-wrap: inherit;
+          word-break: inherit;
+          inline-size: min(100%, 120ch);
+      }
+
+      /* MDX content container for docs */
+      .mdx-content {
+          background: #0f131b;
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          padding: 12px;
+          max-height: 400px;
+          overflow-y: auto;
+          margin-top: 8px;
+      }
+  </style>
+</head>
+<body>
+<!-- Hidden targets for the top-level filters -->
+<span id="filter-all"></span>
+<span id="filter-errors"></span>
+<span id="filter-infos"></span>
+<span id="filter-story-errors"></span>
+<span id="filter-doc-errors"></span>
+<span id="filter-docs"></span>
+<header>
+  <div class="wrap">
+    <h1>Manifest Debugger</h1>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><span class="filter-pill ok" aria-disabled="true">12 components ok</span><span class="filter-pill ok" aria-disabled="true">147 stories ok</span><a class="filter-pill ok" data-k="docs" href="#filter-docs">5 docs ok</a></div>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <div class="note info" style="margin-bottom: 16px;">
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.2s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <pre><code>typescript: {
+  reactDocgen: 'react-docgen-typescript',
+}</code></pre>
+            Note: <code>react-docgen-typescript</code> can be slower. If performance is acceptable for your project, it generally produces better results.
+            <a href="https://storybook.js.org/docs/api/main-config/main-config-typescript#reactdocgen" target="_blank">Learn more</a>
+          </div>
+    <h2 class="section-title">Components</h2>
+    <div class="grid" role="list">
+      
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="Alert">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Alert</h2>
+      <div class="badges">
+        <label for="c-0-components-alert-props" class="badge ok as-toggle">5 prop types</label>
+        
+        <label for="c-0-components-alert-stories" class="badge ok as-toggle">8 stories</label>
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/Alert/Alert.stories.tsx">components-alert · ./src/components/Alert/Alert.stories.tsx</div>
+    
+    <div class="hint">UBS Design System Alert component. RAG (Red/Amber/Green) status indicator following UBS brand guidelines: - Error: RAG Red (#BD000C) — critical problems - Warning: RAG Amber (#E4A911) — needs attention - Success: RAG Green (#6F7A1A) — on track - Info: Gray IV (#7A7870) — neutral information Meets WCAG 2.2 AA contrast requirements. Does not rely on colour alone (uses icons + text).</div>
+    <div class="kv"><span class="chip">example:  ```tsx &lt;Alert variant=&quot;error&quot; title=&quot;Transaction Failed&quot;&gt; Please check your account details and try again. &lt;/Alert&gt; &lt;Alert variant=&quot;success&quot; dismissible onDismiss={() =&gt; setShow(false)}&gt; Your transfer has been completed successfully. &lt;/Alert&gt; ```</span></div>
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-0-components-alert-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  <input id="c-0-components-alert-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen)</small></span>
+              <span class="badge ok">5 prop types</span>
+            </div>
+            <pre><code>Component: src/components/Alert/Alert.tsx::Alert</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Alert message content.
+ */
+children?: React.ReactNode
+
+/**
+ * Whether the alert can be dismissed. @default false
+ */
+dismissible?: boolean = false
+
+/**
+ * Callback fired when the alert is dismissed.
+ */
+onDismiss?: () =&gt; void
+
+/**
+ * Optional title displayed prominently.
+ */
+title?: string
+
+/**
+ * Alert severity/type. @default &#39;info&#39;
+ */
+variant?: &#39;error&#39; | &#39;warning&#39; | &#39;success&#39; | &#39;info&#39; = &#39;info&#39;</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { Alert } from "@ubs/design-system";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Error</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Error = () =&gt; &lt;Alert variant=&quot;error&quot; title=&quot;Transaction Failed&quot;&gt;Please check your account details and try again. If the problem persists, contact your relationship manager.&lt;/Alert&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Warning</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Warning = () =&gt; &lt;Alert variant=&quot;warning&quot; title=&quot;Approaching Limit&quot;&gt;You have used 85% of your daily transfer limit. Remaining: CHF 15,000.&lt;/Alert&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Success</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Success = () =&gt; &lt;Alert variant=&quot;success&quot; title=&quot;Transfer Complete&quot;&gt;Your transfer of CHF 50,000 to IBAN CH93 0076 2011 6238 5295 7 has been completed successfully.&lt;/Alert&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Info</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Info = () =&gt; &lt;Alert variant=&quot;info&quot; title=&quot;System Maintenance&quot;&gt;Scheduled maintenance will take place on Saturday, 5 April 2025, from 02:00 to 06:00 CET.&lt;/Alert&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Dismissible</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Dismissible = () =&gt; &lt;Alert variant=&quot;success&quot; dismissible&gt;This alert can be dismissed by clicking the close button.&lt;/Alert&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Dismissible With Title</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DismissibleWithTitle = () =&gt; &lt;Alert variant=&quot;warning&quot; title=&quot;Action Required&quot; dismissible&gt;Please update your contact details before the end of the month.&lt;/Alert&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Info Without Title</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const InfoWithoutTitle = () =&gt; &lt;Alert variant=&quot;info&quot;&gt;A simple informational message without a title.&lt;/Alert&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">All Variants</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AllVariants = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: 16 }}&gt;
+    &lt;Alert variant=&quot;error&quot; title=&quot;Error (RAG Red)&quot;&gt;
+      Critical issue requiring immediate attention. RAG Red: #BD000C.
+    &lt;/Alert&gt;
+    &lt;Alert variant=&quot;warning&quot; title=&quot;Warning (RAG Amber)&quot;&gt;
+      Situation needs attention. RAG Amber: #E4A911.
+    &lt;/Alert&gt;
+    &lt;Alert variant=&quot;success&quot; title=&quot;Success (RAG Green)&quot;&gt;
+      Operation completed successfully. RAG Green: #6F7A1A.
+    &lt;/Alert&gt;
+    &lt;Alert variant=&quot;info&quot; title=&quot;Info (Gray IV)&quot;&gt;
+      Neutral informational message. Gray IV: #7A7870.
+    &lt;/Alert&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="Badge">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Badge</h2>
+      <div class="badges">
+        <label for="c-1-data-display-badge-props" class="badge ok as-toggle">4 prop types</label>
+        
+        <label for="c-1-data-display-badge-stories" class="badge ok as-toggle">13 stories</label>
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/Badge/Badge.stories.tsx">data-display-badge · ./src/components/Badge/Badge.stories.tsx</div>
+    
+    <div class="hint">Badge — small status/label indicator. Adheres to UBS brand colour tokens and WCAG 2.2 AA contrast requirements.</div>
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-1-data-display-badge-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  <input id="c-1-data-display-badge-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen)</small></span>
+              <span class="badge ok">4 prop types</span>
+            </div>
+            <pre><code>Component: src/components/Badge/Badge.tsx::Badge</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Badge label content. Ignored when `dot` is true.
+ */
+children?: ReactNode
+
+/**
+ * When true renders a dot-only indicator with no text.
+ */
+dot?: boolean = false
+
+/**
+ * Size of the badge. Defaults to `&#39;md&#39;`.
+ */
+size?: &#39;sm&#39; | &#39;md&#39; = &#39;md&#39;
+
+/**
+ * Colour variant. Defaults to `&#39;default&#39;` (gray).
+ */
+variant?: &#39;default&#39; | &#39;red&#39; | &#39;success&#39; | &#39;warning&#39; = &#39;default&#39;</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { Badge } from "@ubs/design-system";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Default</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Default = () =&gt; &lt;Badge variant=&quot;default&quot; size=&quot;md&quot;&gt;Default&lt;/Badge&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Red</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Red = () =&gt; &lt;Badge variant=&quot;red&quot; size=&quot;md&quot;&gt;Urgent&lt;/Badge&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Success</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Success = () =&gt; &lt;Badge variant=&quot;success&quot; size=&quot;md&quot;&gt;Active&lt;/Badge&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Warning</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Warning = () =&gt; &lt;Badge variant=&quot;warning&quot; size=&quot;md&quot;&gt;Pending&lt;/Badge&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Small</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Small = () =&gt; &lt;Badge variant=&quot;default&quot; size=&quot;sm&quot;&gt;Small&lt;/Badge&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Medium</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const MediumSize = () =&gt; &lt;Badge variant=&quot;default&quot; size=&quot;md&quot;&gt;Medium&lt;/Badge&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Dot Default</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DotDefault = () =&gt; &lt;Badge variant=&quot;default&quot; size=&quot;md&quot; dot&gt;Badge&lt;/Badge&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Dot Red</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DotRed = () =&gt; &lt;Badge variant=&quot;red&quot; size=&quot;md&quot; dot&gt;Badge&lt;/Badge&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Dot Success</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DotSuccess = () =&gt; &lt;Badge variant=&quot;success&quot; size=&quot;md&quot; dot&gt;Badge&lt;/Badge&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Dot Warning</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DotWarning = () =&gt; &lt;Badge variant=&quot;warning&quot; size=&quot;md&quot; dot&gt;Badge&lt;/Badge&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">All Variants</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AllVariants = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, gap: 12, flexWrap: &#39;wrap&#39;, alignItems: &#39;center&#39; }}&gt;
+    &lt;Badge variant=&quot;default&quot;&gt;Default&lt;/Badge&gt;
+    &lt;Badge variant=&quot;red&quot;&gt;Urgent&lt;/Badge&gt;
+    &lt;Badge variant=&quot;success&quot;&gt;Active&lt;/Badge&gt;
+    &lt;Badge variant=&quot;warning&quot;&gt;Pending&lt;/Badge&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">All Dots</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AllDots = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, gap: 16, alignItems: &#39;center&#39; }}&gt;
+    {([&#39;default&#39;, &#39;red&#39;, &#39;success&#39;, &#39;warning&#39;] as const).map((v) =&gt; (
+      &lt;div key={v} style={{ display: &#39;flex&#39;, alignItems: &#39;center&#39;, gap: 6 }}&gt;
+        &lt;Badge variant={v} dot /&gt;
+        &lt;span style={{ fontFamily: &#39;Arial&#39;, fontSize: 14, color: &#39;#404040&#39; }}&gt;{v}&lt;/span&gt;
+      &lt;/div&gt;
+    ))}
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">In Context</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const InContext = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: 12 }}&gt;
+    &lt;div style={{ display: &#39;flex&#39;, alignItems: &#39;center&#39;, gap: 8 }}&gt;
+      &lt;span style={{ fontFamily: &#39;Arial&#39;, fontSize: 14 }}&gt;Portfolio Status&lt;/span&gt;
+      &lt;Badge variant=&quot;success&quot;&gt;Active&lt;/Badge&gt;
+    &lt;/div&gt;
+    &lt;div style={{ display: &#39;flex&#39;, alignItems: &#39;center&#39;, gap: 8 }}&gt;
+      &lt;span style={{ fontFamily: &#39;Arial&#39;, fontSize: 14 }}&gt;Notifications&lt;/span&gt;
+      &lt;Badge variant=&quot;red&quot;&gt;3&lt;/Badge&gt;
+    &lt;/div&gt;
+    &lt;div style={{ display: &#39;flex&#39;, alignItems: &#39;center&#39;, gap: 8 }}&gt;
+      &lt;span style={{ fontFamily: &#39;Arial&#39;, fontSize: 14 }}&gt;KYC Review&lt;/span&gt;
+      &lt;Badge variant=&quot;warning&quot;&gt;Due&lt;/Badge&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="Button">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Button</h2>
+      <div class="badges">
+        <label for="c-2-components-button-props" class="badge ok as-toggle">8 prop types</label>
+        
+        <label for="c-2-components-button-stories" class="badge ok as-toggle">14 stories</label>
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/Button/Button.stories.tsx">components-button · ./src/components/Button/Button.stories.tsx</div>
+    
+    <div class="hint">UBS Design System Button component. Implements all UBS brand rules: - Primary variant uses UBS Red (#E60000) with white text - Secondary variant uses UBS Black with white text - WCAG 2.2 AA compliant contrast ratios (4.5:1 minimum) - Uses Frutiger font family (fallback Arial) - No text shadows</div>
+    <div class="kv"><span class="chip">example:  ```tsx &lt;Button variant=&quot;primary&quot; size=&quot;medium&quot; onClick={handleClick}&gt; Submit &lt;/Button&gt; &lt;Button variant=&quot;outline&quot; loading&gt; Processing... &lt;/Button&gt; ```</span></div>
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-2-components-button-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  <input id="c-2-components-button-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen)</small></span>
+              <span class="badge ok">8 prop types</span>
+            </div>
+            <pre><code>Component: src/components/Button/Button.tsx::Button</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Button content.
+ */
+children?: React.ReactNode
+
+disabled?: any = false
+
+/**
+ * Whether the button should take up the full width of its container.
+ */
+fullWidth?: boolean = false
+
+/**
+ * Optional icon element rendered before the children.
+ */
+icon?: React.ReactNode
+
+/**
+ * Whether the button is in a loading state. Shows spinner and disables interaction.
+ */
+loading?: boolean = false
+
+/**
+ * Size of the button. @default &#39;medium&#39;
+ */
+size?: &#39;small&#39; | &#39;medium&#39; | &#39;large&#39; = &#39;medium&#39;
+
+type?: any = &#39;button&#39;
+
+/**
+ * Visual variant of the button. @default &#39;primary&#39;
+ */
+variant?: &#39;primary&#39; | &#39;secondary&#39; | &#39;outline&#39; | &#39;ghost&#39; = &#39;primary&#39;</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { Button } from "@ubs/design-system";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Primary</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Primary = () =&gt; &lt;Button variant=&quot;primary&quot; size=&quot;medium&quot;&gt;Primary Action&lt;/Button&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Secondary</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Secondary = () =&gt; &lt;Button variant=&quot;secondary&quot; size=&quot;medium&quot;&gt;Secondary Action&lt;/Button&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Outline</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Outline = () =&gt; &lt;Button variant=&quot;outline&quot; size=&quot;medium&quot;&gt;Outline Action&lt;/Button&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Ghost</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Ghost = () =&gt; &lt;Button variant=&quot;ghost&quot; size=&quot;medium&quot;&gt;Ghost Action&lt;/Button&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Small</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Small = () =&gt; &lt;Button variant=&quot;primary&quot; size=&quot;small&quot;&gt;Small&lt;/Button&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Medium</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Medium = () =&gt; &lt;Button variant=&quot;primary&quot; size=&quot;medium&quot;&gt;Medium&lt;/Button&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Large</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Large = () =&gt; &lt;Button variant=&quot;primary&quot; size=&quot;large&quot;&gt;Large&lt;/Button&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Loading</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Loading = () =&gt; &lt;Button variant=&quot;primary&quot; size=&quot;medium&quot; loading&gt;Processing...&lt;/Button&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Disabled</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Disabled = () =&gt; &lt;Button variant=&quot;primary&quot; size=&quot;medium&quot; disabled&gt;Disabled&lt;/Button&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Full Width</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const FullWidth = () =&gt; &lt;Button variant=&quot;primary&quot; size=&quot;medium&quot; fullWidth&gt;Full Width Button&lt;/Button&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">With Icon</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithIcon = () =&gt; &lt;Button
+    variant=&quot;primary&quot;
+    size=&quot;medium&quot;
+    icon={(&lt;svg width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot;&gt;
+      &lt;path d=&quot;M8 12L3 7h3V2h4v5h3L8 12zM3 14h10v1H3v-1z&quot; /&gt;
+    &lt;/svg&gt;)}&gt;Download&lt;/Button&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">All Variants</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AllVariants = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, gap: 16, flexWrap: &#39;wrap&#39;, alignItems: &#39;center&#39; }}&gt;
+    &lt;Button variant=&quot;primary&quot;&gt;Primary&lt;/Button&gt;
+    &lt;Button variant=&quot;secondary&quot;&gt;Secondary&lt;/Button&gt;
+    &lt;Button variant=&quot;outline&quot;&gt;Outline&lt;/Button&gt;
+    &lt;Button variant=&quot;ghost&quot;&gt;Ghost&lt;/Button&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">All Sizes</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AllSizes = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, gap: 16, flexWrap: &#39;wrap&#39;, alignItems: &#39;center&#39; }}&gt;
+    &lt;Button size=&quot;small&quot;&gt;Small&lt;/Button&gt;
+    &lt;Button size=&quot;medium&quot;&gt;Medium&lt;/Button&gt;
+    &lt;Button size=&quot;large&quot;&gt;Large&lt;/Button&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">All States</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AllStates = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, gap: 16, flexWrap: &#39;wrap&#39;, alignItems: &#39;center&#39; }}&gt;
+    &lt;Button&gt;Default&lt;/Button&gt;
+    &lt;Button loading&gt;Loading&lt;/Button&gt;
+    &lt;Button disabled&gt;Disabled&lt;/Button&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="Card">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Card</h2>
+      <div class="badges">
+        <label for="c-3-components-card-props" class="badge ok as-toggle">6 prop types</label>
+        
+        <label for="c-3-components-card-stories" class="badge ok as-toggle">12 stories</label>
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/Card/Card.stories.tsx">components-card · ./src/components/Card/Card.stories.tsx</div>
+    
+    <div class="hint">UBS Design System Card component. A container component following UBS brand guidelines: - Default: white background (#FFFFFF) - Pastel I: #ECEBE4 background - Pastel II: #F5F0E1 background - Gray: Gray I (#CCCABC) background - No box shadows (clean, flat design per UBS brand) - Optional header, body, and footer slots - Hoverable state for interactive cards</div>
+    <div class="kv"><span class="chip">example:  ```tsx &lt;Card variant=&quot;default&quot; padding=&quot;medium&quot; hoverable&gt; &lt;p&gt;Card content here&lt;/p&gt; &lt;/Card&gt; &lt;Card variant=&quot;pastel1&quot; header={&lt;h3&gt;Title&lt;/h3&gt;} footer={&lt;Button variant=&quot;primary&quot;&gt;Action&lt;/Button&gt;} &gt; &lt;p&gt;Card body&lt;/p&gt; &lt;/Card&gt; ```</span></div>
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-3-components-card-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  <input id="c-3-components-card-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen)</small></span>
+              <span class="badge ok">6 prop types</span>
+            </div>
+            <pre><code>Component: src/components/Card/Card.tsx::Card</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Card body content.
+ */
+children?: React.ReactNode
+
+/**
+ * Optional footer slot content.
+ */
+footer?: React.ReactNode
+
+/**
+ * Optional header slot content.
+ */
+header?: React.ReactNode
+
+/**
+ * Whether the card shows a hover effect. @default false
+ */
+hoverable?: boolean = false
+
+/**
+ * Padding size. @default &#39;medium&#39;
+ */
+padding?: &#39;none&#39; | &#39;small&#39; | &#39;medium&#39; | &#39;large&#39; = &#39;medium&#39;
+
+/**
+ * Background variant. @default &#39;default&#39;
+ */
+variant?: &#39;default&#39; | &#39;pastel1&#39; | &#39;pastel2&#39; | &#39;gray&#39; = &#39;default&#39;</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { Button, Card, Typography } from "@ubs/design-system";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Default</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Default = () =&gt; &lt;Card variant=&quot;default&quot; padding=&quot;medium&quot;&gt;Default card on white (#FFFFFF) background.&lt;/Card&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Pastel 1</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Pastel1 = () =&gt; &lt;Card variant=&quot;pastel1&quot; padding=&quot;medium&quot;&gt;Pastel I card on #ECEBE4 background.&lt;/Card&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Pastel 2</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Pastel2 = () =&gt; &lt;Card variant=&quot;pastel2&quot; padding=&quot;medium&quot;&gt;Pastel II card on #F5F0E1 background.&lt;/Card&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Gray</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const GrayVariant = () =&gt; &lt;Card variant=&quot;gray&quot; padding=&quot;medium&quot;&gt;Gray card on Gray I (#CCCABC) background.&lt;/Card&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">With Header</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithHeader = () =&gt; &lt;Card
+    variant=&quot;default&quot;
+    padding=&quot;medium&quot;
+    header={&lt;Typography variant=&quot;subheadline3&quot;&gt;Portfolio Overview&lt;/Typography&gt;}&gt;Your portfolio has grown 12.4% this quarter, outperforming the benchmark by 2.1 percentage points.&lt;/Card&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">With Header And Footer</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithHeaderAndFooter = () =&gt; &lt;Card
+    variant=&quot;default&quot;
+    padding=&quot;medium&quot;
+    header={&lt;Typography variant=&quot;subheadline3&quot;&gt;Action Required&lt;/Typography&gt;}
+    footer={(&lt;div style={{ display: &#39;flex&#39;, gap: 8 }}&gt;
+      &lt;Button variant=&quot;primary&quot; size=&quot;small&quot;&gt;Approve&lt;/Button&gt;
+      &lt;Button variant=&quot;outline&quot; size=&quot;small&quot;&gt;Decline&lt;/Button&gt;
+    &lt;/div&gt;)}&gt;Your annual review documents are ready for signature. Please review and approve by 31 March 2025.&lt;/Card&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Hoverable</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Hoverable = () =&gt; &lt;Card
+    variant=&quot;default&quot;
+    padding=&quot;medium&quot;
+    hoverable
+    header={&lt;Typography variant=&quot;subheadline3&quot;&gt;Interactive Card&lt;/Typography&gt;}&gt;Hover over this card to see the effect. Suitable for clickable cards in dashboards.&lt;/Card&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Padding None</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const PaddingNone = () =&gt; &lt;Card variant=&quot;pastel1&quot; padding=&quot;none&quot;&gt;No padding&lt;/Card&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Padding Small</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const PaddingSmall = () =&gt; &lt;Card variant=&quot;pastel1&quot; padding=&quot;small&quot;&gt;Small padding&lt;/Card&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Padding Medium</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const PaddingMedium = () =&gt; &lt;Card variant=&quot;pastel1&quot; padding=&quot;medium&quot;&gt;Medium padding&lt;/Card&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Padding Large</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const PaddingLarge = () =&gt; &lt;Card variant=&quot;pastel1&quot; padding=&quot;large&quot;&gt;Large padding&lt;/Card&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">All Variants</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AllVariants = () =&gt; (
+  &lt;div style={{ display: &#39;grid&#39;, gridTemplateColumns: &#39;repeat(2, 1fr)&#39;, gap: 16 }}&gt;
+    {([&#39;default&#39;, &#39;pastel1&#39;, &#39;pastel2&#39;, &#39;gray&#39;] as const).map((v) =&gt; (
+      &lt;Card key={v} variant={v} header={&lt;Typography variant=&quot;subheadline3&quot;&gt;{v}&lt;/Typography&gt;}&gt;
+        Card with {v} background variant.
+      &lt;/Card&gt;
+    ))}
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="DataViz">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> DataViz</h2>
+      <div class="badges">
+        <label for="c-4-data-display-dataviz-props" class="badge ok as-toggle">10 prop types</label>
+        
+        <label for="c-4-data-display-dataviz-stories" class="badge ok as-toggle">15 stories</label>
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/DataViz/DataViz.stories.tsx">data-display-dataviz · ./src/components/DataViz/DataViz.stories.tsx</div>
+    
+    <div class="hint">DataViz — UBS chart wrapper. Enforces all UBS data visualisation rules: - 2D only (no 3D, gradients, or shadows) - 2px gaps between chart segments - Donut preferred (no pie chart option) - Correct colour sequence order - Regional trading colour support</div>
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-4-data-display-dataviz-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  <input id="c-4-data-display-dataviz-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen)</small></span>
+              <span class="badge ok">10 prop types</span>
+            </div>
+            <pre><code>Component: src/components/DataViz/DataViz.tsx::DataViz</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Content rendered in the donut centre.
+ */
+centerContent?: ReactNode
+
+/**
+ * Colour sequence mode. Defaults to `&#39;multichrome&#39;`.
+ */
+colourSequence?: &#39;monochrome&#39; | &#39;polychrome&#39; | &#39;multichrome&#39; | &#39;complex&#39; = &#39;multichrome&#39;
+
+/**
+ * Chart data points.
+ */
+data: ChartDataPoint[]
+
+/**
+ * Chart height in pixels. Defaults to `300` for donut, `200` for bar/line.
+ */
+height?: number
+
+/**
+ * Index of a data point to visually highlight.
+ */
+highlightIndex?: number
+
+/**
+ * Optional insight text shown with a red arrow.
+ */
+insight?: string
+
+/**
+ * Region for trading colour direction. Defaults to `&#39;emea&#39;`.
+ */
+region?: &#39;emea&#39; | &#39;apac&#39; | &#39;us&#39; = &#39;emea&#39;
+
+/**
+ * Show legend. Defaults to `true`.
+ */
+showLegend?: boolean = true
+
+/**
+ * Chart type. Defaults to `&#39;donut&#39;`.
+ */
+type?: &#39;donut&#39; | &#39;bar&#39; | &#39;line&#39; = &#39;donut&#39;
+
+/**
+ * Chart width in pixels. Defaults to `300`.
+ */
+width?: number</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { DataViz } from "@ubs/design-system";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Donut</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Donut = () =&gt; &lt;DataViz
+    type=&quot;donut&quot;
+    colourSequence=&quot;multichrome&quot;
+    showLegend
+    data={portfolioData}
+    width={300}
+    height={300} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Donut With Highlight</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DonutWithHighlight = () =&gt; &lt;DataViz
+    type=&quot;donut&quot;
+    colourSequence=&quot;multichrome&quot;
+    showLegend
+    data={portfolioData}
+    highlightIndex={0}
+    width={300}
+    height={300} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Donut With Center Content</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DonutWithCenterContent = () =&gt; &lt;DataViz
+    type=&quot;donut&quot;
+    colourSequence=&quot;multichrome&quot;
+    showLegend
+    data={portfolioData}
+    width={300}
+    height={300}
+    centerContent={(&lt;div style={{ textAlign: &#39;center&#39;, fontFamily: &#39;Arial, sans-serif&#39; }}&gt;
+      &lt;div style={{ fontSize: 24, fontWeight: 700 }}&gt;100%&lt;/div&gt;
+      &lt;div style={{ fontSize: 12, color: &#39;#7A7870&#39; }}&gt;Allocated&lt;/div&gt;
+    &lt;/div&gt;)} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Bar</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Bar = () =&gt; &lt;DataViz
+    type=&quot;bar&quot;
+    colourSequence=&quot;multichrome&quot;
+    showLegend
+    data={quarterlyData}
+    width={400}
+    height={200} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Bar With Highlight</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const BarWithHighlight = () =&gt; &lt;DataViz
+    type=&quot;bar&quot;
+    colourSequence=&quot;multichrome&quot;
+    showLegend
+    data={quarterlyData}
+    highlightIndex={2}
+    width={400}
+    height={200} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Bar With Insight</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const BarWithInsight = () =&gt; &lt;DataViz
+    type=&quot;bar&quot;
+    colourSequence=&quot;multichrome&quot;
+    showLegend
+    data={quarterlyData}
+    highlightIndex={2}
+    insight=&quot;Q3 showed 15% growth, outpacing the sector average.&quot;
+    width={400}
+    height={200} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Line</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Line = () =&gt; &lt;DataViz
+    type=&quot;line&quot;
+    colourSequence=&quot;multichrome&quot;
+    showLegend
+    data={monthlyData}
+    width={500}
+    height={200} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Line With Highlight</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const LineWithHighlight = () =&gt; &lt;DataViz
+    type=&quot;line&quot;
+    colourSequence=&quot;multichrome&quot;
+    showLegend
+    data={monthlyData}
+    highlightIndex={5}
+    insight=&quot;June reached a 6-month high of 120 basis points.&quot;
+    width={500}
+    height={200} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Monochrome</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Monochrome = () =&gt; &lt;DataViz
+    type=&quot;donut&quot;
+    colourSequence=&quot;monochrome&quot;
+    showLegend
+    data={portfolioData}
+    width={300}
+    height={300} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Polychrome</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Polychrome = () =&gt; &lt;DataViz
+    type=&quot;donut&quot;
+    colourSequence=&quot;polychrome&quot;
+    showLegend
+    data={portfolioData}
+    width={300}
+    height={300} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Multichrome</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Multichrome = () =&gt; &lt;DataViz
+    type=&quot;donut&quot;
+    colourSequence=&quot;multichrome&quot;
+    showLegend
+    data={portfolioData}
+    width={300}
+    height={300} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Complex</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Complex = () =&gt; &lt;DataViz
+    type=&quot;bar&quot;
+    colourSequence=&quot;complex&quot;
+    showLegend
+    data={[
+      { label: &#39;A&#39;, value: 45 },
+      { label: &#39;B&#39;, value: 30 },
+      { label: &#39;C&#39;, value: 25 },
+      { label: &#39;D&#39;, value: 55 },
+      { label: &#39;E&#39;, value: 40 },
+      { label: &#39;F&#39;, value: 35 },
+      { label: &#39;G&#39;, value: 50 },
+      { label: &#39;H&#39;, value: 20 },
+    ]}
+    width={500}
+    height={200} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">With Insight</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithInsight = () =&gt; &lt;DataViz
+    type=&quot;donut&quot;
+    colourSequence=&quot;multichrome&quot;
+    showLegend
+    data={portfolioData}
+    highlightIndex={0}
+    insight=&quot;Equities allocation increased by 5% following the Q4 rebalancing.&quot;
+    width={300}
+    height={300} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">All Chart Types</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AllChartTypes = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: 40 }}&gt;
+    &lt;div&gt;
+      &lt;h3 style={{ fontFamily: &#39;Arial&#39;, fontSize: 16, marginBottom: 16 }}&gt;Donut Chart&lt;/h3&gt;
+      &lt;DataViz type=&quot;donut&quot; data={portfolioData} colourSequence=&quot;multichrome&quot; width={280} height={280} /&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;h3 style={{ fontFamily: &#39;Arial&#39;, fontSize: 16, marginBottom: 16 }}&gt;Bar Chart&lt;/h3&gt;
+      &lt;DataViz type=&quot;bar&quot; data={quarterlyData} colourSequence=&quot;multichrome&quot; width={400} height={200} /&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;h3 style={{ fontFamily: &#39;Arial&#39;, fontSize: 16, marginBottom: 16 }}&gt;Line Chart&lt;/h3&gt;
+      &lt;DataViz type=&quot;line&quot; data={monthlyData} colourSequence=&quot;multichrome&quot; width={500} height={200} /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Colour Sequence Comparison</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const ColourSequenceComparison = () =&gt; (
+  &lt;div style={{ display: &#39;grid&#39;, gridTemplateColumns: &#39;repeat(2, 1fr)&#39;, gap: 24 }}&gt;
+    {([&#39;monochrome&#39;, &#39;polychrome&#39;, &#39;multichrome&#39;, &#39;complex&#39;] as const).map((seq) =&gt; (
+      &lt;div key={seq}&gt;
+        &lt;h4 style={{ fontFamily: &#39;Arial&#39;, fontSize: 14, marginBottom: 8, textTransform: &#39;capitalize&#39; }}&gt;
+          {seq}
+        &lt;/h4&gt;
+        &lt;DataViz type=&quot;donut&quot; data={portfolioData} colourSequence={seq} width={200} height={200} /&gt;
+      &lt;/div&gt;
+    ))}
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="Divider">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Divider</h2>
+      <div class="badges">
+        <label for="c-5-components-divider-props" class="badge ok as-toggle">4 prop types</label>
+        
+        <label for="c-5-components-divider-stories" class="badge ok as-toggle">12 stories</label>
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/Divider/Divider.stories.tsx">components-divider · ./src/components/Divider/Divider.stories.tsx</div>
+    
+    <div class="hint">Divider — horizontal or vertical separator. Uses UBS Gray I as the default colour. Renders as a semantic `&lt;hr&gt;` element with appropriate ARIA attributes for vertical orientation.</div>
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-5-components-divider-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  <input id="c-5-components-divider-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen)</small></span>
+              <span class="badge ok">4 prop types</span>
+            </div>
+            <pre><code>Component: src/components/Divider/Divider.tsx::Divider</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Line colour. Defaults to Gray I (#CCCABC).
+ */
+colour?: string
+
+/**
+ * Direction of the divider. Defaults to `&#39;horizontal&#39;`.
+ */
+orientation?: &#39;horizontal&#39; | &#39;vertical&#39; = &#39;horizontal&#39;
+
+/**
+ * Spacing (margin) on both sides in pixels. Defaults to `16`.
+ */
+spacing?: number
+
+/**
+ * Line thickness in pixels. Defaults to `1`.
+ */
+thickness?: number</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { Divider } from "@ubs/design-system";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Horizontal</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Horizontal = () =&gt; &lt;Divider orientation=&quot;horizontal&quot; /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Vertical</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Vertical = () =&gt; &lt;Divider orientation=&quot;vertical&quot; /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Default (Gray I)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DefaultColour = () =&gt; &lt;Divider orientation=&quot;horizontal&quot; /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Dark Gray</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DarkGray = () =&gt; &lt;Divider orientation=&quot;horizontal&quot; colour=&quot;#5A5D5C&quot; /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">UBS Red</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const UBSRed = () =&gt; &lt;Divider orientation=&quot;horizontal&quot; colour=&quot;#E60000&quot; /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Black</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Black = () =&gt; &lt;Divider orientation=&quot;horizontal&quot; colour=&quot;#000000&quot; /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Thin</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Thin = () =&gt; &lt;Divider orientation=&quot;horizontal&quot; thickness={1} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Medium</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Medium = () =&gt; &lt;Divider orientation=&quot;horizontal&quot; thickness={2} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Thick</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Thick = () =&gt; &lt;Divider orientation=&quot;horizontal&quot; thickness={4} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">No Spacing</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const NoSpacing = () =&gt; &lt;Divider orientation=&quot;horizontal&quot; spacing={0} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Large Spacing</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const LargeSpacing = () =&gt; &lt;Divider orientation=&quot;horizontal&quot; spacing={32} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Thickness Gallery</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const ThicknessGallery = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: 16 }}&gt;
+    {[1, 2, 3, 4].map((t) =&gt; (
+      &lt;div key={t}&gt;
+        &lt;span style={{ fontFamily: &#39;Arial&#39;, fontSize: 12, color: &#39;#7A7870&#39; }}&gt;{t}px&lt;/span&gt;
+        &lt;Divider thickness={t} spacing={4} /&gt;
+      &lt;/div&gt;
+    ))}
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="Grid">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Grid</h2>
+      <div class="badges">
+        <label for="c-6-layout-grid-props" class="badge ok as-toggle">3 prop types</label>
+        
+        <label for="c-6-layout-grid-stories" class="badge ok as-toggle">10 stories</label>
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/Grid/Grid.stories.tsx">layout-grid · ./src/components/Grid/Grid.stories.tsx</div>
+    
+    <div class="hint">UBS Design System Grid component. A responsive CSS Grid layout following UBS breakpoints: - Mobile: ≥320px - Tablet: ≥768px - Desktop: ≥1024px - Wide: ≥1440px</div>
+    <div class="kv"><span class="chip">example:  ```tsx &lt;Grid columns={{ mobile: 1, tablet: 2, desktop: 3 }} gap=&quot;medium&quot;&gt; &lt;Card&gt;Item 1&lt;/Card&gt; &lt;Card&gt;Item 2&lt;/Card&gt; &lt;Card&gt;Item 3&lt;/Card&gt; &lt;/Grid&gt; &lt;Grid columns={4} gap=&quot;large&quot;&gt; {items.map(item =&gt; &lt;Card key={item.id}&gt;{item.name}&lt;/Card&gt;)} &lt;/Grid&gt; ```</span></div>
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-6-layout-grid-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  <input id="c-6-layout-grid-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen)</small></span>
+              <span class="badge ok">3 prop types</span>
+            </div>
+            <pre><code>Component: src/components/Grid/Grid.tsx::Grid</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Grid content (children become grid items).
+ */
+children?: React.ReactNode
+
+/**
+ * Number of columns. Can be a number (applies to all breakpoints)
+ * or a responsive object.
+ * @default { mobile: 1, tablet: 2, desktop: 3, wide: 4 }
+ */
+columns?: number | GridColumns = { mobile: 1, tablet: 2, desktop: 3, wide: 4 }
+
+/**
+ * Gap between grid items. @default &#39;medium&#39;
+ */
+gap?: &#39;none&#39; | &#39;small&#39; | &#39;medium&#39; | &#39;large&#39; = &#39;medium&#39;</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { Card, Grid } from "@ubs/design-system";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Two Columns</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const TwoColumns = () =&gt; &lt;Grid gap=&quot;medium&quot; columns={2}&gt;
+    {items.slice(0, 6).map((item) =&gt; &lt;DemoCard key={item} label={item} /&gt;)}
+&lt;/Grid&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Three Columns</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const ThreeColumns = () =&gt; &lt;Grid gap=&quot;medium&quot; columns={3}&gt;
+    {items.slice(0, 9).map((item) =&gt; &lt;DemoCard key={item} label={item} /&gt;)}
+&lt;/Grid&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Four Columns</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const FourColumns = () =&gt; &lt;Grid gap=&quot;medium&quot; columns={4}&gt;
+    {items.map((item) =&gt; &lt;DemoCard key={item} label={item} /&gt;)}
+&lt;/Grid&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Responsive</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Responsive = () =&gt; &lt;Grid gap=&quot;medium&quot; columns={{ mobile: 1, tablet: 2, desktop: 3, wide: 4 }}&gt;
+    {items.map((item) =&gt; &lt;DemoCard key={item} label={item} /&gt;)}
+&lt;/Grid&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Responsive 2→4</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const ResponsiveTwoToFour = () =&gt; &lt;Grid gap=&quot;medium&quot; columns={{ mobile: 1, tablet: 2, desktop: 3, wide: 4 }}&gt;
+    {items.slice(0, 8).map((item) =&gt; &lt;DemoCard key={item} label={item} /&gt;)}
+&lt;/Grid&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Gap None</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const GapNone = () =&gt; (
+  &lt;Grid columns={3} gap=&quot;none&quot;&gt;
+    {items.slice(0, 6).map((item) =&gt; &lt;DemoCard key={item} label={item} /&gt;)}
+  &lt;/Grid&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Gap Small</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const GapSmall = () =&gt; (
+  &lt;Grid columns={3} gap=&quot;small&quot;&gt;
+    {items.slice(0, 6).map((item) =&gt; &lt;DemoCard key={item} label={item} /&gt;)}
+  &lt;/Grid&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Gap Medium</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const GapMedium = () =&gt; (
+  &lt;Grid columns={3} gap=&quot;medium&quot;&gt;
+    {items.slice(0, 6).map((item) =&gt; &lt;DemoCard key={item} label={item} /&gt;)}
+  &lt;/Grid&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Gap Large</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const GapLarge = () =&gt; (
+  &lt;Grid columns={3} gap=&quot;large&quot;&gt;
+    {items.slice(0, 6).map((item) =&gt; &lt;DemoCard key={item} label={item} /&gt;)}
+  &lt;/Grid&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Dashboard Layout</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DashboardLayout = () =&gt; (
+  &lt;Grid columns={{ mobile: 1, tablet: 2, desktop: 3 }} gap=&quot;medium&quot;&gt;
+    &lt;Card variant=&quot;default&quot; header={&lt;strong&gt;Total Assets&lt;/strong&gt;}&gt;CHF 2,450,000&lt;/Card&gt;
+    &lt;Card variant=&quot;pastel1&quot; header={&lt;strong&gt;YTD Return&lt;/strong&gt;}&gt;+12.4%&lt;/Card&gt;
+    &lt;Card variant=&quot;pastel2&quot; header={&lt;strong&gt;Risk Rating&lt;/strong&gt;}&gt;Moderate&lt;/Card&gt;
+    &lt;Card variant=&quot;default&quot; header={&lt;strong&gt;Cash Position&lt;/strong&gt;}&gt;CHF 350,000&lt;/Card&gt;
+    &lt;Card variant=&quot;gray&quot; header={&lt;strong&gt;Next Review&lt;/strong&gt;}&gt;15 April 2025&lt;/Card&gt;
+    &lt;Card variant=&quot;default&quot; header={&lt;strong&gt;Open Orders&lt;/strong&gt;}&gt;3 pending&lt;/Card&gt;
+  &lt;/Grid&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="Icon">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Icon</h2>
+      <div class="badges">
+        <label for="c-7-components-icon-props" class="badge ok as-toggle">6 prop types</label>
+        
+        <label for="c-7-components-icon-stories" class="badge ok as-toggle">8 stories</label>
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/Icon/Icon.stories.tsx">components-icon · ./src/components/Icon/Icon.stories.tsx</div>
+    
+    <div class="hint">Icon — wrapper for SVG icons. Enforces UBS brand rules: - Web app icons are always black, pixel-perfect sizes - Illustrative icons may use red accent Renders from registry when `name` is provided, or wraps `children` SVG directly.</div>
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-7-components-icon-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  <input id="c-7-components-icon-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen)</small></span>
+              <span class="badge ok">6 prop types</span>
+            </div>
+            <pre><code>Component: src/components/Icon/Icon.tsx::Icon</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Accent colour for illustrative icons. Defaults to UBS Red (#E60000).
+ */
+accentColour?: string
+
+/**
+ * SVG element to render directly (overrides name).
+ */
+children?: ReactNode
+
+/**
+ * Colour override. For `webApp` variant this is forced to black.
+ * For `illustrative` variant, allows custom colour including UBS Red.
+ */
+colour?: string
+
+/**
+ * Icon name from the registry (kebab-case).
+ */
+name?: string
+
+/**
+ * Display size. Defaults to `&#39;md&#39;` (16px).
+ */
+size?: &#39;sm&#39; | &#39;md&#39; | &#39;lg&#39; = &#39;md&#39;
+
+/**
+ * Icon variant. Defaults to `&#39;webApp&#39;`.
+ */
+variant?: &#39;illustrative&#39; | &#39;webApp&#39; = &#39;webApp&#39;</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { Icon } from "@ubs/design-system";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Small (12px)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const SmallIcon = () =&gt; &lt;Icon size=&quot;sm&quot; variant=&quot;webApp&quot; name=&quot;search&quot;&gt;&lt;SearchIcon /&gt;&lt;/Icon&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Medium (16px)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const MediumIcon = () =&gt; &lt;Icon size=&quot;md&quot; variant=&quot;webApp&quot; name=&quot;search&quot;&gt;&lt;SearchIcon /&gt;&lt;/Icon&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Large (24px)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const LargeIcon = () =&gt; &lt;Icon size=&quot;lg&quot; variant=&quot;webApp&quot; name=&quot;search&quot;&gt;&lt;SearchIcon /&gt;&lt;/Icon&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Web App</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WebApp = () =&gt; &lt;Icon size=&quot;lg&quot; variant=&quot;webApp&quot; name=&quot;settings&quot;&gt;&lt;SettingsIcon /&gt;&lt;/Icon&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Web App All Sizes</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WebAppAllSizes = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, gap: 16, alignItems: &#39;center&#39; }}&gt;
+    {([&#39;sm&#39;, &#39;md&#39;, &#39;lg&#39;] as const).map((s) =&gt; (
+      &lt;div key={s} style={{ textAlign: &#39;center&#39; }}&gt;
+        &lt;Icon size={s} variant=&quot;webApp&quot; name=&quot;search&quot;&gt;
+          &lt;SearchIcon /&gt;
+        &lt;/Icon&gt;
+        &lt;p style={{ fontFamily: &#39;Arial&#39;, fontSize: 11, color: &#39;#7A7870&#39;, marginTop: 4 }}&gt;{s}&lt;/p&gt;
+      &lt;/div&gt;
+    ))}
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Illustrative</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Illustrative = () =&gt; &lt;Icon size=&quot;lg&quot; variant=&quot;illustrative&quot; name=&quot;chart&quot; colour=&quot;#E60000&quot;&gt;&lt;ChartIcon /&gt;&lt;/Icon&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Illustrative Colours</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const IllustrativeColours = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, gap: 16, alignItems: &#39;center&#39; }}&gt;
+    {[
+      { colour: &#39;#E60000&#39;, label: &#39;UBS Red&#39; },
+      { colour: &#39;#BD000C&#39;, label: &#39;Bordeaux I&#39; },
+      { colour: &#39;#B98E2C&#39;, label: &#39;Bronze I&#39; },
+      { colour: &#39;#2E476B&#39;, label: &#39;Plum 90&#39; },
+    ].map(({ colour, label }) =&gt; (
+      &lt;div key={label} style={{ textAlign: &#39;center&#39; }}&gt;
+        &lt;Icon size=&quot;lg&quot; variant=&quot;illustrative&quot; colour={colour} name=&quot;chart&quot;&gt;
+          &lt;ChartIcon /&gt;
+        &lt;/Icon&gt;
+        &lt;p style={{ fontFamily: &#39;Arial&#39;, fontSize: 11, color: &#39;#7A7870&#39;, marginTop: 4 }}&gt;{label}&lt;/p&gt;
+      &lt;/div&gt;
+    ))}
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Web App vs Illustrative</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WebAppVsIllustrative = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, gap: 32 }}&gt;
+    &lt;div&gt;
+      &lt;p style={{ fontFamily: &#39;Arial&#39;, fontSize: 12, color: &#39;#7A7870&#39;, marginBottom: 8 }}&gt;
+        Web App (black only)
+      &lt;/p&gt;
+      &lt;div style={{ display: &#39;flex&#39;, gap: 12 }}&gt;
+        &lt;Icon size=&quot;lg&quot; variant=&quot;webApp&quot; name=&quot;search&quot;&gt;&lt;SearchIcon /&gt;&lt;/Icon&gt;
+        &lt;Icon size=&quot;lg&quot; variant=&quot;webApp&quot; name=&quot;settings&quot;&gt;&lt;SettingsIcon /&gt;&lt;/Icon&gt;
+        &lt;Icon size=&quot;lg&quot; variant=&quot;webApp&quot; name=&quot;chart&quot;&gt;&lt;ChartIcon /&gt;&lt;/Icon&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;p style={{ fontFamily: &#39;Arial&#39;, fontSize: 12, color: &#39;#7A7870&#39;, marginBottom: 8 }}&gt;
+        Illustrative (red accent)
+      &lt;/p&gt;
+      &lt;div style={{ display: &#39;flex&#39;, gap: 12 }}&gt;
+        &lt;Icon size=&quot;lg&quot; variant=&quot;illustrative&quot; colour=&quot;#E60000&quot; name=&quot;search&quot;&gt;&lt;SearchIcon /&gt;&lt;/Icon&gt;
+        &lt;Icon size=&quot;lg&quot; variant=&quot;illustrative&quot; colour=&quot;#BD000C&quot; name=&quot;settings&quot;&gt;&lt;SettingsIcon /&gt;&lt;/Icon&gt;
+        &lt;Icon size=&quot;lg&quot; variant=&quot;illustrative&quot; colour=&quot;#B98E2C&quot; name=&quot;chart&quot;&gt;&lt;ChartIcon /&gt;&lt;/Icon&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="Impulse">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Impulse</h2>
+      <div class="badges">
+        <label for="c-8-layout-impulse-props" class="badge ok as-toggle">2 prop types</label>
+        
+        <label for="c-8-layout-impulse-stories" class="badge ok as-toggle">7 stories</label>
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/Impulse/Impulse.stories.tsx">layout-impulse · ./src/components/Impulse/Impulse.stories.tsx</div>
+    
+    <div class="hint">UBS Design System Impulse component. The distinctive UBS red vertical line placed next to text to create visual emphasis and brand recognition. Brand rules enforced: - Always uses UBS Red (#E60000) - Line must not extend beyond the baseline of the second line of text - Must not be centred with a keyline - Width and spacing are proportional to the ISO format</div>
+    <div class="kv"><span class="chip">example:  ```tsx &lt;Impulse format=&quot;A4&quot;&gt; &lt;Typography variant=&quot;leadText1&quot;&gt; Breaking through complexity to deliver clarity. &lt;/Typography&gt; &lt;/Impulse&gt; ```</span></div>
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-8-layout-impulse-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  <input id="c-8-layout-impulse-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen)</small></span>
+              <span class="badge ok">2 prop types</span>
+            </div>
+            <pre><code>Component: src/components/Impulse/Impulse.tsx::Impulse</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Content displayed next to the impulse line.
+ */
+children?: React.ReactNode
+
+/**
+ * ISO format to determine line width and spacing.
+ * Larger formats produce a thicker impulse line.
+ * @default &#39;A4&#39;
+ */
+format?: &#39;A0&#39; | &#39;A1&#39; | &#39;A2&#39; | &#39;A3&#39; | &#39;A4&#39; | &#39;A5&#39; | &#39;A6&#39; | &#39;A7&#39; | &#39;A8&#39; = &#39;A4&#39;</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { Impulse, Typography } from "@ubs/design-system";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Default</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Default = () =&gt; &lt;Impulse format=&quot;A4&quot;&gt;(&lt;Typography variant=&quot;leadText1&quot;&gt;Breaking through complexity to deliver clarity.
+            &lt;/Typography&gt;)&lt;/Impulse&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Format A 0</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const FormatA0 = () =&gt; &lt;Impulse format=&quot;A0&quot;&gt;&lt;Typography variant=&quot;keyline&quot;&gt;A0 — largest impulse line&lt;/Typography&gt;&lt;/Impulse&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Format A 4</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const FormatA4 = () =&gt; &lt;Impulse format=&quot;A4&quot;&gt;&lt;Typography variant=&quot;leadText1&quot;&gt;A4 — standard document format&lt;/Typography&gt;&lt;/Impulse&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Format A 8</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const FormatA8 = () =&gt; &lt;Impulse format=&quot;A8&quot;&gt;&lt;Typography variant=&quot;copyText&quot;&gt;A8 — smallest impulse line&lt;/Typography&gt;&lt;/Impulse&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">All Formats</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AllFormats = () =&gt; {
+  const formats: ImpulseFormat[] = [&#39;A0&#39;, &#39;A1&#39;, &#39;A2&#39;, &#39;A3&#39;, &#39;A4&#39;, &#39;A5&#39;, &#39;A6&#39;, &#39;A7&#39;, &#39;A8&#39;];
+  return (
+    &lt;div style={{ display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: 24 }}&gt;
+      {formats.map((f) =&gt; (
+        &lt;div key={f}&gt;
+          &lt;Typography variant=&quot;captions&quot; colour=&quot;#7A7870&quot; style={{ marginBottom: 4 }}&gt;
+            Format {f}
+          &lt;/Typography&gt;
+          &lt;Impulse format={f}&gt;
+            &lt;Typography variant=&quot;leadText2&quot;&gt;
+              The UBS impulse line scales with the ISO format.
+            &lt;/Typography&gt;
+          &lt;/Impulse&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+};</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">With Keyline</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithKeyline = () =&gt; &lt;Impulse format=&quot;A3&quot;&gt;(&lt;div&gt;
+      &lt;Typography variant=&quot;keyline&quot;&gt;Global Outlook&lt;/Typography&gt;
+      &lt;Typography variant=&quot;infoline&quot;&gt;Wealth Management Insights, Q1 2025&lt;/Typography&gt;
+    &lt;/div&gt;)&lt;/Impulse&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">With Quote</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithQuote = () =&gt; &lt;Impulse format=&quot;A4&quot;&gt;(&lt;Typography variant=&quot;quotes&quot;&gt;&quot;In a world of uncertainty, the value of trusted advice has never been greater.&quot;
+            &lt;/Typography&gt;)&lt;/Impulse&gt;;</code></pre>
+            </div>
+        </div>
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="Logo">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Logo</h2>
+      <div class="badges">
+        <label for="c-9-brand-logo-props" class="badge ok as-toggle">4 prop types</label>
+        
+        <label for="c-9-brand-logo-stories" class="badge ok as-toggle">11 stories</label>
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/Logo/Logo.stories.tsx">brand-logo · ./src/components/Logo/Logo.stories.tsx</div>
+    
+    <div class="hint">UBS Design System Logo component. Renders the UBS logo as an SVG following brand guidelines: - Three keys symbol + &quot;UBS&quot; wordmark (full variant) - Symbol only or wordmark only variants - Clear space: minimum 1/3 of the symbol height (k) on all sides - Available in black, white, or gray - Optional tab variant for use over photographs</div>
+    <div class="kv"><span class="chip">example:  ```tsx &lt;Logo variant=&quot;full&quot; colour=&quot;black&quot; size={120} /&gt; &lt;Logo variant=&quot;symbol&quot; colour=&quot;white&quot; size=&quot;A4&quot; tab /&gt; ```</span></div>
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-9-brand-logo-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  <input id="c-9-brand-logo-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen)</small></span>
+              <span class="badge ok">4 prop types</span>
+            </div>
+            <pre><code>Component: src/components/Logo/Logo.tsx::Logo</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Colour scheme. @default &#39;black&#39;
+ */
+colour?: &#39;black&#39; | &#39;white&#39; | &#39;gray&#39; = &#39;black&#39;
+
+/**
+ * Size of the logo in pixels (width).
+ * Can also accept an ISO format string like &#39;A4&#39; for proportional sizing.
+ * @default 120
+ */
+size?: number | string = 120
+
+/**
+ * Tab variant: adds a semi-transparent background tab for use over images.
+ * @default false
+ */
+tab?: boolean = false
+
+/**
+ * Logo variant: full (keys + wordmark), symbol (keys only), wordmark (text only). @default &#39;full&#39;
+ */
+variant?: &#39;full&#39; | &#39;symbol&#39; | &#39;wordmark&#39; = &#39;full&#39;</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { Logo } from "@ubs/design-system";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Full</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Full = () =&gt; &lt;Logo variant=&quot;full&quot; colour=&quot;black&quot; size={160} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Symbol</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Symbol = () =&gt; &lt;Logo variant=&quot;symbol&quot; colour=&quot;black&quot; size={80} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Wordmark</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Wordmark = () =&gt; &lt;Logo variant=&quot;wordmark&quot; colour=&quot;black&quot; size={120} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Black</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Black = () =&gt; &lt;Logo variant=&quot;full&quot; colour=&quot;black&quot; size={160} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">White</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const White = () =&gt; &lt;Logo variant=&quot;full&quot; colour=&quot;white&quot; size={160} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Gray</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Gray = () =&gt; &lt;Logo variant=&quot;full&quot; colour=&quot;gray&quot; size={160} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">ISO Sizes</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const ISOSizes = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: 24, alignItems: &#39;flex-start&#39; }}&gt;
+    {[&#39;A0&#39;, &#39;A1&#39;, &#39;A2&#39;, &#39;A3&#39;, &#39;A4&#39;, &#39;A5&#39;, &#39;A6&#39;, &#39;A7&#39;, &#39;A8&#39;].map((format) =&gt; (
+      &lt;div key={format} style={{ display: &#39;flex&#39;, alignItems: &#39;center&#39;, gap: 16 }}&gt;
+        &lt;span style={{ width: 32, fontFamily: &#39;Arial, sans-serif&#39;, fontSize: 14, color: &#39;#7A7870&#39; }}&gt;
+          {format}
+        &lt;/span&gt;
+        &lt;Logo variant=&quot;full&quot; colour=&quot;black&quot; size={format} /&gt;
+      &lt;/div&gt;
+    ))}
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Tab Black</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const TabBlack = () =&gt; &lt;Logo variant=&quot;full&quot; colour=&quot;black&quot; size={160} tab /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Tab White</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const TabWhite = () =&gt; &lt;Logo variant=&quot;full&quot; colour=&quot;white&quot; size={160} tab /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Tab Over Image</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const TabOverImage = () =&gt; (
+  &lt;div
+    style={{
+      width: 400,
+      height: 250,
+      background: &#39;linear-gradient(135deg, #2E476B 0%, #469A6C 100%)&#39;,
+      display: &#39;flex&#39;,
+      alignItems: &#39;flex-end&#39;,
+      justifyContent: &#39;flex-end&#39;,
+      padding: 16,
+      borderRadius: 4,
+    }}
+  &gt;
+    &lt;Logo variant=&quot;full&quot; colour=&quot;white&quot; tab size={140} /&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">All Variants</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AllVariants = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, gap: 32, flexWrap: &#39;wrap&#39;, alignItems: &#39;center&#39; }}&gt;
+    &lt;div style={{ textAlign: &#39;center&#39; }}&gt;
+      &lt;Logo variant=&quot;full&quot; colour=&quot;black&quot; size={140} /&gt;
+      &lt;p style={{ fontFamily: &#39;Arial&#39;, fontSize: 12, color: &#39;#7A7870&#39;, marginTop: 8 }}&gt;Full&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div style={{ textAlign: &#39;center&#39; }}&gt;
+      &lt;Logo variant=&quot;symbol&quot; colour=&quot;black&quot; size={60} /&gt;
+      &lt;p style={{ fontFamily: &#39;Arial&#39;, fontSize: 12, color: &#39;#7A7870&#39;, marginTop: 8 }}&gt;Symbol&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div style={{ textAlign: &#39;center&#39; }}&gt;
+      &lt;Logo variant=&quot;wordmark&quot; colour=&quot;black&quot; size={100} /&gt;
+      &lt;p style={{ fontFamily: &#39;Arial&#39;, fontSize: 12, color: &#39;#7A7870&#39;, marginTop: 8 }}&gt;Wordmark&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="TradingIndicator">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> TradingIndicator</h2>
+      <div class="badges">
+        <label for="c-10-data-display-tradingindicator-props" class="badge ok as-toggle">7 prop types</label>
+        
+        <label for="c-10-data-display-tradingindicator-stories" class="badge ok as-toggle">12 stories</label>
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/TradingIndicator/TradingIndicator.stories.tsx">data-display-tradingindicator · ./src/components/TradingIndicator/TradingIndicator.stories.tsx</div>
+    
+    <div class="hint">TradingIndicator — displays a value with directional colour coding. Strictly follows UBS regional trading colour rules: - EMEA/US: green (#498100) positive, red (#C81219) negative - APAC: red (#C81219) positive, green (#498100) negative (REVERSED)</div>
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-10-data-display-tradingindicator-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  <input id="c-10-data-display-tradingindicator-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen)</small></span>
+              <span class="badge ok">7 prop types</span>
+            </div>
+            <pre><code>Component: src/components/TradingIndicator/TradingIndicator.tsx::TradingIndicator</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Whether to show as percentage. Defaults to `false`.
+ */
+asPercentage?: boolean = false
+
+/**
+ * Number of decimal places. Defaults to `2`.
+ */
+decimals?: number = 2
+
+/**
+ * Region determines colour mapping. APAC reverses green/red. Defaults to `&#39;emea&#39;`.
+ */
+region?: &#39;emea&#39; | &#39;us&#39; | &#39;apac&#39; = &#39;emea&#39;
+
+/**
+ * Whether to show the arrow indicator. Defaults to `true`.
+ */
+showArrow?: boolean = true
+
+/**
+ * Whether to show a + prefix for positive values. Defaults to `true`.
+ */
+showSign?: boolean = true
+
+/**
+ * Display size. Defaults to `&#39;md&#39;`.
+ */
+size?: &#39;sm&#39; | &#39;md&#39; | &#39;lg&#39; = &#39;md&#39;
+
+/**
+ * Numeric value to display. Sign determines colour direction.
+ */
+value: number</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { TradingIndicator } from "@ubs/design-system";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Positive</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Positive = () =&gt; &lt;TradingIndicator
+    value={2.34}
+    region=&quot;emea&quot;
+    size=&quot;md&quot;
+    decimals={2}
+    showArrow
+    showSign
+    asPercentage={false} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Negative</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Negative = () =&gt; &lt;TradingIndicator
+    value={-1.56}
+    region=&quot;emea&quot;
+    size=&quot;md&quot;
+    decimals={2}
+    showArrow
+    showSign
+    asPercentage={false} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Neutral</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Neutral = () =&gt; &lt;TradingIndicator
+    value={0}
+    region=&quot;emea&quot;
+    size=&quot;md&quot;
+    decimals={2}
+    showArrow
+    showSign
+    asPercentage={false} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Positive Percentage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const PositivePercentage = () =&gt; &lt;TradingIndicator
+    value={3.72}
+    region=&quot;emea&quot;
+    size=&quot;md&quot;
+    decimals={2}
+    showArrow
+    showSign
+    asPercentage /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Negative Percentage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const NegativePercentage = () =&gt; &lt;TradingIndicator
+    value={-0.45}
+    region=&quot;emea&quot;
+    size=&quot;md&quot;
+    decimals={2}
+    showArrow
+    showSign
+    asPercentage /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Small</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Small = () =&gt; &lt;TradingIndicator
+    value={1.25}
+    region=&quot;emea&quot;
+    size=&quot;sm&quot;
+    decimals={2}
+    showArrow
+    showSign
+    asPercentage={false} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Medium</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const MediumSize = () =&gt; &lt;TradingIndicator
+    value={1.25}
+    region=&quot;emea&quot;
+    size=&quot;md&quot;
+    decimals={2}
+    showArrow
+    showSign
+    asPercentage={false} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Large</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Large = () =&gt; &lt;TradingIndicator
+    value={1.25}
+    region=&quot;emea&quot;
+    size=&quot;lg&quot;
+    decimals={2}
+    showArrow
+    showSign
+    asPercentage={false} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">EMEA vs APAC Regional Reversal</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const EMEAvsAPAC = () =&gt; (
+  &lt;div style={{ fontFamily: &#39;Arial, sans-serif&#39;, fontSize: 14 }}&gt;
+    &lt;p style={{ marginBottom: 16, color: &#39;#404040&#39; }}&gt;
+      &lt;strong&gt;UBS mandatory rule:&lt;/strong&gt; In APAC markets, red = positive and green = negative (the opposite of EMEA/US).
+    &lt;/p&gt;
+    &lt;table style={{ borderCollapse: &#39;collapse&#39;, width: &#39;100%&#39; }}&gt;
+      &lt;thead&gt;
+        &lt;tr style={{ borderBottom: &#39;2px solid #CCCABC&#39; }}&gt;
+          &lt;th style={{ textAlign: &#39;left&#39;, padding: &#39;8px 16px&#39; }}&gt;Value&lt;/th&gt;
+          &lt;th style={{ textAlign: &#39;left&#39;, padding: &#39;8px 16px&#39; }}&gt;EMEA&lt;/th&gt;
+          &lt;th style={{ textAlign: &#39;left&#39;, padding: &#39;8px 16px&#39; }}&gt;APAC&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr style={{ borderBottom: &#39;1px solid #ECEBE4&#39; }}&gt;
+          &lt;td style={{ padding: &#39;8px 16px&#39; }}&gt;+2.34%&lt;/td&gt;
+          &lt;td style={{ padding: &#39;8px 16px&#39; }}&gt;
+            &lt;TradingIndicator value={2.34} region=&quot;emea&quot; asPercentage /&gt;
+          &lt;/td&gt;
+          &lt;td style={{ padding: &#39;8px 16px&#39; }}&gt;
+            &lt;TradingIndicator value={2.34} region=&quot;apac&quot; asPercentage /&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr style={{ borderBottom: &#39;1px solid #ECEBE4&#39; }}&gt;
+          &lt;td style={{ padding: &#39;8px 16px&#39; }}&gt;-1.56%&lt;/td&gt;
+          &lt;td style={{ padding: &#39;8px 16px&#39; }}&gt;
+            &lt;TradingIndicator value={-1.56} region=&quot;emea&quot; asPercentage /&gt;
+          &lt;/td&gt;
+          &lt;td style={{ padding: &#39;8px 16px&#39; }}&gt;
+            &lt;TradingIndicator value={-1.56} region=&quot;apac&quot; asPercentage /&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style={{ padding: &#39;8px 16px&#39; }}&gt;0.00%&lt;/td&gt;
+          &lt;td style={{ padding: &#39;8px 16px&#39; }}&gt;
+            &lt;TradingIndicator value={0} region=&quot;emea&quot; asPercentage /&gt;
+          &lt;/td&gt;
+          &lt;td style={{ padding: &#39;8px 16px&#39; }}&gt;
+            &lt;TradingIndicator value={0} region=&quot;apac&quot; asPercentage /&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">No Arrow</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const NoArrow = () =&gt; &lt;TradingIndicator
+    value={1.25}
+    region=&quot;emea&quot;
+    size=&quot;md&quot;
+    decimals={2}
+    showArrow={false}
+    showSign
+    asPercentage={false} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">No Sign</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const NoSign = () =&gt; &lt;TradingIndicator
+    value={1.25}
+    region=&quot;emea&quot;
+    size=&quot;md&quot;
+    decimals={2}
+    showArrow
+    showSign={false}
+    asPercentage={false} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">All Sizes</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AllSizes = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, gap: 24, alignItems: &#39;center&#39; }}&gt;
+    &lt;div style={{ textAlign: &#39;center&#39; }}&gt;
+      &lt;TradingIndicator value={1.25} size=&quot;sm&quot; asPercentage /&gt;
+      &lt;p style={{ fontFamily: &#39;Arial&#39;, fontSize: 11, color: &#39;#7A7870&#39;, marginTop: 4 }}&gt;sm&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div style={{ textAlign: &#39;center&#39; }}&gt;
+      &lt;TradingIndicator value={1.25} size=&quot;md&quot; asPercentage /&gt;
+      &lt;p style={{ fontFamily: &#39;Arial&#39;, fontSize: 11, color: &#39;#7A7870&#39;, marginTop: 4 }}&gt;md&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div style={{ textAlign: &#39;center&#39; }}&gt;
+      &lt;TradingIndicator value={1.25} size=&quot;lg&quot; asPercentage /&gt;
+      &lt;p style={{ fontFamily: &#39;Arial&#39;, fontSize: 11, color: &#39;#7A7870&#39;, marginTop: 4 }}&gt;lg&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="Typography">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Typography</h2>
+      <div class="badges">
+        <label for="c-11-components-typography-props" class="badge ok as-toggle">5 prop types</label>
+        
+        <label for="c-11-components-typography-stories" class="badge ok as-toggle">25 stories</label>
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/Typography/Typography.stories.tsx">components-typography · ./src/components/Typography/Typography.stories.tsx</div>
+    
+    <div class="hint">UBS Design System Typography component. Implements the complete UBS 16-level type hierarchy with brand enforcement: - Font: Frutiger (fallback Arial) - Weights: light (300), roman (400), bold (700) - Red is never applied to numbers (dev warning) - No text shadows, no justified or right-aligned text - WCAG 2.2 AA contrast compliant</div>
+    <div class="kv"><span class="chip">example:  ```tsx &lt;Typography variant=&quot;keyline&quot;&gt;Welcome to UBS&lt;/Typography&gt; &lt;Typography variant=&quot;copyText&quot; weight=&quot;bold&quot;&gt;Important notice&lt;/Typography&gt; &lt;Typography variant=&quot;quotes&quot; as=&quot;p&quot; colour=&quot;#404040&quot;&gt; &quot;Excellence in everything we do.&quot; &lt;/Typography&gt; ```</span></div>
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-11-components-typography-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  <input id="c-11-components-typography-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen)</small></span>
+              <span class="badge ok">5 prop types</span>
+            </div>
+            <pre><code>Component: src/components/Typography/Typography.tsx::Typography</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Polymorphic element to render as. Defaults based on variant.
+ */
+as?: | &#39;h1&#39; | &#39;h2&#39; | &#39;h3&#39; | &#39;h4&#39; | &#39;h5&#39; | &#39;h6&#39;
+| &#39;p&#39; | &#39;span&#39; | &#39;div&#39; | &#39;label&#39; | &#39;figcaption&#39; | &#39;blockquote&#39; | &#39;cite&#39;
+| &#39;small&#39; | &#39;strong&#39; | &#39;em&#39;
+
+/**
+ * Content.
+ */
+children?: React.ReactNode
+
+/**
+ * Text colour. Must be a valid CSS colour value. UBS Red must NOT be used for numbers.
+ */
+colour?: string
+
+/**
+ * Typography variant from the UBS type hierarchy. @default &#39;copyText&#39;
+ */
+variant?: | &#39;keyline&#39;
+| &#39;infoline&#39;
+| &#39;subheadline1&#39;
+| &#39;subheadline2&#39;
+| &#39;subheadline3&#39;
+| &#39;subheadline4&#39;
+| &#39;leadText1&#39;
+| &#39;leadText2&#39;
+| &#39;quotes&#39;
+| &#39;subtitles&#39;
+| &#39;copyText&#39;
+| &#39;pageNumbers&#39;
+| &#39;senderInfo&#39;
+| &#39;smallCopyText&#39;
+| &#39;environmentalInfo&#39;
+| &#39;captions&#39;
+| &#39;footnote&#39; = &#39;copyText&#39;
+
+/**
+ * Font weight: 300 (light), 400 (roman), 700 (bold). Overrides the variant default.
+ */
+weight?: 300 | 400 | 700 | &#39;light&#39; | &#39;roman&#39; | &#39;bold&#39;</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { Typography } from "@ubs/design-system";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Default</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Default = () =&gt; &lt;Typography variant=&quot;copyText&quot;&gt;Body copy in Frutiger Light at 9.5pt.&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Keyline</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Keyline = () =&gt; &lt;Typography variant=&quot;keyline&quot;&gt;Keyline — free selectable&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Infoline</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Infoline = () =&gt; &lt;Typography variant=&quot;infoline&quot;&gt;Infoline — max half the keyline size&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Subheadline 1</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Subheadline1 = () =&gt; &lt;Typography variant=&quot;subheadline1&quot;&gt;Subheadline 1 — 20pt Light&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Subheadline 2</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Subheadline2 = () =&gt; &lt;Typography variant=&quot;subheadline2&quot;&gt;Subheadline 2 — 13.5pt Light&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Subheadline 3</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Subheadline3 = () =&gt; &lt;Typography variant=&quot;subheadline3&quot;&gt;Subheadline 3 — 9.5pt Bold&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Subheadline 4</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Subheadline4 = () =&gt; &lt;Typography variant=&quot;subheadline4&quot;&gt;Subheadline 4 — 9.5pt Bold Red&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Lead Text 1</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const LeadText1 = () =&gt; &lt;Typography variant=&quot;leadText1&quot;&gt;Lead Text 1 — 20pt Light&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Lead Text 2</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const LeadText2 = () =&gt; &lt;Typography variant=&quot;leadText2&quot;&gt;Lead Text 2 — 13.5pt Light&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Quotes</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Quotes = () =&gt; &lt;Typography variant=&quot;quotes&quot;&gt;&quot;Excellence in everything we do.&quot;&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Subtitles</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Subtitles = () =&gt; &lt;Typography variant=&quot;subtitles&quot;&gt;Subtitles — 9.5pt Bold&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Copy Text</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const CopyText = () =&gt; &lt;Typography variant=&quot;copyText&quot;&gt;Copy text is the standard body copy style at 9.5pt Light.&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Page Numbers</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const PageNumbers = () =&gt; &lt;Typography variant=&quot;pageNumbers&quot;&gt;42&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Sender Info</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const SenderInfo = () =&gt; &lt;Typography variant=&quot;senderInfo&quot;&gt;John Smith, UBS Zurich&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Small Copy Text</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const SmallCopyText = () =&gt; &lt;Typography variant=&quot;smallCopyText&quot;&gt;Small copy text at 8pt Light for secondary content.&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Environmental Info</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const EnvironmentalInfo = () =&gt; &lt;Typography variant=&quot;environmentalInfo&quot;&gt;Printed on 100% recycled paper.&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Captions</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Captions = () =&gt; &lt;Typography variant=&quot;captions&quot;&gt;Fig. 1: Asset allocation breakdown, Q4 2024&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Footnote</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Footnote = () =&gt; &lt;Typography variant=&quot;footnote&quot;&gt;¹ Past performance is not indicative of future results.&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Weight Light</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WeightLight = () =&gt; &lt;Typography variant=&quot;copyText&quot; weight=&quot;light&quot;&gt;Light weight (300)&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Weight Roman</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WeightRoman = () =&gt; &lt;Typography variant=&quot;copyText&quot; weight=&quot;roman&quot;&gt;Roman weight (400)&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Weight Bold</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WeightBold = () =&gt; &lt;Typography variant=&quot;copyText&quot; weight=&quot;bold&quot;&gt;Bold weight (700)&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Custom Colour</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const CustomColour = () =&gt; &lt;Typography variant=&quot;subheadline1&quot; colour=&quot;#5A5D5C&quot;&gt;Gray V coloured heading&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">As Span</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AsSpan = () =&gt; &lt;Typography variant=&quot;copyText&quot; as=&quot;span&quot;&gt;Rendered as a &lt;span&gt; element&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">As H 3</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AsH3 = () =&gt; &lt;Typography variant=&quot;subheadline2&quot; as=&quot;h3&quot;&gt;Rendered as an &lt;h3&gt; element&lt;/Typography&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Full Hierarchy</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const FullHierarchy = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: 8 }}&gt;
+    {ALL_VARIANTS.map((v) =&gt; (
+      &lt;Typography key={v} variant={v}&gt;
+        {v} — The quick brown fox jumps over the lazy dog.
+      &lt;/Typography&gt;
+    ))}
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+  </div>
+</article>
+    </div>
+    
+    <h2 class="section-title">Unattached Docs</h2>
+    <div class="grid" role="list">
+      
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Foundation/Accessibility</h2>
+      <div class="badges">
+        
+        <label for="doc-0-foundation-accessibility-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./src/stories/Accessibility.mdx">foundation-accessibility--docs · ./src/stories/Accessibility.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-0-foundation-accessibility-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+&lt;Meta title=&quot;Foundation/Accessibility&quot; /&gt;
+
+# Accessibility
+
+The UBS Design System complies with **WCAG 2.2 Level AA**. Every component is built with accessibility as a first-class concern. This page documents the guidelines, contrast requirements, and rules that all UBS digital products must follow.
+
+---
+
+## Standard
+
+All UBS digital and print communications must meet **WCAG 2.2 Level AA**.
+
+---
+
+## Contrast Requirements
+
+### Minimum Ratios
+
+| Content Type | Minimum Ratio | Applies To |
+|-------------|---------------|------------|
+| Standard text | **4.5:1** | Text smaller than 25px (or 18.7px bold) |
+| Large text | **3:1** | Text 25px+ (or 18.7px+ bold) |
+| Icons &amp; graphics | **3:1** | Against background or adjacent colours |
+
+### UBS Colour Contrast Matrix
+
+export const ContrastCheck = ({ fg, bg, fgName, bgName, ratio, pass }) =&gt; (
+  &lt;tr style={{ borderBottom: &#39;1px solid #ECEBE4&#39; }}&gt;
+    &lt;td style={{ padding: &#39;8px 12px&#39; }}&gt;
+      &lt;span style={{ display: &#39;inline-flex&#39;, alignItems: &#39;center&#39;, gap: 6 }}&gt;
+        &lt;span style={{ width: 16, height: 16, borderRadius: 2, backgroundColor: fg, border: fg === &#39;#FFFFFF&#39; ? &#39;1px solid #ccc&#39; : &#39;none&#39; }} /&gt;
+        {fgName}
+      &lt;/span&gt;
+    &lt;/td&gt;
+    &lt;td style={{ padding: &#39;8px 12px&#39; }}&gt;
+      &lt;span style={{ display: &#39;inline-flex&#39;, alignItems: &#39;center&#39;, gap: 6 }}&gt;
+        &lt;span style={{ width: 16, height: 16, borderRadius: 2, backgroundColor: bg, border: bg === &#39;#FFFFFF&#39; ? &#39;1px solid #ccc&#39; : &#39;none&#39; }} /&gt;
+        {bgName}
+      &lt;/span&gt;
+    &lt;/td&gt;
+    &lt;td style={{ padding: &#39;8px 12px&#39;, fontFamily: &#39;monospace&#39; }}&gt;{ratio}&lt;/td&gt;
+    &lt;td style={{ padding: &#39;8px 12px&#39; }}&gt;
+      {pass ? (
+        &lt;span style={{ color: &#39;#6F7A1A&#39;, fontWeight: 700 }}&gt;✓ Pass&lt;/span&gt;
+      ) : (
+        &lt;span style={{ color: &#39;#BD000C&#39;, fontWeight: 700 }}&gt;✗ Fail&lt;/span&gt;
+      )}
+    &lt;/td&gt;
+  &lt;/tr&gt;
+);
+
+&lt;div style={{ overflowX: &#39;auto&#39; }}&gt;
+  &lt;table style={{ width: &#39;100%&#39;, borderCollapse: &#39;collapse&#39;, fontFamily: &#39;Arial, sans-serif&#39;, fontSize: 14 }}&gt;
+    &lt;thead&gt;
+      &lt;tr style={{ borderBottom: &#39;2px solid #CCCABC&#39; }}&gt;
+        &lt;th style={{ textAlign: &#39;left&#39;, padding: &#39;8px 12px&#39; }}&gt;Foreground&lt;/th&gt;
+        &lt;th style={{ textAlign: &#39;left&#39;, padding: &#39;8px 12px&#39; }}&gt;Background&lt;/th&gt;
+        &lt;th style={{ textAlign: &#39;left&#39;, padding: &#39;8px 12px&#39; }}&gt;Ratio&lt;/th&gt;
+        &lt;th style={{ textAlign: &#39;left&#39;, padding: &#39;8px 12px&#39; }}&gt;AA Normal&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;ContrastCheck fg=&quot;#000000&quot; bg=&quot;#FFFFFF&quot; fgName=&quot;Black&quot; bgName=&quot;White&quot; ratio=&quot;21:1&quot; pass={true} /&gt;
+      &lt;ContrastCheck fg=&quot;#E60000&quot; bg=&quot;#FFFFFF&quot; fgName=&quot;UBS Red&quot; bgName=&quot;White&quot; ratio=&quot;4.6:1&quot; pass={true} /&gt;
+      &lt;ContrastCheck fg=&quot;#FFFFFF&quot; bg=&quot;#E60000&quot; fgName=&quot;White&quot; bgName=&quot;UBS Red&quot; ratio=&quot;4.6:1&quot; pass={true} /&gt;
+      &lt;ContrastCheck fg=&quot;#000000&quot; bg=&quot;#ECEBE4&quot; fgName=&quot;Black&quot; bgName=&quot;Pastel I&quot; ratio=&quot;14.8:1&quot; pass={true} /&gt;
+      &lt;ContrastCheck fg=&quot;#000000&quot; bg=&quot;#F5F0E1&quot; fgName=&quot;Black&quot; bgName=&quot;Pastel II&quot; ratio=&quot;15.3:1&quot; pass={true} /&gt;
+      &lt;ContrastCheck fg=&quot;#5A5D5C&quot; bg=&quot;#FFFFFF&quot; fgName=&quot;Gray V&quot; bgName=&quot;White&quot; ratio=&quot;6.0:1&quot; pass={true} /&gt;
+      &lt;ContrastCheck fg=&quot;#7A7870&quot; bg=&quot;#FFFFFF&quot; fgName=&quot;Gray IV&quot; bgName=&quot;White&quot; ratio=&quot;4.5:1&quot; pass={true} /&gt;
+      &lt;ContrastCheck fg=&quot;#BD000C&quot; bg=&quot;#FFFFFF&quot; fgName=&quot;RAG Red&quot; bgName=&quot;White&quot; ratio=&quot;6.4:1&quot; pass={true} /&gt;
+      &lt;ContrastCheck fg=&quot;#6F7A1A&quot; bg=&quot;#FFFFFF&quot; fgName=&quot;RAG Green&quot; bgName=&quot;White&quot; ratio=&quot;5.1:1&quot; pass={true} /&gt;
+      &lt;ContrastCheck fg=&quot;#E4A911&quot; bg=&quot;#FFFFFF&quot; fgName=&quot;RAG Amber&quot; bgName=&quot;White&quot; ratio=&quot;2.4:1&quot; pass={false} /&gt;
+      &lt;ContrastCheck fg=&quot;#E4A911&quot; bg=&quot;#000000&quot; fgName=&quot;RAG Amber&quot; bgName=&quot;Black&quot; ratio=&quot;8.7:1&quot; pass={true} /&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+
+&gt; **Note:** RAG Amber (#E4A911) fails contrast against white backgrounds for normal text. The Alert component uses a darker background tint to ensure compliance.
+
+---
+
+## Interactive Contrast Demo
+
+export const ContrastDemo = () =&gt; {
+  const pairs = [
+    { fg: &#39;#000000&#39;, bg: &#39;#FFFFFF&#39;, label: &#39;Black on White&#39; },
+    { fg: &#39;#E60000&#39;, bg: &#39;#FFFFFF&#39;, label: &#39;UBS Red on White&#39; },
+    { fg: &#39;#FFFFFF&#39;, bg: &#39;#000000&#39;, label: &#39;White on Black&#39; },
+    { fg: &#39;#FFFFFF&#39;, bg: &#39;#E60000&#39;, label: &#39;White on UBS Red&#39; },
+    { fg: &#39;#000000&#39;, bg: &#39;#ECEBE4&#39;, label: &#39;Black on Pastel I&#39; },
+    { fg: &#39;#5A5D5C&#39;, bg: &#39;#FFFFFF&#39;, label: &#39;Gray V on White&#39; },
+  ];
+  return (
+    &lt;div style={{ display: &#39;grid&#39;, gridTemplateColumns: &#39;repeat(3, 1fr)&#39;, gap: 12 }}&gt;
+      {pairs.map(({ fg, bg, label }) =&gt; (
+        &lt;div
+          key={label}
+          style={{
+            backgroundColor: bg,
+            color: fg,
+            padding: 16,
+            borderRadius: 4,
+            fontFamily: &#39;Arial, sans-serif&#39;,
+            fontSize: 14,
+            border: &#39;1px solid #CCCABC&#39;,
+          }}
+        &gt;
+          &lt;div style={{ fontWeight: 700, marginBottom: 4 }}&gt;{label}&lt;/div&gt;
+          &lt;div&gt;Sample text Aa Bb 123&lt;/div&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+};
+
+&lt;ContrastDemo /&gt;
+
+---
+
+## Accessibility Rules
+
+### General
+
+| Rule | Requirement |
+|------|-------------|
+| **Colour independence** | Colour alone must never convey meaning. Use icons, text, or patterns. |
+| **Alternative text** | All non-decorative images must have meaningful alt text. |
+| **Heading structure** | Documents must use a logical heading hierarchy (h1 → h2 → h3). |
+| **Document title** | All documents must have a meaningful `&lt;title&gt;`. |
+| **Language** | Documents must declare their language (`lang` attribute). |
+| **Focus indicators** | All interactive elements must show visible focus (2px minimum). |
+| **Touch targets** | Minimum 44px touch target size (WCAG 2.5.8). |
+
+### Typography
+
+| Rule | Requirement |
+|------|-------------|
+| **Minimum size** | 14px (10.5pt) absolute minimum across all text |
+| **Recommended body** | 16px (12pt) for body text |
+| **Line height** | 22px (17pt) for 16px body text |
+| **Zoom support** | Content must work at 400% zoom without loss of functionality |
+| **No text in images** | Avoid placing text within images. If necessary, 4.5:1 contrast minimum. |
+
+### Data Visualisation
+
+| Rule | Requirement |
+|------|-------------|
+| **Chart gaps** | 2px minimum gap between segments on screen when contrast &lt; 3:1 |
+| **Always 2D** | No 3D charts, ever |
+| **Line types** | Use different line types for monochrome sequences |
+| **Colour + shape** | Never rely on colour alone in charts |
+
+---
+
+## Testing Tools
+
+UBS recommends these tools for accessibility verification:
+
+| Tool | Type | Link |
+|------|------|------|
+| **Colour Contrast Analyser** | Desktop app | Paciello Group (TPGi) |
+| **contrastchecker.com** | Online | [contrastchecker.com](https://contrastchecker.com) |
+| **axe DevTools** | Browser extension | [deque.com/axe](https://www.deque.com/axe/) |
+
+The Storybook `@storybook/addon-a11y` addon runs axe-core checks on every story. Check the &quot;Accessibility&quot; panel for each component.
+
+---
+
+## Component Compliance
+
+Every component in this library includes:
+
+- Semantic HTML elements with appropriate ARIA roles
+- `aria-label` / `aria-labelledby` for non-text content
+- `aria-live` regions for dynamic content (alerts, toasts)
+- Focus management for interactive components
+- Keyboard navigation support
+- Sufficient colour contrast for all states
+- `prefers-reduced-motion` support for animations
+
+---
+
+## Reporting Issues
+
+If you find an accessibility issue in any component, please raise it as a **P1 (critical)** issue. Accessibility compliance is non-negotiable for UBS brand standards.
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Foundation/Colours</h2>
+      <div class="badges">
+        
+        <label for="doc-1-foundation-colours-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./src/stories/Colours.mdx">foundation-colours--docs · ./src/stories/Colours.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-1-foundation-colours-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+&lt;Meta title=&quot;Foundation/Colours&quot; /&gt;
+
+# UBS Colour Palette
+
+All colours are sourced from the official UBS brand guidelines. Only these colours may be used in UBS communications.
+
+export const Swatch = ({ name, hex, usage }) =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, alignItems: &#39;center&#39;, gap: 12, marginBottom: 8 }}&gt;
+    &lt;div style={{
+      width: 48, height: 48, borderRadius: 4,
+      backgroundColor: hex,
+      border: hex === &#39;#FFFFFF&#39; ? &#39;1px solid #CCCABC&#39; : &#39;none&#39;,
+      flexShrink: 0,
+    }} /&gt;
+    &lt;div&gt;
+      &lt;div style={{ fontFamily: &#39;Arial, sans-serif&#39;, fontSize: 14, fontWeight: 700 }}&gt;{name}&lt;/div&gt;
+      &lt;div style={{ fontFamily: &#39;monospace&#39;, fontSize: 13, color: &#39;#5A5D5C&#39; }}&gt;{hex}&lt;/div&gt;
+      {usage &amp;&amp; &lt;div style={{ fontFamily: &#39;Arial, sans-serif&#39;, fontSize: 12, color: &#39;#7A7870&#39; }}&gt;{usage}&lt;/div&gt;}
+    &lt;/div&gt;
+  &lt;/div&gt;
+);
+
+export const Section = ({ title, children }) =&gt; (
+  &lt;div style={{ marginBottom: 32 }}&gt;
+    &lt;h2 style={{ fontFamily: &#39;Arial, sans-serif&#39;, fontSize: 18, borderBottom: &#39;2px solid #ECEBE4&#39;, paddingBottom: 8, marginBottom: 16 }}&gt;{title}&lt;/h2&gt;
+    {children}
+  &lt;/div&gt;
+);
+
+---
+
+&lt;Section title=&quot;Corporate Colours&quot;&gt;
+
+These three colours dominate all UBS communications and form the foundation of the brand identity.
+
+&lt;Swatch name=&quot;UBS White&quot; hex=&quot;#FFFFFF&quot; usage=&quot;Content stage. Dominates all other colours.&quot; /&gt;
+&lt;Swatch name=&quot;UBS Red&quot; hex=&quot;#E60000&quot; usage=&quot;Emphasis only. NEVER use for numbers.&quot; /&gt;
+&lt;Swatch name=&quot;UBS Black&quot; hex=&quot;#000000&quot; usage=&quot;Primary text colour.&quot; /&gt;
+
+&lt;/Section&gt;
+
+&lt;Section title=&quot;Secondary — Grays&quot;&gt;
+
+Used in charts, backgrounds, illustrations, and tables.
+
+&lt;Swatch name=&quot;Gray I&quot; hex=&quot;#CCCABC&quot; usage=&quot;Lightest gray. Backgrounds, borders.&quot; /&gt;
+&lt;Swatch name=&quot;Gray II&quot; hex=&quot;#B8B3A2&quot; usage=&quot;Borders, secondary backgrounds.&quot; /&gt;
+&lt;Swatch name=&quot;Gray III&quot; hex=&quot;#8E8D83&quot; usage=&quot;Charts, polychrome sequence.&quot; /&gt;
+&lt;Swatch name=&quot;Gray IV&quot; hex=&quot;#7A7870&quot; usage=&quot;Info alerts, secondary text.&quot; /&gt;
+&lt;Swatch name=&quot;Gray V&quot; hex=&quot;#5A5D5C&quot; usage=&quot;Darker charts, secondary text.&quot; /&gt;
+&lt;Swatch name=&quot;Gray VI&quot; hex=&quot;#404040&quot; usage=&quot;Darkest gray. High-contrast charts.&quot; /&gt;
+
+&lt;/Section&gt;
+
+&lt;Section title=&quot;Secondary — Bordeaux&quot;&gt;
+
+Complements UBS Red. For text highlights, backgrounds, data visualisation, illustrations.
+
+&lt;Swatch name=&quot;Bordeaux I&quot; hex=&quot;#BD000C&quot; usage=&quot;RAG Red. Error states, critical alerts.&quot; /&gt;
+&lt;Swatch name=&quot;Bordeaux II&quot; hex=&quot;#8A000A&quot; usage=&quot;Illustrations (~10% accent).&quot; /&gt;
+&lt;Swatch name=&quot;Bordeaux III&quot; hex=&quot;#620004&quot; usage=&quot;Deep accent. Chart colour 20.&quot; /&gt;
+
+&lt;/Section&gt;
+
+&lt;Section title=&quot;Secondary — Bronze&quot;&gt;
+
+For accents, colour blocks, and backgrounds.
+
+&lt;Swatch name=&quot;Bronze I&quot; hex=&quot;#B98E2C&quot; usage=&quot;Accent, colour blocks.&quot; /&gt;
+&lt;Swatch name=&quot;Bronze II&quot; hex=&quot;#946F29&quot; usage=&quot;Colour blocks, backgrounds.&quot; /&gt;
+&lt;Swatch name=&quot;Bronze III&quot; hex=&quot;#6C5312&quot; usage=&quot;Deep bronze accent.&quot; /&gt;
+
+&lt;/Section&gt;
+
+&lt;Section title=&quot;Pastels&quot;&gt;
+
+For backgrounds and table column highlights.
+
+&lt;Swatch name=&quot;Pastel I&quot; hex=&quot;#ECEBE4&quot; usage=&quot;Secondary background. Card variant.&quot; /&gt;
+&lt;Swatch name=&quot;Pastel II&quot; hex=&quot;#F5F0E1&quot; usage=&quot;Tertiary background. Card variant.&quot; /&gt;
+
+&lt;/Section&gt;
+
+&lt;Section title=&quot;Dark Mode&quot;&gt;
+
+Replacement colours for dark mode contexts.
+
+&lt;Swatch name=&quot;Primary Red (Dark)&quot; hex=&quot;#D83B31&quot; usage=&quot;Logo, buttons, larger areas in dark mode.&quot; /&gt;
+&lt;Swatch name=&quot;Secondary Red (Dark)&quot; hex=&quot;#FE6F5D&quot; usage=&quot;Text links, accents, highlights in dark mode.&quot; /&gt;
+
+&lt;/Section&gt;
+
+&lt;Section title=&quot;RAG (Status) Colours&quot;&gt;
+
+Red/Amber/Green status indicators for alerts and status badges.
+
+&lt;Swatch name=&quot;RAG Red&quot; hex=&quot;#BD000C&quot; usage=&quot;Problem, critical, error.&quot; /&gt;
+&lt;Swatch name=&quot;RAG Amber&quot; hex=&quot;#E4A911&quot; usage=&quot;Warning, needs attention.&quot; /&gt;
+&lt;Swatch name=&quot;RAG Green&quot; hex=&quot;#6F7A1A&quot; usage=&quot;Success, on track.&quot; /&gt;
+
+&lt;/Section&gt;
+
+&lt;Section title=&quot;Trading Colours&quot;&gt;
+
+Regional colour mapping for financial indicators.
+
+&lt;Swatch name=&quot;Trading Green&quot; hex=&quot;#498100&quot; usage=&quot;EMEA/US: positive. APAC: negative.&quot; /&gt;
+&lt;Swatch name=&quot;Trading Red&quot; hex=&quot;#C81219&quot; usage=&quot;EMEA/US: negative. APAC: positive.&quot; /&gt;
+
+&gt; **Important:** In APAC markets, red = positive and green = negative. This is the reverse of EMEA/US conventions.
+
+&lt;/Section&gt;
+
+&lt;Section title=&quot;Metallic&quot;&gt;
+
+&lt;Swatch name=&quot;Metallic Silver&quot; hex=&quot;#BEBEBE&quot; usage=&quot;Silver only. No gold, copper, or brass.&quot; /&gt;
+
+&lt;/Section&gt;
+
+&lt;Section title=&quot;Chart Colours (20-colour sequence)&quot;&gt;
+
+Additional colours for complex charts. Must follow the defined sequence order.
+
+&lt;Swatch name=&quot;01 Bronze 50&quot; hex=&quot;#AF8626&quot; /&gt;
+&lt;Swatch name=&quot;02 Lagoon 60&quot; hex=&quot;#00759E&quot; /&gt;
+&lt;Swatch name=&quot;03 Kiwi 60&quot; hex=&quot;#879420&quot; /&gt;
+&lt;Swatch name=&quot;04 Aubergine 90&quot; hex=&quot;#4B2D58&quot; /&gt;
+&lt;Swatch name=&quot;05 Sand 50&quot; hex=&quot;#9F8865&quot; /&gt;
+&lt;Swatch name=&quot;06 Plum 90&quot; hex=&quot;#2E476B&quot; /&gt;
+&lt;Swatch name=&quot;07 Sage 50&quot; hex=&quot;#469A6C&quot; /&gt;
+&lt;Swatch name=&quot;08 Blush 60&quot; hex=&quot;#AD3E4A&quot; /&gt;
+&lt;Swatch name=&quot;09 Lavender 50&quot; hex=&quot;#8489BD&quot; /&gt;
+&lt;Swatch name=&quot;10 Lake 50&quot; hex=&quot;#0C7EC6&quot; /&gt;
+&lt;Swatch name=&quot;11 Bronze 80&quot; hex=&quot;#654D16&quot; /&gt;
+&lt;Swatch name=&quot;12 Aubergine 60&quot; hex=&quot;#804C95&quot; /&gt;
+&lt;Swatch name=&quot;13 Mint 50&quot; hex=&quot;#45999C&quot; /&gt;
+&lt;Swatch name=&quot;14 Plum 60&quot; hex=&quot;#4972AC&quot; /&gt;
+&lt;Swatch name=&quot;15 Blush 40&quot; hex=&quot;#CC707A&quot; /&gt;
+&lt;Swatch name=&quot;16 Sage 80&quot; hex=&quot;#295B40&quot; /&gt;
+&lt;Swatch name=&quot;17 Lavender 70&quot; hex=&quot;#545A9C&quot; /&gt;
+&lt;Swatch name=&quot;18 Chocolate 60&quot; hex=&quot;#785E4A&quot; /&gt;
+&lt;Swatch name=&quot;19 Lake 90&quot; hex=&quot;#07476F&quot; /&gt;
+&lt;Swatch name=&quot;20 Bordeaux 90&quot; hex=&quot;#620004&quot; /&gt;
+
+&lt;/Section&gt;
+
+## Colour Rules
+
+- UBS Red **must never** be used for numbers
+- Red highlighting in messages is **no longer permitted** for accessibility
+- Colour alone must **never** convey meaning (WCAG 2.2 AA)
+- Minimum contrast ratio: **4.5:1** for standard text, **3:1** for large text
+- Chart segments with adjacent colour contrast below 3:1 must have a **2px gap**
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Welcome/Introduction</h2>
+      <div class="badges">
+        
+        <label for="doc-2-welcome-introduction-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./src/stories/Introduction.mdx">welcome-introduction--docs · ./src/stories/Introduction.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-2-welcome-introduction-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+&lt;Meta title=&quot;Welcome/Introduction&quot; /&gt;
+
+# UBS Design System
+
+Welcome to the UBS Design System component library. This library provides a complete set of React components that strictly enforce UBS brand guidelines, ensuring consistency and compliance across all digital products.
+
+## Overview
+
+The UBS Design System is built with:
+
+- **React 18** with TypeScript
+- **CSS Modules** for scoped, collision-free styling
+- **Vite** for fast builds and HMR
+- **WCAG 2.2 Level AA** accessibility compliance
+
+## Core Principles
+
+### Brand Compliance
+Every component enforces UBS brand rules at the code level. UBS Red is never applied to numbers. Typography follows the 16-level UBS hierarchy. Charts are always 2D with correct colour sequences.
+
+### Accessibility First
+All components meet WCAG 2.2 Level AA requirements. Minimum contrast ratios of 4.5:1 for standard text and 3:1 for large text are enforced. Colour alone is never used to convey meaning.
+
+### Regional Awareness
+Trading colours respect regional conventions. In EMEA and US markets, green indicates positive and red indicates negative values. In APAC markets, this is reversed.
+
+## Getting Started
+
+### Installation
+
+```bash
+npm install @ubs/design-system
+```
+
+### Basic Usage
+
+```tsx
+import { UBSThemeProvider, UBSGlobalStyles, Button, Typography } from &#39;../index&#39;;
+
+function App() {
+  return (
+    &lt;UBSThemeProvider&gt;
+      &lt;UBSGlobalStyles /&gt;
+      &lt;Typography variant=&quot;subheadline1&quot;&gt;Welcome to UBS&lt;/Typography&gt;
+      &lt;Button variant=&quot;primary&quot;&gt;Get Started&lt;/Button&gt;
+    &lt;/UBSThemeProvider&gt;
+  );
+}
+```
+
+### Theme Provider
+
+Always wrap your application in `&lt;UBSThemeProvider&gt;` to enable theme context and dark mode support:
+
+```tsx
+&lt;UBSThemeProvider defaultColourMode=&quot;system&quot;&gt;
+  &lt;UBSGlobalStyles /&gt;
+  {/* Your app */}
+&lt;/UBSThemeProvider&gt;
+```
+
+## Component Categories
+
+| Category | Components |
+|----------|-----------|
+| **Components** | Button, Card, Alert, Divider, Typography, Icon |
+| **Data Display** | DataViz, TradingIndicator, Badge |
+| **Layout** | Grid, Impulse |
+| **Brand** | Logo |
+
+## Design Tokens
+
+All design decisions are codified as tokens:
+
+- **Colours**: Corporate, secondary, pastels, RAG, trading, chart sequences
+- **Typography**: Frutiger font family, 16-level hierarchy, weight constraints
+- **Spacing**: 4px grid scale (0, 4, 8, 12, 16, 24, 32, 48, 64, 96)
+- **Breakpoints**: Mobile (320px), Tablet (768px), Desktop (1024px), Wide (1440px)
+
+## Key Rules
+
+1. **UBS Red (#E60000)** is for emphasis only. Never use it for numbers.
+2. **Frutiger** is the corporate typeface. Arial is the mandatory fallback.
+3. **No 3D charts**, gradients, or shadows in data visualisations.
+4. **Donut over pie** for circular charts.
+5. **2px gap** between chart segments on screen.
+6. **Minimum font size** of 14px (10.5pt) for accessibility.
+7. **No text shadows**, justified text, or centred text blocks.
+
+---
+
+Explore the sidebar to see all components, their variants, and documentation.
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Foundation/Tokens</h2>
+      <div class="badges">
+        
+        <label for="doc-3-foundation-tokens-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./src/stories/Tokens.mdx">foundation-tokens--docs · ./src/stories/Tokens.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-3-foundation-tokens-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+&lt;Meta title=&quot;Foundation/Tokens&quot; /&gt;
+
+# Design Tokens
+
+All design decisions in the UBS Design System are captured as typed tokens. These tokens are the single source of truth for spacing, breakpoints, z-index, layout, transitions, and more.
+
+export const TokenTable = ({ title, tokens }) =&gt; (
+  &lt;div style={{ marginBottom: 32 }}&gt;
+    &lt;h3 style={{ fontFamily: &#39;Arial, sans-serif&#39;, fontSize: 16, marginBottom: 12 }}&gt;{title}&lt;/h3&gt;
+    &lt;table style={{ width: &#39;100%&#39;, borderCollapse: &#39;collapse&#39;, fontFamily: &#39;Arial, sans-serif&#39;, fontSize: 14 }}&gt;
+      &lt;thead&gt;
+        &lt;tr style={{ borderBottom: &#39;2px solid #CCCABC&#39; }}&gt;
+          &lt;th style={{ textAlign: &#39;left&#39;, padding: &#39;8px 12px&#39; }}&gt;Token&lt;/th&gt;
+          &lt;th style={{ textAlign: &#39;left&#39;, padding: &#39;8px 12px&#39; }}&gt;Value&lt;/th&gt;
+          &lt;th style={{ textAlign: &#39;left&#39;, padding: &#39;8px 12px&#39; }}&gt;Preview&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        {tokens.map((t, i) =&gt; (
+          &lt;tr key={i} style={{ borderBottom: &#39;1px solid #ECEBE4&#39; }}&gt;
+            &lt;td style={{ padding: &#39;8px 12px&#39;, fontFamily: &#39;monospace&#39;, fontSize: 13 }}&gt;{t.name}&lt;/td&gt;
+            &lt;td style={{ padding: &#39;8px 12px&#39; }}&gt;{t.value}&lt;/td&gt;
+            &lt;td style={{ padding: &#39;8px 12px&#39; }}&gt;{t.preview}&lt;/td&gt;
+          &lt;/tr&gt;
+        ))}
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+);
+
+export const SpacingBar = ({ size }) =&gt; (
+  &lt;div style={{ width: size, height: 12, backgroundColor: &#39;#E60000&#39;, borderRadius: 2 }} /&gt;
+);
+
+---
+
+## Spacing Scale (4px Grid)
+
+All spacing values follow a 4px base grid.
+
+&lt;TokenTable
+  title=&quot;Named Spacing Tokens&quot;
+  tokens={[
+    { name: &#39;spacing.none&#39;, value: &#39;0px&#39;, preview: &lt;SpacingBar size={0} /&gt; },
+    { name: &#39;spacing.4xs&#39;, value: &#39;4px&#39;, preview: &lt;SpacingBar size={4} /&gt; },
+    { name: &#39;spacing.3xs&#39;, value: &#39;8px&#39;, preview: &lt;SpacingBar size={8} /&gt; },
+    { name: &#39;spacing.2xs&#39;, value: &#39;12px&#39;, preview: &lt;SpacingBar size={12} /&gt; },
+    { name: &#39;spacing.xs&#39;, value: &#39;16px&#39;, preview: &lt;SpacingBar size={16} /&gt; },
+    { name: &#39;spacing.sm&#39;, value: &#39;24px&#39;, preview: &lt;SpacingBar size={24} /&gt; },
+    { name: &#39;spacing.md&#39;, value: &#39;32px&#39;, preview: &lt;SpacingBar size={32} /&gt; },
+    { name: &#39;spacing.lg&#39;, value: &#39;48px&#39;, preview: &lt;SpacingBar size={48} /&gt; },
+    { name: &#39;spacing.xl&#39;, value: &#39;64px&#39;, preview: &lt;SpacingBar size={64} /&gt; },
+    { name: &#39;spacing.2xl&#39;, value: &#39;96px&#39;, preview: &lt;SpacingBar size={96} /&gt; },
+  ]}
+/&gt;
+
+Numeric spacing scale: `[0, 4, 8, 12, 16, 24, 32, 48, 64, 96]`
+
+---
+
+## Breakpoints
+
+The UBS responsive system uses four breakpoints aligned to ISO-standard device categories.
+
+| Token | Width | Usage |
+|-------|-------|-------|
+| `breakpoints.mobile` | 320px | Small phones and narrow viewports |
+| `breakpoints.tablet` | 768px | Tablets and medium viewports |
+| `breakpoints.desktop` | 1024px | Desktop and laptop screens |
+| `breakpoints.wide` | 1440px | Wide monitors and large displays |
+
+**Media queries** (for JS usage):
+```ts
+mediaQueries.mobile   // &#39;(min-width: 320px)&#39;
+mediaQueries.tablet   // &#39;(min-width: 768px)&#39;
+mediaQueries.desktop  // &#39;(min-width: 1024px)&#39;
+mediaQueries.wide     // &#39;(min-width: 1440px)&#39;
+```
+
+---
+
+## Layout
+
+| Token | Value | Description |
+|-------|-------|-------------|
+| `layout.maxWidth` | 1440px | Maximum content width |
+| `layout.columns.mobile` | 4 | Grid columns on mobile |
+| `layout.columns.tablet` | 8 | Grid columns on tablet |
+| `layout.columns.desktop` | 12 | Grid columns on desktop |
+| `layout.columns.wide` | 12 | Grid columns on wide |
+| `layout.gutter.mobile` | 16px | Side padding on mobile |
+| `layout.gutter.tablet` | 24px | Side padding on tablet |
+| `layout.gutter.desktop` | 32px | Side padding on desktop |
+| `layout.gutter.wide` | 48px | Side padding on wide |
+| `layout.columnGap.mobile` | 16px | Column gap on mobile |
+| `layout.columnGap.tablet` | 24px | Column gap on tablet |
+| `layout.columnGap.desktop` | 24px | Column gap on desktop |
+| `layout.columnGap.wide` | 32px | Column gap on wide |
+
+---
+
+## Border Radius
+
+| Token | Value |
+|-------|-------|
+| `borderRadius.none` | 0px |
+| `borderRadius.sm` | 2px |
+| `borderRadius.md` | 4px |
+| `borderRadius.lg` | 8px |
+| `borderRadius.xl` | 12px |
+| `borderRadius.full` | 9999px |
+
+---
+
+## Z-Index Scale
+
+Layered z-index values for consistent stacking.
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `zIndex.base` | 0 | Default stacking level |
+| `zIndex.dropdown` | 100 | Dropdowns and select menus |
+| `zIndex.sticky` | 200 | Sticky headers and navigation |
+| `zIndex.overlay` | 300 | Overlay backgrounds |
+| `zIndex.modal` | 400 | Modal dialogs |
+| `zIndex.popover` | 500 | Popovers and tooltips |
+| `zIndex.toast` | 600 | Toast notifications |
+| `zIndex.tooltip` | 700 | Top-level tooltips |
+
+---
+
+## Transitions
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `duration.fast` | 100ms | Micro-interactions (hover, focus) |
+| `duration.normal` | 200ms | Standard transitions |
+| `duration.slow` | 300ms | Complex animations |
+| `duration.slower` | 500ms | Full-page transitions |
+
+**Easing curves:**
+
+| Name | Value | Usage |
+|------|-------|-------|
+| `easing.default` | `cubic-bezier(0.4, 0, 0.2, 1)` | Standard UBS easing |
+| `easing.easeOut` | `cubic-bezier(0, 0, 0.2, 1)` | Enter / appear |
+| `easing.easeIn` | `cubic-bezier(0.4, 0, 1, 1)` | Exit / disappear |
+| `easing.impulse` | `cubic-bezier(0.22, 1, 0.36, 1)` | Spring-like impulse |
+
+---
+
+## Accessibility Tokens
+
+| Token | Value | Description |
+|-------|-------|-------------|
+| `accessibility.contrast.normalText` | 4.5:1 | Minimum contrast for text &lt; 25px |
+| `accessibility.contrast.largeText` | 3:1 | Minimum contrast for text ≥ 25px |
+| `accessibility.contrast.graphics` | 3:1 | Minimum contrast for UI components |
+| `accessibility.largeTextThreshold` | 25px | Threshold for &quot;large text&quot; |
+| `accessibility.largeTextBoldThreshold` | 18.7px | Threshold for bold &quot;large text&quot; |
+| `accessibility.minTouchTarget` | 44px | Minimum touch target (WCAG 2.5.8) |
+| `accessibility.minFontSize` | 14px | Absolute minimum font size |
+| `accessibility.focusIndicatorWidth` | 2px | Focus ring minimum width |
+
+---
+
+## Usage
+
+Import tokens directly:
+
+```tsx
+import { spacing, breakpoints, zIndex, transitions } from &#39;../index&#39;;
+
+// Use in styled components or inline styles
+const style = {
+  padding: spacing.md,        // 32
+  zIndex: zIndex.modal,       // 400
+  transition: `all ${transitions.duration.normal} ${transitions.easing.default}`,
+};
+```
+
+Or use CSS custom properties (injected by UBSThemeProvider):
+
+```css
+.myComponent {
+  padding: var(--ubs-spacing-md);
+  z-index: var(--ubs-z-modal);
+  transition: all var(--ubs-duration-normal) var(--ubs-easing-default);
+}
+```
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Foundation/Typography</h2>
+      <div class="badges">
+        
+        <label for="doc-4-foundation-typography-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./src/stories/TypographyDoc.mdx">foundation-typography--docs · ./src/stories/TypographyDoc.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-4-foundation-typography-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+&lt;Meta title=&quot;Foundation/Typography&quot; /&gt;
+
+# UBS Typography System
+
+The UBS type hierarchy consists of 16 levels, all based on the Frutiger typeface (Arial fallback). This specimen sheet shows each level with its specification and sample text.
+
+export const Specimen = ({ name, spec, weight, colour, sample, style }) =&gt; (
+  &lt;div style={{ marginBottom: 24, paddingBottom: 16, borderBottom: &#39;1px solid #ECEBE4&#39; }}&gt;
+    &lt;div style={{ display: &#39;flex&#39;, justifyContent: &#39;space-between&#39;, alignItems: &#39;baseline&#39;, marginBottom: 4 }}&gt;
+      &lt;span style={{ fontFamily: &#39;Arial, sans-serif&#39;, fontSize: 12, fontWeight: 700, color: &#39;#7A7870&#39;, textTransform: &#39;uppercase&#39;, letterSpacing: &#39;0.05em&#39; }}&gt;
+        {name}
+      &lt;/span&gt;
+      &lt;span style={{ fontFamily: &#39;monospace&#39;, fontSize: 11, color: &#39;#8E8D83&#39; }}&gt;
+        {spec} · {weight}{colour ? ` · ${colour}` : &#39;&#39;}
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style={{ fontFamily: &quot;&#39;Frutiger&#39;, Arial, sans-serif&quot;, ...style }}&gt;
+      {sample}
+    &lt;/div&gt;
+  &lt;/div&gt;
+);
+
+---
+
+## Font Family
+
+| Priority | Font | Usage |
+|----------|------|-------|
+| Primary | **Frutiger** | UBS corporate typeface (Monotype licence) |
+| Fallback | **Arial** | Mandatory replacement when Frutiger unavailable |
+| Mono | **Frutiger Mono** / SF Mono | Code, data tables |
+
+## Font Weights
+
+| Name | Weight | Usage |
+|------|--------|-------|
+| Light | 300 | General body text (Frutiger 45 Light) |
+| Light Italic | 300i | Call-outs within body copy |
+| Roman | 400 | Extra-small text for legibility (Frutiger 55 Roman) |
+| Bold | 700 | Subheadlines, emphasis |
+| Light Condensed | — | Diagrams only (Frutiger 47 Light CN) |
+
+---
+
+## 16-Level Type Hierarchy
+
+&lt;Specimen
+  name=&quot;Keyline&quot;
+  spec=&quot;Free selectable size&quot;
+  weight=&quot;Light (300)&quot;
+  sample=&quot;Welcome to UBS&quot;
+  style={{ fontSize: 40, fontWeight: 300, lineHeight: 1.05 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Infoline&quot;
+  spec=&quot;Max ½ keyline size&quot;
+  weight=&quot;Light (300)&quot;
+  sample=&quot;Wealth Management · Global Insights&quot;
+  style={{ fontSize: 20, fontWeight: 300, lineHeight: 1.2 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Subheadline 1&quot;
+  spec=&quot;20pt / 24pt&quot;
+  weight=&quot;Light (300)&quot;
+  sample=&quot;Portfolio Performance Overview&quot;
+  style={{ fontSize: 27, fontWeight: 300, lineHeight: 1.2 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Subheadline 2&quot;
+  spec=&quot;13.5pt / 16pt&quot;
+  weight=&quot;Light (300)&quot;
+  sample=&quot;Quarterly Asset Allocation Report&quot;
+  style={{ fontSize: 18, fontWeight: 300, lineHeight: 1.185 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Subheadline 3&quot;
+  spec=&quot;9.5pt / 12pt&quot;
+  weight=&quot;Bold (700)&quot;
+  sample=&quot;Key Market Indicators&quot;
+  style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.263 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Subheadline 4&quot;
+  spec=&quot;9.5pt / 12pt&quot;
+  weight=&quot;Bold (700)&quot;
+  colour=&quot;UBS Red&quot;
+  sample=&quot;Investment Strategy Update&quot;
+  style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.263, color: &#39;#E60000&#39; }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Lead Text 1&quot;
+  spec=&quot;20pt / 24pt&quot;
+  weight=&quot;Light (300)&quot;
+  sample=&quot;In a world of constant change, the value of trusted advice has never been more apparent.&quot;
+  style={{ fontSize: 27, fontWeight: 300, lineHeight: 1.2 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Lead Text 2&quot;
+  spec=&quot;13.5pt / 16pt&quot;
+  weight=&quot;Light (300)&quot;
+  sample=&quot;Our commitment to understanding your unique circumstances drives every recommendation we make.&quot;
+  style={{ fontSize: 18, fontWeight: 300, lineHeight: 1.185 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Quotes&quot;
+  spec=&quot;13.5pt / 16pt&quot;
+  weight=&quot;Light (300)&quot;
+  sample={&#39;&quot;Excellence in everything we do — that is the standard we hold ourselves to.&quot;&#39;}
+  style={{ fontSize: 18, fontWeight: 300, lineHeight: 1.185, fontStyle: &#39;italic&#39; }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Subtitles&quot;
+  spec=&quot;9.5pt / 12pt&quot;
+  weight=&quot;Bold (700)&quot;
+  colour=&quot;Black or Red&quot;
+  sample=&quot;Section Title&quot;
+  style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.263 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Copy Text&quot;
+  spec=&quot;9.5pt / 12pt&quot;
+  weight=&quot;Light (300)&quot;
+  sample=&quot;UBS provides financial advice and solutions to wealthy, institutional and corporate clients worldwide, as well as private clients in Switzerland. UBS&#39;s strategy is centred on our leading global wealth management business and our premier universal bank in Switzerland.&quot;
+  style={{ fontSize: 13, fontWeight: 300, lineHeight: 1.263 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Page Numbers&quot;
+  spec=&quot;9.5pt / 12pt&quot;
+  weight=&quot;Light (300)&quot;
+  sample=&quot;42&quot;
+  style={{ fontSize: 13, fontWeight: 300, lineHeight: 1.263 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Sender Info&quot;
+  spec=&quot;9.5pt / 12pt&quot;
+  weight=&quot;Light (300)&quot;
+  sample=&quot;John Smith · UBS AG, Bahnhofstrasse 45, 8001 Zurich&quot;
+  style={{ fontSize: 13, fontWeight: 300, lineHeight: 1.263 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Small Copy Text&quot;
+  spec=&quot;8pt / 10pt&quot;
+  weight=&quot;Light (300)&quot;
+  sample=&quot;Past performance is not a reliable indicator of future results. The value of investments and the income derived from them may go down as well as up.&quot;
+  style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.25 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Environmental Info&quot;
+  spec=&quot;8pt / 10pt&quot;
+  weight=&quot;Light (300)&quot;
+  sample=&quot;Printed on 100% recycled paper using vegetable-based inks.&quot;
+  style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.25 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Captions&quot;
+  spec=&quot;7.5pt / 9.5pt&quot;
+  weight=&quot;Light (300)&quot;
+  colour=&quot;Black or Red&quot;
+  sample=&quot;Fig. 1: Regional asset allocation breakdown, Q4 2024&quot;
+  style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.267 }}
+/&gt;
+
+&lt;Specimen
+  name=&quot;Footnote&quot;
+  spec=&quot;6.5pt / 7.5pt&quot;
+  weight=&quot;Light (300)&quot;
+  sample=&quot;¹ Source: UBS Chief Investment Office. Data as of 31 December 2024. All figures in CHF unless stated otherwise.&quot;
+  style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.154 }}
+/&gt;
+
+---
+
+## Typography Rules
+
+| Rule | Description |
+|------|-------------|
+| No red for numbers | UBS Red must **never** be used for numbers |
+| No opacity | Never apply transparency to text |
+| No small caps | Small caps are not permitted |
+| No justification | Always left-aligned (RTL: right-aligned) |
+| No right alignment | Except for RTL scripts |
+| No text shadows | Drop shadows are prohibited |
+| No centred blocks | Centred text blocks are not allowed |
+| No mixed sizes | Never mix font sizes within one sentence |
+| No text wrapping | Text must not wrap around objects |
+| No red highlighting | Red highlighting in messages is no longer permitted |
+
+## Web-Optimised Sizes
+
+| Metric | Value |
+|--------|-------|
+| Minimum font size | 14px (10.5pt) |
+| Recommended body | 16px (12pt) |
+| Body line height | 22px (17pt) |
+| Large text threshold | 25px (18pt) for WCAG contrast |
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+    </div>
+    
+  </div>
+</main>
+</body>
+</html>  

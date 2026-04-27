@@ -1,0 +1,73 @@
+/* TradingIndicator — UBS Design System */
+
+.indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* ── Sizes ─────────────────────────────────────────────── */
+
+.sm {
+  font-size: 12px;
+}
+
+.sm .arrow {
+  width: 10px;
+  height: 10px;
+}
+
+.md {
+  font-size: 14px;
+}
+
+.md .arrow {
+  width: 12px;
+  height: 12px;
+}
+
+.lg {
+  font-size: 18px;
+}
+
+.lg .arrow {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Colour modifiers ──────────────────────────────────── */
+
+.positive {
+  color: var(--trading-positive);
+}
+
+.negative {
+  color: var(--trading-negative);
+}
+
+.neutral {
+  color: #404040; /* Gray VI */
+}
+
+/* ── Arrow ─────────────────────────────────────────────── */
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.arrow svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.arrowDown {
+  transform: rotate(180deg);
+}

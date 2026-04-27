@@ -1,0 +1,129 @@
+/* ─── UBS Radio ───────────────────────────────────────────────────── */
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  min-height: 44px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  position: relative;
+}
+
+.container.disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* ─── Hidden native input ─────────────────────────────────────────── */
+
+.nativeInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─── Custom circle ───────────────────────────────────────────────── */
+
+.circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  transition: border-color 150ms ease;
+}
+
+.sm .circle {
+  width: 20px;
+  height: 20px;
+}
+
+.md .circle {
+  width: 24px;
+  height: 24px;
+}
+
+/* ─── Inner dot ───────────────────────────────────────────────────── */
+
+.dot {
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 150ms ease;
+}
+
+.sm .dot {
+  width: 10px;
+  height: 10px;
+}
+
+.md .dot {
+  width: 12px;
+  height: 12px;
+}
+
+.nativeInput:checked + .circle .dot {
+  background-color: #E60000;
+}
+
+/* ─── Focus ring ──────────────────────────────────────────────────── */
+
+.nativeInput:focus-visible + .circle {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* ─── Label ───────────────────────────────────────────────────────── */
+
+.label {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #000000;
+  text-align: left;
+  text-shadow: none;
+  user-select: none;
+}
+
+/* ─── RadioGroup ──────────────────────────────────────────────────── */
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.groupLabel {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #000000;
+  text-align: left;
+  text-shadow: none;
+  margin-bottom: 4px;
+}
+
+.groupRequired::after {
+  content: ' *';
+  color: #BD000C;
+}
+
+.groupError {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #BD000C;
+  text-align: left;
+  text-shadow: none;
+  margin: 4px 0 0;
+}

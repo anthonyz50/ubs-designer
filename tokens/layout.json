@@ -1,0 +1,138 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "UBS Design System — Layout, Grid, Margin, and Impulse Tokens. Source: ubs.frontify.com",
+  "layout": {
+    "margin": {
+      "$description": "Margin by ISO format. Space of one key symbol height (k) between text/image and text/margin.",
+      "A8":  { "format": "52x74mm",   "margin": { "$value": "6.0mm",  "$type": "dimension" } },
+      "A7":  { "format": "74x105mm",  "margin": { "$value": "9.0mm",  "$type": "dimension" } },
+      "A6":  { "format": "105x148mm", "margin": { "$value": "11.0mm", "$type": "dimension" } },
+      "A6-5": { "format": "105x210mm", "margin": { "$value": "12.5mm", "$type": "dimension" } },
+      "A5":  { "format": "148x210mm", "margin": { "$value": "12.5mm", "$type": "dimension" } },
+      "A4":  { "format": "210x297mm", "margin": { "$value": "15.5mm", "$type": "dimension" } },
+      "A3":  { "format": "297x420mm", "margin": { "$value": "22.1mm", "$type": "dimension" } },
+      "A2":  { "format": "420x594mm", "margin": { "$value": "31.0mm", "$type": "dimension" } },
+      "A1":  { "format": "594x841mm", "margin": { "$value": "44.2mm", "$type": "dimension" } },
+      "A0":  { "format": "841x1189mm","margin": { "$value": "62.1mm", "$type": "dimension" } }
+    },
+    "impulse": {
+      "$description": "The Impulse is UBS's distinctive red vertical line alongside text. Always UBS Red (#E60000).",
+      "colour": "#E60000",
+      "width": {
+        "$description": "Stroke width by ISO format. If undefined, use 2x key stalk width.",
+        "A8":  { "$value": "1.2pt",  "$type": "dimension" },
+        "A7":  { "$value": "1.9pt",  "$type": "dimension" },
+        "A6":  { "$value": "2.6pt",  "$type": "dimension" },
+        "A6-5": { "$value": "2.6pt",  "$type": "dimension" },
+        "A5":  { "$value": "3.2pt",  "$type": "dimension" },
+        "A4":  { "$value": "4.5pt",  "$type": "dimension" },
+        "A3":  { "$value": "6.7pt",  "$type": "dimension" },
+        "A2":  { "$value": "9.0pt",  "$type": "dimension" },
+        "A1":  { "$value": "12.7pt", "$type": "dimension" },
+        "A0":  { "$value": "18.0pt", "$type": "dimension" }
+      },
+      "space": {
+        "$description": "Distance between Impulse and text by ISO format. If undefined, use half key symbol height.",
+        "A8":  { "$value": "1.8mm", "$type": "dimension" },
+        "A7":  { "$value": "2.4mm", "$type": "dimension" },
+        "A6":  { "$value": "3.0mm", "$type": "dimension" },
+        "A6-5": { "$value": "3.5mm", "$type": "dimension" },
+        "A5":  { "$value": "4.9mm", "$type": "dimension" },
+        "A4":  { "$value": "7.0mm", "$type": "dimension" },
+        "A3":  { "$value": "9.9mm", "$type": "dimension" },
+        "A2":  { "$value": "14.0mm","$type": "dimension" },
+        "A1":  { "$value": "19.8mm","$type": "dimension" },
+        "A0":  { "$value": "28.0mm","$type": "dimension" }
+      },
+      "height": {
+        "keylineOnly": "Cap height of first word to baseline of last line. Last line left blank.",
+        "keylineAndInfoline": "Cap height of first keyline word to baseline of infoline. First infoline line left blank."
+      },
+      "rules": {
+        "noLongerThanBaselineOfSecondMessage": true,
+        "noCentreWithKeyline": true,
+        "noMultipleUseTogether": true,
+        "onGrayBordeauxBronze": "Impulse allowed on Pastel I and Pastel II only",
+        "noRedHighlightOnFrontPages": true
+      }
+    },
+    "logo": {
+      "size": {
+        "$description": "Logo size (percentage) by ISO format. Scale from original using this %.",
+        "A8":  { "$value": "10%"  },
+        "A7":  { "$value": "15%"  },
+        "A6":  { "$value": "18%"  },
+        "A6-5": { "$value": "21%"  },
+        "A5":  { "$value": "21%"  },
+        "A4":  { "$value": "26%"  },
+        "A3":  { "$value": "37%"  },
+        "A2":  { "$value": "52%"  },
+        "A1":  { "$value": "74%"  },
+        "A0":  { "$value": "104%" }
+      },
+      "position": {
+        "standard": "bottom-right",
+        "alternative": "top-left",
+        "marginAlignment": "Align to page margin",
+        "clearSpace": "Height of Key Symbol (k) from key to upper/lower edge of format"
+      },
+      "tab": {
+        "$description": "White background area ensuring contrast and visibility for the logo.",
+        "standard": "bottom-right-aligned",
+        "alternative": "top-left-aligned"
+      }
+    },
+    "keySymbol": {
+      "clearSpace": "⅓k minimum (k = height of Key Symbol)",
+      "colours": ["black", "white", "gray"],
+      "accentColours": ["bordeaux", "bronze"],
+      "rules": {
+        "neverAlter": true,
+        "neverDeconstruct": true,
+        "neverSeparateKeys": true,
+        "noShadow": true,
+        "noOutline": true,
+        "noRotation": true,
+        "noUnapprovedColours": true
+      }
+    },
+    "movingFrame": {
+      "$description": "Dynamic content area overlaid on images.",
+      "transparentOpacity": "80%",
+      "opaqueOpacity": "100%",
+      "maxSize": {
+        "portraitAndSquare": "max half the width",
+        "landscape": "max half the height"
+      },
+      "spacing": "half the height of Key Symbol (k)",
+      "position": "right-aligned at variable height",
+      "rules": {
+        "noCentredPlacement": true,
+        "noLeftAlignedLogo": true,
+        "noBleedingToEdge": true,
+        "noRedHighlighting": true,
+        "noOpacityBelow80": true,
+        "noTransparencyOnMonochrome": true,
+        "noTransparencyOnPatterns": true
+      }
+    },
+    "grid": {
+      "types": ["coverAndBackPage", "insidePage", "insidePageWithAdditionalMargin"],
+      "imagePreference": "full-bleed whenever possible",
+      "layoutOptions": [
+        "Full bleed with Moving Frame (recommended)",
+        "Full bleed with Logo Tab",
+        "Vertical two-thirds",
+        "Vertical half",
+        "Vertical one-thirds",
+        "Without image"
+      ],
+      "rules": {
+        "noMarginOnMoreThanTwoSides": true,
+        "noFramelessWhiteBox": true,
+        "noImageFromAnotherCorner": true,
+        "noDiagonalImageCrop": true
+      }
+    }
+  }
+}

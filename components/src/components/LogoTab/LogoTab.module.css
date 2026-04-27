@@ -1,0 +1,120 @@
+/* LogoTab — UBS Design System */
+/* Animated logo tab for video/motion content. */
+
+/* ─── Container ─────────────────────────────────────────── */
+
+.logoTab {
+  position: absolute;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background-color: var(--ubs-color-white, #FFFFFF);
+  font-family: var(--ubs-font-family-primary, 'Frutiger', 'Frutiger Neue', Arial, Helvetica, sans-serif);
+}
+
+/* ─── Positions ─────────────────────────────────────────── */
+
+.topLeft {
+  top: 0;
+  left: 0;
+}
+
+.bottomRight {
+  bottom: 0;
+  right: 0;
+}
+
+/* ─── Animation ─────────────────────────────────────────── */
+
+.animatedEntry {
+  animation: ubs-logoTabIn 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Position-aware slide direction */
+.topLeft.animatedEntry {
+  animation-name: ubs-logoTabInTopLeft;
+}
+
+.bottomRight.animatedEntry {
+  animation-name: ubs-logoTabInBottomRight;
+}
+
+@keyframes ubs-logoTabInTopLeft {
+  from {
+    opacity: 0;
+    transform: translate(-24px, -24px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes ubs-logoTabInBottomRight {
+  from {
+    opacity: 0;
+    transform: translate(24px, 24px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+/* ─── Watermark mode ────────────────────────────────────── */
+
+.watermark {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Watermark stays semi-transparent after animation */
+.watermark.animatedEntry {
+  animation-fill-mode: both;
+}
+
+/* ─── Logo image ────────────────────────────────────────── */
+
+.logo {
+  display: block;
+  height: 24px;
+  width: auto;
+}
+
+.logo.sm {
+  height: 20px;
+}
+
+.logo.lg {
+  height: 32px;
+}
+
+/* ─── Partnership variant ───────────────────────────────── */
+
+.partnerDivider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--ubs-color-border-primary, #B8B3A2);
+  flex-shrink: 0;
+}
+
+.partnerLogo {
+  display: flex;
+  align-items: center;
+}
+
+/* ─── Reduced motion ────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .animatedEntry {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .watermark {
+    opacity: 0.6;
+  }
+}

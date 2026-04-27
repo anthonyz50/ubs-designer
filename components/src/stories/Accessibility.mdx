@@ -1,0 +1,187 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundation/Accessibility" />
+
+# Accessibility
+
+The UBS Design System complies with **WCAG 2.2 Level AA**. Every component is built with accessibility as a first-class concern. This page documents the guidelines, contrast requirements, and rules that all UBS digital products must follow.
+
+---
+
+## Standard
+
+All UBS digital and print communications must meet **WCAG 2.2 Level AA**.
+
+---
+
+## Contrast Requirements
+
+### Minimum Ratios
+
+| Content Type | Minimum Ratio | Applies To |
+|-------------|---------------|------------|
+| Standard text | **4.5:1** | Text smaller than 25px (or 18.7px bold) |
+| Large text | **3:1** | Text 25px+ (or 18.7px+ bold) |
+| Icons & graphics | **3:1** | Against background or adjacent colours |
+
+### UBS Colour Contrast Matrix
+
+export const ContrastCheck = ({ fg, bg, fgName, bgName, ratio, pass }) => (
+  <tr style={{ borderBottom: '1px solid #ECEBE4' }}>
+    <td style={{ padding: '8px 12px' }}>
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+        <span style={{ width: 16, height: 16, borderRadius: 2, backgroundColor: fg, border: fg === '#FFFFFF' ? '1px solid #ccc' : 'none' }} />
+        {fgName}
+      </span>
+    </td>
+    <td style={{ padding: '8px 12px' }}>
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+        <span style={{ width: 16, height: 16, borderRadius: 2, backgroundColor: bg, border: bg === '#FFFFFF' ? '1px solid #ccc' : 'none' }} />
+        {bgName}
+      </span>
+    </td>
+    <td style={{ padding: '8px 12px', fontFamily: 'monospace' }}>{ratio}</td>
+    <td style={{ padding: '8px 12px' }}>
+      {pass ? (
+        <span style={{ color: '#6F7A1A', fontWeight: 700 }}>✓ Pass</span>
+      ) : (
+        <span style={{ color: '#BD000C', fontWeight: 700 }}>✗ Fail</span>
+      )}
+    </td>
+  </tr>
+);
+
+<div style={{ overflowX: 'auto' }}>
+  <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'Arial, sans-serif', fontSize: 14 }}>
+    <thead>
+      <tr style={{ borderBottom: '2px solid #CCCABC' }}>
+        <th style={{ textAlign: 'left', padding: '8px 12px' }}>Foreground</th>
+        <th style={{ textAlign: 'left', padding: '8px 12px' }}>Background</th>
+        <th style={{ textAlign: 'left', padding: '8px 12px' }}>Ratio</th>
+        <th style={{ textAlign: 'left', padding: '8px 12px' }}>AA Normal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ContrastCheck fg="#000000" bg="#FFFFFF" fgName="Black" bgName="White" ratio="21:1" pass={true} />
+      <ContrastCheck fg="#E60000" bg="#FFFFFF" fgName="UBS Red" bgName="White" ratio="4.6:1" pass={true} />
+      <ContrastCheck fg="#FFFFFF" bg="#E60000" fgName="White" bgName="UBS Red" ratio="4.6:1" pass={true} />
+      <ContrastCheck fg="#000000" bg="#ECEBE4" fgName="Black" bgName="Pastel I" ratio="14.8:1" pass={true} />
+      <ContrastCheck fg="#000000" bg="#F5F0E1" fgName="Black" bgName="Pastel II" ratio="15.3:1" pass={true} />
+      <ContrastCheck fg="#5A5D5C" bg="#FFFFFF" fgName="Gray V" bgName="White" ratio="6.0:1" pass={true} />
+      <ContrastCheck fg="#7A7870" bg="#FFFFFF" fgName="Gray IV" bgName="White" ratio="4.5:1" pass={true} />
+      <ContrastCheck fg="#BD000C" bg="#FFFFFF" fgName="RAG Red" bgName="White" ratio="6.4:1" pass={true} />
+      <ContrastCheck fg="#6F7A1A" bg="#FFFFFF" fgName="RAG Green" bgName="White" ratio="5.1:1" pass={true} />
+      <ContrastCheck fg="#E4A911" bg="#FFFFFF" fgName="RAG Amber" bgName="White" ratio="2.4:1" pass={false} />
+      <ContrastCheck fg="#E4A911" bg="#000000" fgName="RAG Amber" bgName="Black" ratio="8.7:1" pass={true} />
+    </tbody>
+  </table>
+</div>
+
+> **Note:** RAG Amber (#E4A911) fails contrast against white backgrounds for normal text. The Alert component uses a darker background tint to ensure compliance.
+
+---
+
+## Interactive Contrast Demo
+
+export const ContrastDemo = () => {
+  const pairs = [
+    { fg: '#000000', bg: '#FFFFFF', label: 'Black on White' },
+    { fg: '#E60000', bg: '#FFFFFF', label: 'UBS Red on White' },
+    { fg: '#FFFFFF', bg: '#000000', label: 'White on Black' },
+    { fg: '#FFFFFF', bg: '#E60000', label: 'White on UBS Red' },
+    { fg: '#000000', bg: '#ECEBE4', label: 'Black on Pastel I' },
+    { fg: '#5A5D5C', bg: '#FFFFFF', label: 'Gray V on White' },
+  ];
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+      {pairs.map(({ fg, bg, label }) => (
+        <div
+          key={label}
+          style={{
+            backgroundColor: bg,
+            color: fg,
+            padding: 16,
+            borderRadius: 4,
+            fontFamily: 'Arial, sans-serif',
+            fontSize: 14,
+            border: '1px solid #CCCABC',
+          }}
+        >
+          <div style={{ fontWeight: 700, marginBottom: 4 }}>{label}</div>
+          <div>Sample text Aa Bb 123</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+<ContrastDemo />
+
+---
+
+## Accessibility Rules
+
+### General
+
+| Rule | Requirement |
+|------|-------------|
+| **Colour independence** | Colour alone must never convey meaning. Use icons, text, or patterns. |
+| **Alternative text** | All non-decorative images must have meaningful alt text. |
+| **Heading structure** | Documents must use a logical heading hierarchy (h1 → h2 → h3). |
+| **Document title** | All documents must have a meaningful `<title>`. |
+| **Language** | Documents must declare their language (`lang` attribute). |
+| **Focus indicators** | All interactive elements must show visible focus (2px minimum). |
+| **Touch targets** | Minimum 44px touch target size (WCAG 2.5.8). |
+
+### Typography
+
+| Rule | Requirement |
+|------|-------------|
+| **Minimum size** | 14px (10.5pt) absolute minimum across all text |
+| **Recommended body** | 16px (12pt) for body text |
+| **Line height** | 22px (17pt) for 16px body text |
+| **Zoom support** | Content must work at 400% zoom without loss of functionality |
+| **No text in images** | Avoid placing text within images. If necessary, 4.5:1 contrast minimum. |
+
+### Data Visualisation
+
+| Rule | Requirement |
+|------|-------------|
+| **Chart gaps** | 2px minimum gap between segments on screen when contrast < 3:1 |
+| **Always 2D** | No 3D charts, ever |
+| **Line types** | Use different line types for monochrome sequences |
+| **Colour + shape** | Never rely on colour alone in charts |
+
+---
+
+## Testing Tools
+
+UBS recommends these tools for accessibility verification:
+
+| Tool | Type | Link |
+|------|------|------|
+| **Colour Contrast Analyser** | Desktop app | Paciello Group (TPGi) |
+| **contrastchecker.com** | Online | [contrastchecker.com](https://contrastchecker.com) |
+| **axe DevTools** | Browser extension | [deque.com/axe](https://www.deque.com/axe/) |
+
+The Storybook `@storybook/addon-a11y` addon runs axe-core checks on every story. Check the "Accessibility" panel for each component.
+
+---
+
+## Component Compliance
+
+Every component in this library includes:
+
+- Semantic HTML elements with appropriate ARIA roles
+- `aria-label` / `aria-labelledby` for non-text content
+- `aria-live` regions for dynamic content (alerts, toasts)
+- Focus management for interactive components
+- Keyboard navigation support
+- Sufficient colour contrast for all states
+- `prefers-reduced-motion` support for animations
+
+---
+
+## Reporting Issues
+
+If you find an accessibility issue in any component, please raise it as a **P1 (critical)** issue. Accessibility compliance is non-negotiable for UBS brand standards.

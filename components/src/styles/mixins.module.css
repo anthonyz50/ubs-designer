@@ -1,0 +1,214 @@
+/**
+ * UBS Design System — CSS Module Mixins
+ *
+ * Reusable CSS class patterns implementing UBS brand design principles.
+ * Import and compose these into your component CSS modules.
+ *
+ * Usage:
+ *   .myButton { composes: impulse from './mixins.module.css'; }
+ */
+
+/* ─── Impulse ───────────────────────────────────────────────────── */
+
+/**
+ * UBS "Impulse" interaction pattern.
+ * A spring-like micro-animation that gives interactive elements
+ * a tactile, premium feel. Apply to buttons, cards, and clickable items.
+ */
+.impulse {
+  transition-property: transform, box-shadow;
+  transition-duration: var(--ubs-duration-normal, 200ms);
+  transition-timing-function: var(--ubs-easing-impulse, cubic-bezier(0.22, 1, 0.36, 1));
+  will-change: transform;
+}
+
+.impulse:hover {
+  transform: translateY(-1px);
+}
+
+.impulse:active {
+  transform: translateY(0px) scale(0.98);
+  transition-duration: var(--ubs-duration-fast, 100ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .impulse,
+  .impulse:hover,
+  .impulse:active {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ─── Accessible Text ───────────────────────────────────────────── */
+
+/**
+ * Ensures text meets UBS accessibility requirements:
+ * - Minimum 14px font size
+ * - Sufficient line height for readability
+ * - Font family set to Frutiger with fallback
+ * - Colour from semantic token
+ */
+.accessibleText {
+  font-family: var(--ubs-font-family-primary);
+  font-size: max(var(--ubs-font-size-min, 14px), 1em);
+  line-height: var(--ubs-line-height-body, 1.375);
+  color: var(--ubs-color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/**
+ * Large accessible text variant for headings.
+ * Tighter line height, bolder weight.
+ */
+.accessibleTextHeading {
+  composes: accessibleText;
+  line-height: var(--ubs-line-height-heading, 1.2);
+  font-weight: var(--ubs-font-weight-bold, 700);
+}
+
+/**
+ * Secondary text: muted colour for supporting content.
+ */
+.accessibleTextSecondary {
+  composes: accessibleText;
+  color: var(--ubs-color-text-secondary);
+}
+
+/* ─── Moving Frame ──────────────────────────────────────────────── */
+
+/**
+ * UBS "Moving Frame" animation pattern.
+ * A subtle reveal animation where content slides and fades in,
+ * suggesting motion and progression. Used for section transitions,
+ * card reveals, and page-level choreography.
+ */
+.movingFrame {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: ubsMovingFrameIn var(--ubs-duration-slow, 300ms) var(--ubs-easing-ease-out, cubic-bezier(0, 0, 0.2, 1)) forwards;
+}
+
+.movingFrameLeft {
+  opacity: 0;
+  transform: translateX(-16px);
+  animation: ubsMovingFrameInLeft var(--ubs-duration-slow, 300ms) var(--ubs-easing-ease-out, cubic-bezier(0, 0, 0.2, 1)) forwards;
+}
+
+.movingFrameRight {
+  opacity: 0;
+  transform: translateX(16px);
+  animation: ubsMovingFrameInRight var(--ubs-duration-slow, 300ms) var(--ubs-easing-ease-out, cubic-bezier(0, 0, 0.2, 1)) forwards;
+}
+
+/**
+ * Apply staggered delays to child elements for sequential reveal.
+ * Usage: .parent { composes: movingFrameStagger; }
+ */
+.movingFrameStagger > * {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: ubsMovingFrameIn var(--ubs-duration-slow, 300ms) var(--ubs-easing-ease-out, cubic-bezier(0, 0, 0.2, 1)) forwards;
+}
+
+.movingFrameStagger > *:nth-child(1) { animation-delay: 0ms; }
+.movingFrameStagger > *:nth-child(2) { animation-delay: 60ms; }
+.movingFrameStagger > *:nth-child(3) { animation-delay: 120ms; }
+.movingFrameStagger > *:nth-child(4) { animation-delay: 180ms; }
+.movingFrameStagger > *:nth-child(5) { animation-delay: 240ms; }
+.movingFrameStagger > *:nth-child(6) { animation-delay: 300ms; }
+.movingFrameStagger > *:nth-child(n+7) { animation-delay: 360ms; }
+
+@keyframes ubsMovingFrameIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ubsMovingFrameInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ubsMovingFrameInRight {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .movingFrame,
+  .movingFrameLeft,
+  .movingFrameRight,
+  .movingFrameStagger > * {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* ─── Visually Hidden (SR Only) ─────────────────────────────────── */
+
+/**
+ * Hide content visually but keep it accessible to screen readers.
+ */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ─── Focus Ring ────────────────────────────────────────────────── */
+
+/**
+ * Standard UBS focus indicator for interactive elements.
+ */
+.focusRing:focus-visible {
+  outline: var(--ubs-a11y-focus-width, 2px) solid var(--ubs-color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--ubs-radius-sm, 2px);
+}
+
+/* ─── Truncate ──────────────────────────────────────────────────── */
+
+/**
+ * Single-line text truncation with ellipsis.
+ */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/**
+ * Multi-line text truncation (2 lines).
+ */
+.truncateMultiline {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

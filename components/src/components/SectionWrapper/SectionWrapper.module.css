@@ -1,0 +1,81 @@
+/* ─── UBS SectionWrapper ──────────────────────────────────────────── */
+/* Page section container with consistent padding and optional title. */
+
+.section {
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-shadow: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Backgrounds ─────────────────────────────────────────────────── */
+
+.bgWhite {
+  background-color: #FFFFFF;
+}
+
+.bgPastel1 {
+  background-color: #ECEBE4;
+}
+
+.bgPastel2 {
+  background-color: #F5F0E1;
+}
+
+/* ─── Padding ─────────────────────────────────────────────────────── */
+
+.paddingSm {
+  padding: 24px;
+}
+
+.paddingMd {
+  padding: 40px;
+}
+
+.paddingLg {
+  padding: 64px;
+}
+
+/* ─── Header ──────────────────────────────────────────────────────── */
+
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  color: #000000;
+  margin: 0;
+}
+
+.subtitle {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #5A5D5C;
+  margin: 8px 0 0;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .bgWhite {
+  background-color: #0D0D0D;
+}
+
+[data-ubs-theme="dark"] .bgPastel1 {
+  background-color: #1A1A1A;
+}
+
+[data-ubs-theme="dark"] .bgPastel2 {
+  background-color: #1E1B14;
+}
+
+[data-ubs-theme="dark"] .title {
+  color: #FFFFFF;
+}
+
+[data-ubs-theme="dark"] .subtitle {
+  color: #8E8D83;
+}

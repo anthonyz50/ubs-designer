@@ -1,0 +1,46 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "UBS Design System — Icon Tokens. Source: ubs.frontify.com",
+  "icons": {
+    "illustrative": {
+      "$description": "Standard icon type for the majority of applications. ≥24px.",
+      "lineWeightRatio": "1:2",
+      "redAccent": {
+        "placement": "always on the thicker line",
+        "usage": "sparingly and in context"
+      },
+      "character": {
+        "shapes": "geometric and open",
+        "corners": "straight line ends, sharp corners mixed with rounded where content fits"
+      },
+      "variants": ["black with red accent", "all black"],
+      "rules": {
+        "noTooManyIdeasInOneIcon": true,
+        "noDecorativeUsage": true,
+        "noUnclearMeaning": true,
+        "noSubstitutionOfImages": true
+      }
+    },
+    "webApp": {
+      "$description": "For functional elements in digital interfaces (nav bars, tab bars, menus).",
+      "sizes": {
+        "small":  { "$value": "12px", "$type": "dimension" },
+        "medium": { "$value": "16px", "$type": "dimension" },
+        "large":  { "$value": "24px", "$type": "dimension" }
+      },
+      "colour": "black only",
+      "rules": {
+        "noResize": "Icons are pixel-perfect. Do not resize from library.",
+        "keepSimple": true,
+        "openEnds": "For a light look and optimistic touch",
+        "safeZone": "To balance differently shaped icons"
+      }
+    },
+    "animation": {
+      "redAccentAppearance": "at the end to underline the message",
+      "pace": "fast with eased movement",
+      "loop": "smooth presentation",
+      "formats": ["GIF", "MP4", "MOV with transparency", "SVG (static)"]
+    }
+  }
+}

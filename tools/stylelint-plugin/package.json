@@ -1,0 +1,30 @@
+{
+  "name": "stylelint-plugin-ubs",
+  "version": "1.0.0",
+  "description": "Stylelint plugin for UBS brand CSS rule enforcement",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "stylelint": ">=16"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "stylelint": "^16.0.0",
+    "typescript": "^5.3.0"
+  },
+  "keywords": [
+    "stylelint-plugin",
+    "stylelint",
+    "ubs",
+    "brand",
+    "css"
+  ],
+  "license": "UNLICENSED"
+}

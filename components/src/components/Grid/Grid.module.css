@@ -1,0 +1,71 @@
+/* ─── UBS Grid ────────────────────────────────────────────────────── */
+/* Responsive grid system with UBS breakpoints.                       */
+/* Breakpoints: mobile 320px, tablet 768px, desktop 1024px, wide 1440px */
+
+.grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(var(--grid-cols-mobile, 1), 1fr);
+}
+
+/* ─── Gap ─────────────────────────────────────────────────────────── */
+
+.gap-none {
+  gap: 0;
+}
+
+.gap-small {
+  gap: 8px;
+}
+
+.gap-medium {
+  gap: 16px;
+}
+
+.gap-large {
+  gap: 24px;
+}
+
+/* ─── Responsive Breakpoints ──────────────────────────────────────── */
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(var(--grid-cols-tablet, 2), 1fr);
+  }
+
+  .gap-small {
+    gap: 12px;
+  }
+
+  .gap-medium {
+    gap: 20px;
+  }
+
+  .gap-large {
+    gap: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(var(--grid-cols-desktop, 3), 1fr);
+  }
+
+  .gap-small {
+    gap: 16px;
+  }
+
+  .gap-medium {
+    gap: 24px;
+  }
+
+  .gap-large {
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .grid {
+    grid-template-columns: repeat(var(--grid-cols-wide, 4), 1fr);
+  }
+}

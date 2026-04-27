@@ -1,0 +1,35 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "UBS Design System — Token Index. Master reference for all design tokens.",
+  "$source": "https://ubs.frontify.com/",
+  "$version": "1.0.0",
+  "$generated": "2026-03-30",
+  "files": {
+    "colors": "./colors.json",
+    "typography": "./typography.json",
+    "layout": "./layout.json",
+    "accessibility": "./accessibility.json",
+    "icons": "./icons.json",
+    "illustrations": "./illustrations.json",
+    "sound": "./sound.json",
+    "dataVisualization": "./data-visualization.json",
+    "pattern": "./pattern.json",
+    "toneOfVoice": "./tone-of-voice.json",
+    "socialMedia": "./social-media.json"
+  },
+  "summary": {
+    "totalColours": 36,
+    "corporateColours": 3,
+    "secondaryColours": 14,
+    "chartColours": 20,
+    "specialColours": 6,
+    "darkModeColours": 2,
+    "typographyStyles": 5,
+    "hierarchyLevels": 16,
+    "isoFormats": 10,
+    "accessibilityStandard": "WCAG 2.2 Level AA",
+    "soundAdaptations": 6,
+    "brandPersonalityTraits": 4,
+    "toneOfVoicePillars": 3
+  }
+}

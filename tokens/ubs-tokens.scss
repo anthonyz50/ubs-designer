@@ -1,0 +1,200 @@
+// UBS Design System — SCSS Variables & Mixins
+// Generated from ubs.frontify.com brand guidelines
+// Version: 1.0.0 | Date: 2026-03-30
+
+// ==========================================
+// CORPORATE COLOURS
+// ==========================================
+$ubs-white: #FFFFFF;
+$ubs-red: #E60000;
+$ubs-black: #000000;
+
+// ==========================================
+// SECONDARY — GRAYS
+// ==========================================
+$ubs-gray-1: #CCCABC;
+$ubs-gray-2: #B8B3A2;
+$ubs-gray-3: #8E8D83;
+$ubs-gray-4: #7A7870;
+$ubs-gray-5: #5A5D5C;
+$ubs-gray-6: #404040;
+
+// ==========================================
+// SECONDARY — BORDEAUX
+// ==========================================
+$ubs-bordeaux-1: #BD000C;
+$ubs-bordeaux-2: #8A000A;
+$ubs-bordeaux-3: #620004;
+
+// ==========================================
+// SECONDARY — BRONZE
+// ==========================================
+$ubs-bronze-1: #B98E2C;
+$ubs-bronze-2: #946F29;
+$ubs-bronze-3: #6C5312;
+
+// ==========================================
+// SECONDARY — PASTELS
+// ==========================================
+$ubs-pastel-1: #ECEBE4;
+$ubs-pastel-2: #F5F0E1;
+
+// ==========================================
+// DARK MODE
+// ==========================================
+$ubs-dark-red-primary: #D83B31;
+$ubs-dark-red-secondary: #FE6F5D;
+
+// ==========================================
+// RAG COLOURS
+// ==========================================
+$ubs-rag-red: #BD000C;
+$ubs-rag-amber: #E4A911;
+$ubs-rag-green: #6F7A1A;
+
+// ==========================================
+// TRADING COLOURS
+// ==========================================
+$ubs-trading-green: #498100;
+$ubs-trading-red: #C81219;
+
+// ==========================================
+// METALLIC
+// ==========================================
+$ubs-metallic-silver: #BEBEBE;
+
+// ==========================================
+// CHART COLOURS (ordered sequence)
+// ==========================================
+$ubs-chart-colours: (
+  bronze50: #AF8626,
+  lagoon60: #00759E,
+  kiwi60: #879420,
+  aubergine90: #4B2D58,
+  sand50: #9F8865,
+  plum90: #2E476B,
+  sage50: #469A6C,
+  blush60: #AD3E4A,
+  lavender50: #8489BD,
+  lake50: #0C7EC6,
+  bronze80: #654D16,
+  aubergine60: #804C95,
+  mint50: #45999C,
+  plum60: #4972AC,
+  blush40: #CC707A,
+  sage80: #295B40,
+  lavender70: #545A9C,
+  chocolate60: #785E4A,
+  lake90: #07476F,
+  bordeaux90: #620004,
+);
+
+// ==========================================
+// TYPOGRAPHY
+// ==========================================
+$ubs-font-family: 'Frutiger', Arial, sans-serif;
+$ubs-font-fallback: Arial, sans-serif;
+
+// Print sizes (pt)
+$ubs-type-scale: (
+  h1:         (size: 20pt,   line: 24pt,  weight: 300),
+  h2:         (size: 13.5pt, line: 16pt,  weight: 300),
+  h3-bold:    (size: 9.5pt,  line: 12pt,  weight: 700),
+  h3-red:     (size: 9.5pt,  line: 12pt,  weight: 700),
+  body:       (size: 9.5pt,  line: 12pt,  weight: 300),
+  small:      (size: 8pt,    line: 10pt,  weight: 300),
+  caption:    (size: 7.5pt,  line: 9.5pt, weight: 300),
+  footnote:   (size: 6.5pt,  line: 7.5pt, weight: 300),
+);
+
+// Web sizes (px)
+$ubs-web-font-min: 14px;
+$ubs-web-font-body: 16px;
+$ubs-web-line-body: 22px;
+$ubs-web-font-large: 25px;
+
+// ==========================================
+// ACCESSIBILITY
+// ==========================================
+$ubs-contrast-text: 4.5;
+$ubs-contrast-large: 3;
+$ubs-contrast-graphics: 3;
+
+// ==========================================
+// LAYOUT — ISO FORMAT MAPS
+// ==========================================
+$ubs-margins: (
+  A8:  6.0mm,  A7:  9.0mm,  A6: 11.0mm, A6-5: 12.5mm, A5: 12.5mm,
+  A4: 15.5mm,  A3: 22.1mm,  A2: 31.0mm, A1:   44.2mm, A0: 62.1mm,
+);
+
+$ubs-impulse-widths: (
+  A8:  1.2pt,  A7:  1.9pt,  A6:  2.6pt, A6-5:  2.6pt, A5:  3.2pt,
+  A4:  4.5pt,  A3:  6.7pt,  A2:  9.0pt, A1:   12.7pt, A0: 18.0pt,
+);
+
+$ubs-impulse-spaces: (
+  A8:  1.8mm,  A7:  2.4mm,  A6:  3.0mm, A6-5:  3.5mm, A5:  4.9mm,
+  A4:  7.0mm,  A3:  9.9mm,  A2: 14.0mm, A1:   19.8mm, A0: 28.0mm,
+);
+
+$ubs-logo-sizes: (
+  A8: 10%, A7: 15%, A6: 18%, A6-5: 21%, A5: 21%,
+  A4: 26%, A3: 37%, A2: 52%, A1:   74%, A0: 104%,
+);
+
+// ==========================================
+// ICONS
+// ==========================================
+$ubs-icon-sm: 12px;
+$ubs-icon-md: 16px;
+$ubs-icon-lg: 24px;
+
+// ==========================================
+// CHART GAPS
+// ==========================================
+$ubs-chart-gap-screen: 2px;
+$ubs-chart-gap-print: 1.5pt;
+
+// ==========================================
+// MOVING FRAME
+// ==========================================
+$ubs-frame-transparent: 0.8;
+$ubs-frame-opaque: 1.0;
+
+// ==========================================
+// MIXINS
+// ==========================================
+
+/// Apply UBS Impulse line for a given format
+@mixin ubs-impulse($format: A4) {
+  border-left: map-get($ubs-impulse-widths, $format) solid $ubs-red;
+  padding-left: map-get($ubs-impulse-spaces, $format);
+}
+
+/// Enforce minimum contrast for accessibility
+@mixin ubs-accessible-text($bg: $ubs-white) {
+  @if lightness($bg) > 50% {
+    color: $ubs-black;
+  } @else {
+    color: $ubs-white;
+  }
+}
+
+/// Chart gap separator
+@mixin ubs-chart-gap($medium: screen) {
+  @if $medium == print {
+    gap: $ubs-chart-gap-print;
+  } @else {
+    gap: $ubs-chart-gap-screen;
+  }
+}
+
+/// Moving Frame overlay
+@mixin ubs-moving-frame($variant: transparent) {
+  @if $variant == transparent {
+    background-color: rgba($ubs-white, $ubs-frame-transparent);
+  } @else {
+    background-color: $ubs-white;
+  }
+}

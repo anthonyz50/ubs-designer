@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"{{#if options.darkMode}} data-theme="dark"{{/if}}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="UBS Layout Generator">
+  <meta name="format" content="{{format.name}}">
+  <title>UBS {{capitalise options.layout}} — {{format.name}}</title>
+  {{#if css}}
+  <style>
+{{{css}}}
+  </style>
+  {{/if}}
+</head>
+<body class="ubs-layout ubs-{{options.layout}} ubs-format-{{format.name}}{{#if options.darkMode}} ubs-dark{{/if}}">
+  {{{body}}}
+</body>
+</html>

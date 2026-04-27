@@ -1,0 +1,163 @@
+/* CTA — UBS Design System */
+/* Call-to-action component following UBS CTA brand rules. */
+
+/* ─── Base ──────────────────────────────────────────────── */
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ubs-font-family-primary, 'Frutiger', 'Frutiger Neue', Arial, Helvetica, sans-serif);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    color 200ms var(--ubs-easing-default, cubic-bezier(0.4, 0, 0.2, 1)),
+    background-color 200ms var(--ubs-easing-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.cta:focus-visible {
+  outline: var(--ubs-a11y-focus-width, 2px) solid var(--ubs-color-border-focus, #000000);
+  outline-offset: 2px;
+}
+
+/* ─── Arrow animation ───────────────────────────────────── */
+
+.arrow {
+  transition: transform 200ms var(--ubs-easing-default, cubic-bezier(0.4, 0, 0.2, 1));
+  flex-shrink: 0;
+}
+
+.animated:hover .arrow,
+.animated:focus-visible .arrow {
+  transform: translateX(4px);
+}
+
+/* ─── Sizes ─────────────────────────────────────────────── */
+
+.sm {
+  font-size: var(--ubs-font-size-small, 14px);
+  line-height: var(--ubs-line-height-body, 1.375);
+}
+
+.md {
+  font-size: var(--ubs-font-size-body, 16px);
+  line-height: var(--ubs-line-height-body, 1.375);
+}
+
+.lg {
+  font-size: var(--ubs-font-size-h5, 18px);
+  line-height: var(--ubs-line-height-body, 1.375);
+}
+
+/* ─── Button CTA variant ────────────────────────────────── */
+
+.button {
+  background-color: var(--ubs-color-red, #E60000);
+  color: var(--ubs-color-white, #FFFFFF);
+  font-weight: var(--ubs-font-weight-bold, 700);
+  padding: 12px 24px;
+  min-height: var(--ubs-a11y-min-touch-target, 44px);
+}
+
+.button:hover {
+  background-color: var(--ubs-color-interactive-primary-hover, #BD000C);
+}
+
+.button:active {
+  background-color: var(--ubs-color-interactive-primary-active, #8A000A);
+}
+
+.button .arrow {
+  color: var(--ubs-color-white, #FFFFFF);
+}
+
+/* Button sizes */
+.button.sm {
+  padding: 8px 16px;
+  min-height: 36px;
+}
+
+.button.lg {
+  padding: 16px 32px;
+  min-height: 52px;
+}
+
+/* ─── Text CTA variant ──────────────────────────────────── */
+
+.text {
+  background: none;
+  color: var(--ubs-color-red, #E60000);
+  font-weight: var(--ubs-font-weight-medium, 500);
+  padding: 0;
+}
+
+.text:hover {
+  color: var(--ubs-color-interactive-primary-hover, #BD000C);
+}
+
+.text:active {
+  color: var(--ubs-color-interactive-primary-active, #8A000A);
+}
+
+/* Text CTA arrow is always UBS Red */
+.text .arrow {
+  color: var(--ubs-color-red, #E60000);
+}
+
+.text:hover .arrow {
+  color: var(--ubs-color-interactive-primary-hover, #BD000C);
+}
+
+/* ─── URL CTA variant ───────────────────────────────────── */
+/* For use on Moving Frame or white background */
+
+.url {
+  background: none;
+  color: var(--ubs-color-red, #E60000);
+  font-weight: var(--ubs-font-weight-regular, 400);
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.url:hover {
+  color: var(--ubs-color-interactive-primary-hover, #BD000C);
+  text-decoration-thickness: 2px;
+}
+
+.url:active {
+  color: var(--ubs-color-interactive-primary-active, #8A000A);
+}
+
+.url .arrow {
+  color: var(--ubs-color-red, #E60000);
+}
+
+.url:hover .arrow {
+  color: var(--ubs-color-interactive-primary-hover, #BD000C);
+}
+
+/* ─── Label ─────────────────────────────────────────────── */
+
+.label {
+  /* Prevent multiline text per UBS rules */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─── Reduced motion ────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .cta,
+  .arrow {
+    transition: none;
+  }
+
+  .animated:hover .arrow,
+  .animated:focus-visible .arrow {
+    transform: none;
+  }
+}

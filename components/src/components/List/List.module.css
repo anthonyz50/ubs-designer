@@ -1,0 +1,87 @@
+/* ─── List ─── UBS Design System ─── */
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Frutiger', Arial, sans-serif;
+  width: 100%;
+}
+
+/* ─── List Item ─── */
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  transition: background-color 0.15s ease;
+}
+
+.compact .listItem {
+  padding: 8px 12px;
+  gap: 8px;
+}
+
+/* ─── Divided variant ─── */
+.divided .listItem {
+  border-bottom: 1px solid #cccabc;
+}
+
+.divided .listItem:last-child {
+  border-bottom: none;
+}
+
+/* ─── Hoverable ─── */
+.hoverable .listItem:hover {
+  background-color: #ecebe4;
+}
+
+/* ─── Clickable ─── */
+.listItemClickable {
+  cursor: pointer;
+}
+
+.listItemClickable:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* ─── Icon ─── */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: #5a5d5c;
+}
+
+/* ─── Content ─── */
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.primary {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.5;
+}
+
+.secondary {
+  font-size: 14px;
+  font-weight: 400;
+  color: #7a7870;
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+/* ─── Action area ─── */
+.action {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: auto;
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "UBS Design System — Accessibility Tokens. WCAG 2.2 Level AA. Source: ubs.frontify.com",
+  "accessibility": {
+    "standard": "WCAG 2.2 Level AA",
+    "contrast": {
+      "text": {
+        "$value": "4.5:1",
+        "$type": "ratio",
+        "$description": "Minimum contrast ratio for standard text against background."
+      },
+      "largeText": {
+        "$value": "3:1",
+        "$type": "ratio",
+        "$description": "Minimum contrast ratio for text over 18pt (25 CSS px)."
+      },
+      "iconsAndGraphics": {
+        "$value": "3:1",
+        "$type": "ratio",
+        "$description": "Minimum contrast ratio for icons and graphic objects against background or adjacent colours."
+      },
+      "chartSeparator": {
+        "$value": "2px",
+        "$type": "dimension",
+        "$description": "Minimum separator/gap in charts if colour contrast below 3:1 between adjacent segments."
+      }
+    },
+    "typography": {
+      "minimumFontSize": {
+        "$value": "10.5pt",
+        "$type": "dimension",
+        "$description": "14 CSS px. Usually the minimum for accessibility."
+      },
+      "recommendedFontSize": {
+        "$value": "12pt",
+        "$type": "dimension",
+        "$description": "16 CSS px. Easy-to-read standard."
+      },
+      "recommendedLineHeight": {
+        "$value": "17pt",
+        "$type": "dimension",
+        "$description": "22 CSS px. Line height for 12pt body text."
+      },
+      "pdfReflow": "Content must work for enlargement up to 400%"
+    },
+    "charts": {
+      "gapPrint": { "$value": "1.5pt", "$type": "dimension" },
+      "gapScreen": { "$value": "2px", "$type": "dimension" },
+      "dimension": "always 2D, never 3D",
+      "neverRelyOnColourAlone": true,
+      "useLineTypes": "Different line types for complex line charts and monochrome sequences"
+    },
+    "rules": {
+      "avoidTextInImages": true,
+      "textInImagesMinContrast": "4.5:1",
+      "alternativeTextRequired": true,
+      "noColourAlone": "Colourblind users need additional design features beyond colour",
+      "logicalHeadingStructure": true,
+      "documentTitle": true,
+      "documentLanguage": true
+    },
+    "tools": {
+      "desktop": "Colour Contrast Analyser (Paciello Group)",
+      "online": "contrastchecker.com"
+    }
+  }
+}

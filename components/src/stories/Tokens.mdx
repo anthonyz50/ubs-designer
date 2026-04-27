@@ -1,0 +1,192 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundation/Tokens" />
+
+# Design Tokens
+
+All design decisions in the UBS Design System are captured as typed tokens. These tokens are the single source of truth for spacing, breakpoints, z-index, layout, transitions, and more.
+
+export const TokenTable = ({ title, tokens }) => (
+  <div style={{ marginBottom: 32 }}>
+    <h3 style={{ fontFamily: 'Arial, sans-serif', fontSize: 16, marginBottom: 12 }}>{title}</h3>
+    <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'Arial, sans-serif', fontSize: 14 }}>
+      <thead>
+        <tr style={{ borderBottom: '2px solid #CCCABC' }}>
+          <th style={{ textAlign: 'left', padding: '8px 12px' }}>Token</th>
+          <th style={{ textAlign: 'left', padding: '8px 12px' }}>Value</th>
+          <th style={{ textAlign: 'left', padding: '8px 12px' }}>Preview</th>
+        </tr>
+      </thead>
+      <tbody>
+        {tokens.map((t, i) => (
+          <tr key={i} style={{ borderBottom: '1px solid #ECEBE4' }}>
+            <td style={{ padding: '8px 12px', fontFamily: 'monospace', fontSize: 13 }}>{t.name}</td>
+            <td style={{ padding: '8px 12px' }}>{t.value}</td>
+            <td style={{ padding: '8px 12px' }}>{t.preview}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
+
+export const SpacingBar = ({ size }) => (
+  <div style={{ width: size, height: 12, backgroundColor: '#E60000', borderRadius: 2 }} />
+);
+
+---
+
+## Spacing Scale (4px Grid)
+
+All spacing values follow a 4px base grid.
+
+<TokenTable
+  title="Named Spacing Tokens"
+  tokens={[
+    { name: 'spacing.none', value: '0px', preview: <SpacingBar size={0} /> },
+    { name: 'spacing.4xs', value: '4px', preview: <SpacingBar size={4} /> },
+    { name: 'spacing.3xs', value: '8px', preview: <SpacingBar size={8} /> },
+    { name: 'spacing.2xs', value: '12px', preview: <SpacingBar size={12} /> },
+    { name: 'spacing.xs', value: '16px', preview: <SpacingBar size={16} /> },
+    { name: 'spacing.sm', value: '24px', preview: <SpacingBar size={24} /> },
+    { name: 'spacing.md', value: '32px', preview: <SpacingBar size={32} /> },
+    { name: 'spacing.lg', value: '48px', preview: <SpacingBar size={48} /> },
+    { name: 'spacing.xl', value: '64px', preview: <SpacingBar size={64} /> },
+    { name: 'spacing.2xl', value: '96px', preview: <SpacingBar size={96} /> },
+  ]}
+/>
+
+Numeric spacing scale: `[0, 4, 8, 12, 16, 24, 32, 48, 64, 96]`
+
+---
+
+## Breakpoints
+
+The UBS responsive system uses four breakpoints aligned to ISO-standard device categories.
+
+| Token | Width | Usage |
+|-------|-------|-------|
+| `breakpoints.mobile` | 320px | Small phones and narrow viewports |
+| `breakpoints.tablet` | 768px | Tablets and medium viewports |
+| `breakpoints.desktop` | 1024px | Desktop and laptop screens |
+| `breakpoints.wide` | 1440px | Wide monitors and large displays |
+
+**Media queries** (for JS usage):
+```ts
+mediaQueries.mobile   // '(min-width: 320px)'
+mediaQueries.tablet   // '(min-width: 768px)'
+mediaQueries.desktop  // '(min-width: 1024px)'
+mediaQueries.wide     // '(min-width: 1440px)'
+```
+
+---
+
+## Layout
+
+| Token | Value | Description |
+|-------|-------|-------------|
+| `layout.maxWidth` | 1440px | Maximum content width |
+| `layout.columns.mobile` | 4 | Grid columns on mobile |
+| `layout.columns.tablet` | 8 | Grid columns on tablet |
+| `layout.columns.desktop` | 12 | Grid columns on desktop |
+| `layout.columns.wide` | 12 | Grid columns on wide |
+| `layout.gutter.mobile` | 16px | Side padding on mobile |
+| `layout.gutter.tablet` | 24px | Side padding on tablet |
+| `layout.gutter.desktop` | 32px | Side padding on desktop |
+| `layout.gutter.wide` | 48px | Side padding on wide |
+| `layout.columnGap.mobile` | 16px | Column gap on mobile |
+| `layout.columnGap.tablet` | 24px | Column gap on tablet |
+| `layout.columnGap.desktop` | 24px | Column gap on desktop |
+| `layout.columnGap.wide` | 32px | Column gap on wide |
+
+---
+
+## Border Radius
+
+| Token | Value |
+|-------|-------|
+| `borderRadius.none` | 0px |
+| `borderRadius.sm` | 2px |
+| `borderRadius.md` | 4px |
+| `borderRadius.lg` | 8px |
+| `borderRadius.xl` | 12px |
+| `borderRadius.full` | 9999px |
+
+---
+
+## Z-Index Scale
+
+Layered z-index values for consistent stacking.
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `zIndex.base` | 0 | Default stacking level |
+| `zIndex.dropdown` | 100 | Dropdowns and select menus |
+| `zIndex.sticky` | 200 | Sticky headers and navigation |
+| `zIndex.overlay` | 300 | Overlay backgrounds |
+| `zIndex.modal` | 400 | Modal dialogs |
+| `zIndex.popover` | 500 | Popovers and tooltips |
+| `zIndex.toast` | 600 | Toast notifications |
+| `zIndex.tooltip` | 700 | Top-level tooltips |
+
+---
+
+## Transitions
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `duration.fast` | 100ms | Micro-interactions (hover, focus) |
+| `duration.normal` | 200ms | Standard transitions |
+| `duration.slow` | 300ms | Complex animations |
+| `duration.slower` | 500ms | Full-page transitions |
+
+**Easing curves:**
+
+| Name | Value | Usage |
+|------|-------|-------|
+| `easing.default` | `cubic-bezier(0.4, 0, 0.2, 1)` | Standard UBS easing |
+| `easing.easeOut` | `cubic-bezier(0, 0, 0.2, 1)` | Enter / appear |
+| `easing.easeIn` | `cubic-bezier(0.4, 0, 1, 1)` | Exit / disappear |
+| `easing.impulse` | `cubic-bezier(0.22, 1, 0.36, 1)` | Spring-like impulse |
+
+---
+
+## Accessibility Tokens
+
+| Token | Value | Description |
+|-------|-------|-------------|
+| `accessibility.contrast.normalText` | 4.5:1 | Minimum contrast for text < 25px |
+| `accessibility.contrast.largeText` | 3:1 | Minimum contrast for text ≥ 25px |
+| `accessibility.contrast.graphics` | 3:1 | Minimum contrast for UI components |
+| `accessibility.largeTextThreshold` | 25px | Threshold for "large text" |
+| `accessibility.largeTextBoldThreshold` | 18.7px | Threshold for bold "large text" |
+| `accessibility.minTouchTarget` | 44px | Minimum touch target (WCAG 2.5.8) |
+| `accessibility.minFontSize` | 14px | Absolute minimum font size |
+| `accessibility.focusIndicatorWidth` | 2px | Focus ring minimum width |
+
+---
+
+## Usage
+
+Import tokens directly:
+
+```tsx
+import { spacing, breakpoints, zIndex, transitions } from '../index';
+
+// Use in styled components or inline styles
+const style = {
+  padding: spacing.md,        // 32
+  zIndex: zIndex.modal,       // 400
+  transition: `all ${transitions.duration.normal} ${transitions.easing.default}`,
+};
+```
+
+Or use CSS custom properties (injected by UBSThemeProvider):
+
+```css
+.myComponent {
+  padding: var(--ubs-spacing-md);
+  z-index: var(--ubs-z-modal);
+  transition: all var(--ubs-duration-normal) var(--ubs-easing-default);
+}
+```

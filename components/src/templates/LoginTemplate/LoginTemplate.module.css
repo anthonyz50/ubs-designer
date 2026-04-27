@@ -1,0 +1,82 @@
+/* ─── LoginTemplate ─── UBS Design System ─── */
+
+.loginPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #ecebe4; /* Pastel I */
+  font-family: 'Frutiger', Arial, sans-serif;
+  padding: 24px;
+}
+
+/* ─── Login Card ─── */
+
+.loginCard {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ─── Logo ─── */
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+/* ─── Title Block ─── */
+
+.titleBlock {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* ─── Error Alert ─── */
+
+.errorAlert {
+  margin-bottom: 20px;
+}
+
+/* ─── Form ─── */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ─── Submit Button ─── */
+
+.submitButton {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* ─── Forgot Password Link ─── */
+
+.forgotLink {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.forgotButton {
+  background: none;
+  border: none;
+  color: #7a7870; /* Gray IV */
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  transition: color 150ms;
+}
+
+.forgotButton:hover {
+  color: #000000;
+}
+
+.forgotButton:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}

@@ -1,0 +1,132 @@
+/* Modal — UBS Design System */
+
+/* ── Backdrop ─────────────────────────────── */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdropOpen {
+  opacity: 1;
+}
+
+/* ── Dialog ───────────────────────────────── */
+
+.dialog {
+  background-color: #ffffff;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 48px);
+  width: 100%;
+  position: relative;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  color: #000000;
+}
+
+.backdropOpen .dialog {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ── Sizes ────────────────────────────────── */
+
+.sm {
+  max-width: 400px;
+}
+
+.md {
+  max-width: 600px;
+}
+
+.lg {
+  max-width: 800px;
+}
+
+.fullscreen {
+  max-width: none;
+  max-height: none;
+  height: 100vh;
+  width: 100vw;
+  border-radius: 0;
+}
+
+/* ── Header ───────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #ecebe4;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Frutiger', Arial, sans-serif;
+  margin: 0;
+  color: #000000;
+}
+
+.closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #5a5d5c;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.closeButton:hover {
+  color: #000000;
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* ── Body ─────────────────────────────────── */
+
+.body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── Footer ───────────────────────────────── */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid #ecebe4;
+  flex-shrink: 0;
+}

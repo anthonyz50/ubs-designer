@@ -1,0 +1,168 @@
+/* ─── ContentPageTemplate ─── UBS Design System ─── */
+
+.contentPage {
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+/* ─── Hero Section ─── */
+
+.heroSection {
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── Header Wrapper ─── */
+
+.headerWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Body Layout ─── */
+
+.body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.bodyWithSidebar {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+}
+
+/* ─── Main Content ─── */
+
+.mainContent {
+  min-width: 0;
+}
+
+/* Typography presets for content area */
+.typographyContent {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #404040;
+}
+
+.typographyContent h2 {
+  font-size: 24px;
+  font-weight: 400;
+  color: #000000;
+  margin: 32px 0 12px;
+  line-height: 1.3;
+}
+
+.typographyContent h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000;
+  margin: 24px 0 8px;
+  line-height: 1.4;
+}
+
+.typographyContent p {
+  margin: 0 0 16px;
+}
+
+.typographyContent blockquote {
+  border-left: 3px solid #e60000; /* UBS Red */
+  margin: 24px 0;
+  padding: 12px 20px;
+  color: #5a5d5c;
+  font-style: italic;
+}
+
+.typographyContent ul,
+.typographyContent ol {
+  margin: 0 0 16px;
+  padding-left: 24px;
+}
+
+.typographyContent li {
+  margin-bottom: 4px;
+}
+
+/* ─── Sidebar ─── */
+
+.sidebar {
+  position: sticky;
+  top: 96px; /* below navbar */
+  align-self: start;
+}
+
+/* ─── Related Section ─── */
+
+.relatedSection {
+  background-color: #ecebe4; /* Pastel I */
+  padding: 48px 0;
+  margin-top: 48px;
+}
+
+.relatedInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.relatedLink {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 150ms;
+}
+
+.relatedLink:hover {
+  transform: translateY(-2px);
+}
+
+.relatedLink:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Responsive ─── */
+
+@media (max-width: 1023px) {
+  .bodyWithSidebar {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 767px) {
+  .body {
+    padding: 20px 16px;
+  }
+
+  .headerWrapper {
+    padding: 0 16px;
+  }
+
+  .relatedInner {
+    padding: 0 16px;
+  }
+}

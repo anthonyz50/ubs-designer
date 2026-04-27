@@ -1,0 +1,94 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Welcome/Introduction" />
+
+# UBS Design System
+
+Welcome to the UBS Design System component library. This library provides a complete set of React components that strictly enforce UBS brand guidelines, ensuring consistency and compliance across all digital products.
+
+## Overview
+
+The UBS Design System is built with:
+
+- **React 18** with TypeScript
+- **CSS Modules** for scoped, collision-free styling
+- **Vite** for fast builds and HMR
+- **WCAG 2.2 Level AA** accessibility compliance
+
+## Core Principles
+
+### Brand Compliance
+Every component enforces UBS brand rules at the code level. UBS Red is never applied to numbers. Typography follows the 16-level UBS hierarchy. Charts are always 2D with correct colour sequences.
+
+### Accessibility First
+All components meet WCAG 2.2 Level AA requirements. Minimum contrast ratios of 4.5:1 for standard text and 3:1 for large text are enforced. Colour alone is never used to convey meaning.
+
+### Regional Awareness
+Trading colours respect regional conventions. In EMEA and US markets, green indicates positive and red indicates negative values. In APAC markets, this is reversed.
+
+## Getting Started
+
+### Installation
+
+```bash
+npm install @ubs/design-system
+```
+
+### Basic Usage
+
+```tsx
+import { UBSThemeProvider, UBSGlobalStyles, Button, Typography } from '../index';
+
+function App() {
+  return (
+    <UBSThemeProvider>
+      <UBSGlobalStyles />
+      <Typography variant="subheadline1">Welcome to UBS</Typography>
+      <Button variant="primary">Get Started</Button>
+    </UBSThemeProvider>
+  );
+}
+```
+
+### Theme Provider
+
+Always wrap your application in `<UBSThemeProvider>` to enable theme context and dark mode support:
+
+```tsx
+<UBSThemeProvider defaultColourMode="system">
+  <UBSGlobalStyles />
+  {/* Your app */}
+</UBSThemeProvider>
+```
+
+## Component Categories
+
+| Category | Components |
+|----------|-----------|
+| **Components** | Button, Card, Alert, Divider, Typography, Icon |
+| **Data Display** | DataViz, TradingIndicator, Badge |
+| **Layout** | Grid, Impulse |
+| **Brand** | Logo |
+
+## Design Tokens
+
+All design decisions are codified as tokens:
+
+- **Colours**: Corporate, secondary, pastels, RAG, trading, chart sequences
+- **Typography**: Frutiger font family, 16-level hierarchy, weight constraints
+- **Spacing**: 4px grid scale (0, 4, 8, 12, 16, 24, 32, 48, 64, 96)
+- **Breakpoints**: Mobile (320px), Tablet (768px), Desktop (1024px), Wide (1440px)
+
+## Key Rules
+
+1. **UBS Red (#E60000)** is for emphasis only. Never use it for numbers.
+2. **Frutiger** is the corporate typeface. Arial is the mandatory fallback.
+3. **No 3D charts**, gradients, or shadows in data visualisations.
+4. **Donut over pie** for circular charts.
+5. **2px gap** between chart segments on screen.
+6. **Minimum font size** of 14px (10.5pt) for accessibility.
+7. **No text shadows**, justified text, or centred text blocks.
+
+---
+
+Explore the sidebar to see all components, their variants, and documentation.

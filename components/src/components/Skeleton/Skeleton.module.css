@@ -1,0 +1,70 @@
+/* Skeleton — UBS Design System */
+
+.skeleton {
+  background-color: #ecebe4;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Variants ─────────────────────────────── */
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.textLine {
+  height: 14px;
+  background-color: #ecebe4;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.textLineLast {
+  width: 75%;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.rect {
+  /* default border-radius from .skeleton */
+}
+
+/* ── Shimmer animation ────────────────────── */
+
+.animate .textLine::after,
+.animate.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ── Reduced motion ───────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate .textLine::after,
+  .animate.skeleton::after {
+    animation: none;
+  }
+}

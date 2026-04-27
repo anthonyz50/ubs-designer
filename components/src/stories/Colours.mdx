@@ -1,0 +1,155 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundation/Colours" />
+
+# UBS Colour Palette
+
+All colours are sourced from the official UBS brand guidelines. Only these colours may be used in UBS communications.
+
+export const Swatch = ({ name, hex, usage }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+    <div style={{
+      width: 48, height: 48, borderRadius: 4,
+      backgroundColor: hex,
+      border: hex === '#FFFFFF' ? '1px solid #CCCABC' : 'none',
+      flexShrink: 0,
+    }} />
+    <div>
+      <div style={{ fontFamily: 'Arial, sans-serif', fontSize: 14, fontWeight: 700 }}>{name}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: 13, color: '#5A5D5C' }}>{hex}</div>
+      {usage && <div style={{ fontFamily: 'Arial, sans-serif', fontSize: 12, color: '#7A7870' }}>{usage}</div>}
+    </div>
+  </div>
+);
+
+export const Section = ({ title, children }) => (
+  <div style={{ marginBottom: 32 }}>
+    <h2 style={{ fontFamily: 'Arial, sans-serif', fontSize: 18, borderBottom: '2px solid #ECEBE4', paddingBottom: 8, marginBottom: 16 }}>{title}</h2>
+    {children}
+  </div>
+);
+
+---
+
+<Section title="Corporate Colours">
+
+These three colours dominate all UBS communications and form the foundation of the brand identity.
+
+<Swatch name="UBS White" hex="#FFFFFF" usage="Content stage. Dominates all other colours." />
+<Swatch name="UBS Red" hex="#E60000" usage="Emphasis only. NEVER use for numbers." />
+<Swatch name="UBS Black" hex="#000000" usage="Primary text colour." />
+
+</Section>
+
+<Section title="Secondary — Grays">
+
+Used in charts, backgrounds, illustrations, and tables.
+
+<Swatch name="Gray I" hex="#CCCABC" usage="Lightest gray. Backgrounds, borders." />
+<Swatch name="Gray II" hex="#B8B3A2" usage="Borders, secondary backgrounds." />
+<Swatch name="Gray III" hex="#8E8D83" usage="Charts, polychrome sequence." />
+<Swatch name="Gray IV" hex="#7A7870" usage="Info alerts, secondary text." />
+<Swatch name="Gray V" hex="#5A5D5C" usage="Darker charts, secondary text." />
+<Swatch name="Gray VI" hex="#404040" usage="Darkest gray. High-contrast charts." />
+
+</Section>
+
+<Section title="Secondary — Bordeaux">
+
+Complements UBS Red. For text highlights, backgrounds, data visualisation, illustrations.
+
+<Swatch name="Bordeaux I" hex="#BD000C" usage="RAG Red. Error states, critical alerts." />
+<Swatch name="Bordeaux II" hex="#8A000A" usage="Illustrations (~10% accent)." />
+<Swatch name="Bordeaux III" hex="#620004" usage="Deep accent. Chart colour 20." />
+
+</Section>
+
+<Section title="Secondary — Bronze">
+
+For accents, colour blocks, and backgrounds.
+
+<Swatch name="Bronze I" hex="#B98E2C" usage="Accent, colour blocks." />
+<Swatch name="Bronze II" hex="#946F29" usage="Colour blocks, backgrounds." />
+<Swatch name="Bronze III" hex="#6C5312" usage="Deep bronze accent." />
+
+</Section>
+
+<Section title="Pastels">
+
+For backgrounds and table column highlights.
+
+<Swatch name="Pastel I" hex="#ECEBE4" usage="Secondary background. Card variant." />
+<Swatch name="Pastel II" hex="#F5F0E1" usage="Tertiary background. Card variant." />
+
+</Section>
+
+<Section title="Dark Mode">
+
+Replacement colours for dark mode contexts.
+
+<Swatch name="Primary Red (Dark)" hex="#D83B31" usage="Logo, buttons, larger areas in dark mode." />
+<Swatch name="Secondary Red (Dark)" hex="#FE6F5D" usage="Text links, accents, highlights in dark mode." />
+
+</Section>
+
+<Section title="RAG (Status) Colours">
+
+Red/Amber/Green status indicators for alerts and status badges.
+
+<Swatch name="RAG Red" hex="#BD000C" usage="Problem, critical, error." />
+<Swatch name="RAG Amber" hex="#E4A911" usage="Warning, needs attention." />
+<Swatch name="RAG Green" hex="#6F7A1A" usage="Success, on track." />
+
+</Section>
+
+<Section title="Trading Colours">
+
+Regional colour mapping for financial indicators.
+
+<Swatch name="Trading Green" hex="#498100" usage="EMEA/US: positive. APAC: negative." />
+<Swatch name="Trading Red" hex="#C81219" usage="EMEA/US: negative. APAC: positive." />
+
+> **Important:** In APAC markets, red = positive and green = negative. This is the reverse of EMEA/US conventions.
+
+</Section>
+
+<Section title="Metallic">
+
+<Swatch name="Metallic Silver" hex="#BEBEBE" usage="Silver only. No gold, copper, or brass." />
+
+</Section>
+
+<Section title="Chart Colours (20-colour sequence)">
+
+Additional colours for complex charts. Must follow the defined sequence order.
+
+<Swatch name="01 Bronze 50" hex="#AF8626" />
+<Swatch name="02 Lagoon 60" hex="#00759E" />
+<Swatch name="03 Kiwi 60" hex="#879420" />
+<Swatch name="04 Aubergine 90" hex="#4B2D58" />
+<Swatch name="05 Sand 50" hex="#9F8865" />
+<Swatch name="06 Plum 90" hex="#2E476B" />
+<Swatch name="07 Sage 50" hex="#469A6C" />
+<Swatch name="08 Blush 60" hex="#AD3E4A" />
+<Swatch name="09 Lavender 50" hex="#8489BD" />
+<Swatch name="10 Lake 50" hex="#0C7EC6" />
+<Swatch name="11 Bronze 80" hex="#654D16" />
+<Swatch name="12 Aubergine 60" hex="#804C95" />
+<Swatch name="13 Mint 50" hex="#45999C" />
+<Swatch name="14 Plum 60" hex="#4972AC" />
+<Swatch name="15 Blush 40" hex="#CC707A" />
+<Swatch name="16 Sage 80" hex="#295B40" />
+<Swatch name="17 Lavender 70" hex="#545A9C" />
+<Swatch name="18 Chocolate 60" hex="#785E4A" />
+<Swatch name="19 Lake 90" hex="#07476F" />
+<Swatch name="20 Bordeaux 90" hex="#620004" />
+
+</Section>
+
+## Colour Rules
+
+- UBS Red **must never** be used for numbers
+- Red highlighting in messages is **no longer permitted** for accessibility
+- Colour alone must **never** convey meaning (WCAG 2.2 AA)
+- Minimum contrast ratio: **4.5:1** for standard text, **3:1** for large text
+- Chart segments with adjacent colour contrast below 3:1 must have a **2px gap**

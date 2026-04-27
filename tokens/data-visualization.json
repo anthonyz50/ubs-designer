@@ -1,0 +1,72 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "UBS Design System — Data Visualisation Tokens. Source: ubs.frontify.com",
+  "dataVisualization": {
+    "general": {
+      "dimension": "always 2D",
+      "circularPreference": "donut over pie",
+      "gap": {
+        "print": { "$value": "1.5pt", "$type": "dimension" },
+        "screen": { "$value": "2px", "$type": "dimension" }
+      },
+      "highlightColour": "#E60000",
+      "$description": "When using UBS Red for highlight, do not use Bordeaux I. Use next darker shade."
+    },
+    "colourSequences": {
+      "monochrome": {
+        "$description": "Standard. One colour + UBS Red for highlights.",
+        "usage": "Default for simple charts"
+      },
+      "polychrome": {
+        "$description": "Gray III-VI and Black (up to 5 blocks) + UBS Red for highlights.",
+        "colours": ["#8E8D83", "#7A7870", "#5A5D5C", "#404040", "#000000"],
+        "arrangement": "light to dark",
+        "usage": "Standard for multi-segment charts"
+      },
+      "multichrome": {
+        "$description": "Gray III-VI + Black, Bordeaux I-III, Bronze I-III mixed. Up to 9 blocks.",
+        "usage": "Extended palette when polychrome insufficient"
+      },
+      "complex": {
+        "$description": "20 additional chart colours. Use only when more colours needed and info is equal weight.",
+        "usage": "Special cases only. Must follow defined sequence order."
+      }
+    },
+    "insightFlag": {
+      "element": "red arrow",
+      "purpose": "Point to an insight with summary in plain language"
+    },
+    "typography": {
+      "primary": "Frutiger Light",
+      "alternative": ["Frutiger Bold", "Frutiger Light Condensed"],
+      "rule": "Don't mix within one visualisation"
+    },
+    "lines": {
+      "ratio": "1:2 for icons and arrows",
+      "arrowAngle": "maximum 90 degrees",
+      "sufficientContrastBetweenDividerAndChartLines": true
+    },
+    "emphasis": [
+      "colour", "contrast", "stroke contrast", "scale",
+      "proximity", "negative space", "repetition",
+      "dashed/dotted lines", "big numbers"
+    ],
+    "rules": {
+      "noNonUBSIcons": true,
+      "noShadows": true,
+      "noDominantHighlightColour": true,
+      "noMixedColourDirections": true,
+      "noGradients": true,
+      "noAngles": true,
+      "noNonCorporateColours": true,
+      "no3D": true,
+      "noWrongContrastRatio": true
+    },
+    "motion": {
+      "easing": "Changes of acceleration for realism. No abrupt starts/stops.",
+      "direction": "Straight, concise paths. No curved/organic.",
+      "transitions": "Add meaning, not embellishment. Opacity, scale, colour, position.",
+      "pace": "Consistent timing. Define smallest duration and multiply."
+    }
+  }
+}

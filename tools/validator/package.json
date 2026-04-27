@@ -1,0 +1,32 @@
+{
+  "name": "@ubs-design-system/validator",
+  "version": "1.0.0",
+  "description": "UBS Brand Validator — validates design assets against UBS brand rules",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "ubs-validate": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": [
+    "ubs",
+    "brand",
+    "validator",
+    "design-system",
+    "wcag"
+  ],
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/css-tree": "^2.3.11",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "css-tree": "^3.0.0"
+  }
+}

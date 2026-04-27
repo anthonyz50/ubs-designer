@@ -1,0 +1,18 @@
+/* ─── UBS Logo ────────────────────────────────────────────────────── */
+/* Clear space: 1/3 k minimum enforced via SVG viewBox padding.       */
+/* No modifications to the logo are permitted per brand guidelines.   */
+
+.logo {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* Tab variant: for use over photographs and coloured backgrounds. */
+.tab {
+  /* Background tab is rendered within the SVG */
+}
+
+.tabBackground {
+  /* Semi-transparent backdrop for legibility over images */
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "UBS Design System — Sound Tokens. Source: ubs.frontify.com",
+  "sound": {
+    "logo": {
+      "principal": {
+        "key": "E major",
+        "relativeMinor": "C# minor",
+        "instruments": ["synth", "mallets", "harp", "plucked sounds"],
+        "styles": ["minimal", "electronic", "downtempo"],
+        "energy": ["lively", "delicate", "dynamic"],
+        "$description": "Always first choice."
+      },
+      "adaptations": {
+        "funkyAndUpbeat": {
+          "instruments": ["drums", "electric bass", "rhythm guitars", "brass"],
+          "styles": ["funk", "breakbeat", "soul", "disco"],
+          "energy": ["syncopated", "groovy", "upbeat"]
+        },
+        "subtleAndSpacious": {
+          "instruments": ["synth pads", "strings", "piano", "textures"],
+          "styles": ["minimal", "textural", "ambient"],
+          "energy": ["calm", "flowing"]
+        },
+        "inspiringAndSerene": {
+          "instruments": ["synth pads", "piano", "textures"],
+          "styles": ["chillout", "ambient", "cinematic"],
+          "energy": ["laidback", "soft", "flowing"]
+        },
+        "vibrantAndEnthusiastic": {
+          "instruments": ["acoustic drums", "percussions", "basslines"],
+          "styles": ["percussive", "celebratory", "dance"],
+          "energy": ["active", "energetic", "lively"]
+        },
+        "boldAndUplifting": {
+          "instruments": ["drums", "sub-bass", "synth"],
+          "styles": ["electronic", "trap", "hip-hop", "dance"],
+          "energy": ["bouncy", "bold", "active"]
+        },
+        "elegantAndRefined": {
+          "instruments": ["strings", "piano", "harp", "woodwinds"],
+          "styles": ["intimate", "cinematic", "classical", "luxurious"],
+          "energy": ["stately", "delicate"]
+        }
+      },
+      "availableKeys": ["E major", "C major", "D major", "G major", "A major"],
+      "availableRelativeMinors": ["C# minor", "A minor", "B minor", "E minor", "F# minor"]
+    },
+    "application": {
+      "integrity": "Never modify sound logos. They are finalised assets.",
+      "position": {
+        "gapAfterAudio": "0-350ms after music/background/voice-over ends",
+        "fadeOut": "Let previous audio fade naturally, no abrupt cuts"
+      },
+      "loudness": {
+        "soundLogo": { "$value": "-12 LUFS", "$description": "Mastered to maximum peak and full dynamic range." },
+        "broadcast": { "$value": "-23 LKFS", "$description": "EBU R128 broadcast standard." },
+        "digital": { "$value": "-16 LKFS", "$description": "Digital/streaming platforms." }
+      },
+      "rules": {
+        "noModification": true,
+        "noFormatConversion": true,
+        "noLoudnessIncrease": true,
+        "noAbruptTransitions": true,
+        "useOnlyOfficialFiles": true
+      }
+    },
+    "brandedMusic": {
+      "lengths": ["17s", "60s", "78s"],
+      "usage": "Podcast intros, branded assets requiring longer UBS sound",
+      "license": "Global usage rights, limitless in time, all media"
+    }
+  }
+}

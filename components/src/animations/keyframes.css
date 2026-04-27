@@ -1,0 +1,240 @@
+/**
+ * UBS Design System — Animation Keyframes
+ *
+ * All @keyframes definitions following UBS motion rules:
+ * - Changes of acceleration for realism (no abrupt starts/stops)
+ * - Straight, concise paths (no curved/organic motion)
+ * - Transitions add meaning, not embellishment
+ * - Consistent timing: base duration 100ms, multiplied for longer animations
+ *
+ * Easing tokens (applied in transitions.ts, not here):
+ *   --ubs-easing-default:  cubic-bezier(0.4, 0, 0.2, 1)   — standard
+ *   --ubs-easing-impulse:  cubic-bezier(0.22, 1, 0.36, 1)  — impulse/spring
+ */
+
+/* ─── Fade ──────────────────────────────────────────────── */
+
+@keyframes ubs-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ubs-fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* ─── Slide + Fade ──────────────────────────────────────── */
+
+@keyframes ubs-slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ubs-slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ubs-slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ubs-slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide out variants (for exit animations) */
+
+@keyframes ubs-slideOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes ubs-slideOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes ubs-slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+}
+
+@keyframes ubs-slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+}
+
+/* ─── Scale + Fade ──────────────────────────────────────── */
+
+@keyframes ubs-scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ubs-scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* ─── UBS Impulse Reveal ────────────────────────────────── */
+/* Red line grows from top to bottom, 400ms with impulse easing */
+
+@keyframes ubs-revealImpulse {
+  from {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
+/* ─── Logo Tab ──────────────────────────────────────────── */
+/* Slides in from the top-left corner with fade, 500ms spring easing */
+
+@keyframes ubs-logoTabIn {
+  from {
+    opacity: 0;
+    transform: translate(-24px, -24px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+/* ─── Moving Frame Reveal ───────────────────────────────── */
+/* Frame slides in from the right, 600ms with spring easing */
+
+@keyframes ubs-movingFrameReveal {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ─── Shimmer (Skeleton Loading) ────────────────────────── */
+
+@keyframes ubs-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ─── Spin (Loading Spinner) ────────────────────────────── */
+
+@keyframes ubs-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ─── Pulse (Notifications) ─────────────────────────────── */
+
+@keyframes ubs-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* ─── Content Fade In (for staggered reveals) ───────────── */
+
+@keyframes ubs-contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

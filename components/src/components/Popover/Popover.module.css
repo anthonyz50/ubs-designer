@@ -1,0 +1,101 @@
+/* Popover — UBS Design System */
+
+.wrapper {
+  display: inline-flex;
+  position: relative;
+}
+
+.trigger {
+  display: inline-flex;
+}
+
+.popover {
+  position: absolute;
+  z-index: 9998;
+  background-color: #ffffff;
+  border: 1px solid #b8b3a2;
+  border-radius: 4px;
+  padding: 16px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  color: #000000;
+  min-width: 200px;
+  max-width: 360px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Positioning ──────────────────────────── */
+
+.top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.left {
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.right {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ── Arrow ────────────────────────────────── */
+
+.arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border: 1px solid #b8b3a2;
+  transform: rotate(45deg);
+}
+
+.top .arrow {
+  bottom: -6px;
+  left: 50%;
+  margin-left: -5px;
+  border-top: none;
+  border-left: none;
+}
+
+.bottom .arrow {
+  top: -6px;
+  left: 50%;
+  margin-left: -5px;
+  border-bottom: none;
+  border-right: none;
+}
+
+.left .arrow {
+  right: -6px;
+  top: 50%;
+  margin-top: -5px;
+  border-bottom: none;
+  border-left: none;
+}
+
+.right .arrow {
+  left: -6px;
+  top: 50%;
+  margin-top: -5px;
+  border-top: none;
+  border-right: none;
+}

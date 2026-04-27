@@ -1,0 +1,88 @@
+/* ─── UBS Textarea ────────────────────────────────────────────────── */
+
+.textarea {
+  width: 100%;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000000;
+  background-color: #FFFFFF;
+  border: 1px solid #B8B3A2;
+  border-radius: 4px;
+  padding: 10px 12px;
+  min-height: 44px;
+  text-align: left;
+  text-shadow: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.textarea::placeholder {
+  color: #8E8D83;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 2px #000000;
+}
+
+/* ─── Resize ──────────────────────────────────────────────────────── */
+
+.resizeNone {
+  resize: none;
+}
+
+.resizeVertical {
+  resize: vertical;
+}
+
+.resizeBoth {
+  resize: both;
+}
+
+/* ─── States ──────────────────────────────────────────────────────── */
+
+.error {
+  border-color: #BD000C;
+}
+
+.error:focus {
+  border-color: #BD000C;
+  box-shadow: 0 0 0 2px #BD000C;
+}
+
+.disabled {
+  background-color: #ECEBE4;
+  color: #8E8D83;
+  border-color: #CCCABC;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.readonly {
+  background-color: #F5F0E1;
+  cursor: default;
+}
+
+/* ─── Character count ─────────────────────────────────────────────── */
+
+.countWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.count {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #5A5D5C;
+  text-shadow: none;
+}
+
+.countOver {
+  color: #BD000C;
+  font-weight: 400;
+}

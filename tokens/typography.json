@@ -1,0 +1,174 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "UBS Design System — Typography Tokens. Source: ubs.frontify.com",
+  "typography": {
+    "fontFamily": {
+      "primary": {
+        "$value": "Frutiger",
+        "$type": "fontFamily",
+        "$description": "UBS corporate typeface. Licensed through Monotype."
+      },
+      "fallback": {
+        "$value": "Arial",
+        "$type": "fontFamily",
+        "$description": "Replaces Frutiger when not technically possible."
+      }
+    },
+    "fontWeight": {
+      "light": {
+        "$value": "Frutiger 45 Light",
+        "$type": "fontWeight",
+        "$description": "General use. Default weight."
+      },
+      "lightItalic": {
+        "$value": "Frutiger 45 Light Italic",
+        "$type": "fontWeight",
+        "$description": "Call-outs in body copy."
+      },
+      "lightBold": {
+        "$value": "Frutiger 45 Light Bold",
+        "$type": "fontWeight",
+        "$description": "Specific highlights."
+      },
+      "roman": {
+        "$value": "Frutiger 55 Roman",
+        "$type": "fontWeight",
+        "$description": "Extra-small text sizes."
+      },
+      "lightCondensed": {
+        "$value": "Frutiger 47 Light CN",
+        "$type": "fontWeight",
+        "$description": "Additional for diagrams."
+      }
+    },
+    "hierarchy": {
+      "keyline": {
+        "$description": "Free selectable size. Minimum 2x the infoline size.",
+        "lineSpacingMultiplier": 1.05,
+        "fontWeight": "light",
+        "colour": "black"
+      },
+      "infoline": {
+        "$description": "Free selectable size. Max half the keyline size.",
+        "lineSpacingMultiplier": 1.2,
+        "fontWeight": "light",
+        "colour": "black"
+      },
+      "subheadline1": {
+        "fontSize": { "$value": "20pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "24pt", "$type": "dimension" },
+        "fontWeight": "light",
+        "colour": "black"
+      },
+      "subheadline2": {
+        "fontSize": { "$value": "13.5pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "16pt", "$type": "dimension" },
+        "fontWeight": "light",
+        "colour": "black"
+      },
+      "subheadline3": {
+        "fontSize": { "$value": "9.5pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "12pt", "$type": "dimension" },
+        "fontWeight": "bold",
+        "colour": "black"
+      },
+      "subheadline4": {
+        "fontSize": { "$value": "9.5pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "12pt", "$type": "dimension" },
+        "fontWeight": "bold",
+        "colour": "red"
+      },
+      "leadText1": {
+        "fontSize": { "$value": "20pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "24pt", "$type": "dimension" },
+        "fontWeight": "light",
+        "colour": "black"
+      },
+      "leadText2": {
+        "fontSize": { "$value": "13.5pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "16pt", "$type": "dimension" },
+        "fontWeight": "light",
+        "colour": "black"
+      },
+      "quotes": {
+        "fontSize": { "$value": "13.5pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "16pt", "$type": "dimension" },
+        "fontWeight": "light",
+        "colour": "black"
+      },
+      "subtitles": {
+        "fontSize": { "$value": "9.5pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "12pt", "$type": "dimension" },
+        "fontWeight": "bold",
+        "colour": "black or red"
+      },
+      "copyText": {
+        "fontSize": { "$value": "9.5pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "12pt", "$type": "dimension" },
+        "fontWeight": "light",
+        "colour": "black"
+      },
+      "pageNumbers": {
+        "fontSize": { "$value": "9.5pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "12pt", "$type": "dimension" },
+        "fontWeight": "light",
+        "colour": "black"
+      },
+      "senderInfo": {
+        "fontSize": { "$value": "9.5pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "12pt", "$type": "dimension" },
+        "fontWeight": "light",
+        "colour": "black"
+      },
+      "smallCopyText": {
+        "fontSize": { "$value": "8pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "10pt", "$type": "dimension" },
+        "fontWeight": "light",
+        "colour": "black"
+      },
+      "environmentalInfo": {
+        "fontSize": { "$value": "8pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "10pt", "$type": "dimension" },
+        "fontWeight": "light",
+        "colour": "black"
+      },
+      "captions": {
+        "fontSize": { "$value": "7.5pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "9.5pt", "$type": "dimension" },
+        "fontWeight": "light",
+        "colour": "black or red"
+      },
+      "footnote": {
+        "fontSize": { "$value": "6.5pt", "$type": "dimension" },
+        "lineSpacing": { "$value": "7.5pt", "$type": "dimension" },
+        "fontWeight": "light",
+        "colour": "black"
+      }
+    },
+    "nonLatin": {
+      "arabic": { "primary": "Frutiger Arabic", "fallback": "Segoe UI Semilight" },
+      "cyrillic": { "primary": "Frutiger Cyrillic", "fallback": "Segoe UI Semilight" },
+      "greek": { "primary": "Frutiger Greek", "fallback": "Segoe UI Semilight" },
+      "hebrew": { "primary": "Segoe UI Semilight", "bold": "Segoe UI Semibold" },
+      "japanese": { "primary": "MS P Gothic", "macLight": "Hiragino Kaku Gothic ProN W2", "macKeyline": "Hiragino Kaku Gothic ProN W4", "macBold": "Hiragino Kaku Gothic ProN W6" },
+      "korean": { "primary": "Gulim", "macAll": "DFKGothic W5", "macBold": "DFKGothic W7" },
+      "simplifiedChinese": { "primary": "DFP Hei", "macLight": "DFP Hei W3", "macBold": "DFP Hei W5", "fallback": "STXihei" },
+      "traditionalChinese": { "primary": "DF Hei", "macLight": "DF Hei W3", "macBold": "DF Hei W5" },
+      "thai": { "primary": "Leelawadee", "macAll": "Lily UPC" }
+    },
+    "rules": {
+      "noRedForNumbers": true,
+      "noOpacity": true,
+      "noSmallCaps": true,
+      "noJustification": true,
+      "noRightAligned": true,
+      "noShadow": true,
+      "noCentredBlock": true,
+      "noStairs": true,
+      "noDifferentSizesInOneSentence": true,
+      "noWrap": true,
+      "noHighlightingInUBSRed": true,
+      "$description": "Red highlighting in messages is no longer permitted for accessibility."
+    }
+  }
+}

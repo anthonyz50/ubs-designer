@@ -1,0 +1,80 @@
+/* SocialMediaTemplate — UBS Design System */
+
+.template {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Frutiger', Arial, sans-serif;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+}
+
+/* ── Format dimensions ─────────────────────────────────── */
+
+.square {
+  aspect-ratio: 1 / 1;
+}
+
+.portrait {
+  aspect-ratio: 4 / 5;
+}
+
+.vertical {
+  aspect-ratio: 9 / 16;
+}
+
+.wide {
+  aspect-ratio: 16 / 9;
+}
+
+/* ── Content area ──────────────────────────────────────── */
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Logo tab ──────────────────────────────────────────── */
+
+.logoTab {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #E60000; /* UBS Red */
+}
+
+/* Static: right-aligned Logo Tab */
+.logoRight {
+  top: 0;
+  right: 0;
+}
+
+/* Animated: left-aligned Logo */
+.logoLeft {
+  top: 0;
+  left: 0;
+}
+
+/* ── Logo text (simplified — real implementation would use SVG logo) ── */
+
+.logoText {
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+/* ── Safe zone (padding for content) ───────────────────── */
+
+.safeZone {
+  padding: 48px 24px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,55 @@
+/* ─── UBS Layout ──────────────────────────────────────────────────── */
+/* Page layout container with format-based margins.                   */
+/* Margins are applied via inline styles for format precision.        */
+
+.layout {
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-shadow: none;
+  text-align: left;
+  color: #000000;
+  background-color: #FFFFFF;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Format-specific adjustments ─────────────────────────────────── */
+/* Max-widths based on ISO format proportions for screen rendering.   */
+
+.format-a0 {
+  max-width: 1680px;
+}
+
+.format-a1 {
+  max-width: 1440px;
+}
+
+.format-a2 {
+  max-width: 1200px;
+}
+
+.format-a3 {
+  max-width: 1024px;
+}
+
+.format-a4 {
+  max-width: 860px;
+}
+
+.format-a5 {
+  max-width: 680px;
+}
+
+.format-a6 {
+  max-width: 500px;
+}
+
+.format-a7 {
+  max-width: 380px;
+}
+
+.format-a8 {
+  max-width: 280px;
+}

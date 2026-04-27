@@ -1,0 +1,173 @@
+/* ─── UBS Alert ───────────────────────────────────────────────────── */
+/* RAG status indicators with icon, title, and dismissible support.   */
+/* Colours: Error #BD000C, Warning #E4A911, Success #6F7A1A, Info #7A7870 */
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  border-left: 4px solid;
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-shadow: none;
+  text-align: left;
+  animation: alertFadeIn 200ms ease-out;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes alertFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Variants ────────────────────────────────────────────────────── */
+
+.error {
+  background-color: #FDF2F2;
+  border-left-color: #BD000C;
+  color: #620004;
+}
+
+.error .icon {
+  color: #BD000C;
+}
+
+.warning {
+  background-color: #FEF9E7;
+  border-left-color: #E4A911;
+  color: #6C5312;
+}
+
+.warning .icon {
+  color: #E4A911;
+}
+
+.success {
+  background-color: #F4F6EC;
+  border-left-color: #6F7A1A;
+  color: #3D4410;
+}
+
+.success .icon {
+  color: #6F7A1A;
+}
+
+.info {
+  background-color: #F5F5F3;
+  border-left-color: #7A7870;
+  color: #404040;
+}
+
+.info .icon {
+  color: #7A7870;
+}
+
+/* ─── Icon ────────────────────────────────────────────────────────── */
+
+.icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ─── Content ─────────────────────────────────────────────────────── */
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.message {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ─── Dismiss Button ──────────────────────────────────────────────── */
+
+.dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  margin: -4px -4px -4px 0;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 150ms ease;
+}
+
+.dismiss:hover {
+  opacity: 1;
+}
+
+.dismiss:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .error {
+  background-color: #3A1215;
+  border-left-color: #FE6F5D;
+  color: #FDD;
+}
+
+[data-ubs-theme="dark"] .error .icon {
+  color: #FE6F5D;
+}
+
+[data-ubs-theme="dark"] .warning {
+  background-color: #3A3012;
+  border-left-color: #E4A911;
+  color: #FEF0C7;
+}
+
+[data-ubs-theme="dark"] .warning .icon {
+  color: #E4A911;
+}
+
+[data-ubs-theme="dark"] .success {
+  background-color: #1E2A10;
+  border-left-color: #A0B34A;
+  color: #E8F0CC;
+}
+
+[data-ubs-theme="dark"] .success .icon {
+  color: #A0B34A;
+}
+
+[data-ubs-theme="dark"] .info {
+  background-color: #2A2A28;
+  border-left-color: #8E8D83;
+  color: #D0CFC8;
+}
+
+[data-ubs-theme="dark"] .info .icon {
+  color: #8E8D83;
+}
+
+[data-ubs-theme="dark"] .dismiss:focus-visible {
+  outline-color: #FFFFFF;
+}

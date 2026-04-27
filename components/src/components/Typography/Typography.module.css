@@ -1,0 +1,144 @@
+/* ─── UBS Typography ──────────────────────────────────────────────── */
+/* Implements the 16-level UBS type hierarchy.                        */
+/* Font: Frutiger (fallback Arial)                                    */
+/* Rules: no text-shadow, no text-align: justify/right                */
+/* WCAG: All text sizes ≥14px to meet AA readability guidelines.      */
+
+.typography {
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-shadow: none;
+  text-align: left;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Keyline ─────────────────────────────────────────────────────── */
+/* The primary headline. Light weight, large size. Hero presence. */
+.keyline {
+  font-weight: 300;
+  font-size: 56px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Infoline ────────────────────────────────────────────────────── */
+/* Descriptive line below keyline. Clearly subordinate. */
+.infoline {
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+/* ─── Subheadlines ────────────────────────────────────────────────── */
+.subheadline1 {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.subheadline2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.subheadline3 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.subheadline4 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+/* ─── Lead Text ───────────────────────────────────────────────────── */
+.leadText1 {
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.45;
+}
+
+.leadText2 {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* ─── Quotes ──────────────────────────────────────────────────────── */
+.quotes {
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* ─── Subtitles ───────────────────────────────────────────────────── */
+.subtitles {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Copy Text ───────────────────────────────────────────────────── */
+.copyText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ─── Page Numbers ────────────────────────────────────────────────── */
+/* Note: must never be red per UBS rules. */
+.pageNumbers {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ─── Sender Info ─────────────────────────────────────────────────── */
+.senderInfo {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ─── Small Copy Text ─────────────────────────────────────────────── */
+.smallCopyText {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* ─── Environmental Info ──────────────────────────────────────────── */
+/* Bumped from 12px to 14px to meet WCAG AA minimum text size. */
+.environmentalInfo {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #7A7870;
+}
+
+/* ─── Captions ────────────────────────────────────────────────────── */
+/* Bumped from 12px to 14px to meet WCAG AA minimum text size. */
+.captions {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #5A5D5C;
+}
+
+/* ─── Footnote ────────────────────────────────────────────────────── */
+/* Bumped from 11px to 14px to meet WCAG AA minimum text size. */
+.footnote {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #7A7870;
+}

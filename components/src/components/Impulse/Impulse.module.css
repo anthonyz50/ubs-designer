@@ -1,0 +1,35 @@
+/* ─── UBS Impulse ─────────────────────────────────────────────────── */
+/* The distinctive UBS red vertical line next to text.                */
+/* Always UBS Red #E60000. Never centred with keyline.                */
+/* Line must not exceed baseline of second line of text.              */
+
+.impulse {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.line {
+  display: block;
+  flex-shrink: 0;
+  width: var(--impulse-line-width, 4px);
+  margin-right: var(--impulse-spacing, 14px);
+  background-color: #E60000;
+  border-radius: 0;
+  align-self: stretch;
+
+  /*
+   * Limit the line height to approximately 2 lines of text.
+   * Using max-height with em units ensures it scales with the
+   * text size of the adjacent content.
+   * The 3em cap approximates the baseline of the second line.
+   */
+  max-height: 3em;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-shadow: none;
+}

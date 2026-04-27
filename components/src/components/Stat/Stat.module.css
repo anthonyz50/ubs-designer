@@ -1,0 +1,158 @@
+/* ─── Stat ─── UBS Design System ─── */
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+/* ─── Label ─── */
+.label {
+  font-weight: 400;
+  color: #7a7870;
+  line-height: 1.4;
+  margin: 0 0 4px;
+}
+
+.sm .label {
+  font-size: 12px;
+}
+
+.md .label {
+  font-size: 14px;
+}
+
+.lg .label {
+  font-size: 14px;
+}
+
+/* ─── Value row ─── */
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.prefix,
+.suffix {
+  font-weight: 400;
+  color: #5a5d5c;
+}
+
+.sm .prefix,
+.sm .suffix {
+  font-size: 14px;
+}
+
+.md .prefix,
+.md .suffix {
+  font-size: 16px;
+}
+
+.lg .prefix,
+.lg .suffix {
+  font-size: 20px;
+}
+
+/* ─── Value ─── */
+.value {
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.2;
+}
+
+.sm .value {
+  font-size: 20px;
+}
+
+.md .value {
+  font-size: 28px;
+}
+
+.lg .value {
+  font-size: 40px;
+}
+
+/* ─── Change indicator ─── */
+.change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sm .change {
+  font-size: 12px;
+}
+
+.md .change {
+  font-size: 14px;
+}
+
+.lg .change {
+  font-size: 14px;
+}
+
+.changeUp {
+  color: #6f7a1a;
+}
+
+.changeDown {
+  color: #bd000c;
+}
+
+.changeFlat {
+  color: #8e8d83;
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.85em;
+}
+
+/* ─── Loading skeleton ─── */
+.skeleton {
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ecebe4 25%, #f5f0e1 50%, #ecebe4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeletonLabel {
+  width: 80px;
+  height: 14px;
+  margin-bottom: 8px;
+}
+
+.skeletonValue {
+  height: 28px;
+  width: 120px;
+}
+
+.sm .skeletonValue {
+  height: 20px;
+  width: 80px;
+}
+
+.lg .skeletonValue {
+  height: 40px;
+  width: 160px;
+}
+
+.skeletonChange {
+  height: 14px;
+  width: 60px;
+  margin-top: 8px;
+}

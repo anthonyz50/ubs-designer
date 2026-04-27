@@ -1,0 +1,52 @@
+<div class="ubs-cover">
+  {{!-- Image area --}}
+  <div class="ubs-cover__image ubs-image-layout--{{options.imageLayout}}">
+    <div class="ubs-cover__image-placeholder">
+      <!-- Replace with brand imagery -->
+    </div>
+  </div>
+
+  {{!-- Moving Frame overlay --}}
+  {{#if options.movingFrame}}
+  <div class="ubs-moving-frame ubs-moving-frame--{{options.movingFrame}}">
+    <div class="ubs-moving-frame__content">
+      <!-- Moving Frame content area -->
+    </div>
+  </div>
+  {{/if}}
+
+  {{!-- Impulse line --}}
+  {{#if options.impulse}}
+  <div class="ubs-impulse" aria-hidden="true"></div>
+  {{/if}}
+
+  {{!-- Content area --}}
+  <div class="ubs-cover__content">
+    {{!-- Keyline / info line --}}
+    <div class="ubs-cover__keyline">
+      <span class="ubs-cover__keyline-text"><!-- Keyline text --></span>
+    </div>
+
+    {{!-- Main title area --}}
+    <div class="ubs-cover__title">
+      <h1 class="ubs-heading ubs-heading--1"><!-- Document Title --></h1>
+      <p class="ubs-cover__subtitle"><!-- Subtitle --></p>
+    </div>
+
+    {{!-- Info line --}}
+    <div class="ubs-cover__infoline">
+      <span class="ubs-cover__date"><!-- Date --></span>
+    </div>
+  </div>
+
+  {{!-- Logo tab (bottom-right) --}}
+  <div class="ubs-logo-tab">
+    <div class="ubs-logo" role="img" aria-label="UBS">
+      <!-- UBS logo placeholder -->
+      <svg class="ubs-logo__svg" viewBox="0 0 100 32" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="32" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="50" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="currentColor">UBS</text>
+      </svg>
+    </div>
+  </div>
+</div>

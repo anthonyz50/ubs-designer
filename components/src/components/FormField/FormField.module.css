@@ -1,0 +1,53 @@
+/* ─── UBS FormField ───────────────────────────────────────────────── */
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/* ─── Label ───────────────────────────────────────────────────────── */
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #000000;
+  text-align: left;
+  text-shadow: none;
+}
+
+.required::after {
+  content: ' *';
+  color: #BD000C;
+}
+
+/* ─── Helper Text ─────────────────────────────────────────────────── */
+
+.helperText {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: #5A5D5C;
+  text-align: left;
+  text-shadow: none;
+  margin: 0;
+}
+
+/* ─── Error Text ──────────────────────────────────────────────────── */
+
+.errorText {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #BD000C;
+  text-align: left;
+  text-shadow: none;
+  margin: 0;
+}

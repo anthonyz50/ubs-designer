@@ -1,0 +1,267 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "UBS Design System — Colour Tokens. Source: ubs.frontify.com",
+  "color": {
+    "corporate": {
+      "white": {
+        "$value": "#FFFFFF",
+        "$type": "color",
+        "$description": "Content stage. Dominates all other colours.",
+        "rgb": "255, 255, 255",
+        "cmyk": "0, 0, 0, 0",
+        "ral": "9003",
+        "ncs": "S 0300-N"
+      },
+      "red": {
+        "$value": "#E60000",
+        "$type": "color",
+        "$description": "UBS Red. Used to emphasise content. Never for numbers.",
+        "rgb": "230, 0, 0",
+        "cmyk": "0, 100, 100, 0",
+        "ral": "3028",
+        "pms": ["2035 U", "2035 C"],
+        "ncs": "S 1080-Y90R"
+      },
+      "black": {
+        "$value": "#000000",
+        "$type": "color",
+        "$description": "Primary text colour.",
+        "rgb": "0, 0, 0",
+        "cmyk": "0, 0, 0, 100",
+        "ral": "9005",
+        "pms": "Process Black",
+        "ncs": "S 9000-N"
+      }
+    },
+    "secondary": {
+      "gray": {
+        "i": {
+          "$value": "#CCCABC",
+          "$type": "color",
+          "$description": "Used in charts, backgrounds, illustrations, tables.",
+          "rgb": "204, 202, 188",
+          "cmyk": "2, 2, 10, 22",
+          "ral": "000 80 00",
+          "pms": ["400 U", "400 C"],
+          "ncs": "S 2002-Y80R"
+        },
+        "ii": {
+          "$value": "#B8B3A2",
+          "$type": "color",
+          "rgb": "184, 179, 162",
+          "cmyk": "2, 3, 11, 30",
+          "ral": "000 70 00",
+          "pms": ["2331 U", "2331 C"],
+          "ncs": "S 3502-Y80R"
+        },
+        "iii": {
+          "$value": "#8E8D83",
+          "$type": "color",
+          "rgb": "142, 141, 131",
+          "cmyk": "7, 7, 12, 48",
+          "ral": "000 60 00",
+          "pms": ["402 U", "2332 C"],
+          "ncs": "S 4502-Y80R"
+        },
+        "iv": {
+          "$value": "#7A7870",
+          "$type": "color",
+          "rgb": "122, 120, 112",
+          "cmyk": "8, 7, 13, 57",
+          "ral": "00 50 00",
+          "pms": ["403 U", "2333 C"],
+          "ncs": "S 6502-Y20R"
+        },
+        "v": {
+          "$value": "#5A5D5C",
+          "$type": "color",
+          "rgb": "90, 93, 92",
+          "cmyk": "12, 10, 15, 70",
+          "ral": "000 40 00",
+          "pms": ["2333 U", "405 C"],
+          "ncs": "S 7000-N"
+        },
+        "vi": {
+          "$value": "#404040",
+          "$type": "color",
+          "rgb": "64, 64, 64",
+          "cmyk": "14, 10, 15, 82",
+          "ral": "000 30 00",
+          "pms": ["2336 U", "2336 C"],
+          "ncs": "S 8000-N"
+        }
+      },
+      "bordeaux": {
+        "i": {
+          "$value": "#BD000C",
+          "$type": "color",
+          "$description": "Complements UBS Red. For text highlights, backgrounds, data viz, illustrations.",
+          "rgb": "189, 0, 12",
+          "cmyk": "0, 100, 85, 20",
+          "ral": "030 40 50",
+          "pms": ["7621 U", "7621 C"],
+          "ncs": "S 2070-Y90R"
+        },
+        "ii": {
+          "$value": "#8A000A",
+          "$type": "color",
+          "$description": "Also used as additional colour in illustrations (~10%).",
+          "rgb": "138, 0, 10",
+          "cmyk": "0, 100, 75, 40",
+          "ral": "030 30 45",
+          "pms": ["1807 U", "202 C"],
+          "ncs": "S 3060-R"
+        },
+        "iii": {
+          "$value": "#620004",
+          "$type": "color",
+          "rgb": "98, 0, 4",
+          "cmyk": "0, 100, 60, 60",
+          "ral": "020 30 30",
+          "pms": ["3523 U", "209 C"],
+          "ncs": "S 5040-R"
+        }
+      },
+      "bronze": {
+        "i": {
+          "$value": "#B98E2C",
+          "$type": "color",
+          "$description": "For accents, colour blocks, backgrounds.",
+          "rgb": "185, 142, 44",
+          "cmyk": "6, 20, 100, 15",
+          "ral": "080 60 50",
+          "pms": ["117 U", "4021 C"],
+          "ncs": "3050-Y"
+        },
+        "ii": {
+          "$value": "#946F29",
+          "$type": "color",
+          "rgb": "148, 111, 41",
+          "cmyk": "6, 22, 100, 28",
+          "ral": "080 50 40",
+          "pms": ["125 U", "7559 C"],
+          "ncs": "5040-Y10R"
+        },
+        "iii": {
+          "$value": "#6C5312",
+          "$type": "color",
+          "rgb": "108, 83, 18",
+          "cmyk": "14, 30, 100, 37",
+          "ral": "080 40 30",
+          "pms": ["140 U", "133 C"],
+          "ncs": "6030-Y"
+        }
+      },
+      "pastel": {
+        "i": {
+          "$value": "#ECEBE4",
+          "$type": "color",
+          "$description": "For backgrounds and table column highlights.",
+          "rgb": "236, 235, 228",
+          "cmyk": "0, 0, 3, 4",
+          "ral": "000 90 00",
+          "pms": ["9082 U", "9103 C"],
+          "ncs": "S 1001-B"
+        },
+        "ii": {
+          "$value": "#F5F0E1",
+          "$type": "color",
+          "$description": "For backgrounds and table column highlights.",
+          "rgb": "245, 240, 225",
+          "cmyk": "0, 0, 7, 2",
+          "ral": "110 9005",
+          "pms": ["9101 U", "9043 C"],
+          "ncs": "S 1001-Y"
+        }
+      }
+    },
+    "darkMode": {
+      "primaryRed": {
+        "$value": "#D83B31",
+        "$type": "color",
+        "$description": "Dark Mode replacement for UBS Red. For logo, buttons, larger areas.",
+        "rgb": "216, 59, 49"
+      },
+      "secondaryRed": {
+        "$value": "#FE6F5D",
+        "$type": "color",
+        "$description": "Dark Mode highlights, text links, accents, secondary interactions.",
+        "rgb": "254, 111, 93"
+      }
+    },
+    "chart": {
+      "$description": "Additional colours for complex charts (20+ segments). Use in sequence order only.",
+      "01-bronze50":    { "$value": "#AF8626", "$type": "color", "rgb": "175, 134, 38",  "cmyk": "27, 41, 92, 17" },
+      "02-lagoon60":    { "$value": "#00759E", "$type": "color", "rgb": "0, 117, 158",   "cmyk": "86, 41, 22, 7" },
+      "03-kiwi60":      { "$value": "#879420", "$type": "color", "rgb": "135, 148, 32",  "cmyk": "53, 26, 100, 9" },
+      "04-aubergine90": { "$value": "#4B2D58", "$type": "color", "rgb": "75, 45, 88",    "cmyk": "78, 89, 33, 30" },
+      "05-sand50":      { "$value": "#9F8865", "$type": "color", "rgb": "159, 136, 101", "cmyk": "33, 38, 58, 20" },
+      "06-plum90":      { "$value": "#2E476B", "$type": "color", "rgb": "46, 71, 107",   "cmyk": "89, 69, 34, 22" },
+      "07-sage50":      { "$value": "#469A6C", "$type": "color", "rgb": "70, 154, 108",  "cmyk": "73, 17, 69, 2" },
+      "08-blush60":     { "$value": "#AD3E4A", "$type": "color", "rgb": "173, 62, 74",   "cmyk": "23, 84, 58, 16" },
+      "09-lavender50":  { "$value": "#8489BD", "$type": "color", "rgb": "132, 137, 189", "cmyk": "55, 45, 5, 0" },
+      "10-lake50":      { "$value": "#0C7EC6", "$type": "color", "rgb": "12, 126, 198",  "cmyk": "83, 42, 0, 0" },
+      "11-bronze80":    { "$value": "#654D16", "$type": "color", "rgb": "101, 77, 22",   "cmyk": "43, 53, 96, 50" },
+      "12-aubergine60": { "$value": "#804C95", "$type": "color", "rgb": "128, 76, 149",  "cmyk": "60, 78, 3, 0" },
+      "13-mint50":      { "$value": "#45999C", "$type": "color", "rgb": "69, 153, 156",  "cmyk": "71, 21, 38, 4" },
+      "14-plum60":      { "$value": "#4972AC", "$type": "color", "rgb": "73, 114, 172",  "cmyk": "76, 51, 9, 0" },
+      "15-blush40":     { "$value": "#CC707A", "$type": "color", "rgb": "204, 112, 122", "cmyk": "17, 66, 39, 5" },
+      "16-sage80":      { "$value": "#295B40", "$type": "color", "rgb": "41, 91, 64",    "cmyk": "83, 39, 77, 36" },
+      "17-lavender70":  { "$value": "#545A9C", "$type": "color", "rgb": "84, 90, 156",   "cmyk": "78, 68, 8, 0" },
+      "18-chocolate60": { "$value": "#785E4A", "$type": "color", "rgb": "120, 94, 74",   "cmyk": "39, 50, 60, 40" },
+      "19-lake90":      { "$value": "#07476F", "$type": "color", "rgb": "7, 71, 111",    "cmyk": "98, 69, 32, 19" },
+      "20-bordeaux90":  { "$value": "#620004", "$type": "color", "rgb": "98, 0, 4",      "cmyk": "36, 100, 91, 57" }
+    },
+    "metallic": {
+      "silver": {
+        "$value": "#BEBEBE",
+        "$type": "color",
+        "$description": "Silver only. No gold, copper, brass. Simulates stainless steel in print.",
+        "rgb": "190, 190, 190",
+        "pms": ["Silver C", "877"],
+        "pms-cp": "Silver 10077 C"
+      }
+    },
+    "rag": {
+      "$description": "Red-Amber-Green status indicators.",
+      "red": {
+        "$value": "#BD000C",
+        "$type": "color",
+        "$description": "Problem, critical, error.",
+        "rgb": "189, 0, 12",
+        "cmyk": "0, 100, 85, 20"
+      },
+      "amber": {
+        "$value": "#E4A911",
+        "$type": "color",
+        "$description": "Warning, needs attention.",
+        "rgb": "228, 169, 17",
+        "cmyk": "10, 35, 100, 0"
+      },
+      "green": {
+        "$value": "#6F7A1A",
+        "$type": "color",
+        "$description": "Success, on track.",
+        "rgb": "111, 122, 26",
+        "cmyk": "58, 34, 100, 21"
+      }
+    },
+    "trading": {
+      "$description": "Trading colours have REVERSED meaning in APAC vs EMEA/US.",
+      "green": {
+        "$value": "#498100",
+        "$type": "color",
+        "$description": "EMEA/US: positive. APAC: negative.",
+        "rgb": "73, 129, 0",
+        "cmyk": "75, 25, 100, 12"
+      },
+      "red": {
+        "$value": "#C81219",
+        "$type": "color",
+        "$description": "EMEA/US: negative. APAC: positive.",
+        "rgb": "200, 18, 25",
+        "cmyk": "13, 100, 100, 5"
+      }
+    }
+  }
+}

@@ -1,0 +1,165 @@
+/* ─── LandingPageTemplate ─── UBS Design System ─── */
+
+.landingPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+/* ─── Hero Section ─── */
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 560px;
+  padding: 80px 24px;
+  background-color: #f5f0e1; /* Pastel II */
+  text-align: center;
+}
+
+.heroWithImage {
+  background-color: #000000;
+}
+
+.heroInner {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.heroTitle {
+  font-size: 48px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.heroTitleLight {
+  color: #ffffff;
+}
+
+.heroSubtitle {
+  font-size: 20px;
+  font-weight: 300;
+  color: #5a5d5c;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 560px;
+}
+
+.heroSubtitleLight {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ─── Section Inner (max-width container) ─── */
+
+.sectionInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Features Section ─── */
+
+.featuresSection {
+  padding: 80px 0;
+  background-color: #ffffff;
+}
+
+.featureCard {
+  text-align: center;
+  padding: 24px;
+}
+
+.featureIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  background-color: #ecebe4; /* Pastel I */
+  border-radius: 50%;
+  color: #e60000; /* UBS Red */
+}
+
+/* ─── Stats Section ─── */
+
+.statsSection {
+  padding: 64px 0;
+  background-color: #ecebe4; /* Pastel I */
+}
+
+.statCard {
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 24px;
+}
+
+/* ─── Testimonials Section ─── */
+
+.testimonialsSection {
+  padding: 80px 0;
+  background-color: #ffffff;
+}
+
+.testimonialCard {
+  margin: 0;
+  padding: 32px;
+  background-color: #f5f0e1; /* Pastel II */
+  border-left: 3px solid #e60000; /* UBS Red */
+  border-radius: 0 4px 4px 0;
+}
+
+.testimonialQuote {
+  font-size: 16px;
+  font-weight: 300;
+  color: #404040;
+  line-height: 1.6;
+  margin: 0 0 16px;
+  font-style: italic;
+}
+
+.testimonialAuthor {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ─── Responsive ─── */
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 400px;
+    padding: 48px 16px;
+  }
+
+  .heroTitle {
+    font-size: 32px;
+  }
+
+  .heroSubtitle {
+    font-size: 16px;
+  }
+
+  .featuresSection,
+  .testimonialsSection {
+    padding: 48px 0;
+  }
+
+  .statsSection {
+    padding: 40px 0;
+  }
+
+  .sectionInner {
+    padding: 0 16px;
+  }
+}

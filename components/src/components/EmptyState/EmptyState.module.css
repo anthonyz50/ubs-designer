@@ -1,0 +1,95 @@
+/* ─── EmptyState ─── UBS Design System ─── */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  width: 100%;
+}
+
+.compact {
+  padding: 24px 16px;
+}
+
+/* ─── Icon ─── */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8e8d83;
+  margin-bottom: 16px;
+}
+
+.icon > * {
+  width: 64px;
+  height: 64px;
+}
+
+.compact .icon {
+  margin-bottom: 12px;
+}
+
+.compact .icon > * {
+  width: 48px;
+  height: 48px;
+}
+
+/* ─── Title ─── */
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.3;
+  margin: 0 0 8px;
+}
+
+.compact .title {
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+
+/* ─── Description ─── */
+.description {
+  font-size: 16px;
+  font-weight: 400;
+  color: #5a5d5c;
+  line-height: 1.5;
+  margin: 0 0 24px;
+  max-width: 420px;
+}
+
+.compact .description {
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+
+/* ─── Action button ─── */
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  border-radius: 4px;
+  border: none;
+  background-color: #e60000;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  line-height: 1.5;
+}
+
+.actionButton:hover {
+  background-color: #bd000c;
+}
+
+.actionButton:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}

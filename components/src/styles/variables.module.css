@@ -1,0 +1,181 @@
+/**
+ * UBS Design System — CSS Custom Properties
+ *
+ * All UBS CSS custom properties available for CSS Modules consumption.
+ * Import this file in CSS modules to access UBS design tokens.
+ *
+ * Usage:
+ *   @import './variables.module.css';
+ *   .myComponent { color: var(--ubs-color-text-primary); }
+ */
+
+/* ─── Corporate Colours ─────────────────────────────────────────── */
+
+:root {
+  --ubs-color-red: #E60000;
+  --ubs-color-black: #000000;
+  --ubs-color-white: #FFFFFF;
+
+  /* Grays */
+  --ubs-color-gray-i: #CCCABC;
+  --ubs-color-gray-ii: #B8B3A2;
+  --ubs-color-gray-iii: #8E8D83;
+  --ubs-color-gray-iv: #7A7870;
+  --ubs-color-gray-v: #5A5D5C;
+  --ubs-color-gray-vi: #404040;
+
+  /* Bordeaux */
+  --ubs-color-bordeaux-i: #BD000C;
+  --ubs-color-bordeaux-ii: #8A000A;
+  --ubs-color-bordeaux-iii: #620004;
+
+  /* Bronze */
+  --ubs-color-bronze-i: #B98E2C;
+  --ubs-color-bronze-ii: #946F29;
+  --ubs-color-bronze-iii: #6C5312;
+
+  /* Pastels */
+  --ubs-color-pastel-i: #ECEBE4;
+  --ubs-color-pastel-ii: #F5F0E1;
+
+  /* RAG (Status) */
+  --ubs-color-rag-red: #BD000C;
+  --ubs-color-rag-amber: #E4A911;
+  --ubs-color-rag-green: #6F7A1A;
+
+  /* Trading */
+  --ubs-color-trading-green: #498100;
+  --ubs-color-trading-red: #C81219;
+}
+
+/* ─── Semantic Colours (Light) ──────────────────────────────────── */
+
+:root {
+  /* Text */
+  --ubs-color-text-primary: #000000;
+  --ubs-color-text-secondary: #5A5D5C;
+  --ubs-color-text-tertiary: #7A7870;
+  --ubs-color-text-inverse: #FFFFFF;
+  --ubs-color-text-link: #E60000;
+  --ubs-color-text-error: #BD000C;
+  --ubs-color-text-warning: #E4A911;
+  --ubs-color-text-success: #6F7A1A;
+
+  /* Background */
+  --ubs-color-bg-primary: #FFFFFF;
+  --ubs-color-bg-secondary: #ECEBE4;
+  --ubs-color-bg-tertiary: #F5F0E1;
+  --ubs-color-bg-inverse: #000000;
+
+  /* Border */
+  --ubs-color-border-primary: #B8B3A2;
+  --ubs-color-border-secondary: #CCCABC;
+  --ubs-color-border-focus: #000000;
+
+  /* Interactive */
+  --ubs-color-interactive-primary: #E60000;
+  --ubs-color-interactive-primary-hover: #BD000C;
+  --ubs-color-interactive-primary-active: #8A000A;
+  --ubs-color-interactive-secondary: #000000;
+  --ubs-color-interactive-secondary-hover: #404040;
+}
+
+/* ─── Typography ────────────────────────────────────────────────── */
+
+:root {
+  --ubs-font-family-primary: 'Frutiger', 'Frutiger Neue', Arial, Helvetica, sans-serif;
+  --ubs-font-family-mono: 'Frutiger Mono', 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+
+  --ubs-font-weight-light: 300;
+  --ubs-font-weight-regular: 400;
+  --ubs-font-weight-medium: 500;
+  --ubs-font-weight-bold: 700;
+
+  --ubs-font-size-min: 14px;
+  --ubs-font-size-body: 16px;
+  --ubs-font-size-small: 14px;
+  --ubs-font-size-h6: 16px;
+  --ubs-font-size-h5: 18px;
+  --ubs-font-size-h4: 20px;
+  --ubs-font-size-h3: 24px;
+  --ubs-font-size-h2: 28px;
+  --ubs-font-size-h1: 32px;
+  --ubs-font-size-display: 40px;
+  --ubs-font-size-display-lg: 48px;
+
+  --ubs-line-height-body: 1.375;
+  --ubs-line-height-heading: 1.2;
+  --ubs-line-height-relaxed: 1.5;
+  --ubs-line-height-none: 1;
+}
+
+/* ─── Spacing (4px grid) ────────────────────────────────────────── */
+
+:root {
+  --ubs-spacing-none: 0px;
+  --ubs-spacing-4xs: 4px;
+  --ubs-spacing-3xs: 8px;
+  --ubs-spacing-2xs: 12px;
+  --ubs-spacing-xs: 16px;
+  --ubs-spacing-sm: 24px;
+  --ubs-spacing-md: 32px;
+  --ubs-spacing-lg: 48px;
+  --ubs-spacing-xl: 64px;
+  --ubs-spacing-2xl: 96px;
+}
+
+/* ─── Layout ────────────────────────────────────────────────────── */
+
+:root {
+  --ubs-layout-max-width: 1440px;
+
+  --ubs-radius-none: 0px;
+  --ubs-radius-sm: 2px;
+  --ubs-radius-md: 4px;
+  --ubs-radius-lg: 8px;
+  --ubs-radius-xl: 12px;
+  --ubs-radius-full: 9999px;
+}
+
+/* ─── Breakpoints (for reference, use in media queries) ─────────── */
+
+:root {
+  --ubs-breakpoint-mobile: 320px;
+  --ubs-breakpoint-tablet: 768px;
+  --ubs-breakpoint-desktop: 1024px;
+  --ubs-breakpoint-wide: 1440px;
+}
+
+/* ─── Transitions ───────────────────────────────────────────────── */
+
+:root {
+  --ubs-duration-fast: 100ms;
+  --ubs-duration-normal: 200ms;
+  --ubs-duration-slow: 300ms;
+  --ubs-duration-slower: 500ms;
+
+  --ubs-easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ubs-easing-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ubs-easing-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ubs-easing-impulse: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── Z-Index ───────────────────────────────────────────────────── */
+
+:root {
+  --ubs-z-base: 0;
+  --ubs-z-dropdown: 100;
+  --ubs-z-sticky: 200;
+  --ubs-z-overlay: 300;
+  --ubs-z-modal: 400;
+  --ubs-z-popover: 500;
+  --ubs-z-toast: 600;
+  --ubs-z-tooltip: 700;
+}
+
+/* ─── Accessibility ─────────────────────────────────────────────── */
+
+:root {
+  --ubs-a11y-min-touch-target: 44px;
+  --ubs-a11y-focus-width: 2px;
+}

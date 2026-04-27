@@ -1,0 +1,128 @@
+/* ─── Chip ─── UBS Design System ─── */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 9999px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid #b8b3a2;
+  background-color: #ffffff;
+  color: #000000;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+  vertical-align: middle;
+}
+
+/* ─── Sizes ─── */
+.sm {
+  padding: 4px 12px;
+  font-size: 12px;
+  min-height: 28px;
+}
+
+.md {
+  padding: 8px 16px;
+  font-size: 14px;
+  min-height: 36px;
+}
+
+/* ─── States ─── */
+.chip:hover:not(.disabled) {
+  background-color: #ecebe4;
+}
+
+.chip:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.selected {
+  border-color: #e60000;
+  background-color: #fef2f2;
+  color: #000000;
+}
+
+.selected:hover:not(.disabled) {
+  background-color: #fee2e2;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── Icon ─── */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ─── Checkmark (filter variant) ─── */
+.checkmark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #e60000;
+}
+
+.sm .checkmark {
+  font-size: 10px;
+}
+
+.md .checkmark {
+  font-size: 12px;
+}
+
+/* ─── Remove button (input variant) ─── */
+.removeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-left: 2px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  border-radius: 50%;
+  transition: opacity 0.15s ease;
+  line-height: 1;
+}
+
+.removeButton:hover {
+  opacity: 1;
+}
+
+.removeButton:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.sm .removeButton {
+  width: 14px;
+  height: 14px;
+  font-size: 10px;
+}
+
+.md .removeButton {
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+}
+
+/* ─── Chip Group ─── */
+.chipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
