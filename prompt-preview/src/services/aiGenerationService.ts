@@ -111,11 +111,17 @@ async function callClaude(
   messages: ClaudeMessage[],
   maxTokens: number = 8192,
 ): Promise<string> {
-  const response = await fetch(AZURE_ENDPOINT, {
+  // Azure AI Foundry uses the Anthropic Messages API at:
+  // {baseURL}/v1/messages
+  // Auth via api-key header, plus anthropic-version header.
+  const baseUrl = AZURE_ENDPOINT.replace(/\/+$/, '');
+  const url = `${baseUrl}/v1/messages`;
+
+  const response = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'api-key': AZURE_API_KEY,
+      'x-api-key': AZURE_API_KEY,
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify({
