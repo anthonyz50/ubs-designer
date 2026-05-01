@@ -252,6 +252,14 @@ export default function App() {
       };
       setSavedDesigns((prev) => [saved, ...prev]);
       setActiveDesignId(id);
+
+      // 3. Auto-run persona test
+      try {
+        const personaReport = await runPersonaTest(designModel);
+        setTestReport(personaReport);
+      } catch (testErr) {
+        console.error('Persona test failed:', testErr);
+      }
     } catch (err: unknown) {
       setAiError(err instanceof Error ? err.message : 'Generation failed');
     } finally {
@@ -385,7 +393,7 @@ export default function App() {
     },
     {
       value: 'testing',
-      label: 'Testing',
+      label: 'Persona Test',
       icon: <Icon name="target" size="sm" />,
     },
     {
@@ -633,38 +641,67 @@ export default function App() {
         {/* ─── UX Review ───────────────────────────────────── */}
         {activeTab === 'review' && (
           <div className={styles.tabContent}>
-            <div className={styles.reviewContent}>
-              {brief && (
-                <Card variant="pastel1" padding="medium" style={{ marginBottom: 16 }}>
-                  <BriefPanel brief={brief} />
-                </Card>
-              )}
-              <ReviewPanel review={review} />
-              {model && (
-                <Card variant="default" padding="medium" style={{ marginTop: 16 }}>
-                  <EditPanel model={model} onApply={handleApplyEditedModel} />
-                </Card>
-              )}
-              {model && (
-                <Card variant="default" padding="medium" style={{ marginTop: 16 }}>
-                  <DesignSystemEditor />
-                </Card>
-              )}
-            </div>
+            {!review && !brief ? (
+              <div className={styles.emptyState}>
+                <div className={styles.emptyIcon}>
+                  <Icon name="shield" size="lg" variant="illustrative" colour="#E60000" />
+                </div>
+                <h2 className={styles.emptyTitle}>UX Review</h2>
+                <p className={styles.emptyDescription}>
+                  Generate a page first. The UX review will automatically analyse your design
+                  against UBS brand guidelines, accessibility standards, and usability best practices.
+                </p>
+              </div>
+            ) : (
+              <div className={styles.reviewContent}>
+                {brief && (
+                  <Card variant="pastel1" padding="medium" style={{ marginBottom: 16 }}>
+                    <BriefPanel brief={brief} />
+                  </Card>
+                )}
+                <ReviewPanel review={review} />
+                {model && (
+                  <Card variant="default" padding="medium" style={{ marginTop: 16 }}>
+                    <EditPanel model={model} onApply={handleApplyEditedModel} />
+                  </Card>
+                )}
+                {model && (
+                  <Card variant="default" padding="medium" style={{ marginTop: 16 }}>
+                    <DesignSystemEditor />
+                  </Card>
+                )}
+              </div>
+            )}
           </div>
         )}
 
-        {/* ─── Testing ─────────────────────────────────────── */}
+        {/* ─── Persona Test ───────────────────────────────── */}
         {activeTab === 'testing' && (
           <div className={styles.tabContent}>
-            <PersonaTestPanel
-              model={model}
-              report={testReport}
-              isTesting={isTesting}
-              onRunTest={handleRunTest}
-            />
-            {model && (
-              <TestExportPanel model={model} />
+            {!model && !aiPage ? (
+              <div className={styles.emptyState}>
+                <div className={styles.emptyIcon}>
+                  <Icon name="target" size="lg" variant="illustrative" colour="#E60000" />
+                </div>
+                <h2 className={styles.emptyTitle}>Persona Testing</h2>
+                <p className={styles.emptyDescription}>
+                  Generate a page first, then run persona tests to simulate real users
+                  walking through your design. The test evaluates usability, accessibility,
+                  and satisfaction across diverse user profiles.
+                </p>
+              </div>
+            ) : (
+              <>
+                <PersonaTestPanel
+                  model={model}
+                  report={testReport}
+                  isTesting={isTesting}
+                  onRunTest={handleRunTest}
+                />
+                {model && (
+                  <TestExportPanel model={model} />
+                )}
+              </>
             )}
           </div>
         )}
@@ -672,23 +709,47 @@ export default function App() {
         {/* ─── Code Export ─────────────────────────────────── */}
         {activeTab === 'code' && (
           <div className={styles.tabContent}>
-            <CodePanel
-              model={model}
-              activeCodeTab={activeCodeTab}
-              onCodeTabChange={setActiveCodeTab}
-              generatedCode={generatedCode}
-            />
+            {!hasModel ? (
+              <div className={styles.emptyState}>
+                <div className={styles.emptyIcon}>
+                  <Icon name="document" size="lg" variant="illustrative" colour="#E60000" />
+                </div>
+                <h2 className={styles.emptyTitle}>Code Export</h2>
+                <p className={styles.emptyDescription}>
+                  Generate a page to export production-ready React, Angular, or HTML/CSS code.
+                </p>
+              </div>
+            ) : (
+              <CodePanel
+                model={model}
+                activeCodeTab={activeCodeTab}
+                onCodeTabChange={setActiveCodeTab}
+                generatedCode={generatedCode}
+              />
+            )}
           </div>
         )}
 
         {/* ─── Journey ─────────────────────────────────────── */}
         {activeTab === 'journey' && (
           <div className={styles.tabContent}>
-            <JourneyPanel
-              journeyMap={journeyMap}
-              currentPageId={currentPageId}
-              onStepClick={handlePageChange}
-            />
+            {!journeyMap ? (
+              <div className={styles.emptyState}>
+                <div className={styles.emptyIcon}>
+                  <Icon name="globe" size="lg" variant="illustrative" colour="#E60000" />
+                </div>
+                <h2 className={styles.emptyTitle}>User Journey</h2>
+                <p className={styles.emptyDescription}>
+                  Generate a page to see the mapped user journey with page flows and interaction points.
+                </p>
+              </div>
+            ) : (
+              <JourneyPanel
+                journeyMap={journeyMap}
+                currentPageId={currentPageId}
+                onStepClick={handlePageChange}
+              />
+            )}
           </div>
         )}
 
