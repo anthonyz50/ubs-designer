@@ -1,6 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import {
-  Logo,
   Button,
   Icon,
   Tabs,
@@ -383,25 +382,21 @@ export default function App() {
       value: 'review',
       label: 'UX Review',
       icon: <Icon name="shield" size="sm" />,
-      disabled: !review,
     },
     {
       value: 'testing',
       label: 'Testing',
       icon: <Icon name="target" size="sm" />,
-      disabled: !hasResult,
     },
     {
       value: 'code',
       label: 'Code Export',
       icon: <Icon name="document" size="sm" />,
-      disabled: !hasModel,
     },
     {
       value: 'journey',
       label: 'Journey',
       icon: <Icon name="globe" size="sm" />,
-      disabled: !journeyMap,
     },
     {
       value: 'components',
@@ -435,7 +430,7 @@ export default function App() {
       {/* ── Header ──────────────────────────────────────────── */}
       <header className={styles.header}>
         <div className={styles.headerLeft}>
-          <Logo variant="full" colour="white" size={80} />
+          <img src="/ubs-logo-white.svg" alt="UBS" style={{ height: 22, width: 'auto' }} />
           <span className={styles.headerTitle}>Page Builder</span>
         </div>
         <div className={styles.headerRight}>
