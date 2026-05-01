@@ -1,0 +1,389 @@
+/* ─── UBS Bootstrap 5 Theme Override ──────────────────────────── */
+/* Import Bootstrap 5, then override with UBS design tokens       */
+
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* ─── CSS Custom Properties (UBS overrides) ───────────────────── */
+
+:root {
+  /* Primary = UBS Red */
+  --bs-primary: #e60000;
+  --bs-primary-rgb: 230, 0, 0;
+
+  /* Secondary = Near-black (text) */
+  --bs-secondary: #1c1c1c;
+  --bs-secondary-rgb: 28, 28, 28;
+
+  /* Light = UBS Cream */
+  --bs-light: #f4f3ee;
+  --bs-light-rgb: 244, 243, 238;
+
+  /* Dark = UBS Near-black */
+  --bs-dark: #1c1c1c;
+  --bs-dark-rgb: 28, 28, 28;
+
+  /* Body */
+  --bs-body-font-family: 'Frutiger', 'Helvetica Neue', Arial, sans-serif;
+  --bs-body-font-size: 16px;
+  --bs-body-color: #1c1c1c;
+  --bs-body-bg: #ffffff;
+
+  /* Links */
+  --bs-link-color: #1c1c1c;
+  --bs-link-hover-color: #e60000;
+
+  /* Border */
+  --bs-border-color: #cccabc;
+}
+
+/* ─── Typography ──────────────────────────────────────────────── */
+
+body {
+  font-family: 'Frutiger', 'Helvetica Neue', Arial, sans-serif;
+  color: #1c1c1c;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Frutiger', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 300;
+  color: #1c1c1c;
+}
+
+h1, .h1 { font-size: 2.5rem; font-weight: 300; }
+h2, .h2 { font-size: 2rem; font-weight: 300; }
+h3, .h3 { font-size: 1.5rem; font-weight: 400; }
+h4, .h4 { font-size: 1.25rem; font-weight: 400; }
+
+.text-muted { color: #5a5d5c !important; }
+
+/* ─── Buttons ─────────────────────────────────────────────────── */
+
+.btn-primary {
+  background-color: #e60000;
+  border-color: #e60000;
+  color: #ffffff;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-size: 14px;
+  transition: background-color 200ms, border-color 200ms;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #bd000c;
+  border-color: #bd000c;
+  color: #ffffff;
+}
+
+.btn-primary:active {
+  background-color: #8a000a;
+  border-color: #8a000a;
+}
+
+.btn-secondary {
+  background-color: #1c1c1c;
+  border-color: #1c1c1c;
+  color: #ffffff;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: #404040;
+  border-color: #404040;
+  color: #ffffff;
+}
+
+.btn-outline-primary {
+  color: #e60000;
+  border-color: #e60000;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+.btn-outline-primary:hover {
+  background-color: #e60000;
+  border-color: #e60000;
+  color: #ffffff;
+}
+
+.btn-outline-secondary {
+  color: #1c1c1c;
+  border-color: #1c1c1c;
+  border-radius: 4px;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #1c1c1c;
+  color: #ffffff;
+}
+
+.btn-link {
+  color: #1c1c1c;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  color: #e60000;
+}
+
+/* ─── Cards ───────────────────────────────────────────────────── */
+
+.card {
+  border: 1px solid #cccabc;
+  border-radius: 8px;
+  box-shadow: none;
+  transition: box-shadow 200ms, border-color 200ms;
+}
+
+.card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+  background-color: #f4f3ee;
+  border-bottom: 1px solid #cccabc;
+  font-weight: 500;
+}
+
+/* ─── Navbar ──────────────────────────────────────────────────── */
+
+.navbar {
+  font-family: 'Frutiger', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.navbar-brand {
+  font-weight: 500;
+  color: #1c1c1c;
+}
+
+.navbar-dark,
+.navbar-dark .navbar-brand,
+.bg-dark {
+  background-color: #1c1c1c !important;
+}
+
+.nav-link {
+  color: #5a5d5c;
+  font-size: 14px;
+  transition: color 200ms;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #e60000;
+}
+
+/* ─── Forms ───────────────────────────────────────────────────── */
+
+.form-control {
+  border: 1px solid #cccabc;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 10px 12px;
+  color: #1c1c1c;
+  transition: border-color 200ms;
+}
+
+.form-control:focus {
+  border-color: #1c1c1c;
+  box-shadow: 0 0 0 2px rgba(28, 28, 28, 0.15);
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1c1c1c;
+  margin-bottom: 4px;
+}
+
+.form-select {
+  border: 1px solid #cccabc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #1c1c1c;
+}
+
+.form-select:focus {
+  border-color: #1c1c1c;
+  box-shadow: 0 0 0 2px rgba(28, 28, 28, 0.15);
+}
+
+/* ─── Tables ──────────────────────────────────────────────────── */
+
+.table {
+  color: #1c1c1c;
+  font-size: 14px;
+}
+
+.table thead th {
+  font-weight: 500;
+  color: #5a5d5c;
+  border-bottom: 2px solid #cccabc;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  border-bottom: 1px solid #e0dfd7;
+  vertical-align: middle;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f4f3ee;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: #ecebe4;
+}
+
+/* ─── Alerts ──────────────────────────────────────────────────── */
+
+.alert {
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.alert-danger,
+.alert-primary {
+  background-color: #fdf2f2;
+  border-color: #e60000;
+  color: #1c1c1c;
+}
+
+.alert-warning {
+  border-color: #e4a911;
+}
+
+.alert-success {
+  border-color: #6f7a1a;
+}
+
+/* ─── Badges ──────────────────────────────────────────────────── */
+
+.badge.bg-primary {
+  background-color: #e60000 !important;
+}
+
+.badge.bg-secondary {
+  background-color: #5a5d5c !important;
+}
+
+.badge.bg-light {
+  background-color: #f4f3ee !important;
+  color: #1c1c1c !important;
+}
+
+/* ─── Breadcrumb ──────────────────────────────────────────────── */
+
+.breadcrumb {
+  font-size: 13px;
+}
+
+.breadcrumb-item a {
+  color: #5a5d5c;
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  color: #e60000;
+}
+
+.breadcrumb-item.active {
+  color: #1c1c1c;
+}
+
+/* ─── Pagination ──────────────────────────────────────────────── */
+
+.page-link {
+  color: #1c1c1c;
+  border-color: #cccabc;
+}
+
+.page-item.active .page-link {
+  background-color: #e60000;
+  border-color: #e60000;
+}
+
+/* ─── Accordion ───────────────────────────────────────────────── */
+
+.accordion-button:not(.collapsed) {
+  background-color: #f4f3ee;
+  color: #1c1c1c;
+  box-shadow: inset 0 -1px 0 #cccabc;
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 2px rgba(28, 28, 28, 0.15);
+}
+
+/* ─── Progress ────────────────────────────────────────────────── */
+
+.progress-bar {
+  background-color: #e60000;
+}
+
+/* ─── Footer (UBS Light) ──────────────────────────────────────── */
+
+.footer-ubs {
+  background-color: #f4f3ee;
+  color: #1c1c1c;
+  padding: 48px 0 24px;
+}
+
+.footer-ubs a {
+  color: #5a5d5c;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-ubs a:hover {
+  color: #e60000;
+}
+
+.footer-ubs h6 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #1c1c1c;
+}
+
+/* ─── UBS-specific utility classes ────────────────────────────── */
+
+.bg-ubs-cream { background-color: #f4f3ee !important; }
+.bg-ubs-pastel-i { background-color: #ecebe4 !important; }
+.bg-ubs-pastel-ii { background-color: #f5f0e1 !important; }
+.bg-ubs-red { background-color: #e60000 !important; }
+.text-ubs-red { color: #e60000 !important; }
+.text-ubs-secondary { color: #5a5d5c !important; }
+.text-ubs-tertiary { color: #7a7870 !important; }
+.border-ubs { border-color: #cccabc !important; }
+
+/* UBS impulse line */
+.ubs-impulse {
+  height: 4px;
+  background-color: #e60000;
+  border: none;
+  margin: 0;
+}
+
+/* UBS section backgrounds */
+.ubs-section-white { background-color: #ffffff; }
+.ubs-section-cream { background-color: #f4f3ee; }
+.ubs-section-pastel { background-color: #ecebe4; }
+.ubs-section-dark { background-color: #1c1c1c; color: #f4f3ee; }
+
+/* ─── Focus states (a11y) ─────────────────────────────────────── */
+
+*:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}

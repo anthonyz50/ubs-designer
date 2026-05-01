@@ -1,0 +1,355 @@
+/* ─── Page Builder ────────────────────────────────────────────── */
+
+.builder {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ─── Prompt Bar ──────────────────────────────────────────────── */
+
+.promptBar {
+  display: flex;
+  gap: 8px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--ubs-color-border-secondary, #cccabc);
+  background: var(--ubs-color-bg-primary, #ffffff);
+  flex-shrink: 0;
+  align-items: flex-end;
+}
+
+.promptInput {
+  flex: 1;
+  min-height: 44px;
+  max-height: 120px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  color: #1c1c1c;
+  border: 1px solid #cccabc;
+  border-radius: 6px;
+  resize: vertical;
+  line-height: 1.5;
+  transition: border-color 200ms;
+}
+
+.promptInput:focus {
+  outline: none;
+  border-color: #1c1c1c;
+  box-shadow: 0 0 0 2px rgba(28, 28, 28, 0.1);
+}
+
+.promptInput::placeholder {
+  color: #7a7870;
+}
+
+.generateBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Frutiger', Arial, sans-serif;
+  color: #ffffff;
+  background: #e60000;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-height: 44px;
+  transition: background 200ms;
+}
+
+.generateBtn:hover:not(:disabled) {
+  background: #bd000c;
+}
+
+.generateBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.editBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Frutiger', Arial, sans-serif;
+  color: #1c1c1c;
+  background: #f4f3ee;
+  border: 1px solid #cccabc;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-height: 44px;
+  transition: background 200ms, border-color 200ms;
+}
+
+.editBtn:hover:not(:disabled) {
+  background: #ecebe4;
+  border-color: #b8b3a2;
+}
+
+.editBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── Status Bar ──────────────────────────────────────────────── */
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  font-size: 12px;
+  color: #5a5d5c;
+  background: #f4f3ee;
+  border-bottom: 1px solid #e0dfd7;
+  flex-shrink: 0;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6f7a1a;
+  flex-shrink: 0;
+}
+
+.statusDot[data-generating='true'] {
+  background: #e60000;
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.statusText {
+  flex: 1;
+}
+
+.tokenCount {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Config Bar ──────────────────────────────────────────────── */
+
+.configBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 20px;
+  font-size: 12px;
+  color: #5a5d5c;
+  background: #ffffff;
+  border-bottom: 1px solid #e0dfd7;
+  flex-shrink: 0;
+}
+
+.configLabel {
+  font-weight: 500;
+}
+
+.configLink {
+  color: #e60000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.configLink:hover {
+  text-decoration: underline;
+}
+
+/* ─── Preview Area ────────────────────────────────────────────── */
+
+.previewArea {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: #f4f3ee;
+}
+
+.previewFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #ffffff;
+}
+
+/* ─── Empty State ─────────────────────────────────────────────── */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.emptyTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1c1c1c;
+  margin: 0 0 8px;
+}
+
+.emptyDescription {
+  font-size: 14px;
+  color: #5a5d5c;
+  margin: 0 0 24px;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.examplePrompts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.examplePrompt {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  color: #1c1c1c;
+  background: #ffffff;
+  border: 1px solid #cccabc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 200ms, background 200ms;
+  line-height: 1.5;
+}
+
+.examplePrompt:hover {
+  border-color: #e60000;
+  background: #fdf2f2;
+}
+
+/* ─── View Toolbar ────────────────────────────────────────────── */
+
+.viewToolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e0dfd7;
+  flex-shrink: 0;
+}
+
+.viewBtn {
+  padding: 4px 12px;
+  font-size: 12px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  color: #5a5d5c;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 200ms, border-color 200ms, background 200ms;
+}
+
+.viewBtn:hover {
+  color: #1c1c1c;
+  background: #f4f3ee;
+}
+
+.viewBtn[data-active='true'] {
+  color: #e60000;
+  border-color: #e60000;
+  background: #fdf2f2;
+}
+
+.viewSpacer {
+  flex: 1;
+}
+
+.copyBtn {
+  padding: 4px 12px;
+  font-size: 12px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  color: #5a5d5c;
+  background: none;
+  border: 1px solid #cccabc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.copyBtn:hover {
+  color: #1c1c1c;
+  border-color: #1c1c1c;
+}
+
+/* ─── Code View ───────────────────────────────────────────────── */
+
+.codeView {
+  flex: 1;
+  overflow: auto;
+  background: #1c1c1c;
+  padding: 16px 20px;
+}
+
+.codeView pre {
+  margin: 0;
+  font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #f4f3ee;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ─── Error ───────────────────────────────────────────────────── */
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px;
+  text-align: center;
+}
+
+.errorTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e60000;
+  margin: 0 0 8px;
+}
+
+.errorMessage {
+  font-size: 14px;
+  color: #5a5d5c;
+  margin: 0 0 16px;
+  max-width: 500px;
+}
+
+.retryBtn {
+  padding: 8px 20px;
+  font-size: 14px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  color: #ffffff;
+  background: #e60000;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
