@@ -19,7 +19,7 @@
 /* ── Underline variant ────────────────────── */
 
 .underline {
-  border-bottom: 1px solid #ecebe4;
+  border-bottom: 1px solid var(--ubs-color-bg-secondary);
 }
 
 .underline .tab {
@@ -28,7 +28,7 @@
   min-width: 44px;
   border: none;
   background: none;
-  color: #5a5d5c;
+  color: var(--ubs-color-gray-v);
   font-family: 'Frutiger', Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -43,11 +43,11 @@
 }
 
 .underline .tab:hover:not(:disabled) {
-  color: #000000;
+  color: var(--ubs-color-text-primary);
 }
 
 .underline .tabActive {
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   font-weight: 700;
 }
 
@@ -58,13 +58,13 @@
   left: 0;
   right: 0;
   height: 2px;
-  background-color: #e60000;
+  background-color: var(--ubs-color-red);
 }
 
 /* ── Contained variant ────────────────────── */
 
 .contained {
-  background-color: #ecebe4;
+  background-color: var(--ubs-color-bg-secondary);
   border-radius: 4px;
   padding: 4px;
   gap: 4px;
@@ -76,7 +76,7 @@
   min-width: 44px;
   border: none;
   background: none;
-  color: #5a5d5c;
+  color: var(--ubs-color-gray-v);
   font-family: 'Frutiger', Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -91,12 +91,12 @@
 }
 
 .contained .tab:hover:not(:disabled) {
-  color: #000000;
+  color: var(--ubs-color-text-primary);
 }
 
 .contained .tabActive {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-primary);
   font-weight: 700;
 }
 

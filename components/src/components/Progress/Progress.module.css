@@ -6,7 +6,7 @@
   gap: 12px;
   font-family: 'Frutiger', Arial, sans-serif;
   font-size: 14px;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
 }
 
 .wrapperFullWidth {
@@ -17,7 +17,7 @@
 /* ── Bar variant ──────────────────────────── */
 
 .track {
-  background-color: #ecebe4;
+  background-color: var(--ubs-color-bg-secondary);
   border-radius: 4px;
   overflow: hidden;
   flex: 1;
@@ -49,7 +49,7 @@
 
 .circleBg {
   fill: none;
-  stroke: #ecebe4;
+  stroke: var(--ubs-color-bg-secondary);
 }
 
 .circleFill {
@@ -69,26 +69,26 @@
 
 .colourRed .fill,
 .colourRed .circleFill {
-  background-color: #e60000;
-  stroke: #e60000;
+  background-color: var(--ubs-color-red);
+  stroke: var(--ubs-color-red);
 }
 
 .colourGreen .fill,
 .colourGreen .circleFill {
-  background-color: #6f7a1a;
-  stroke: #6f7a1a;
+  background-color: var(--ubs-color-rag-green);
+  stroke: var(--ubs-color-rag-green);
 }
 
 .colourAmber .fill,
 .colourAmber .circleFill {
-  background-color: #e4a911;
-  stroke: #e4a911;
+  background-color: var(--ubs-color-rag-amber);
+  stroke: var(--ubs-color-rag-amber);
 }
 
 .colourGray .fill,
 .colourGray .circleFill {
-  background-color: #5a5d5c;
-  stroke: #5a5d5c;
+  background-color: var(--ubs-color-gray-v);
+  stroke: var(--ubs-color-gray-v);
 }
 
 /* ── Label ────────────────────────────────── */

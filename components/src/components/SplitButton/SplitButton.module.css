@@ -1,0 +1,281 @@
+/* ─── UBS SplitButton ────────────────────────────────────────────── */
+
+.container {
+  display: inline-flex;
+}
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.primary,
+.toggle {
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: left;
+  white-space: nowrap;
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px 0 0 4px;
+  border-right-width: 0;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 4px 4px 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.primary:focus-visible,
+.toggle:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+/* ─── Sizes ───────────────────────────────────────────────────────── */
+
+.small .primary {
+  padding: 6px 16px;
+  font-size: 14px;
+  min-height: 32px;
+}
+
+.small .toggle {
+  padding: 6px 10px;
+  min-height: 32px;
+}
+
+.medium .primary {
+  padding: 10px 24px;
+  font-size: 16px;
+  min-height: 40px;
+}
+
+.medium .toggle {
+  padding: 10px 14px;
+  min-height: 40px;
+}
+
+.large .primary {
+  padding: 14px 32px;
+  font-size: 18px;
+  min-height: 48px;
+}
+
+.large .toggle {
+  padding: 14px 18px;
+  min-height: 48px;
+}
+
+/* ─── Variants ────────────────────────────────────────────────────── */
+
+/* Primary variant */
+.primary:is(.container.primary *) {
+  /* specificity placeholder */
+}
+
+.container.primary .primary,
+.container.primary .toggle {
+  background-color: var(--ubs-color-red);
+  border-color: var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
+}
+
+.container.primary .primary:hover:not(:disabled),
+.container.primary .toggle:hover:not(:disabled) {
+  background-color: var(--ubs-color-bordeaux-i);
+  border-color: var(--ubs-color-bordeaux-i);
+}
+
+.container.primary .toggle {
+  border-left-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Secondary variant */
+.container.secondary .primary,
+.container.secondary .toggle {
+  background-color: var(--ubs-color-text-primary);
+  border-color: var(--ubs-color-text-primary);
+  color: var(--ubs-color-text-inverse);
+}
+
+.container.secondary .primary:hover:not(:disabled),
+.container.secondary .toggle:hover:not(:disabled) {
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-gray-vi);
+}
+
+.container.secondary .toggle {
+  border-left-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Outline variant */
+.container.outline .primary,
+.container.outline .toggle {
+  background-color: transparent;
+  border-color: var(--ubs-color-text-primary);
+  color: var(--ubs-color-text-primary);
+}
+
+.container.outline .primary:hover:not(:disabled),
+.container.outline .toggle:hover:not(:disabled) {
+  background-color: var(--ubs-color-text-primary);
+  color: var(--ubs-color-text-inverse);
+}
+
+.container.outline .toggle {
+  border-left-color: var(--ubs-color-text-primary);
+}
+
+/* ─── Disabled ────────────────────────────────────────────────────── */
+
+.disabled .primary,
+.disabled .toggle {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ─── Chevron ─────────────────────────────────────────────────────── */
+
+.chevron {
+  flex-shrink: 0;
+}
+
+.label {
+  flex: 1;
+}
+
+/* ─── Menu ────────────────────────────────────────────────────────── */
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 1000;
+  min-width: 100%;
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  background-color: var(--ubs-color-text-inverse);
+  border: 1px solid var(--ubs-color-border-secondary);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ubs-color-text-primary);
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.menuItem:hover,
+.menuItemFocused {
+  background-color: var(--ubs-color-bg-tertiary);
+}
+
+.menuItemDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.menuItemDisabled:hover {
+  background-color: transparent;
+}
+
+.menuItemIcon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--ubs-color-gray-v);
+}
+
+.menuItemLabel {
+  flex: 1;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .primary:focus-visible,
+[data-ubs-theme="dark"] .toggle:focus-visible {
+  outline-color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .container.primary .primary,
+[data-ubs-theme="dark"] .container.primary .toggle {
+  background-color: var(--ubs-color-red);
+  border-color: var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .container.primary .primary:hover:not(:disabled),
+[data-ubs-theme="dark"] .container.primary .toggle:hover:not(:disabled) {
+  background-color: var(--ubs-color-bordeaux-i);
+  border-color: var(--ubs-color-bordeaux-i);
+}
+
+[data-ubs-theme="dark"] .container.secondary .primary,
+[data-ubs-theme="dark"] .container.secondary .toggle {
+  background-color: var(--ubs-color-text-inverse);
+  border-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-primary);
+}
+
+[data-ubs-theme="dark"] .container.secondary .primary:hover:not(:disabled),
+[data-ubs-theme="dark"] .container.secondary .toggle:hover:not(:disabled) {
+  background-color: var(--ubs-color-bg-secondary);
+  border-color: var(--ubs-color-bg-secondary);
+}
+
+[data-ubs-theme="dark"] .container.outline .primary,
+[data-ubs-theme="dark"] .container.outline .toggle {
+  border-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .container.outline .primary:hover:not(:disabled),
+[data-ubs-theme="dark"] .container.outline .toggle:hover:not(:disabled) {
+  background-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-primary);
+}
+
+[data-ubs-theme="dark"] .menu {
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .menuItem {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .menuItem:hover,
+[data-ubs-theme="dark"] .menuItemFocused {
+  background-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .menuItemIcon {
+  color: var(--ubs-color-border-secondary);
+}

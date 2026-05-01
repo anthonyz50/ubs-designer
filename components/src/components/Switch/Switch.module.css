@@ -1,0 +1,190 @@
+/* ─── UBS Switch ─────────────────────────────────────────────────── */
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.labelLeft {
+  flex-direction: row;
+}
+
+.labelRight {
+  flex-direction: row;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.label {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--ubs-color-text-primary);
+}
+
+/* ─── Hidden input ────────────────────────────────────────────────── */
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─── Switch wrapper ──────────────────────────────────────────────── */
+
+.switchWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ─── Track ───────────────────────────────────────────────────────── */
+
+.track {
+  position: relative;
+  display: inline-block;
+  border-radius: 4px;
+  transition: background-color 200ms ease;
+}
+
+.trackOff {
+  background-color: var(--ubs-color-gray-iii);
+}
+
+.trackOn {
+  background-color: var(--ubs-color-red);
+}
+
+/* ─── Thumb ───────────────────────────────────────────────────────── */
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--ubs-color-text-inverse);
+  border-radius: 3px;
+  transition: left 200ms ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ─── Sizes ───────────────────────────────────────────────────────── */
+
+.small .track {
+  width: 36px;
+  height: 20px;
+}
+
+.small .thumb {
+  width: 14px;
+  height: 14px;
+}
+
+.small .trackOff .thumb {
+  left: 3px;
+}
+
+.small .trackOn .thumb {
+  left: 19px;
+}
+
+.medium .track {
+  width: 44px;
+  height: 24px;
+}
+
+.medium .thumb {
+  width: 18px;
+  height: 18px;
+}
+
+.medium .trackOff .thumb {
+  left: 3px;
+}
+
+.medium .trackOn .thumb {
+  left: 23px;
+}
+
+.large .track {
+  width: 52px;
+  height: 28px;
+}
+
+.large .thumb {
+  width: 22px;
+  height: 22px;
+}
+
+.large .trackOff .thumb {
+  left: 3px;
+}
+
+.large .trackOn .thumb {
+  left: 27px;
+}
+
+/* Minimum 44px touch target */
+.container {
+  min-height: 44px;
+}
+
+/* ─── Focus ───────────────────────────────────────────────────────── */
+
+.input:focus-visible + .track {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* ─── Hover ───────────────────────────────────────────────────────── */
+
+.container:hover:not(.disabled) .trackOff {
+  background-color: var(--ubs-color-gray-iv);
+}
+
+.container:hover:not(.disabled) .trackOn {
+  background-color: var(--ubs-color-bordeaux-i);
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .label {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .trackOff {
+  background-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .trackOn {
+  background-color: var(--ubs-color-red);
+}
+
+[data-ubs-theme="dark"] .thumb {
+  background-color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .container:hover:not(.disabled) .trackOff {
+  background-color: var(--ubs-color-gray-iv);
+}
+
+[data-ubs-theme="dark"] .container:hover:not(.disabled) .trackOn {
+  background-color: var(--ubs-color-bordeaux-i);
+}
+
+[data-ubs-theme="dark"] .input:focus-visible + .track {
+  outline-color: var(--ubs-color-text-inverse);
+}

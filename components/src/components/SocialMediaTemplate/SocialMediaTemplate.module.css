@@ -4,7 +4,7 @@
   position: relative;
   overflow: hidden;
   font-family: 'Frutiger', Arial, sans-serif;
-  background-color: #FFFFFF;
+  background-color: var(--ubs-color-text-inverse);
   box-sizing: border-box;
 }
 
@@ -45,7 +45,7 @@
   display: flex;
   align-items: center;
   padding: 8px 12px;
-  background-color: #E60000; /* UBS Red */
+  background-color: var(--ubs-color-red); /* UBS Red */
 }
 
 /* Static: right-aligned Logo Tab */
@@ -63,7 +63,7 @@
 /* ── Logo text (simplified — real implementation would use SVG logo) ── */
 
 .logoText {
-  color: #FFFFFF;
+  color: var(--ubs-color-text-inverse);
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.05em;

@@ -1,0 +1,212 @@
+/* ─── UBS Snackbar ────────────────────────────────────────────────── */
+/* Temporary notification bar that auto-dismisses.                    */
+
+.snackbar {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  max-width: 560px;
+  padding: 14px 20px;
+  border-radius: 4px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Positions ───────────────────────────────────────────────────── */
+
+.bottomLeft {
+  bottom: 24px;
+  left: 24px;
+}
+
+.bottomCenter {
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottomRight {
+  bottom: 24px;
+  right: 24px;
+}
+
+/* ─── Enter / Exit ────────────────────────────────────────────────── */
+
+.enter {
+  animation: snackbarSlideIn 250ms ease-out;
+}
+
+.exit {
+  animation: snackbarSlideOut 200ms ease-in forwards;
+}
+
+@keyframes snackbarSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bottomCenter.enter {
+  animation: snackbarSlideInCenter 250ms ease-out;
+}
+
+.bottomCenter.exit {
+  animation: snackbarSlideOutCenter 200ms ease-in forwards;
+}
+
+@keyframes snackbarSlideInCenter {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes snackbarSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes snackbarSlideOutCenter {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px);
+  }
+}
+
+/* ─── Variants ────────────────────────────────────────────────────── */
+
+.info {
+  background-color: var(--ubs-color-gray-vi);
+  color: var(--ubs-color-text-inverse);
+}
+
+.success {
+  background-color: var(--ubs-color-rag-green);
+  color: var(--ubs-color-text-inverse);
+}
+
+.error {
+  background-color: var(--ubs-color-bordeaux-i);
+  color: var(--ubs-color-text-inverse);
+}
+
+.warning {
+  background-color: var(--ubs-color-gray-v);
+  color: var(--ubs-color-text-inverse);
+  border-left: 4px solid var(--ubs-color-rag-amber);
+}
+
+/* ─── Message ─────────────────────────────────────────────────────── */
+
+.message {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* ─── Action Button ───────────────────────────────────────────────── */
+
+.actionButton {
+  flex-shrink: 0;
+  padding: 4px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  background: transparent;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ubs-color-text-inverse);
+  cursor: pointer;
+  transition: background-color 150ms ease;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.actionButton:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.actionButton:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+/* ─── Close Button ────────────────────────────────────────────────── */
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--ubs-color-text-inverse);
+  opacity: 0.7;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: opacity 150ms ease;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .info {
+  background-color: var(--ubs-color-bg-secondary);
+  color: var(--ubs-color-text-primary);
+}
+
+[data-ubs-theme="dark"] .info .closeButton,
+[data-ubs-theme="dark"] .info .actionButton {
+  color: var(--ubs-color-text-primary);
+}
+
+[data-ubs-theme="dark"] .info .actionButton {
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+[data-ubs-theme="dark"] .info .actionButton:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-ubs-theme="dark"] .warning {
+  background-color: var(--ubs-color-gray-v);
+  border-left-color: var(--ubs-color-rag-amber);
+}

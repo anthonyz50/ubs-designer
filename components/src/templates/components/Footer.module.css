@@ -1,7 +1,7 @@
 /* ─── Footer ─── UBS Design System Template Component ─── */
 
 .footer {
-  background-color: #ecebe4; /* Pastel I */
+  background-color: var(--ubs-color-bg-secondary); /* Pastel I */
   font-family: 'Frutiger', Arial, sans-serif;
   padding: 48px 0 24px;
   margin-top: auto;
@@ -19,7 +19,7 @@
   display: flex;
   gap: 48px;
   padding-bottom: 32px;
-  border-bottom: 1px solid #cccabc; /* Gray I */
+  border-bottom: 1px solid var(--ubs-color-border-secondary); /* Gray I */
 }
 
 .logoArea {
@@ -43,7 +43,7 @@
 .groupTitle {
   font-size: 14px;
   font-weight: 500;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   margin: 0 0 12px;
   line-height: 1.4;
 }
@@ -61,14 +61,14 @@
 .link {
   font-size: 13px;
   font-weight: 400;
-  color: #5a5d5c; /* Gray V */
+  color: var(--ubs-color-gray-v); /* Gray V */
   text-decoration: none;
   transition: color 150ms;
   line-height: 1.5;
 }
 
 .link:hover {
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   text-decoration: underline;
 }
 
@@ -85,7 +85,7 @@
 
 .copyright {
   font-size: 12px;
-  color: #7a7870; /* Gray IV */
+  color: var(--ubs-color-gray-iv); /* Gray IV */
   margin: 0;
   line-height: 1.5;
 }

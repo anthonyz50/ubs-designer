@@ -18,7 +18,7 @@
 /* ─── Impulse variant ─────────────────────────────────────────────── */
 
 .impulse .titleBlock {
-  border-left: 4px solid #E60000;
+  border-left: 4px solid var(--ubs-color-red);
   padding-left: 20px;
 }
 
@@ -31,7 +31,7 @@
   margin-bottom: 12px;
   font-size: 14px;
   line-height: 1.4;
-  color: #5A5D5C;
+  color: var(--ubs-color-gray-v);
 }
 
 .breadcrumbItem {
@@ -40,13 +40,13 @@
 }
 
 .breadcrumbLink {
-  color: #5A5D5C;
+  color: var(--ubs-color-gray-v);
   text-decoration: none;
   transition: color 150ms ease;
 }
 
 .breadcrumbLink:hover {
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   text-decoration: underline;
 }
 
@@ -56,13 +56,13 @@
 }
 
 .breadcrumbCurrent {
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   font-weight: 400;
 }
 
 .breadcrumbSeparator {
   margin: 0 8px;
-  color: #B8B3A2;
+  color: var(--ubs-color-border-primary);
   user-select: none;
 }
 
@@ -78,7 +78,7 @@
   font-size: 56px;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   margin: 0;
 }
 
@@ -86,7 +86,7 @@
   font-weight: 300;
   font-size: 24px;
   line-height: 1.25;
-  color: #5A5D5C;
+  color: var(--ubs-color-gray-v);
   margin: 8px 0 0;
 }
 
@@ -102,27 +102,27 @@
 /* ─── Dark Mode ───────────────────────────────────────────────────── */
 
 [data-ubs-theme="dark"] .title {
-  color: #FFFFFF;
+  color: var(--ubs-color-text-inverse);
 }
 
 [data-ubs-theme="dark"] .subtitle {
-  color: #8E8D83;
+  color: var(--ubs-color-gray-iii);
 }
 
 [data-ubs-theme="dark"] .breadcrumbLink {
-  color: #8E8D83;
+  color: var(--ubs-color-gray-iii);
 }
 
 [data-ubs-theme="dark"] .breadcrumbLink:hover {
-  color: #FFFFFF;
+  color: var(--ubs-color-text-inverse);
 }
 
 [data-ubs-theme="dark"] .breadcrumbCurrent {
-  color: #FFFFFF;
+  color: var(--ubs-color-text-inverse);
 }
 
 [data-ubs-theme="dark"] .breadcrumbSeparator {
-  color: #5A5D5C;
+  color: var(--ubs-color-gray-v);
 }
 
 [data-ubs-theme="dark"] .impulse .titleBlock {
@@ -130,5 +130,5 @@
 }
 
 [data-ubs-theme="dark"] .breadcrumbLink:focus-visible {
-  outline-color: #FFFFFF;
+  outline-color: var(--ubs-color-text-inverse);
 }

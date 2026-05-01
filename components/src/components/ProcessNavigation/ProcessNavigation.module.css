@@ -1,0 +1,256 @@
+/* ─── UBS ProcessNavigation ───────────────────────────────────────── */
+
+.processNavigation {
+  font-family: var(--ubs-font-family-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Step List ───────────────────────────────────────────────────── */
+
+.stepList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Horizontal Layout ───────────────────────────────────────────── */
+
+.horizontal .stepList {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.horizontal .step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.horizontal .stepIndicator {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.horizontal .stepCircle {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+}
+
+.horizontal .connector {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 18px);
+  right: calc(-50% + 18px);
+  height: 2px;
+  background-color: var(--ubs-color-border-secondary);
+  transform: translateY(-50%);
+}
+
+.horizontal .stepContent {
+  text-align: center;
+  margin-top: var(--ubs-spacing-3xs);
+  padding: 0 var(--ubs-spacing-4xs);
+}
+
+/* ─── Vertical Layout ─────────────────────────────────────────────── */
+
+.vertical .stepList {
+  flex-direction: column;
+}
+
+.vertical .step {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: relative;
+}
+
+.vertical .stepIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.vertical .connector {
+  width: 2px;
+  height: 32px;
+  background-color: var(--ubs-color-border-secondary);
+  margin: var(--ubs-spacing-4xs) 0;
+}
+
+.vertical .stepContent {
+  margin-left: var(--ubs-spacing-3xs);
+  padding-top: 4px;
+}
+
+/* ─── Step Circle ─────────────────────────────────────────────────── */
+
+.stepCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--ubs-radius-full);
+  border: 2px solid var(--ubs-color-border-primary);
+  background-color: var(--ubs-color-bg-primary);
+  flex-shrink: 0;
+  transition:
+    background-color var(--ubs-duration-normal) var(--ubs-easing-default),
+    border-color var(--ubs-duration-normal) var(--ubs-easing-default),
+    color var(--ubs-duration-normal) var(--ubs-easing-default);
+}
+
+.stepNumber {
+  font-size: var(--ubs-font-size-small);
+  font-weight: var(--ubs-font-weight-medium);
+  line-height: var(--ubs-line-height-none);
+  color: var(--ubs-color-text-secondary);
+}
+
+/* ─── Step Content ────────────────────────────────────────────────── */
+
+.stepLabel {
+  display: block;
+  font-size: var(--ubs-font-size-small);
+  font-weight: var(--ubs-font-weight-regular);
+  line-height: var(--ubs-line-height-body);
+  color: var(--ubs-color-text-secondary);
+}
+
+.stepDescription {
+  display: block;
+  font-size: 12px;
+  line-height: var(--ubs-line-height-body);
+  color: var(--ubs-color-text-tertiary);
+  margin-top: 2px;
+}
+
+/* ─── Completed State ─────────────────────────────────────────────── */
+
+.completed .stepCircle {
+  background-color: var(--ubs-color-rag-green);
+  border-color: var(--ubs-color-rag-green);
+  color: var(--ubs-color-white);
+}
+
+.completed .stepLabel {
+  color: var(--ubs-color-text-primary);
+  font-weight: var(--ubs-font-weight-medium);
+}
+
+.completed .connector {
+  background-color: var(--ubs-color-rag-green);
+}
+
+/* ─── Active State ────────────────────────────────────────────────── */
+
+.active .stepCircle {
+  background-color: var(--ubs-color-red);
+  border-color: var(--ubs-color-red);
+  color: var(--ubs-color-white);
+}
+
+.active .stepNumber {
+  color: var(--ubs-color-white);
+}
+
+.active .stepLabel {
+  color: var(--ubs-color-text-primary);
+  font-weight: var(--ubs-font-weight-bold);
+}
+
+/* ─── Upcoming State ──────────────────────────────────────────────── */
+
+.upcoming .stepCircle {
+  background-color: var(--ubs-color-bg-primary);
+  border-color: var(--ubs-color-border-secondary);
+}
+
+.upcoming .stepLabel {
+  color: var(--ubs-color-text-tertiary);
+}
+
+/* ─── Error State ─────────────────────────────────────────────────── */
+
+.error .stepCircle {
+  background-color: var(--ubs-color-rag-red);
+  border-color: var(--ubs-color-rag-red);
+  color: var(--ubs-color-white);
+}
+
+.error .stepLabel {
+  color: var(--ubs-color-text-error);
+  font-weight: var(--ubs-font-weight-medium);
+}
+
+.error .connector {
+  background-color: var(--ubs-color-rag-red);
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .stepCircle {
+  background-color: var(--ubs-color-bg-inverse);
+  border-color: var(--ubs-color-gray-iv);
+}
+
+[data-ubs-theme="dark"] .stepNumber {
+  color: var(--ubs-color-gray-ii);
+}
+
+[data-ubs-theme="dark"] .stepLabel {
+  color: var(--ubs-color-gray-ii);
+}
+
+[data-ubs-theme="dark"] .stepDescription {
+  color: var(--ubs-color-gray-iii);
+}
+
+[data-ubs-theme="dark"] .connector {
+  background-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .completed .stepCircle {
+  background-color: var(--ubs-color-rag-green);
+  border-color: var(--ubs-color-rag-green);
+}
+
+[data-ubs-theme="dark"] .completed .stepLabel {
+  color: var(--ubs-color-white);
+}
+
+[data-ubs-theme="dark"] .active .stepCircle {
+  background-color: #D83B31;
+  border-color: #D83B31;
+}
+
+[data-ubs-theme="dark"] .active .stepLabel {
+  color: var(--ubs-color-white);
+}
+
+[data-ubs-theme="dark"] .upcoming .stepCircle {
+  background-color: transparent;
+  border-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .upcoming .stepLabel {
+  color: var(--ubs-color-gray-iv);
+}
+
+[data-ubs-theme="dark"] .error .stepCircle {
+  background-color: var(--ubs-color-rag-red);
+  border-color: var(--ubs-color-rag-red);
+}
+
+[data-ubs-theme="dark"] .error .stepLabel {
+  color: #FF6666;
+}

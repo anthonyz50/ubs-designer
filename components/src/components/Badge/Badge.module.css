@@ -29,23 +29,23 @@
 /* ── Variants ──────────────────────────────────────────── */
 
 .default {
-  background-color: #8E8D83; /* Gray III */
-  color: #FFFFFF;
+  background-color: var(--ubs-color-gray-iii); /* Gray III */
+  color: var(--ubs-color-text-inverse);
 }
 
 .red {
-  background-color: #E60000; /* UBS Red */
-  color: #FFFFFF;
+  background-color: var(--ubs-color-red); /* UBS Red */
+  color: var(--ubs-color-text-inverse);
 }
 
 .success {
-  background-color: #6F7A1A; /* RAG Green */
-  color: #FFFFFF;
+  background-color: var(--ubs-color-rag-green); /* RAG Green */
+  color: var(--ubs-color-text-inverse);
 }
 
 .warning {
-  background-color: #E4A911; /* RAG Amber */
-  color: #000000; /* Black for contrast on amber */
+  background-color: var(--ubs-color-rag-amber); /* RAG Amber */
+  color: var(--ubs-color-text-primary); /* Black for contrast on amber */
 }
 
 /* ── Dot-only mode ─────────────────────────────────────── */

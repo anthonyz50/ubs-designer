@@ -1,0 +1,82 @@
+/* Amount — UBS Design System */
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ── Sizes ───────────────────────────────── */
+
+.small {
+  font-size: 14px;
+  line-height: 1.43;
+}
+
+.medium {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.large {
+  font-size: 32px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+/* ── Trend colours ───────────────────────── */
+
+.neutral {
+  color: var(--ubs-color-text-primary);
+}
+
+.up {
+  color: var(--ubs-color-rag-green);
+}
+
+.down {
+  color: var(--ubs-color-bordeaux-i);
+}
+
+/* ── Parts ───────────────────────────────── */
+
+.sign {
+  font-weight: 700;
+}
+
+.value {
+  font-weight: inherit;
+}
+
+.trendIcon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.small .trendIcon {
+  width: 10px;
+  height: 10px;
+}
+
+.large .trendIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Dark mode ───────────────────────────── */
+
+[data-ubs-theme="dark"] .neutral {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .up {
+  color: #8fa822;
+}
+
+[data-ubs-theme="dark"] .down {
+  color: #e6394a;
+}

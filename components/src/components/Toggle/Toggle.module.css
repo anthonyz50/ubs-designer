@@ -40,7 +40,7 @@
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
-  background-color: #8E8D83;
+  background-color: var(--ubs-color-gray-iii);
   transition: background-color 150ms ease;
   flex-shrink: 0;
 }
@@ -67,7 +67,7 @@
 .thumb {
   position: absolute;
   border-radius: 50%;
-  background-color: #FFFFFF;
+  background-color: var(--ubs-color-text-inverse);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: transform 150ms ease;
 }
@@ -93,7 +93,7 @@
 /* ─── Checked state ───────────────────────────────────────────────── */
 
 .nativeInput:checked ~ .track {
-  background-color: #E60000;
+  background-color: var(--ubs-color-red);
 }
 
 .nativeInput:checked ~ .track .thumb {
@@ -126,7 +126,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   text-align: left;
   text-shadow: none;
   user-select: none;

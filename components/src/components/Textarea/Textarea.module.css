@@ -6,9 +6,9 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  color: #000000;
-  background-color: #FFFFFF;
-  border: 1px solid #B8B3A2;
+  color: var(--ubs-color-text-primary);
+  background-color: var(--ubs-color-text-inverse);
+  border: 1px solid var(--ubs-color-border-primary);
   border-radius: 4px;
   padding: 10px 12px;
   min-height: 44px;
@@ -20,12 +20,12 @@
 }
 
 .textarea::placeholder {
-  color: #8E8D83;
+  color: var(--ubs-color-gray-iii);
 }
 
 .textarea:focus {
   outline: none;
-  border-color: #000000;
+  border-color: var(--ubs-color-text-primary);
   box-shadow: 0 0 0 2px #000000;
 }
 
@@ -46,24 +46,24 @@
 /* ─── States ──────────────────────────────────────────────────────── */
 
 .error {
-  border-color: #BD000C;
+  border-color: var(--ubs-color-bordeaux-i);
 }
 
 .error:focus {
-  border-color: #BD000C;
-  box-shadow: 0 0 0 2px #BD000C;
+  border-color: var(--ubs-color-bordeaux-i);
+  box-shadow: 0 0 0 2px var(--ubs-color-bordeaux-i);
 }
 
 .disabled {
-  background-color: #ECEBE4;
-  color: #8E8D83;
-  border-color: #CCCABC;
+  background-color: var(--ubs-color-bg-secondary);
+  color: var(--ubs-color-gray-iii);
+  border-color: var(--ubs-color-border-secondary);
   cursor: not-allowed;
   opacity: 0.6;
 }
 
 .readonly {
-  background-color: #F5F0E1;
+  background-color: var(--ubs-color-bg-tertiary);
   cursor: default;
 }
 
@@ -78,11 +78,11 @@
   font-family: 'Frutiger', Arial, sans-serif;
   font-size: 14px;
   font-weight: 300;
-  color: #5A5D5C;
+  color: var(--ubs-color-gray-v);
   text-shadow: none;
 }
 
 .countOver {
-  color: #BD000C;
+  color: var(--ubs-color-bordeaux-i);
   font-weight: 400;
 }

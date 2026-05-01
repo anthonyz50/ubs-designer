@@ -1,0 +1,127 @@
+/* ─── UBS ButtonSelect ───────────────────────────────────────────── */
+
+.container {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+/* Connected border approach */
+.container > *:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.container > *:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-width: 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid var(--ubs-color-border-focus);
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--ubs-color-text-primary);
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.button:hover:not(:disabled):not(.selected) {
+  background-color: var(--ubs-color-bg-secondary);
+}
+
+.button:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+/* ─── Selected ────────────────────────────────────────────────────── */
+
+.selected {
+  background-color: var(--ubs-color-red);
+  border-color: var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
+}
+
+.selected:hover:not(:disabled) {
+  background-color: var(--ubs-color-bordeaux-i);
+  border-color: var(--ubs-color-bordeaux-i);
+}
+
+/* ─── Sizes ───────────────────────────────────────────────────────── */
+
+.small .button {
+  padding: 6px 16px;
+  font-size: 14px;
+  min-height: 32px;
+}
+
+.medium .button {
+  padding: 10px 24px;
+  font-size: 16px;
+  min-height: 40px;
+}
+
+.large .button {
+  padding: 14px 32px;
+  font-size: 18px;
+  min-height: 48px;
+}
+
+/* ─── Disabled ────────────────────────────────────────────────────── */
+
+.buttonDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ─── Icon ────────────────────────────────────────────────────────── */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.label {
+  flex: 1;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .button {
+  border-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .button:hover:not(:disabled):not(.selected) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-ubs-theme="dark"] .button:focus-visible {
+  outline-color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .selected {
+  background-color: var(--ubs-color-red);
+  border-color: var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .selected:hover:not(:disabled) {
+  background-color: var(--ubs-color-bordeaux-i);
+  border-color: var(--ubs-color-bordeaux-i);
+}

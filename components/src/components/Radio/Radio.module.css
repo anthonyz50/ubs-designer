@@ -36,9 +36,9 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 2px solid #000000;
+  border: 2px solid var(--ubs-color-border-focus);
   border-radius: 50%;
-  background-color: #FFFFFF;
+  background-color: var(--ubs-color-text-inverse);
   transition: border-color 150ms ease;
 }
 
@@ -71,7 +71,7 @@
 }
 
 .nativeInput:checked + .circle .dot {
-  background-color: #E60000;
+  background-color: var(--ubs-color-red);
 }
 
 /* ─── Focus ring ──────────────────────────────────────────────────── */
@@ -87,7 +87,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   text-align: left;
   text-shadow: none;
   user-select: none;
@@ -106,7 +106,7 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 1.4;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   text-align: left;
   text-shadow: none;
   margin-bottom: 4px;
@@ -114,7 +114,7 @@
 
 .groupRequired::after {
   content: ' *';
-  color: #BD000C;
+  color: var(--ubs-color-bordeaux-i);
 }
 
 .groupError {
@@ -122,7 +122,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.4;
-  color: #BD000C;
+  color: var(--ubs-color-bordeaux-i);
   text-align: left;
   text-shadow: none;
   margin: 4px 0 0;

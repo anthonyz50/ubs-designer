@@ -50,7 +50,7 @@
 }
 
 .neutral {
-  color: #404040; /* Gray VI */
+  color: var(--ubs-color-gray-vi); /* Gray VI */
 }
 
 /* ── Arrow ─────────────────────────────────────────────── */

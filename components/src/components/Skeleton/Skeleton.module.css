@@ -1,7 +1,7 @@
 /* Skeleton — UBS Design System */
 
 .skeleton {
-  background-color: #ecebe4;
+  background-color: var(--ubs-color-bg-secondary);
   border-radius: 4px;
   overflow: hidden;
   position: relative;
@@ -17,7 +17,7 @@
 
 .textLine {
   height: 14px;
-  background-color: #ecebe4;
+  background-color: var(--ubs-color-bg-secondary);
   border-radius: 4px;
   overflow: hidden;
   position: relative;

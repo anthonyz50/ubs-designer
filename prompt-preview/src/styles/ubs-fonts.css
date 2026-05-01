@@ -1,0 +1,59 @@
+/* ==========================================================
+   Frutiger for UBS Web — @font-face declarations
+   ========================================================== */
+
+@font-face {
+  font-family: 'Frutiger';
+  src: url('/fonts/FrutigerforUBSWeb-Lt.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frutiger';
+  src: url('/fonts/FrutigerforUBSWeb-LtIt.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frutiger';
+  src: url('/fonts/FrutigerforUBSWeb.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frutiger';
+  src: url('/fonts/FrutigerforUBSWeb-It.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frutiger';
+  src: url('/fonts/FrutigerforUBSWeb-Md.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frutiger';
+  src: url('/fonts/FrutigerforUBSWeb-Bd.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frutiger Condensed';
+  src: url('/fonts/FrutigerforUBSWebCond-Lt.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}

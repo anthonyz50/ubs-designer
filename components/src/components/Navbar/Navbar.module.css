@@ -22,13 +22,13 @@
 /* ── Variants ─────────────────────────────── */
 
 .light {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-primary);
 }
 
 .dark {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--ubs-color-text-primary);
+  color: var(--ubs-color-text-inverse);
 }
 
 /* ── Logo ─────────────────────────────────── */
@@ -76,7 +76,7 @@
 }
 
 .dark .navItem:focus-visible {
-  outline-color: #ffffff;
+  outline-color: var(--ubs-color-text-inverse);
 }
 
 .navItemActive::after {
@@ -86,7 +86,7 @@
   left: 16px;
   right: 16px;
   height: 2px;
-  background-color: #e60000;
+  background-color: var(--ubs-color-red);
   border-radius: 1px;
 }
 
@@ -127,7 +127,7 @@
 }
 
 .dark .hamburger:focus-visible {
-  outline-color: #ffffff;
+  outline-color: var(--ubs-color-text-inverse);
 }
 
 .hamburgerBar {
@@ -210,14 +210,14 @@
 
 .light .mobilePanel,
 .mobilePanel.mobilePanelLight {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-primary);
 }
 
 .dark .mobilePanel,
 .mobilePanel.mobilePanelDark {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--ubs-color-text-primary);
+  color: var(--ubs-color-text-inverse);
 }
 
 .mobileNav {
@@ -254,14 +254,14 @@
 }
 
 .mobileNavItemActive {
-  color: #e60000;
+  color: var(--ubs-color-red);
   font-weight: 700;
 }
 
 .mobileActions {
   margin-top: 24px;
   padding-top: 24px;
-  border-top: 1px solid #ecebe4;
+  border-top: 1px solid var(--ubs-color-bg-secondary);
 }
 
 /* ── Responsive ───────────────────────────── */

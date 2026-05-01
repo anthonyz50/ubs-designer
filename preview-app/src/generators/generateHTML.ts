@@ -168,6 +168,30 @@ export function generateHTML(config: LayoutConfig): string {
     /* Impulse */
     .impulse-line { border-left: 4px solid var(--ubs-red); padding-left: 16px; }
 
+    /* Masthead Navigation */
+    .masthead-nav { display: flex; align-items: stretch; height: 48px; border-bottom: 2px solid var(--ubs-pastel-i); }
+    .masthead-nav a {
+      display: flex; align-items: center; padding: 0 20px;
+      font-size: 14px; font-weight: 500; color: var(--ubs-gray-iii);
+      text-decoration: none; position: relative; white-space: nowrap;
+    }
+    .masthead-nav a:hover { color: var(--ubs-black); }
+    .masthead-nav a.active { color: var(--ubs-black); font-weight: 600; }
+    .masthead-nav a.active::after {
+      content: ''; position: absolute; bottom: -2px; left: 20px; right: 20px;
+      height: 3px; background: var(--ubs-red);
+    }
+    .masthead-nav-secondary {
+      display: flex; align-items: stretch; height: 40px;
+      background: var(--ubs-pastel-i); border-bottom: 1px solid var(--ubs-gray-i);
+    }
+    .masthead-nav-secondary a {
+      display: flex; align-items: center; padding: 0 16px;
+      font-size: 13px; color: var(--ubs-gray-iii); text-decoration: none;
+    }
+    .masthead-nav-secondary a:hover { color: var(--ubs-black); }
+    .masthead-nav-secondary a.active { color: var(--ubs-black); font-weight: 700; }
+
     /* Content Block */
     .content-flex { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
     .content-text { flex: 1; min-width: 280px; }
@@ -238,9 +262,51 @@ export function generateHTML(config: LayoutConfig): string {
 function renderHTMLSection(section: import('../types').SectionConfig): string {
   const bgClass = section.type === 'stats-row' ? ' bg-pastel1' : '';
 
+  if (section.type === 'masthead-navigation') {
+    const opts = section.options as import('../types').MastheadNavigationOptions;
+    switch (opts.navType) {
+      case 'single':
+        return `
+    <section class="section">
+      ${section.title ? `<h2 class="section-title">${section.title}</h2>` : ''}
+      <nav class="masthead-nav">
+        <a href="#" class="active">Overview</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Transactions</a>
+        <a href="#">Documents</a>
+        <a href="#">Settings</a>
+      </nav>
+    </section>`;
+      case 'double':
+        return `
+    <section class="section">
+      ${section.title ? `<h2 class="section-title">${section.title}</h2>` : ''}
+      <nav class="masthead-nav">
+        <a href="#" class="active">Wealth Management</a>
+        <a href="#">Investment Bank</a>
+        <a href="#">Asset Management</a>
+        <a href="#">Personal Banking</a>
+      </nav>
+      <nav class="masthead-nav-secondary">
+        <a href="#" class="active">Overview</a>
+        <a href="#">Accounts</a>
+        <a href="#">Performance</a>
+        <a href="#">Advisory</a>
+        <a href="#">Reports</a>
+      </nav>
+    </section>`;
+      default:
+        return `
+    <section class="section">
+      ${section.title ? `<h2 class="section-title">${section.title}</h2>` : ''}
+      <p style="color: var(--ubs-gray-iii); font-style: italic;">[${opts.navType} masthead navigation \u2014 render in React for full fidelity]</p>
+    </section>`;
+    }
+  }
+
   return `
     <section class="section${bgClass}">
       ${section.title ? `<h2 class="section-title">${section.title}</h2>` : ''}
-      <p style="color: var(--ubs-gray-iii); font-style: italic;">[${section.type} section — render in React for full fidelity]</p>
+      <p style="color: var(--ubs-gray-iii); font-style: italic;">[${section.type} section \u2014 render in React for full fidelity]</p>
     </section>`;
 }

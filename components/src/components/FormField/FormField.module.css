@@ -18,14 +18,14 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 1.4;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   text-align: left;
   text-shadow: none;
 }
 
 .required::after {
   content: ' *';
-  color: #BD000C;
+  color: var(--ubs-color-bordeaux-i);
 }
 
 /* ─── Helper Text ─────────────────────────────────────────────────── */
@@ -34,7 +34,7 @@
   font-size: 14px;
   font-weight: 300;
   line-height: 1.4;
-  color: #5A5D5C;
+  color: var(--ubs-color-gray-v);
   text-align: left;
   text-shadow: none;
   margin: 0;
@@ -46,7 +46,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.4;
-  color: #BD000C;
+  color: var(--ubs-color-bordeaux-i);
   text-align: left;
   text-shadow: none;
   margin: 0;

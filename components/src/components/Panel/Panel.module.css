@@ -1,0 +1,146 @@
+/* Panel — UBS Design System */
+
+.root {
+  font-family: 'Frutiger', Arial, sans-serif;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* ── Variants ────────────────────────────── */
+
+.default {
+  background-color: transparent;
+}
+
+.bordered {
+  border: 1px solid var(--ubs-color-bg-secondary);
+  background-color: var(--ubs-color-text-inverse);
+}
+
+.elevated {
+  background-color: var(--ubs-color-text-inverse);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Header ──────────────────────────────── */
+
+.header {
+  border-bottom: 1px solid var(--ubs-color-bg-secondary);
+}
+
+.headerButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-align: left;
+  min-height: 44px;
+  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.headerButton:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.headerButton:focus-visible {
+  outline: 2px solid var(--ubs-color-red);
+  outline-offset: -2px;
+}
+
+.headerStatic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+
+.titleText {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ubs-color-text-primary);
+  line-height: 1.5;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.headerAction {
+  display: flex;
+  align-items: center;
+}
+
+/* ── Chevron ─────────────────────────────── */
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--ubs-color-gray-iii);
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ── Content ─────────────────────────────── */
+
+.content {
+  overflow: hidden;
+}
+
+.contentOpen {
+  display: block;
+}
+
+.contentClosed {
+  display: none;
+}
+
+.contentInner {
+  padding: 20px;
+  font-size: 14px;
+  color: var(--ubs-color-gray-v);
+  line-height: 1.57;
+}
+
+/* ── Dark mode ───────────────────────────── */
+
+[data-ubs-theme="dark"] .bordered {
+  border-color: var(--ubs-color-gray-vi);
+  background-color: #1a1a1a;
+}
+
+[data-ubs-theme="dark"] .elevated {
+  background-color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-ubs-theme="dark"] .header {
+  border-bottom-color: var(--ubs-color-gray-vi);
+}
+
+[data-ubs-theme="dark"] .titleText {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .contentInner {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .headerButton:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-ubs-theme="dark"] .chevron {
+  color: var(--ubs-color-gray-iv);
+}

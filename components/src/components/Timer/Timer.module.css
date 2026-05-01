@@ -1,0 +1,100 @@
+/* ─── UBS Timer ───────────────────────────────────────────────────── */
+/* Countdown / count-up timer display with running, paused, expired.  */
+
+.timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Size Variants ───────────────────────────────────────────────── */
+
+.default {
+  padding: 12px 20px;
+  border-radius: 4px;
+  background-color: #F5F5F0;
+}
+
+.default .display {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.compact {
+  padding: 6px 12px;
+  border-radius: 2px;
+  background-color: #F5F5F0;
+}
+
+.compact .display {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── State Styles ────────────────────────────────────────────────── */
+
+.running {
+  color: var(--ubs-color-text-primary);
+}
+
+.paused {
+  color: var(--ubs-color-gray-iv);
+}
+
+.paused .display {
+  opacity: 0.7;
+}
+
+.expired {
+  color: var(--ubs-color-bordeaux-i);
+  background-color: #FDF2F2;
+}
+
+.expired .display {
+  animation: timerBlink 1s ease-in-out infinite;
+}
+
+@keyframes timerBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.expiredLabel {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ubs-color-bordeaux-i);
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .default,
+[data-ubs-theme="dark"] .compact {
+  background-color: #2A2A28;
+}
+
+[data-ubs-theme="dark"] .running {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .paused {
+  color: var(--ubs-color-gray-iii);
+}
+
+[data-ubs-theme="dark"] .expired {
+  color: var(--ubs-color-red);
+  background-color: #2E1A1A;
+}
+
+[data-ubs-theme="dark"] .expiredLabel {
+  color: var(--ubs-color-red);
+}

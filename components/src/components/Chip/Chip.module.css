@@ -10,9 +10,9 @@
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
-  border: 1px solid #b8b3a2;
-  background-color: #ffffff;
-  color: #000000;
+  border: 1px solid var(--ubs-color-border-primary);
+  background-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-primary);
   transition: background-color 0.15s ease, border-color 0.15s ease;
   user-select: none;
   vertical-align: middle;
@@ -33,7 +33,7 @@
 
 /* ─── States ─── */
 .chip:hover:not(.disabled) {
-  background-color: #ecebe4;
+  background-color: var(--ubs-color-bg-secondary);
 }
 
 .chip:focus-visible {
@@ -42,9 +42,9 @@
 }
 
 .selected {
-  border-color: #e60000;
+  border-color: var(--ubs-color-red);
   background-color: #fef2f2;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
 }
 
 .selected:hover:not(.disabled) {
@@ -70,7 +70,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #e60000;
+  color: var(--ubs-color-red);
 }
 
 .sm .checkmark {

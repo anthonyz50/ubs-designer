@@ -1,0 +1,177 @@
+/* ============================================================
+   Review Panel
+   ============================================================ */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-6);
+}
+
+/* ---- Overall score ---- */
+.overallScore {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-5);
+  padding: var(--ubs-space-6);
+  background-color: var(--ubs-bg-secondary);
+  border-radius: var(--ubs-radius-md);
+}
+
+.scoreCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--ubs-radius-full);
+  border: 4px solid var(--ubs-border);
+  flex-shrink: 0;
+}
+
+.scoreCircle[data-level='high'] {
+  border-color: var(--ubs-status-success);
+}
+
+.scoreCircle[data-level='mid'] {
+  border-color: var(--ubs-status-warning);
+}
+
+.scoreCircle[data-level='low'] {
+  border-color: var(--ubs-status-error);
+}
+
+.scoreValue {
+  font-size: var(--ubs-header-2-size);
+  font-weight: var(--ubs-weight-bold);
+  color: var(--ubs-text-primary);
+}
+
+.scoreCircle[data-level='high'] .scoreValue {
+  color: var(--ubs-status-success);
+}
+
+.scoreCircle[data-level='mid'] .scoreValue {
+  color: #8a6c08;
+}
+
+.scoreCircle[data-level='low'] .scoreValue {
+  color: var(--ubs-status-error);
+}
+
+.scoreMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-1);
+}
+
+.scoreLabel {
+  font-size: var(--ubs-header-4-size);
+  font-weight: var(--ubs-weight-medium);
+  color: var(--ubs-text-primary);
+}
+
+.scoreSub {
+  font-size: var(--ubs-body-3-size);
+  color: var(--ubs-text-secondary);
+}
+
+/* ---- Score items ---- */
+.scoreItems {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-4);
+}
+
+.scoreItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-2);
+}
+
+.scoreItemHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scoreItemCategory {
+  font-size: var(--ubs-body-2-size);
+  font-weight: var(--ubs-weight-medium);
+  color: var(--ubs-text-primary);
+}
+
+.scoreItemValue {
+  font-size: var(--ubs-body-2-size);
+  font-weight: var(--ubs-weight-bold);
+}
+
+.scoreItemValue[data-level='high'] {
+  color: var(--ubs-status-success);
+}
+
+.scoreItemValue[data-level='mid'] {
+  color: #8a6c08;
+}
+
+.scoreItemValue[data-level='low'] {
+  color: var(--ubs-status-error);
+}
+
+.scoreBar {
+  height: 6px;
+  background-color: var(--ubs-neutral-20);
+  border-radius: var(--ubs-radius-full);
+  overflow: hidden;
+}
+
+.scoreBarFill {
+  height: 100%;
+  border-radius: var(--ubs-radius-full);
+  transition: width var(--ubs-transition-base);
+}
+
+.scoreBarFill[data-level='high'] {
+  background-color: var(--ubs-status-success);
+}
+
+.scoreBarFill[data-level='mid'] {
+  background-color: var(--ubs-status-warning);
+}
+
+.scoreBarFill[data-level='low'] {
+  background-color: var(--ubs-status-error);
+}
+
+.scoreItemNotes {
+  font-size: var(--ubs-body-3-size);
+  color: var(--ubs-text-secondary);
+  line-height: 1.5;
+}
+
+/* ---- Sections ---- */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-3);
+}
+
+.sectionTitle {
+  font-size: var(--ubs-header-5-size);
+  font-weight: var(--ubs-weight-bold);
+  color: var(--ubs-text-primary);
+}
+
+.notesList {
+  list-style: disc;
+  padding-left: var(--ubs-space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-2);
+}
+
+.notesList li {
+  font-size: var(--ubs-body-2-size);
+  color: var(--ubs-text-primary);
+  line-height: 1.5;
+}

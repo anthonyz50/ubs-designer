@@ -22,7 +22,7 @@
 /* ── Dialog ───────────────────────────────── */
 
 .dialog {
-  background-color: #ffffff;
+  background-color: var(--ubs-color-text-inverse);
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@
     opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
   font-family: 'Frutiger', Arial, sans-serif;
   font-size: 14px;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
 }
 
 .backdropOpen .dialog {
@@ -72,7 +72,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 24px;
-  border-bottom: 1px solid #ecebe4;
+  border-bottom: 1px solid var(--ubs-color-bg-secondary);
   flex-shrink: 0;
 }
 
@@ -81,7 +81,7 @@
   font-weight: 700;
   font-family: 'Frutiger', Arial, sans-serif;
   margin: 0;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
 }
 
 .closeButton {
@@ -93,7 +93,7 @@
   padding: 0;
   border: none;
   background: none;
-  color: #5a5d5c;
+  color: var(--ubs-color-gray-v);
   cursor: pointer;
   border-radius: 4px;
   font-size: 20px;
@@ -103,7 +103,7 @@
 }
 
 .closeButton:hover {
-  color: #000000;
+  color: var(--ubs-color-text-primary);
 }
 
 .closeButton:focus-visible {
@@ -127,6 +127,6 @@
   justify-content: flex-end;
   gap: 12px;
   padding: 16px 24px;
-  border-top: 1px solid #ecebe4;
+  border-top: 1px solid var(--ubs-color-bg-secondary);
   flex-shrink: 0;
 }

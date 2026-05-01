@@ -1,0 +1,61 @@
+/* ─── UBS DonutChart ──────────────────────────────────────────────── */
+/* Pure SVG donut/ring chart with UBS data viz colours.               */
+
+.container {
+  display: inline-block;
+  font-family: 'Frutiger', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.svg {
+  overflow: visible;
+}
+
+/* ─── Animation ───────────────────────────────────────────────────── */
+
+.animateSegment {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: donutDraw 800ms ease-out forwards;
+}
+
+@keyframes donutDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ─── Labels ──────────────────────────────────────────────────────── */
+
+.centerLabel {
+  font-size: 14px;
+  font-weight: 700;
+  fill: #000000;
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+.percentageLabel {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #FFFFFF;
+  font-family: 'Frutiger', Arial, sans-serif;
+  pointer-events: none;
+}
+
+.legendText {
+  font-size: 13px;
+  font-weight: 400;
+  fill: var(--ubs-color-gray-vi);
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .centerLabel {
+  fill: #FFFFFF;
+}
+
+[data-ubs-theme="dark"] .legendText {
+  fill: var(--ubs-color-border-secondary);
+}

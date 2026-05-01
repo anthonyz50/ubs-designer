@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f5f0e1; /* Pastel II */
+  background-color: var(--ubs-color-bg-tertiary); /* Pastel II */
   font-family: 'Frutiger', Arial, sans-serif;
 }
 
@@ -24,7 +24,7 @@
 .userName {
   font-size: 14px;
   font-weight: 400;
-  color: #404040;
+  color: var(--ubs-color-gray-vi);
   display: none;
 }
 
@@ -54,8 +54,8 @@
   height: 48px;
   border-radius: 50%;
   border: none;
-  background-color: #e60000; /* UBS Red */
-  color: #ffffff;
+  background-color: var(--ubs-color-red); /* UBS Red */
+  color: var(--ubs-color-text-inverse);
   font-size: 20px;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -115,7 +115,7 @@
 .pageTitle {
   font-size: 28px;
   font-weight: 300;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   margin: 0 0 24px;
   line-height: 1.2;
 }
@@ -127,7 +127,7 @@
 }
 
 .statCard {
-  background-color: #ffffff;
+  background-color: var(--ubs-color-text-inverse);
   border-radius: 4px;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
@@ -140,7 +140,7 @@
 }
 
 .chartCard {
-  background-color: #ffffff;
+  background-color: var(--ubs-color-text-inverse);
   border-radius: 4px;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
@@ -150,7 +150,7 @@
 
 .activitySection {
   margin-bottom: 32px;
-  background-color: #ffffff;
+  background-color: var(--ubs-color-text-inverse);
   border-radius: 4px;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
@@ -159,7 +159,7 @@
 .sectionTitle {
   font-size: 18px;
   font-weight: 500;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   margin: 0 0 16px;
   line-height: 1.3;
 }

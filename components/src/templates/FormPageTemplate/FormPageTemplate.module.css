@@ -2,7 +2,7 @@
 
 .formPage {
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: var(--ubs-color-text-inverse);
   font-family: 'Frutiger', Arial, sans-serif;
 }
 

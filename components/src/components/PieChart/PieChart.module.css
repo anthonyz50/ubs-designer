@@ -1,0 +1,56 @@
+/* ─── UBS PieChart ────────────────────────────────────────────────── */
+/* Pure SVG pie chart with optional donut variant and legend.         */
+
+.container {
+  display: inline-block;
+  font-family: 'Frutiger', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.svg {
+  overflow: visible;
+}
+
+/* ─── Animation ───────────────────────────────────────────────────── */
+
+.animateSlice {
+  opacity: 0;
+  transform: scale(0.9);
+  transform-origin: center;
+  animation: slicePop 400ms ease-out forwards;
+}
+
+@keyframes slicePop {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ─── Labels ──────────────────────────────────────────────────────── */
+
+.sliceLabel {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #FFFFFF;
+  font-family: 'Frutiger', Arial, sans-serif;
+  pointer-events: none;
+}
+
+.legendText {
+  font-size: 13px;
+  font-weight: 400;
+  fill: var(--ubs-color-gray-vi);
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .legendText {
+  fill: var(--ubs-color-border-secondary);
+}
+
+[data-ubs-theme="dark"] .animateSlice {
+  stroke: #1A1A1A;
+}

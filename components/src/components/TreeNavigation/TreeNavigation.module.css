@@ -1,0 +1,183 @@
+/* ─── UBS TreeNavigation ──────────────────────────────────────────── */
+
+.treeNavigation {
+  font-family: var(--ubs-font-family-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Node List ───────────────────────────────────────────────────── */
+
+.nodeList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-left: calc(var(--tree-level, 0) * var(--ubs-spacing-xs));
+}
+
+.nodeItem {
+  margin: 0;
+}
+
+/* ─── Node Content ────────────────────────────────────────────────── */
+
+.nodeContent {
+  display: flex;
+  align-items: center;
+  border-radius: var(--ubs-radius-md);
+  transition: background-color var(--ubs-duration-fast) var(--ubs-easing-default);
+}
+
+.nodeContent:hover:not(.nodeDisabled) {
+  background-color: var(--ubs-color-bg-secondary);
+}
+
+/* ─── Active State ────────────────────────────────────────────────── */
+
+.nodeActive {
+  background-color: var(--ubs-color-bg-secondary);
+}
+
+.nodeActive .nodeLabel {
+  font-weight: var(--ubs-font-weight-bold);
+  color: var(--ubs-color-red);
+}
+
+.nodeActive .nodeIcon {
+  color: var(--ubs-color-red);
+}
+
+/* ─── Disabled State ──────────────────────────────────────────────── */
+
+.nodeDisabled {
+  opacity: 0.4;
+}
+
+.nodeDisabled .nodeButton {
+  cursor: not-allowed;
+}
+
+/* ─── Expand Button ───────────────────────────────────────────────── */
+
+.expandButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--ubs-color-text-secondary);
+  border-radius: var(--ubs-radius-sm);
+  transition:
+    transform var(--ubs-duration-normal) var(--ubs-easing-default),
+    color var(--ubs-duration-normal) var(--ubs-easing-default);
+}
+
+.expandButton:hover {
+  color: var(--ubs-color-text-primary);
+}
+
+.expandButton:focus-visible {
+  outline: var(--ubs-a11y-focus-width) solid var(--ubs-color-border-focus);
+  outline-offset: -1px;
+}
+
+.expandButtonOpen {
+  transform: rotate(90deg);
+}
+
+.expandSpacer {
+  display: inline-block;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+/* ─── Node Button ─────────────────────────────────────────────────── */
+
+.nodeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ubs-spacing-3xs);
+  flex: 1;
+  min-width: 0;
+  padding: var(--ubs-spacing-4xs) var(--ubs-spacing-3xs);
+  min-height: 36px;
+  font-family: var(--ubs-font-family-primary);
+  font-size: var(--ubs-font-size-small);
+  font-weight: var(--ubs-font-weight-regular);
+  line-height: var(--ubs-line-height-body);
+  color: var(--ubs-color-text-primary);
+  text-align: left;
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.nodeButton:focus-visible {
+  outline: var(--ubs-a11y-focus-width) solid var(--ubs-color-border-focus);
+  outline-offset: -1px;
+  border-radius: var(--ubs-radius-sm);
+}
+
+/* ─── Node Icon ───────────────────────────────────────────────────── */
+
+.nodeIcon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--ubs-color-text-secondary);
+  width: 16px;
+  height: 16px;
+}
+
+/* ─── Node Label ──────────────────────────────────────────────────── */
+
+.nodeLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .nodeContent:hover:not(.nodeDisabled) {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-ubs-theme="dark"] .nodeActive {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-ubs-theme="dark"] .nodeActive .nodeLabel {
+  color: #FF4D4D;
+}
+
+[data-ubs-theme="dark"] .nodeActive .nodeIcon {
+  color: #FF4D4D;
+}
+
+[data-ubs-theme="dark"] .nodeButton {
+  color: var(--ubs-color-white);
+}
+
+[data-ubs-theme="dark"] .expandButton {
+  color: var(--ubs-color-gray-iii);
+}
+
+[data-ubs-theme="dark"] .expandButton:hover {
+  color: var(--ubs-color-white);
+}
+
+[data-ubs-theme="dark"] .nodeIcon {
+  color: var(--ubs-color-gray-ii);
+}
+
+[data-ubs-theme="dark"] .expandButton:focus-visible,
+[data-ubs-theme="dark"] .nodeButton:focus-visible {
+  outline-color: var(--ubs-color-white);
+}

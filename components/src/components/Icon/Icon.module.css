@@ -28,18 +28,18 @@
 /* ── Web app variant: black only ───────────────────────── */
 
 .webApp {
-  color: #000000;
+  color: var(--ubs-color-text-primary);
 }
 
 .webApp svg {
   fill: #000000;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
 }
 
 /* ── Illustrative variant: allows red accent ───────────── */
 
 .illustrative {
-  color: #000000;
+  color: var(--ubs-color-text-primary);
 }
 
 /* ── SVG sizing ────────────────────────────────────────── */

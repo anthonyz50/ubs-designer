@@ -1,0 +1,198 @@
+/* ─── UBS OverlayMessage ──────────────────────────────────────────── */
+/* Full-screen centred overlay for important notifications.           */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.55);
+  animation: backdropFadeIn 200ms ease-out;
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 480px;
+  width: 90vw;
+  padding: 48px 40px 36px;
+  border-radius: 4px;
+  background-color: var(--ubs-color-text-inverse);
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-align: center;
+  animation: overlayScaleIn 250ms ease-out;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes overlayScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ─── Icon ────────────────────────────────────────────────────────── */
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin-bottom: 24px;
+}
+
+.icon {
+  display: block;
+}
+
+/* ─── Variant icon backgrounds ────────────────────────────────────── */
+
+.success .iconWrapper {
+  background-color: #F4F6EC;
+  color: var(--ubs-color-rag-green);
+}
+
+.error .iconWrapper {
+  background-color: #FDF2F2;
+  color: var(--ubs-color-bordeaux-i);
+}
+
+.warning .iconWrapper {
+  background-color: #FDF8EC;
+  color: var(--ubs-color-rag-amber);
+}
+
+.info .iconWrapper {
+  background-color: #F5F5F0;
+  color: var(--ubs-color-gray-iv);
+}
+
+/* ─── Title ───────────────────────────────────────────────────────── */
+
+.title {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ubs-color-text-primary);
+}
+
+/* ─── Message ─────────────────────────────────────────────────────── */
+
+.message {
+  margin: 0 0 28px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ubs-color-gray-v);
+}
+
+/* ─── Actions ─────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.actionButton {
+  padding: 10px 28px;
+  border-radius: 2px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+  text-align: center;
+}
+
+.actionPrimary {
+  background-color: var(--ubs-color-red);
+  border: 1px solid var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
+}
+
+.actionPrimary:hover {
+  background-color: var(--ubs-color-bordeaux-i);
+  border-color: var(--ubs-color-bordeaux-i);
+}
+
+.actionPrimary:focus-visible {
+  outline: 2px solid var(--ubs-color-red);
+  outline-offset: 2px;
+}
+
+.actionSecondary {
+  background-color: transparent;
+  border: 1px solid var(--ubs-color-gray-iv);
+  color: var(--ubs-color-gray-vi);
+}
+
+.actionSecondary:hover {
+  background-color: var(--ubs-color-bg-tertiary);
+}
+
+.actionSecondary:focus-visible {
+  outline: 2px solid var(--ubs-color-gray-iv);
+  outline-offset: 2px;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+[data-ubs-theme="dark"] .overlay {
+  background-color: #2A2A28;
+}
+
+[data-ubs-theme="dark"] .title {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .message {
+  color: var(--ubs-color-border-secondary);
+}
+
+[data-ubs-theme="dark"] .success .iconWrapper {
+  background-color: #242A1A;
+}
+
+[data-ubs-theme="dark"] .error .iconWrapper {
+  background-color: #2E1A1A;
+}
+
+[data-ubs-theme="dark"] .warning .iconWrapper {
+  background-color: #2E2A1C;
+}
+
+[data-ubs-theme="dark"] .info .iconWrapper {
+  background-color: #333330;
+}
+
+[data-ubs-theme="dark"] .actionSecondary {
+  border-color: var(--ubs-color-gray-iii);
+  color: var(--ubs-color-bg-secondary);
+}
+
+[data-ubs-theme="dark"] .actionSecondary:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}

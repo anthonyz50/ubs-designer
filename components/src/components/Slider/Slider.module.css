@@ -1,0 +1,199 @@
+/* ─── UBS Slider ─────────────────────────────────────────────────── */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.label {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--ubs-color-text-primary);
+}
+
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ─── Slider wrapper ──────────────────────────────────────────────── */
+
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.minLabel,
+.maxLabel {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 13px;
+  color: var(--ubs-color-gray-iii);
+  flex-shrink: 0;
+}
+
+.trackWrapper {
+  position: relative;
+  flex: 1;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+/* ─── Track ───────────────────────────────────────────────────────── */
+
+.track {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background-color: var(--ubs-color-border-secondary);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.fill {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-color: var(--ubs-color-red);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* ─── Thumb ───────────────────────────────────────────────────────── */
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: var(--ubs-color-text-inverse);
+  border: 2px solid var(--ubs-color-red);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  z-index: 2;
+  transition: box-shadow 150ms ease;
+  touch-action: none;
+}
+
+.thumb:hover {
+  box-shadow: 0 0 0 4px rgba(230, 0, 0, 0.15);
+}
+
+.thumb:active {
+  cursor: grabbing;
+  box-shadow: 0 0 0 6px rgba(230, 0, 0, 0.2);
+}
+
+.thumb:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* ─── Value label ─────────────────────────────────────────────────── */
+
+.valueLabel {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px 8px;
+  background-color: var(--ubs-color-text-primary);
+  color: var(--ubs-color-text-inverse);
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.valueLabel::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--ubs-color-text-primary);
+}
+
+/* ─── Marks ───────────────────────────────────────────────────────── */
+
+.mark {
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.markDot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--ubs-color-text-inverse);
+  border: 2px solid var(--ubs-color-gray-iii);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.markLabel {
+  display: block;
+  margin-top: 8px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 11px;
+  color: var(--ubs-color-gray-iii);
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .label {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .minLabel,
+[data-ubs-theme="dark"] .maxLabel {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .track {
+  background-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .fill {
+  background-color: var(--ubs-color-red);
+}
+
+[data-ubs-theme="dark"] .thumb {
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-red);
+}
+
+[data-ubs-theme="dark"] .thumb:focus-visible {
+  outline-color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .valueLabel {
+  background-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-primary);
+}
+
+[data-ubs-theme="dark"] .valueLabel::after {
+  border-top-color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .markDot {
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .markLabel {
+  color: var(--ubs-color-border-primary);
+}

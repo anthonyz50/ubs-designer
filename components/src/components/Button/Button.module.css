@@ -53,69 +53,69 @@
 
 /* Primary: UBS Red bg, white text. Contrast 4.63:1 meets AA. */
 .primary {
-  background-color: #E60000;
-  border-color: #E60000;
-  color: #FFFFFF;
+  background-color: var(--ubs-color-red);
+  border-color: var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
 }
 
 .primary:hover:not(:disabled) {
-  background-color: #BD000C;
-  border-color: #BD000C;
+  background-color: var(--ubs-color-bordeaux-i);
+  border-color: var(--ubs-color-bordeaux-i);
 }
 
 .primary:active:not(:disabled) {
-  background-color: #8A000A;
-  border-color: #8A000A;
+  background-color: var(--ubs-color-bordeaux-ii);
+  border-color: var(--ubs-color-bordeaux-ii);
 }
 
 /* Secondary: Black bg, white text. Contrast 21:1. */
 .secondary {
-  background-color: #000000;
-  border-color: #000000;
-  color: #FFFFFF;
+  background-color: var(--ubs-color-text-primary);
+  border-color: var(--ubs-color-text-primary);
+  color: var(--ubs-color-text-inverse);
 }
 
 .secondary:hover:not(:disabled) {
-  background-color: #404040;
-  border-color: #404040;
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-gray-vi);
 }
 
 .secondary:active:not(:disabled) {
-  background-color: #5A5D5C;
-  border-color: #5A5D5C;
+  background-color: var(--ubs-color-gray-v);
+  border-color: var(--ubs-color-gray-v);
 }
 
 /* Outline: transparent bg, border. */
 .outline {
   background-color: transparent;
-  border-color: #000000;
-  color: #000000;
+  border-color: var(--ubs-color-text-primary);
+  color: var(--ubs-color-text-primary);
 }
 
 .outline:hover:not(:disabled) {
-  background-color: #000000;
-  color: #FFFFFF;
+  background-color: var(--ubs-color-text-primary);
+  color: var(--ubs-color-text-inverse);
 }
 
 .outline:active:not(:disabled) {
-  background-color: #404040;
-  border-color: #404040;
-  color: #FFFFFF;
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-gray-vi);
+  color: var(--ubs-color-text-inverse);
 }
 
 /* Ghost: no border, no bg. */
 .ghost {
   background-color: transparent;
   border-color: transparent;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
 }
 
 .ghost:hover:not(:disabled) {
-  background-color: #ECEBE4;
+  background-color: var(--ubs-color-bg-secondary);
 }
 
 .ghost:active:not(:disabled) {
-  background-color: #CCCABC;
+  background-color: var(--ubs-color-border-secondary);
 }
 
 /* ─── States ──────────────────────────────────────────────────────── */
@@ -176,53 +176,53 @@
 [data-ubs-theme="dark"] .primary {
   background-color: #D83B31;
   border-color: #D83B31;
-  color: #FFFFFF;
+  color: var(--ubs-color-text-inverse);
 }
 
 [data-ubs-theme="dark"] .primary:hover:not(:disabled) {
-  background-color: #E60000;
-  border-color: #E60000;
+  background-color: var(--ubs-color-red);
+  border-color: var(--ubs-color-red);
 }
 
 [data-ubs-theme="dark"] .primary:active:not(:disabled) {
-  background-color: #BD000C;
-  border-color: #BD000C;
+  background-color: var(--ubs-color-bordeaux-i);
+  border-color: var(--ubs-color-bordeaux-i);
 }
 
 [data-ubs-theme="dark"] .secondary {
-  background-color: #FFFFFF;
-  border-color: #FFFFFF;
-  color: #000000;
+  background-color: var(--ubs-color-text-inverse);
+  border-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-primary);
 }
 
 [data-ubs-theme="dark"] .secondary:hover:not(:disabled) {
-  background-color: #ECEBE4;
-  border-color: #ECEBE4;
+  background-color: var(--ubs-color-bg-secondary);
+  border-color: var(--ubs-color-bg-secondary);
 }
 
 [data-ubs-theme="dark"] .secondary:active:not(:disabled) {
-  background-color: #CCCABC;
-  border-color: #CCCABC;
+  background-color: var(--ubs-color-border-secondary);
+  border-color: var(--ubs-color-border-secondary);
 }
 
 [data-ubs-theme="dark"] .outline {
-  border-color: #FFFFFF;
-  color: #FFFFFF;
+  border-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-inverse);
 }
 
 [data-ubs-theme="dark"] .outline:hover:not(:disabled) {
-  background-color: #FFFFFF;
-  color: #000000;
+  background-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-primary);
 }
 
 [data-ubs-theme="dark"] .outline:active:not(:disabled) {
-  background-color: #CCCABC;
-  border-color: #CCCABC;
-  color: #000000;
+  background-color: var(--ubs-color-border-secondary);
+  border-color: var(--ubs-color-border-secondary);
+  color: var(--ubs-color-text-primary);
 }
 
 [data-ubs-theme="dark"] .ghost {
-  color: #FFFFFF;
+  color: var(--ubs-color-text-inverse);
 }
 
 [data-ubs-theme="dark"] .ghost:hover:not(:disabled) {
@@ -234,5 +234,5 @@
 }
 
 [data-ubs-theme="dark"] .button:focus-visible {
-  outline-color: #FFFFFF;
+  outline-color: var(--ubs-color-text-inverse);
 }

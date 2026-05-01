@@ -14,13 +14,13 @@
   border-spacing: 0;
   font-size: 14px;
   line-height: 1.5;
-  color: #000000;
-  background: #ffffff;
+  color: var(--ubs-color-text-primary);
+  background: var(--ubs-color-bg-primary);
 }
 
 /* ─── Header ─── */
 .thead {
-  background: #ffffff;
+  background: var(--ubs-color-bg-primary);
 }
 
 .th {
@@ -28,8 +28,8 @@
   font-weight: 700;
   font-size: 14px;
   text-align: left;
-  color: #404040;
-  border-bottom: 2px solid #000000;
+  color: var(--ubs-color-gray-vi);
+  border-bottom: 2px solid var(--ubs-color-border-focus);
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
@@ -50,7 +50,7 @@
 }
 
 .sortableHeader:hover {
-  background-color: #ecebe4;
+  background-color: var(--ubs-color-bg-secondary);
 }
 
 .sortableHeader:focus-visible {
@@ -71,18 +71,18 @@
   justify-content: center;
   font-size: 10px;
   line-height: 1;
-  color: #b8b3a2;
+  color: var(--ubs-color-border-primary);
   gap: 0;
 }
 
 .sortArrow {
   display: block;
   line-height: 1;
-  color: #b8b3a2;
+  color: var(--ubs-color-border-primary);
 }
 
 .sortArrowActive {
-  color: #000000;
+  color: var(--ubs-color-text-primary);
 }
 
 /* ─── Body ─── */
@@ -91,7 +91,7 @@
   font-size: 14px;
   font-weight: 400;
   vertical-align: middle;
-  border-bottom: 1px solid #ecebe4;
+  border-bottom: 1px solid var(--ubs-color-bg-secondary);
   text-align: left;
 }
 
@@ -114,7 +114,7 @@
   width: 16px;
   height: 16px;
   cursor: pointer;
-  accent-color: #e60000;
+  accent-color: var(--ubs-color-red);
 }
 
 .checkbox:focus-visible {
@@ -128,21 +128,21 @@
 }
 
 .rowSelected {
-  background-color: #f5f0e1;
+  background-color: var(--ubs-color-bg-tertiary);
 }
 
 /* ─── Variants ─── */
 .striped .tbody .row:nth-child(even) {
-  background-color: #ecebe4;
+  background-color: var(--ubs-color-bg-secondary);
 }
 
 .striped .tbody .row:nth-child(even).rowSelected {
-  background-color: #f5f0e1;
+  background-color: var(--ubs-color-bg-tertiary);
 }
 
 .bordered .th,
 .bordered .td {
-  border: 1px solid #cccabc;
+  border: 1px solid var(--ubs-color-border-secondary);
 }
 
 .compact .th {
@@ -154,11 +154,11 @@
 }
 
 .hoverable .row:hover {
-  background-color: #ecebe4;
+  background-color: var(--ubs-color-bg-secondary);
 }
 
 .hoverable .row.rowSelected:hover {
-  background-color: #f5f0e1;
+  background-color: var(--ubs-color-bg-tertiary);
 }
 
 /* ─── Sticky header ─── */
@@ -166,7 +166,7 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background: #ffffff;
+  background: var(--ubs-color-bg-primary);
   box-shadow: 0 2px 0 0 #000000;
 }
 
@@ -182,7 +182,7 @@
 .skeletonCell {
   height: 16px;
   border-radius: 4px;
-  background: linear-gradient(90deg, #ecebe4 25%, #f5f0e1 50%, #ecebe4 75%);
+  background: linear-gradient(90deg, var(--ubs-color-bg-secondary) 25%, var(--ubs-color-bg-tertiary) 50%, var(--ubs-color-bg-secondary) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite ease-in-out;
 }
@@ -200,6 +200,6 @@
 .emptyRow .td {
   text-align: center;
   padding: 48px 16px;
-  color: #7a7870;
+  color: var(--ubs-color-gray-iv);
   font-size: 14px;
 }

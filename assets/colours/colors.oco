@@ -1,0 +1,336 @@
+Button colors:
+  Dark (Tundora): #444444
+  Standard (Mercury): #e6e6e6
+  Olive: #6a7d39
+  Chestnut: #9a3d37
+  Atlantic: #427c99
+Primary colors palette:
+  White: #ffffff
+  Black: #000000
+  Red: #e60000
+Bar, pie and donut charts color sequence:
+  Chocolate: #4d3c2f
+  Caramel: #cfbd9b
+  Terracotta: #c07156
+  Honey: #edc860
+  Stone: #bebebe
+  Chestnut: #a43725
+  Straw: #f2d88e
+  Smoke: #919191
+  Cinnamon: #e6b6a4
+  Carbon: #757575
+  Glacier: #a1cce4
+  Pine: #00898d
+  Mouse: #beb29e
+  Plum: #3a578a
+  Lemongrass: #e6ebb0
+  Clay: #7b6b59
+  Lavender: #afbcd5
+  Olive: #90a723
+  Ginger: #e0d5bd
+  Lagoon: #009bd2
+  Kiwi: #cdd760
+  Lilac: #6c87b3
+  Sand: #b39a74
+  Sage: #97d3cc
+  Lake: #6fb6df
+  Curry: #e5b01c
+  Mint: #55b1b4
+Line charts:
+  Chocolate: #4d3c2f
+  Caramel: #cfbd9b
+  Terracotta: #c07156
+  Honey: #edc860
+  Stone: #bebebe
+  Cinnamon: #e6b6a4
+  Glacier: #a1cce4
+  Pine: #00898d
+  Lagoon: #009bd2
+  Lemongrass: #e6ebb0
+  Kiwi: #cdd760
+  Sand: #b39a74
+  Lake: #6fb6df
+  Curry: #e5b01c
+Secondary preferred:
+  Carbon: #646464
+  Smoke: #919191
+  Stone: #bebebe
+  Sand: #b39a74
+  Caramel: #cfbd9b
+  Ginger: #e0d5bd
+  Chocolate: #4d3c2f
+  Clay: #7b6b59
+  Mouse: #beb29e
+  Curry: #e5b01c
+  Honey: #edc860
+  Straw: #f2d88e
+  Chestnut Web: #ba0000
+  Chestnut: #a43725
+  Terracotta: #c07156
+  Cinnamon: #e6b6a4
+Secondary supporting:
+  Pine: #00898d
+  Mint: #55b1b4
+  Sage: #97d3cc
+  Olive Web: #677d00
+  Olive: #90a723
+  Kiwi: #cdd760
+  Lemongrass: #e6ebb0
+  Lagoon Web: #0f80a9
+  Lagoon: #009bd2
+  Lake: #6fb6df
+  Glacier: #a1cce4
+  Plum: #3a578a
+  Lilac: #6c87b3
+  Lavender: #afbcd5
+ Colors:
+  Dark (Tundora): #444444
+  Olive: #6a7d39
+  Chestnut: #9a3d37
+  Plum: #5a6f89
+  Ghost outline (Smoke): #919191
+  Mercury: #e6e6e6
+European scheme :
+  Lagoon Web: #0c7ec6
+  Bordeaux50: #bd000c
+American scheme:
+  Olive Web: #879420
+  Chestnut Web: #bd000c
+Asian scheme:
+  Bordeaux50: #bd000c
+  Olive Web: #879420
+Preferred category tag colors:
+  Cinnamon: #d4ad9c
+  Curry: #dbaa35
+  Honey: #e8c880
+  Straw: #f1e4ba
+  Mouse: #bbb3ac
+  Sand: #b89d83
+  Caramel: #d7c2aa
+  Ginger: #ebdecd
+Alternative category tag colors:
+  Lilac: #879ab5
+  Lavender: #bdc6d4
+  Lake: #92b8d6
+  Glacier: #bfd6eb
+  Fern: #b4b77b
+  Lemongrass: #dedfb3
+  Mint: #94b9b6
+  Sage: #c6d9ce
+Multiple category color tag:
+  Gallery: #eeeeee
+Status tag colors:
+  Carla: #e5e6c5
+  Pippin: #f7e1df
+  Geyser: #dee2e9
+  Scotch: #fff3d8
+  Gallery: #eeeeee
+Feature tags dark:
+  Chestnut: #9a3d37
+  Terracotta: #a36650
+  Chocolate: #585148
+  Clay: #807266
+Feature tags bright:
+  Cinnamon: #d4ad9c
+  Curry: #dbaa35
+  Honey: #e8c880
+  Straw: #f1e4ba
+  Mouse: #bbb3ac
+  Sand: #b89d83
+  Caramel: #d7c2aa
+  Ginger: #ebdecd
+  Lavendar: #bdc6d4
+  Fern: #b4b77b
+  Lemongrass: #dedfb3
+  Sage: #c6d9ce
+AA-Level for white text on coloured background:
+  UBS Red Web: #da0000
+  Black: #000000
+  Cod Gray: #1c1c1c
+  Tundora: #444444
+  Carbon: #646464
+  Olive Web: #677d00
+  Plum: #3a578a
+  Lagoon Web: #0e7ca4
+  Chocolate: #4d3c2f
+  UBS Chestnut Web: #ae0000
+  Clay: #7b6b59
+AA-Level for primary (Cod) and tertiary (Carbon) text on coloured background:
+  oct/view: samples
+  White: #ffffff
+  Alabaster: #fafafa
+  Concrete: #f5f5f5
+  Mercury: #e6e6e6
+  Pippin: #f7e1df
+  Scotch: #fff3d8
+  Carla: #e5e6c5
+  Geyser: #dee2e9
+  Charlotte: #e6f5fb
+Trading colors:
+  Trade Red: #ae0000
+  Trade Blue: #0e7ca4
+  Trade Green: #677d00
+Main colors:
+  Red: #e60000
+  Tundora: #444444
+  Gallery: Black: #000000
+Tags:
+  Carla: #e5e6c5
+  Pippin: #f7e1df
+  Geyser: #dee2e9
+  Scotch: #fff3d8
+Buttons:
+  Primary (Tundora): #444444
+  Secondary (Gallery): #000000
+  High Emphasis (Red): #e60000
+  Trade Red (Chestnut Web): #ba0000
+  Trade Blue (Lagoon Web): #0e7ca4
+  Trade Green (Olive Web): #677d00
+Notifications:
+  Soft-light of Olive: #516d04
+  Soft-light of Red Web: #ba0000
+  Soft-light of Lagoon: #095fac
+  Curry: #e5b01c
+Primary colors palette:
+  White: #ffffff
+  Black: #000000
+  Red: #e60000
+Cold Grays (DDS, UDS & MDS):
+  Cod: #1c1c1c
+  Tundora: #444444
+  Carbon: #646464
+  Smoke: #919191
+  Nobel: #aaaaaa
+  Stone: #bebebe
+  Silver: #cccccc
+  Alto: #d7d7d7
+  Mercury: #e6e6e6
+  Gallery: #eeeeee
+  Concrete: #f5f5f5
+  Alabaster: #fafafa
+  White: #ffffff
+Default chart color set:
+  Chart Gray3 (Neutral50): #8e8d83
+  Chart Gray4 (Neutral60): #7a7870
+  Chart Gray5 (Neutral70): #5a5d5c
+  Chart Gray6 (Neutral80): #404040
+  Chart Gray7 (Neutral90): #1c1c1c
+  Chart Accent (Bordeaux50): #bd000c
+  Chart Accent (Bronze50): #af8626
+Supporting colors:
+  Bronze30: #d3c39c
+  Bronze50: #af8626
+  Bronze70: #86671d
+  Bronze90: #654d16
+  Chocolate30: #ded2c9
+  Chocolate50: #785e4a
+  Chocolate70: #5e4a3a
+  Chocolate90: #4a3a2e
+  Sand30: #ebd2ae
+  Sand50: #9f8865
+  Sand70: #816d50
+  Sand90: #685841
+  Kiwi30: #cdd760
+  Kiwi50: #879420
+  Kiwi70: #606917
+  Kiwi90: #414710
+  Sage30: #aae3c4
+  Sage50: #469a6c
+  Sage70: #367754
+  Sage90: #295b40
+  Pine30: #8ae3e6
+  Pine50: #009a9e
+  Pine70: #00686b
+  Pine90: #004142
+  Mint30: #93e3e6
+  Mint50: #45999c
+  Mint70: #357678
+  Mint90: #295a5c
+  Glacier30: #b3dcf2
+  Glacier50: #5f93af
+  Glacier70: #497992
+  Glacier90: #3b6277
+  Lagoon30: #96e0fa
+  Lagoon50: #0097cc
+  Lagoon70: #0084b3
+  Lagoon90: #00759e
+  Lake30: #a7dbfc
+  Lake50: #0c7ec6
+  70Lake mid: #095f95
+  Lake90: #07476f
+  Plum30: #c5d6f0
+  Plum50: #4972ac
+  Plum70: #3a5a88
+  Plum90: #2e476b
+  Lavender30: #d3d5eb
+  Lavender50: #8489bd
+  Lavender70: #6369ab
+  Lavender90: #545a9c
+  Aubergine30: #eccafa
+  Aubergine50: #804c95
+  Aubergine70: #633b73
+  Aubergine90: #4b2d58
+  Blush30: #f0ccd0
+  Blush50: #cc707a
+  Blush70: #c1525e
+  Blush90: #ad3e4a
+European scheme :
+  Europe positive (Lake70): #095f95
+  Europe negative (Bordeaux50): #bd000c
+American scheme:
+  Americas positive (Kiwi70): #606917
+  Americas negative (Bordeaux50): #bd000c
+Asian scheme:
+  Asia Positive (Bordeaux50): #bd000c
+  Asia negative (Kiwi70): #606917
+AA-Level for white text on coloured background:
+  UBS Red: #da0000
+  Black: #000000
+  Cod Gray: #1c1c1c
+  Iron (Neutral80): #404040
+  Pebble (Neutral70): #5a5d5c
+  Kiwi60 (Success): #6f7a1a
+  Plum70 (Info): #3a5a88
+  Lagoon90 (Chart): #00759e
+AA-Level for primary (Cod) and tertiary (Carbon) text on coloured background:
+  oct/view: samples
+  White: #ffffff
+  Chalk (Neutral10): #f9f9f7
+  Ivory (Neutral20): #f4f3ee
+  Neutral25: #e0dfd7
+  Bordeaux10: #ffebec
+  Amber10: #fdf6e3
+  Kiwi10: #f3f6da
+  Plum10: #eff4fb
+Status Tag colors:
+  status-success (Kiwi10): #f3f6da
+  status-error (Bordeaux10): #ffebec
+  status-warning (Amber10): #fdf6e3
+  status-info (Plum10): #eff4fb
+Notifications:
+  Success (Kiwi60): #6f7a1a
+  Error (Bordeaux50): #bd000c
+  Warning (Amber50): #e4a911
+  Info (Plum70): #3a5a88
+Asset class color set:
+  Liquidity (Kiwi70): #606917
+  Bonds (Lagoon90): #00759e
+  Equities (Bordeaux70): #8a000a
+  Funds (Plum70): #3a5a88
+  Real estate (Pine70): #00686b
+  Commodities (Bronze50): #af8626
+  Pro memoria (Sand70): #816d50
+  Liabilities (Aubergine70): #633b73
+  Others (Chocolate70): #5e4a3a
+Warm Grays (TBD):
+  Cod (Neutral90): #1c1c1c
+  Iron (Neutral80): #404040
+  Pebble (Neutral70): #5a5d5c
+  Fossil (Neutral60): #7a7870
+  Fog (Neutral50): #8e8d83
+  Silk (Neutral40): #b8b3a2
+  Cloud (Neutral30): #cccabc
+  Neutral25: #e0dfd7
+  Ivory (Neutral20): #f4f3ee
+  Chalk (Neutral10): #f9f9f7
+  White (Neutral00): #ffffff

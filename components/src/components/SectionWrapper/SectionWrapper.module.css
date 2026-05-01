@@ -11,15 +11,15 @@
 /* ─── Backgrounds ─────────────────────────────────────────────────── */
 
 .bgWhite {
-  background-color: #FFFFFF;
+  background-color: var(--ubs-color-text-inverse);
 }
 
 .bgPastel1 {
-  background-color: #ECEBE4;
+  background-color: var(--ubs-color-bg-secondary);
 }
 
 .bgPastel2 {
-  background-color: #F5F0E1;
+  background-color: var(--ubs-color-bg-tertiary);
 }
 
 /* ─── Padding ─────────────────────────────────────────────────────── */
@@ -46,7 +46,7 @@
   font-weight: 700;
   font-size: 28px;
   line-height: 1.2;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   margin: 0;
 }
 
@@ -54,7 +54,7 @@
   font-weight: 300;
   font-size: 18px;
   line-height: 1.5;
-  color: #5A5D5C;
+  color: var(--ubs-color-gray-v);
   margin: 8px 0 0;
 }
 
@@ -73,9 +73,9 @@
 }
 
 [data-ubs-theme="dark"] .title {
-  color: #FFFFFF;
+  color: var(--ubs-color-text-inverse);
 }
 
 [data-ubs-theme="dark"] .subtitle {
-  color: #8E8D83;
+  color: var(--ubs-color-gray-iii);
 }

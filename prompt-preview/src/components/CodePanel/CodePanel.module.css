@@ -1,0 +1,91 @@
+/* ============================================================
+   Code Panel
+   ============================================================ */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 2px solid var(--ubs-border);
+  flex-shrink: 0;
+}
+
+.tab {
+  padding: var(--ubs-space-2) var(--ubs-space-4);
+  font-size: var(--ubs-body-3-size);
+  font-weight: var(--ubs-weight-medium);
+  color: var(--ubs-text-secondary);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: color var(--ubs-transition-fast),
+              border-color var(--ubs-transition-fast);
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: var(--ubs-text-primary);
+}
+
+.tab[data-active='true'] {
+  color: var(--ubs-red);
+  border-bottom-color: var(--ubs-red);
+}
+
+.codeWrapper {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+
+.codeBlock {
+  margin: 0;
+  padding: var(--ubs-space-4);
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+  font-size: var(--ubs-body-4-size);
+  line-height: 1.6;
+  color: var(--ubs-text-primary);
+  background-color: var(--ubs-neutral-90);
+  color: var(--ubs-neutral-10);
+  border-radius: 0;
+  overflow-x: auto;
+  white-space: pre;
+  min-height: 100%;
+}
+
+.copyBtn {
+  position: absolute;
+  top: var(--ubs-space-3);
+  right: var(--ubs-space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-1);
+  padding: var(--ubs-space-1) var(--ubs-space-3);
+  font-size: var(--ubs-body-4-size);
+  font-weight: var(--ubs-weight-medium);
+  color: var(--ubs-neutral-30);
+  background-color: var(--ubs-neutral-80);
+  border: 1px solid var(--ubs-neutral-70);
+  border-radius: var(--ubs-radius-sm);
+  cursor: pointer;
+  transition: all var(--ubs-transition-fast);
+  z-index: 1;
+}
+
+.copyBtn:hover {
+  color: var(--ubs-white);
+  background-color: var(--ubs-neutral-70);
+}
+
+.copyBtn[data-copied='true'] {
+  color: var(--ubs-status-success);
+  border-color: var(--ubs-status-success);
+}

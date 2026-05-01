@@ -1,0 +1,143 @@
+/* ContentBlock — UBS Design System */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+/* ── Alignment ───────────────────────────── */
+
+.align-left {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.align-center {
+  text-align: center;
+  align-items: center;
+}
+
+.align-right {
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* ── Variants ────────────────────────────── */
+
+.default {
+  padding: 0;
+}
+
+.highlight {
+  padding: 32px;
+  background-color: var(--ubs-color-bg-tertiary);
+  border-radius: 4px;
+}
+
+.bordered {
+  padding: 32px;
+  border: 1px solid var(--ubs-color-bg-secondary);
+  border-radius: 4px;
+}
+
+/* ── Media ───────────────────────────────── */
+
+.media {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.media img,
+.media video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── Content ─────────────────────────────── */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.align-center .content {
+  align-items: center;
+}
+
+.align-right .content {
+  align-items: flex-end;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ubs-color-text-primary);
+  line-height: 1.21;
+  margin: 0;
+}
+
+.body {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ubs-color-gray-v);
+  line-height: 1.5;
+}
+
+.body p {
+  margin: 0 0 12px;
+}
+
+.body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Action ──────────────────────────────── */
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ubs-color-text-inverse);
+  background-color: var(--ubs-color-red);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  min-height: 44px;
+  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.action:hover {
+  background-color: var(--ubs-color-bordeaux-i);
+}
+
+.action:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* ── Dark mode ───────────────────────────── */
+
+[data-ubs-theme="dark"] .title {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .body {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .highlight {
+  background-color: #2a2a28;
+}
+
+[data-ubs-theme="dark"] .bordered {
+  border-color: var(--ubs-color-gray-vi);
+}

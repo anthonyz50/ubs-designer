@@ -2,7 +2,7 @@
 
 .contentPage {
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: var(--ubs-color-text-inverse);
   font-family: 'Frutiger', Arial, sans-serif;
 }
 
@@ -54,13 +54,13 @@
   font-size: 16px;
   font-weight: 300;
   line-height: 1.7;
-  color: #404040;
+  color: var(--ubs-color-gray-vi);
 }
 
 .typographyContent h2 {
   font-size: 24px;
   font-weight: 400;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   margin: 32px 0 12px;
   line-height: 1.3;
 }
@@ -68,7 +68,7 @@
 .typographyContent h3 {
   font-size: 18px;
   font-weight: 500;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   margin: 24px 0 8px;
   line-height: 1.4;
 }
@@ -78,10 +78,10 @@
 }
 
 .typographyContent blockquote {
-  border-left: 3px solid #e60000; /* UBS Red */
+  border-left: 3px solid var(--ubs-color-red); /* UBS Red */
   margin: 24px 0;
   padding: 12px 20px;
-  color: #5a5d5c;
+  color: var(--ubs-color-gray-v);
   font-style: italic;
 }
 
@@ -106,7 +106,7 @@
 /* ─── Related Section ─── */
 
 .relatedSection {
-  background-color: #ecebe4; /* Pastel I */
+  background-color: var(--ubs-color-bg-secondary); /* Pastel I */
   padding: 48px 0;
   margin-top: 48px;
 }

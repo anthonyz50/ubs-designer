@@ -168,6 +168,38 @@ export type { BreadcrumbsProps, BreadcrumbItem } from './Breadcrumbs';
 export { Pagination } from './Pagination';
 export type { PaginationProps, PaginationSize } from './Pagination';
 
+// Links
+export { Links } from './Links';
+export type { LinksProps, LinkVariant } from './Links';
+
+// MenuListItem
+export { MenuListItem } from './MenuListItem';
+export type { MenuListItemProps } from './MenuListItem';
+
+// ProcessNavigation
+export { ProcessNavigation } from './ProcessNavigation';
+export type { ProcessNavigationProps, ProcessStep, StepStatus, ProcessOrientation } from './ProcessNavigation';
+
+// TreeNavigation
+export { TreeNavigation } from './TreeNavigation';
+export type { TreeNavigationProps, TreeNodeItem } from './TreeNavigation';
+
+// MastheadNavigation
+export { MastheadNavigation } from './MastheadNavigation';
+export type { MastheadNavigationProps, MastheadNavItem, MastheadChild, MastheadVariant } from './MastheadNavigation';
+
+// Header
+export { Header } from './Header';
+export type { HeaderProps, HeaderVariant, HeaderNavItem, HeaderUserMenu } from './Header';
+
+// PageFooter
+export { PageFooter } from './Footer';
+export type { PageFooterProps, FooterVariant, FooterColumn, PageFooterLink } from './Footer';
+
+// FilterGroup
+export { FilterGroup } from './Filter';
+export type { FilterGroupProps, FilterVariant, FilterItem, FilterOption } from './Filter';
+
 // ─── Feedback Components ──────────────────────────────────
 
 // Toast
@@ -217,3 +249,139 @@ export type { CTAProps, CTAVariant, CTASize, CTAArrowProps } from './CTA';
 // LogoTab
 export { LogoTab } from './LogoTab';
 export type { LogoTabProps, LogoTabPosition, LogoTabVariant } from './LogoTab';
+
+// ─── Content Display Components (Extended) ───────────────
+
+// AgendaSteps
+export { AgendaSteps } from './AgendaSteps';
+export type { AgendaStepsProps, AgendaStep, AgendaStepStatus, AgendaStepsVariant } from './AgendaSteps';
+
+// Amount
+export { Amount } from './Amount';
+export type { AmountProps, AmountSize, AmountTrend } from './Amount';
+
+// Article
+export { Article } from './Article';
+export type { ArticleProps, ArticleVariant } from './Article';
+
+// BannerBox
+export { BannerBox } from './BannerBox';
+export type { BannerBoxProps, BannerBoxVariant, BannerBoxAction } from './BannerBox';
+
+// ContentBlock
+export { ContentBlock } from './ContentBlock';
+export type { ContentBlockProps, ContentBlockVariant, ContentBlockAlign, ContentBlockAction } from './ContentBlock';
+
+// CountryFlag
+export { CountryFlag } from './CountryFlag';
+export type { CountryFlagProps, CountryFlagSize } from './CountryFlag';
+
+// CreditCardDisplay (aliased to avoid collision with icons/CreditCard)
+export { CreditCard as CreditCardDisplay } from './CreditCard';
+export type { CreditCardProps as CreditCardDisplayProps, CreditCardType as CreditCardDisplayType, CreditCardVariant as CreditCardDisplayVariant } from './CreditCard';
+
+// Overlay
+export { Overlay } from './Overlay';
+export type { OverlayProps, OverlaySize } from './Overlay';
+
+// Panel
+export { Panel } from './Panel';
+export type { PanelProps, PanelVariant } from './Panel';
+
+// SidebarNav (aliased to avoid collision with templates/Sidebar)
+export { Sidebar as SidebarNav } from './Sidebar';
+export type { SidebarProps as SidebarNavProps, SidebarItem as SidebarNavItem, SidebarVariant as SidebarNavVariant } from './Sidebar';
+
+// Tile
+export { Tile } from './Tile';
+export type { TileProps, TileVariant, TileSize } from './Tile';
+
+// ─── Input Components ────────────────────────────────────
+
+// MenuButton
+export { MenuButton } from './MenuButton';
+export type { MenuButtonProps, MenuItem, MenuButtonVariant, MenuButtonSize } from './MenuButton';
+
+// SplitButton
+export { SplitButton } from './SplitButton';
+export type { SplitButtonProps, SplitButtonItem, SplitButtonVariant, SplitButtonSize } from './SplitButton';
+
+// ButtonGroup
+export { ButtonGroup } from './ButtonGroup';
+export type { ButtonGroupProps, ButtonGroupVariant, ButtonGroupSize, ButtonGroupOrientation } from './ButtonGroup';
+
+// ButtonSelect
+export { ButtonSelect } from './ButtonSelect';
+export type { ButtonSelectProps, ButtonSelectOption, ButtonSelectSize } from './ButtonSelect';
+
+// DropdownButton
+export { DropdownButton } from './DropdownButton';
+export type { DropdownButtonProps, DropdownButtonItem, DropdownButtonVariant, DropdownButtonSize, DropdownButtonPlacement } from './DropdownButton';
+
+// ComboBox
+export { ComboBox } from './ComboBox';
+export type { ComboBoxProps, ComboBoxOption } from './ComboBox';
+
+// ContextSelector
+export { ContextSelector } from './ContextSelector';
+export type { ContextSelectorProps, ContextSelectorOption } from './ContextSelector';
+
+// Dropdown
+export { Dropdown } from './Dropdown';
+export type { DropdownProps, DropdownOption, DropdownOptionGroup, DropdownSize } from './Dropdown';
+
+// Slider
+export { Slider } from './Slider';
+export type { SliderProps, SliderMark } from './Slider';
+
+// Switch
+export { Switch } from './Switch';
+export type { SwitchProps, SwitchSize, SwitchLabelPosition } from './Switch';
+
+// FileUpload
+export { FileUpload } from './FileUpload';
+export type { FileUploadProps, UploadedFile, FileUploadVariant } from './FileUpload';
+
+// TimePicker
+export { TimePicker } from './TimePicker';
+export type { TimePickerProps, TimeValue, TimeFormat } from './TimePicker';
+
+// ─── Feedback Components (Extended) ──────────────────────
+
+// MessageBox
+export { MessageBox } from './MessageBox';
+export type { MessageBoxProps, MessageBoxVariant, MessageBoxAction } from './MessageBox';
+
+// FormValidation
+export { FormValidation } from './FormValidation';
+export type { FormValidationProps, FormValidationVariant, FormValidationError } from './FormValidation';
+
+// Snackbar
+export { Snackbar } from './Snackbar';
+export type { SnackbarProps, SnackbarVariant, SnackbarPosition, SnackbarAction } from './Snackbar';
+
+// OverlayMessage
+export { OverlayMessage } from './OverlayMessage';
+export type { OverlayMessageProps, OverlayMessageVariant, OverlayMessageAction } from './OverlayMessage';
+
+// Timer
+export { Timer } from './Timer';
+export type { TimerProps, TimerDirection, TimerFormat, TimerVariant, TimerState } from './Timer';
+
+// ─── Chart Components ────────────────────────────────────
+
+// DonutChart (exported as DonutChartWidget to avoid collision with DonutChart icon)
+export { DonutChart as DonutChartWidget } from './DonutChart';
+export type { DonutChartProps, DonutChartDataItem } from './DonutChart';
+
+// BarChart
+export { BarChart } from './BarChart';
+export type { BarChartProps, BarChartDataItem, BarChartOrientation } from './BarChart';
+
+// LineChart
+export { LineChart } from './LineChart';
+export type { LineChartProps, LineChartDataPoint, LineChartSeries } from './LineChart';
+
+// PieChart
+export { PieChart } from './PieChart';
+export type { PieChartProps, PieChartDataItem } from './PieChart';

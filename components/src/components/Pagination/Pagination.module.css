@@ -16,9 +16,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ecebe4;
-  background: #ffffff;
-  color: #000000;
+  border: 1px solid var(--ubs-color-bg-secondary);
+  background: var(--ubs-color-bg-primary);
+  color: var(--ubs-color-text-primary);
   font-family: 'Frutiger', Arial, sans-serif;
   font-weight: 400;
   cursor: pointer;
@@ -29,7 +29,7 @@
 }
 
 .page:hover:not(:disabled):not(.active) {
-  background-color: #ecebe4;
+  background-color: var(--ubs-color-bg-secondary);
 }
 
 .page:focus-visible {
@@ -63,14 +63,14 @@
 /* ── Active page ──────────────────────────── */
 
 .active {
-  background-color: #e60000;
-  color: #ffffff;
-  border-color: #e60000;
+  background-color: var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
+  border-color: var(--ubs-color-red);
   font-weight: 700;
 }
 
 .active:hover {
-  background-color: #e60000;
+  background-color: var(--ubs-color-red);
 }
 
 /* ── Arrow buttons ────────────────────────── */
@@ -85,7 +85,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #5a5d5c;
+  color: var(--ubs-color-gray-v);
   user-select: none;
   border: none;
   background: none;

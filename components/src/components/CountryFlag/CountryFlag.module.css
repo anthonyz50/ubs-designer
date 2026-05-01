@@ -1,0 +1,66 @@
+/* CountryFlag — UBS Design System */
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  vertical-align: middle;
+}
+
+/* ── Flag ────────────────────────────────── */
+
+.flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ── Sizes ───────────────────────────────── */
+
+.small .flag {
+  font-size: 16px;
+}
+
+.small .label {
+  font-size: 12px;
+}
+
+.small {
+  gap: 4px;
+}
+
+.medium .flag {
+  font-size: 24px;
+}
+
+.medium .label {
+  font-size: 14px;
+}
+
+.large .flag {
+  font-size: 36px;
+}
+
+.large .label {
+  font-size: 16px;
+}
+
+.large {
+  gap: 12px;
+}
+
+/* ── Label ───────────────────────────────── */
+
+.label {
+  font-weight: 400;
+  color: var(--ubs-color-text-primary);
+  line-height: 1.5;
+}
+
+/* ── Dark mode ───────────────────────────── */
+
+[data-ubs-theme="dark"] .label {
+  color: var(--ubs-color-text-inverse);
+}

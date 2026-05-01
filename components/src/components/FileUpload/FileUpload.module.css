@@ -1,0 +1,347 @@
+/* ─── UBS FileUpload ─────────────────────────────────────────────── */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.label {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--ubs-color-text-primary);
+}
+
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.hiddenInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─── Dropzone ────────────────────────────────────────────────────── */
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 24px;
+  border: 2px dashed var(--ubs-color-border-secondary);
+  border-radius: 4px;
+  background-color: var(--ubs-color-text-inverse);
+  cursor: pointer;
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+.dropzone:hover {
+  border-color: var(--ubs-color-gray-iv);
+  background-color: var(--ubs-color-bg-tertiary);
+}
+
+.dropzoneActive {
+  border-color: var(--ubs-color-red);
+  background-color: rgba(230, 0, 0, 0.04);
+}
+
+.dropzone:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.error .dropzone {
+  border-color: var(--ubs-color-bordeaux-i);
+}
+
+.uploadIcon {
+  color: var(--ubs-color-gray-iii);
+}
+
+.dropzoneText {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ubs-color-gray-v);
+  text-align: center;
+}
+
+.dropzoneText strong {
+  color: var(--ubs-color-red);
+  font-weight: 500;
+}
+
+.dropzoneHint {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--ubs-color-gray-iii);
+}
+
+/* ─── Button variant ──────────────────────────────────────────────── */
+
+.browseButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background-color: transparent;
+  border: 2px solid var(--ubs-color-border-focus);
+  border-radius: 4px;
+  color: var(--ubs-color-text-primary);
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.browseButton:hover:not(:disabled) {
+  background-color: var(--ubs-color-text-primary);
+  color: var(--ubs-color-text-inverse);
+}
+
+.browseButton:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.browseButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ─── Compact variant ─────────────────────────────────────────────── */
+
+.compact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.compactButton {
+  padding: 6px 16px;
+  background-color: var(--ubs-color-bg-secondary);
+  border: 1px solid var(--ubs-color-border-secondary);
+  border-radius: 4px;
+  color: var(--ubs-color-text-primary);
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.compactButton:hover:not(:disabled) {
+  background-color: var(--ubs-color-border-secondary);
+}
+
+.compactButton:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.compactText {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  color: var(--ubs-color-gray-iii);
+}
+
+/* ─── File list ───────────────────────────────────────────────────── */
+
+.fileList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: var(--ubs-color-bg-tertiary);
+  border-radius: 4px;
+}
+
+.fileIcon {
+  flex-shrink: 0;
+  color: var(--ubs-color-gray-v);
+}
+
+.fileName {
+  flex: 1;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ubs-color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileSize {
+  flex-shrink: 0;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 12px;
+  color: var(--ubs-color-gray-iii);
+}
+
+.fileRemove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--ubs-color-gray-iii);
+  cursor: pointer;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.fileRemove:hover {
+  background-color: var(--ubs-color-border-secondary);
+  color: var(--ubs-color-text-primary);
+}
+
+.fileRemove:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* ─── Helper/Error ────────────────────────────────────────────────── */
+
+.errorText {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ubs-color-bordeaux-i);
+}
+
+.helperText {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ubs-color-gray-iii);
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .label {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .dropzone {
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .dropzone:hover {
+  border-color: var(--ubs-color-gray-iii);
+  background-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .dropzoneActive {
+  border-color: var(--ubs-color-red);
+  background-color: rgba(230, 0, 0, 0.1);
+}
+
+[data-ubs-theme="dark"] .dropzone:focus-visible {
+  outline-color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .error .dropzone {
+  border-color: var(--ubs-color-bordeaux-i);
+}
+
+[data-ubs-theme="dark"] .uploadIcon {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .dropzoneText {
+  color: var(--ubs-color-border-secondary);
+}
+
+[data-ubs-theme="dark"] .dropzoneText strong {
+  color: var(--ubs-color-red);
+}
+
+[data-ubs-theme="dark"] .dropzoneHint {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .browseButton {
+  border-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .browseButton:hover:not(:disabled) {
+  background-color: var(--ubs-color-text-inverse);
+  color: var(--ubs-color-text-primary);
+}
+
+[data-ubs-theme="dark"] .browseButton:focus-visible {
+  outline-color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .compactButton {
+  background-color: var(--ubs-color-gray-v);
+  border-color: var(--ubs-color-gray-iv);
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .compactButton:hover:not(:disabled) {
+  background-color: var(--ubs-color-gray-iv);
+}
+
+[data-ubs-theme="dark"] .compactText {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .fileItem {
+  background-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .fileIcon {
+  color: var(--ubs-color-border-secondary);
+}
+
+[data-ubs-theme="dark"] .fileName {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .fileSize {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .fileRemove {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .fileRemove:hover {
+  background-color: var(--ubs-color-gray-iv);
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .fileRemove:focus-visible {
+  outline-color: var(--ubs-color-text-inverse);
+}

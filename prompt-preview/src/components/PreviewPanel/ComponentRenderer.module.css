@@ -1,0 +1,25 @@
+/* ============================================================
+   Component Renderer — edit mode wrappers
+   ============================================================ */
+
+.componentWrapper {
+  position: relative;
+  cursor: pointer;
+  transition: outline var(--ubs-transition-fast);
+  border-radius: var(--ubs-radius-sm);
+}
+
+.componentWrapper:hover {
+  outline: 2px dashed var(--ubs-lagoon);
+  outline-offset: 2px;
+}
+
+.componentWrapperSelected {
+  outline: 2px solid var(--ubs-lagoon);
+  outline-offset: 2px;
+}
+
+.componentWrapperSelected:hover {
+  outline: 2px solid var(--ubs-lagoon);
+  outline-offset: 2px;
+}

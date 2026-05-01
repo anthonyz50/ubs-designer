@@ -6,8 +6,8 @@
   align-items: center;
   gap: 12px;
   padding: 16px 24px;
-  background-color: #FFFFFF;
-  border-top: 1px solid #CCCABC;
+  background-color: var(--ubs-color-text-inverse);
+  border-top: 1px solid var(--ubs-color-border-secondary);
   font-family: 'Frutiger', Arial, sans-serif;
   text-shadow: none;
   -webkit-font-smoothing: antialiased;
@@ -58,5 +58,5 @@
 
 [data-ubs-theme="dark"] .actionBar {
   background-color: #1A1A1A;
-  border-top-color: #5A5D5C;
+  border-top-color: var(--ubs-color-gray-v);
 }

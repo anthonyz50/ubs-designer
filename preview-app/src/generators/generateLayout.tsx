@@ -29,6 +29,8 @@ import {
   Radio,
   RadioGroup,
   DatePicker,
+  MastheadNavigation,
+  Tabs,
 } from '@ubs/design-system';
 
 import {
@@ -59,6 +61,7 @@ import type {
   ContentBlockOptions,
   CardGridOptions,
   CTABlockOptions,
+  MastheadNavigationOptions,
 } from '../types';
 
 import {
@@ -76,6 +79,11 @@ import {
   sampleCards,
   navItems,
   footerLinks,
+  singleLevelTabs,
+  doubleLevelPrimaryTabs,
+  doubleLevelSecondaryTabs,
+  multiLevelNavItems,
+  megaNavItems,
 } from '../data/sampleData';
 
 // ─── Icon Map for Features ──────────────────────────────────────────
@@ -276,6 +284,87 @@ function renderCTABlock(options: CTABlockOptions): React.ReactElement {
   );
 }
 
+// ─── Masthead Navigation Renderers ─────────────────────────────────
+
+function MastheadSingleLevel(): React.ReactElement {
+  const [activeTab, setActiveTab] = React.useState('overview');
+
+  return (
+    <div>
+      <Typography variant="subheadline2" style={{ marginBottom: 12 }}>
+        Single-level Navigation
+      </Typography>
+      <Typography variant="copyText" style={{ color: 'var(--ubs-color-text-secondary)', marginBottom: 16 }}>
+        The simplest navigation, allowing the user to quickly switch between pages.
+      </Typography>
+      <Tabs tabs={singleLevelTabs} activeTab={activeTab} onChange={setActiveTab} variant="underline" />
+    </div>
+  );
+}
+
+function MastheadDoubleLevel(): React.ReactElement {
+  const [primaryTab, setPrimaryTab] = React.useState('wealth');
+  const [secondaryTab, setSecondaryTab] = React.useState('overview');
+
+  const handlePrimaryChange = (value: string) => {
+    setPrimaryTab(value);
+    setSecondaryTab('overview');
+  };
+
+  const secondaryTabs = doubleLevelSecondaryTabs[primaryTab] || doubleLevelSecondaryTabs.wealth;
+
+  return (
+    <div>
+      <Typography variant="subheadline2" style={{ marginBottom: 12 }}>
+        Double-level Navigation
+      </Typography>
+      <Typography variant="copyText" style={{ color: 'var(--ubs-color-text-secondary)', marginBottom: 16 }}>
+        Two levels of navigation. The second row uses bold text instead of a red bottom border.
+      </Typography>
+      <Tabs tabs={doubleLevelPrimaryTabs} activeTab={primaryTab} onChange={handlePrimaryChange} variant="underline" />
+      <Tabs tabs={secondaryTabs} activeTab={secondaryTab} onChange={setSecondaryTab} variant="contained" />
+    </div>
+  );
+}
+
+function MastheadMultiLevel(): React.ReactElement {
+  return (
+    <div>
+      <Typography variant="subheadline2" style={{ marginBottom: 12 }}>
+        Multi-level Navigation
+      </Typography>
+      <Typography variant="copyText" style={{ color: 'var(--ubs-color-text-secondary)', marginBottom: 16 }}>
+        Two or three levels using dropdowns. Dropdowns always open to the right.
+      </Typography>
+      <MastheadNavigation items={multiLevelNavItems} variant="primary" />
+    </div>
+  );
+}
+
+function MastheadMegaDropdown(): React.ReactElement {
+  return (
+    <div>
+      <Typography variant="subheadline2" style={{ marginBottom: 12 }}>
+        Mega Drop-down Navigation
+      </Typography>
+      <Typography variant="copyText" style={{ color: 'var(--ubs-color-text-secondary)', marginBottom: 16 }}>
+        A special menu containing quick links and message boxes with status information.
+      </Typography>
+      <MastheadNavigation items={megaNavItems} variant="primary" />
+    </div>
+  );
+}
+
+function renderMastheadNavigation(options: MastheadNavigationOptions): React.ReactElement {
+  switch (options.navType) {
+    case 'single': return <MastheadSingleLevel />;
+    case 'double': return <MastheadDoubleLevel />;
+    case 'multi': return <MastheadMultiLevel />;
+    case 'mega': return <MastheadMegaDropdown />;
+    default: return <MastheadSingleLevel />;
+  }
+}
+
 // ─── Section Renderer Dispatch ──────────────────────────────────────
 
 function renderSection(section: SectionConfig): React.ReactElement {
@@ -306,6 +395,9 @@ function renderSection(section: SectionConfig): React.ReactElement {
       break;
     case 'cta-block':
       content = renderCTABlock(section.options as CTABlockOptions);
+      break;
+    case 'masthead-navigation':
+      content = renderMastheadNavigation(section.options as MastheadNavigationOptions);
       break;
     default:
       content = null;

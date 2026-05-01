@@ -4,7 +4,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: var(--ubs-color-text-inverse);
   font-family: 'Frutiger', Arial, sans-serif;
 }
 
@@ -16,12 +16,12 @@
   justify-content: center;
   min-height: 560px;
   padding: 80px 24px;
-  background-color: #f5f0e1; /* Pastel II */
+  background-color: var(--ubs-color-bg-tertiary); /* Pastel II */
   text-align: center;
 }
 
 .heroWithImage {
-  background-color: #000000;
+  background-color: var(--ubs-color-text-primary);
 }
 
 .heroInner {
@@ -35,20 +35,20 @@
 .heroTitle {
   font-size: 48px;
   font-weight: 300;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   line-height: 1.1;
   margin: 0;
   letter-spacing: -0.02em;
 }
 
 .heroTitleLight {
-  color: #ffffff;
+  color: var(--ubs-color-text-inverse);
 }
 
 .heroSubtitle {
   font-size: 20px;
   font-weight: 300;
-  color: #5a5d5c;
+  color: var(--ubs-color-gray-v);
   line-height: 1.5;
   margin: 0;
   max-width: 560px;
@@ -70,7 +70,7 @@
 
 .featuresSection {
   padding: 80px 0;
-  background-color: #ffffff;
+  background-color: var(--ubs-color-text-inverse);
 }
 
 .featureCard {
@@ -85,21 +85,21 @@
   width: 56px;
   height: 56px;
   margin: 0 auto 16px;
-  background-color: #ecebe4; /* Pastel I */
+  background-color: var(--ubs-color-bg-secondary); /* Pastel I */
   border-radius: 50%;
-  color: #e60000; /* UBS Red */
+  color: var(--ubs-color-red); /* UBS Red */
 }
 
 /* ─── Stats Section ─── */
 
 .statsSection {
   padding: 64px 0;
-  background-color: #ecebe4; /* Pastel I */
+  background-color: var(--ubs-color-bg-secondary); /* Pastel I */
 }
 
 .statCard {
   text-align: center;
-  background-color: #ffffff;
+  background-color: var(--ubs-color-text-inverse);
   border-radius: 4px;
   padding: 24px;
 }
@@ -108,21 +108,21 @@
 
 .testimonialsSection {
   padding: 80px 0;
-  background-color: #ffffff;
+  background-color: var(--ubs-color-text-inverse);
 }
 
 .testimonialCard {
   margin: 0;
   padding: 32px;
-  background-color: #f5f0e1; /* Pastel II */
-  border-left: 3px solid #e60000; /* UBS Red */
+  background-color: var(--ubs-color-bg-tertiary); /* Pastel II */
+  border-left: 3px solid var(--ubs-color-red); /* UBS Red */
   border-radius: 0 4px 4px 0;
 }
 
 .testimonialQuote {
   font-size: 16px;
   font-weight: 300;
-  color: #404040;
+  color: var(--ubs-color-gray-vi);
   line-height: 1.6;
   margin: 0 0 16px;
   font-style: italic;

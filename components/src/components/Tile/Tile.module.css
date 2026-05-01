@@ -1,0 +1,225 @@
+/* Tile — UBS Design System */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Frutiger', Arial, sans-serif;
+  border-radius: 4px;
+  border: 1px solid var(--ubs-color-bg-secondary);
+  background-color: var(--ubs-color-text-inverse);
+  overflow: hidden;
+  position: relative;
+  transition: border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Interactive ─────────────────────────── */
+
+.interactive {
+  cursor: pointer;
+}
+
+.interactive:hover {
+  border-color: var(--ubs-color-border-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.interactive:focus-visible {
+  outline: 2px solid var(--ubs-color-red);
+  outline-offset: -2px;
+}
+
+/* ── Selected ────────────────────────────── */
+
+.selected {
+  border-color: var(--ubs-color-red);
+  box-shadow: 0 0 0 1px var(--ubs-color-red);
+}
+
+/* ── Sizes ───────────────────────────────── */
+
+.small {
+  padding: 16px;
+}
+
+.small .title {
+  font-size: 14px;
+}
+
+.small .description {
+  font-size: 12px;
+}
+
+.small .iconWrapper {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 12px;
+}
+
+.medium {
+  padding: 20px;
+}
+
+.medium .title {
+  font-size: 16px;
+}
+
+.medium .description {
+  font-size: 14px;
+}
+
+.medium .iconWrapper {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
+}
+
+.large {
+  padding: 24px;
+}
+
+.large .title {
+  font-size: 20px;
+}
+
+.large .description {
+  font-size: 16px;
+}
+
+.large .iconWrapper {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+}
+
+/* ── Image ───────────────────────────────── */
+
+.imageWrapper {
+  margin: -20px -20px 16px -20px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.small .imageWrapper {
+  margin: -16px -16px 12px -16px;
+}
+
+.large .imageWrapper {
+  margin: -24px -24px 20px -24px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Icon ────────────────────────────────── */
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ubs-color-red);
+  flex-shrink: 0;
+}
+
+/* ── Content ─────────────────────────────── */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.title {
+  font-weight: 700;
+  color: var(--ubs-color-text-primary);
+  line-height: 1.5;
+}
+
+.description {
+  font-weight: 400;
+  color: var(--ubs-color-gray-v);
+  line-height: 1.5;
+}
+
+/* ── Check indicator (selectable) ────────── */
+
+.checkWrapper {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.check {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Action arrow ────────────────────────── */
+
+.action {
+  flex-direction: row;
+  align-items: center;
+}
+
+.action .iconWrapper {
+  margin-bottom: 0;
+  margin-right: 16px;
+}
+
+.action .content {
+  flex: 1;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+  color: var(--ubs-color-gray-iii);
+  flex-shrink: 0;
+}
+
+.arrowIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.interactive.action:hover .arrow {
+  color: var(--ubs-color-red);
+}
+
+/* ── Dark mode ───────────────────────────── */
+
+[data-ubs-theme="dark"] .root {
+  background-color: #1a1a1a;
+  border-color: var(--ubs-color-gray-vi);
+}
+
+[data-ubs-theme="dark"] .interactive:hover {
+  border-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .selected {
+  border-color: var(--ubs-color-red);
+  box-shadow: 0 0 0 1px var(--ubs-color-red);
+}
+
+[data-ubs-theme="dark"] .title {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .description {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .arrow {
+  color: var(--ubs-color-gray-iv);
+}
+
+[data-ubs-theme="dark"] .interactive.action:hover .arrow {
+  color: var(--ubs-color-red);
+}

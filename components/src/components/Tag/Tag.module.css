@@ -28,33 +28,33 @@
 
 /* ─── Variants ─── */
 .default {
-  background-color: #ecebe4;
-  color: #000000;
-  border-color: #ecebe4;
+  background-color: var(--ubs-color-bg-secondary);
+  color: var(--ubs-color-text-primary);
+  border-color: var(--ubs-color-bg-secondary);
 }
 
 .red {
-  background-color: #e60000;
-  color: #ffffff;
-  border-color: #e60000;
+  background-color: var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
+  border-color: var(--ubs-color-red);
 }
 
 .success {
-  background-color: #6f7a1a;
-  color: #ffffff;
-  border-color: #6f7a1a;
+  background-color: var(--ubs-color-rag-green);
+  color: var(--ubs-color-text-inverse);
+  border-color: var(--ubs-color-rag-green);
 }
 
 .warning {
-  background-color: #e4a911;
-  color: #000000;
-  border-color: #e4a911;
+  background-color: var(--ubs-color-rag-amber);
+  color: var(--ubs-color-text-primary);
+  border-color: var(--ubs-color-rag-amber);
 }
 
 .outline {
   background-color: transparent;
-  color: #000000;
-  border-color: #b8b3a2;
+  color: var(--ubs-color-text-primary);
+  border-color: var(--ubs-color-border-primary);
 }
 
 /* ─── Icon ─── */

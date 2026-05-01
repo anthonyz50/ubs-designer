@@ -9,8 +9,8 @@
   overflow: hidden;
   font-family: 'Frutiger', Arial, sans-serif;
   font-weight: 700;
-  color: #000000;
-  background-color: #b8b3a2;
+  color: var(--ubs-color-text-primary);
+  background-color: var(--ubs-color-border-primary);
   vertical-align: middle;
 }
 
@@ -104,19 +104,19 @@
 }
 
 .statusOnline {
-  background-color: #6f7a1a;
+  background-color: var(--ubs-color-rag-green);
 }
 
 .statusOffline {
-  background-color: #8e8d83;
+  background-color: var(--ubs-color-gray-iii);
 }
 
 .statusBusy {
-  background-color: #bd000c;
+  background-color: var(--ubs-color-bordeaux-i);
 }
 
 .statusAway {
-  background-color: #e4a911;
+  background-color: var(--ubs-color-rag-amber);
 }
 
 /* ─── Avatar Group ─── */
@@ -140,8 +140,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #ecebe4;
-  color: #5a5d5c;
+  background-color: var(--ubs-color-bg-secondary);
+  color: var(--ubs-color-gray-v);
   font-weight: 700;
   border-radius: 50%;
   border: 2px solid #ffffff;

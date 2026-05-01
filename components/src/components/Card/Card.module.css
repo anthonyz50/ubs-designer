@@ -3,7 +3,7 @@
 
 .card {
   font-family: 'Frutiger', Arial, sans-serif;
-  border: 1px solid #CCCABC;
+  border: 1px solid var(--ubs-color-border-secondary);
   border-radius: 4px;
   overflow: hidden;
   text-shadow: none;
@@ -15,27 +15,27 @@
 /* ─── Variants ────────────────────────────────────────────────────── */
 
 .default {
-  background-color: #FFFFFF;
-  border-color: #CCCABC;
-  color: #000000;
+  background-color: var(--ubs-color-text-inverse);
+  border-color: var(--ubs-color-border-secondary);
+  color: var(--ubs-color-text-primary);
 }
 
 .pastel1 {
-  background-color: #ECEBE4;
-  border-color: #CCCABC;
-  color: #000000;
+  background-color: var(--ubs-color-bg-secondary);
+  border-color: var(--ubs-color-border-secondary);
+  color: var(--ubs-color-text-primary);
 }
 
 .pastel2 {
-  background-color: #F5F0E1;
-  border-color: #CCCABC;
-  color: #000000;
+  background-color: var(--ubs-color-bg-tertiary);
+  border-color: var(--ubs-color-border-secondary);
+  color: var(--ubs-color-text-primary);
 }
 
 .gray {
-  background-color: #CCCABC;
-  border-color: #B8B3A2;
-  color: #000000;
+  background-color: var(--ubs-color-border-secondary);
+  border-color: var(--ubs-color-border-primary);
+  color: var(--ubs-color-text-primary);
 }
 
 /* ─── Padding ─────────────────────────────────────────────────────── */
@@ -65,13 +65,13 @@
 /* ─── Slots ───────────────────────────────────────────────────────── */
 
 .header {
-  border-bottom: 1px solid #CCCABC;
+  border-bottom: 1px solid var(--ubs-color-border-secondary);
 }
 
 .pastel1 > .header,
 .pastel2 > .header,
 .gray > .header {
-  border-bottom-color: #B8B3A2;
+  border-bottom-color: var(--ubs-color-border-primary);
 }
 
 .body {
@@ -79,13 +79,13 @@
 }
 
 .footer {
-  border-top: 1px solid #CCCABC;
+  border-top: 1px solid var(--ubs-color-border-secondary);
 }
 
 .pastel1 > .footer,
 .pastel2 > .footer,
 .gray > .footer {
-  border-top-color: #B8B3A2;
+  border-top-color: var(--ubs-color-border-primary);
 }
 
 /* ─── Interactive ─────────────────────────────────────────────────── */
@@ -101,7 +101,7 @@
 }
 
 .hoverable:hover {
-  border-color: #B8B3A2;
+  border-color: var(--ubs-color-border-primary);
   transform: translateY(-2px);
 }
 
@@ -124,39 +124,39 @@
 /* ─── Dark Mode ───────────────────────────────────────────────────── */
 
 [data-ubs-theme="dark"] .card {
-  border-color: #5A5D5C;
+  border-color: var(--ubs-color-gray-v);
 }
 
 [data-ubs-theme="dark"] .default {
   background-color: #1A1A1A;
-  border-color: #5A5D5C;
-  color: #FFFFFF;
+  border-color: var(--ubs-color-gray-v);
+  color: var(--ubs-color-text-inverse);
 }
 
 [data-ubs-theme="dark"] .pastel1 {
   background-color: #2A2A2A;
-  border-color: #5A5D5C;
-  color: #FFFFFF;
+  border-color: var(--ubs-color-gray-v);
+  color: var(--ubs-color-text-inverse);
 }
 
 [data-ubs-theme="dark"] .pastel2 {
   background-color: #2E2B24;
-  border-color: #5A5D5C;
-  color: #FFFFFF;
+  border-color: var(--ubs-color-gray-v);
+  color: var(--ubs-color-text-inverse);
 }
 
 [data-ubs-theme="dark"] .gray {
-  background-color: #404040;
-  border-color: #5A5D5C;
-  color: #FFFFFF;
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-gray-v);
+  color: var(--ubs-color-text-inverse);
 }
 
 [data-ubs-theme="dark"] .header {
-  border-bottom-color: #5A5D5C;
+  border-bottom-color: var(--ubs-color-gray-v);
 }
 
 [data-ubs-theme="dark"] .footer {
-  border-top-color: #5A5D5C;
+  border-top-color: var(--ubs-color-gray-v);
 }
 
 [data-ubs-theme="dark"] .hoverable.default:hover {
@@ -176,5 +176,5 @@
 }
 
 [data-ubs-theme="dark"] .interactive:focus-visible {
-  outline-color: #FFFFFF;
+  outline-color: var(--ubs-color-text-inverse);
 }

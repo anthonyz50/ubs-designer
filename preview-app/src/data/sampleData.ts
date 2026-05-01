@@ -138,6 +138,104 @@ export const sampleCards = [
   { title: 'Multi-Asset Income', description: 'Balanced allocation targeting consistent income across market cycles.', cta: 'View Details' },
 ];
 
+// ─── Masthead Navigation Items ────────────────────────────────────────
+
+import type { MastheadNavItem } from '@ubs/design-system';
+import type { TabItem } from '@ubs/design-system';
+
+/** Single-level: flat tab items */
+export const singleLevelTabs: TabItem[] = [
+  { label: 'Overview', value: 'overview' },
+  { label: 'Portfolio', value: 'portfolio' },
+  { label: 'Transactions', value: 'transactions' },
+  { label: 'Documents', value: 'documents' },
+  { label: 'Settings', value: 'settings' },
+];
+
+/** Double-level: primary tabs */
+export const doubleLevelPrimaryTabs: TabItem[] = [
+  { label: 'Wealth Management', value: 'wealth' },
+  { label: 'Investment Bank', value: 'ib' },
+  { label: 'Asset Management', value: 'am' },
+  { label: 'Personal Banking', value: 'personal' },
+];
+
+/** Double-level: secondary tabs */
+export const doubleLevelSecondaryTabs: Record<string, TabItem[]> = {
+  wealth: [
+    { label: 'Overview', value: 'overview' },
+    { label: 'Accounts', value: 'accounts' },
+    { label: 'Performance', value: 'performance' },
+    { label: 'Advisory', value: 'advisory' },
+    { label: 'Reports', value: 'reports' },
+  ],
+  ib: [
+    { label: 'Overview', value: 'overview' },
+    { label: 'Markets', value: 'markets' },
+    { label: 'Research', value: 'research' },
+    { label: 'Execution', value: 'execution' },
+  ],
+  am: [
+    { label: 'Overview', value: 'overview' },
+    { label: 'Funds', value: 'funds' },
+    { label: 'Mandates', value: 'mandates' },
+    { label: 'Sustainability', value: 'sustainability' },
+  ],
+  personal: [
+    { label: 'Overview', value: 'overview' },
+    { label: 'Accounts', value: 'accounts' },
+    { label: 'Cards', value: 'cards' },
+    { label: 'Loans', value: 'loans' },
+  ],
+};
+
+/** Multi-level: MastheadNavigation items with nested children */
+export const multiLevelNavItems: MastheadNavItem[] = [
+  { label: 'Home', href: '/', active: true },
+  {
+    label: 'Products',
+    children: [
+      { label: 'Equities', href: '/products/equities', description: 'Global equity markets' },
+      { label: 'Fixed Income', href: '/products/fixed-income', description: 'Bonds and credit' },
+      { label: 'Derivatives', href: '/products/derivatives', description: 'Options, futures, swaps' },
+      { label: 'Commodities', href: '/products/commodities', description: 'Precious metals and energy' },
+      { label: 'Foreign Exchange', href: '/products/fx', description: 'Currency trading' },
+    ],
+  },
+  {
+    label: 'Research',
+    children: [
+      { label: 'Market Outlook', href: '/research/outlook', description: 'Global macro perspectives' },
+      { label: 'Sector Analysis', href: '/research/sectors', description: 'Industry deep dives' },
+      { label: 'Regional Focus', href: '/research/regional', description: 'Americas, EMEA, APAC' },
+      { label: 'Sustainability', href: '/research/esg', description: 'ESG research and ratings' },
+    ],
+  },
+  { label: 'Insights', href: '/insights' },
+  { label: 'Contact', href: '/contact' },
+];
+
+/** Mega dropdown: MastheadNavigation items with rich children */
+export const megaNavItems: MastheadNavItem[] = [
+  { label: 'Dashboard', href: '/', active: true },
+  {
+    label: 'Services',
+    children: [
+      { label: 'Accounts & Cards', href: '/services/accounts', description: 'Manage your accounts' },
+      { label: 'Payments & Transfers', href: '/services/payments', description: 'Send and receive money' },
+      { label: 'Mortgages', href: '/services/mortgages', description: 'Home financing' },
+      { label: 'Portfolio Management', href: '/services/portfolio', description: 'Investment solutions' },
+      { label: 'Trading Platform', href: '/services/trading', description: 'Execute trades' },
+      { label: 'Retirement Planning', href: '/services/retirement', description: 'Plan your future' },
+      { label: 'Sustainable Investing', href: '/services/esg', description: 'ESG portfolios' },
+      { label: 'Wealth Planning', href: '/services/wealth', description: 'Comprehensive advice' },
+    ],
+  },
+  { label: 'Markets', href: '/markets' },
+  { label: 'Reports', href: '/reports' },
+  { label: 'Help', href: '/help' },
+];
+
 // ─── Navbar Items ─────────────────────────────────────────────────────
 
 export const navItems = [

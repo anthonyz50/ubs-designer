@@ -96,7 +96,7 @@
 .partnerDivider {
   width: 1px;
   height: 24px;
-  background-color: var(--ubs-color-border-primary, #B8B3A2);
+  background-color: var(--ubs-color-border-primary, var(--ubs-color-border-primary));
   flex-shrink: 0;
 }
 

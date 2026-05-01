@@ -1,0 +1,333 @@
+/* ─── UBS TimePicker ─────────────────────────────────────────────── */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.label {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--ubs-color-text-primary);
+}
+
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ─── Trigger ─────────────────────────────────────────────────────── */
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 40px;
+  padding: 10px 16px;
+  background-color: var(--ubs-color-text-inverse);
+  border: 2px solid var(--ubs-color-border-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 16px;
+  text-align: left;
+  transition: border-color 200ms ease;
+}
+
+.trigger:hover:not(:disabled) {
+  border-color: var(--ubs-color-gray-iv);
+}
+
+.triggerOpen {
+  border-color: var(--ubs-color-text-primary);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.error .trigger {
+  border-color: var(--ubs-color-bordeaux-i);
+}
+
+.clockIcon {
+  flex-shrink: 0;
+  color: var(--ubs-color-gray-v);
+}
+
+.triggerValue {
+  flex: 1;
+  color: var(--ubs-color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.triggerPlaceholder {
+  flex: 1;
+  color: var(--ubs-color-gray-iii);
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--ubs-color-gray-v);
+  transition: transform 200ms ease;
+}
+
+.triggerOpen .chevron {
+  transform: rotate(180deg);
+}
+
+/* ─── Dropdown ────────────────────────────────────────────────────── */
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 1000;
+  background-color: var(--ubs-color-text-inverse);
+  border: 1px solid var(--ubs-color-border-secondary);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+/* ─── Columns ─────────────────────────────────────────────────────── */
+
+.columns {
+  display: flex;
+  align-items: stretch;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  min-width: 56px;
+}
+
+.columnLabel {
+  display: block;
+  padding: 8px 8px 4px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ubs-color-gray-iii);
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.columnList {
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  scrollbar-width: thin;
+}
+
+.columnItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+  color: var(--ubs-color-text-primary);
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.columnItem:hover {
+  background-color: var(--ubs-color-bg-tertiary);
+}
+
+.columnItemSelected {
+  background-color: var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
+  font-weight: 500;
+}
+
+.columnItemSelected:hover {
+  background-color: var(--ubs-color-bordeaux-i);
+}
+
+.periodItem {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+  padding-top: 24px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ubs-color-gray-iii);
+}
+
+/* ─── Footer ──────────────────────────────────────────────────────── */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-top: 1px solid var(--ubs-color-bg-secondary);
+}
+
+.nowButton,
+.doneButton {
+  padding: 4px 12px;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.nowButton {
+  background-color: transparent;
+  color: var(--ubs-color-red);
+}
+
+.nowButton:hover {
+  background-color: rgba(230, 0, 0, 0.06);
+}
+
+.doneButton {
+  background-color: var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
+}
+
+.doneButton:hover {
+  background-color: var(--ubs-color-bordeaux-i);
+}
+
+.nowButton:focus-visible,
+.doneButton:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* ─── Helper/Error ────────────────────────────────────────────────── */
+
+.errorText {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ubs-color-bordeaux-i);
+}
+
+.helperText {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ubs-color-gray-iii);
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .label {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .trigger {
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .trigger:hover:not(:disabled) {
+  border-color: var(--ubs-color-gray-iii);
+}
+
+[data-ubs-theme="dark"] .triggerOpen {
+  border-color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .trigger:focus-visible {
+  outline-color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .error .trigger {
+  border-color: var(--ubs-color-bordeaux-i);
+}
+
+[data-ubs-theme="dark"] .clockIcon {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .triggerValue {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .triggerPlaceholder {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .chevron {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .dropdown {
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .columnLabel {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .columnItem {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .columnItem:hover {
+  background-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .columnItemSelected {
+  background-color: var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .columnItemSelected:hover {
+  background-color: var(--ubs-color-bordeaux-i);
+}
+
+[data-ubs-theme="dark"] .separator {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .footer {
+  border-top-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .nowButton {
+  color: var(--ubs-color-red);
+}
+
+[data-ubs-theme="dark"] .nowButton:hover {
+  background-color: rgba(230, 0, 0, 0.15);
+}
+
+[data-ubs-theme="dark"] .nowButton:focus-visible,
+[data-ubs-theme="dark"] .doneButton:focus-visible {
+  outline-color: var(--ubs-color-text-inverse);
+}

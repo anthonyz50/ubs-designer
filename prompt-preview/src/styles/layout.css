@@ -1,0 +1,184 @@
+/* ============================================================
+   UBS Layout Utilities
+   ============================================================ */
+
+/* ---- Container ---- */
+.ubs-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--ubs-space-5);
+}
+
+/* ---- 12-column CSS Grid ---- */
+.ubs-grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--ubs-space-5);
+}
+
+.ubs-col-1  { grid-column: span 1; }
+.ubs-col-2  { grid-column: span 2; }
+.ubs-col-3  { grid-column: span 3; }
+.ubs-col-4  { grid-column: span 4; }
+.ubs-col-5  { grid-column: span 5; }
+.ubs-col-6  { grid-column: span 6; }
+.ubs-col-7  { grid-column: span 7; }
+.ubs-col-8  { grid-column: span 8; }
+.ubs-col-9  { grid-column: span 9; }
+.ubs-col-10 { grid-column: span 10; }
+.ubs-col-11 { grid-column: span 11; }
+.ubs-col-12 { grid-column: span 12; }
+
+/* ---- Auto-fit grid for cards ---- */
+.ubs-grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--ubs-space-5);
+}
+
+/* ---- Flexbox utilities ---- */
+.ubs-flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: var(--ubs-space-4);
+}
+
+.ubs-flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-4);
+}
+
+.ubs-flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--ubs-space-4);
+}
+
+.ubs-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ubs-flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--ubs-space-4);
+}
+
+.ubs-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.ubs-flex-grow {
+  flex: 1 1 auto;
+}
+
+.ubs-flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.ubs-items-start {
+  align-items: flex-start;
+}
+
+.ubs-items-center {
+  align-items: center;
+}
+
+.ubs-items-end {
+  align-items: flex-end;
+}
+
+/* ---- Vertical stack ---- */
+.ubs-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.ubs-stack-sm { gap: var(--ubs-space-2); }
+.ubs-stack-md { gap: var(--ubs-space-4); }
+.ubs-stack-lg { gap: var(--ubs-space-6); }
+
+/* ---- Section spacing ---- */
+.ubs-section {
+  padding-block: var(--ubs-space-7);
+}
+
+.ubs-section-sm {
+  padding-block: var(--ubs-space-5);
+}
+
+.ubs-section-lg {
+  padding-block: var(--ubs-space-9);
+}
+
+/* ---- Responsive utilities ---- */
+@media (max-width: 768px) {
+  .ubs-grid-12 {
+    grid-template-columns: 1fr;
+  }
+
+  .ubs-col-1,
+  .ubs-col-2,
+  .ubs-col-3,
+  .ubs-col-4,
+  .ubs-col-5,
+  .ubs-col-6,
+  .ubs-col-7,
+  .ubs-col-8,
+  .ubs-col-9,
+  .ubs-col-10,
+  .ubs-col-11,
+  .ubs-col-12 {
+    grid-column: span 1;
+  }
+
+  .ubs-flex-row {
+    flex-direction: column;
+  }
+
+  .ubs-hide-mobile {
+    display: none !important;
+  }
+
+  .ubs-container {
+    padding-inline: var(--ubs-space-4);
+  }
+}
+
+@media (min-width: 769px) {
+  .ubs-hide-desktop {
+    display: none !important;
+  }
+}
+
+.ubs-full-width-mobile {
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .ubs-full-width-mobile {
+    width: auto;
+  }
+}
+
+/* ---- Gap overrides ---- */
+.ubs-gap-0 { gap: var(--ubs-space-0); }
+.ubs-gap-1 { gap: var(--ubs-space-1); }
+.ubs-gap-2 { gap: var(--ubs-space-2); }
+.ubs-gap-3 { gap: var(--ubs-space-3); }
+.ubs-gap-4 { gap: var(--ubs-space-4); }
+.ubs-gap-5 { gap: var(--ubs-space-5); }
+.ubs-gap-6 { gap: var(--ubs-space-6); }
+
+/* ---- Width utilities ---- */
+.ubs-w-full { width: 100%; }
+.ubs-w-auto { width: auto; }
+.ubs-max-w-sm { max-width: 480px; }
+.ubs-max-w-md { max-width: 640px; }
+.ubs-max-w-lg { max-width: 960px; }

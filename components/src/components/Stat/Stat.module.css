@@ -9,7 +9,7 @@
 /* ─── Label ─── */
 .label {
   font-weight: 400;
-  color: #7a7870;
+  color: var(--ubs-color-gray-iv);
   line-height: 1.4;
   margin: 0 0 4px;
 }
@@ -36,7 +36,7 @@
 .prefix,
 .suffix {
   font-weight: 400;
-  color: #5a5d5c;
+  color: var(--ubs-color-gray-v);
 }
 
 .sm .prefix,
@@ -57,7 +57,7 @@
 /* ─── Value ─── */
 .value {
   font-weight: 700;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   line-height: 1.2;
 }
 
@@ -96,15 +96,15 @@
 }
 
 .changeUp {
-  color: #6f7a1a;
+  color: var(--ubs-color-rag-green);
 }
 
 .changeDown {
-  color: #bd000c;
+  color: var(--ubs-color-bordeaux-i);
 }
 
 .changeFlat {
-  color: #8e8d83;
+  color: var(--ubs-color-gray-iii);
 }
 
 .arrow {
@@ -116,7 +116,7 @@
 /* ─── Loading skeleton ─── */
 .skeleton {
   border-radius: 4px;
-  background: linear-gradient(90deg, #ecebe4 25%, #f5f0e1 50%, #ecebe4 75%);
+  background: linear-gradient(90deg, var(--ubs-color-bg-secondary) 25%, var(--ubs-color-bg-tertiary) 50%, var(--ubs-color-bg-secondary) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite ease-in-out;
 }

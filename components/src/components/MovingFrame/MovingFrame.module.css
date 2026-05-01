@@ -28,7 +28,7 @@
 }
 
 .opaque {
-  background-color: #FFFFFF;
+  background-color: var(--ubs-color-text-inverse);
 }
 
 /* ── Background image layer ────────────────────────────── */

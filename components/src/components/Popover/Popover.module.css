@@ -12,13 +12,13 @@
 .popover {
   position: absolute;
   z-index: 9998;
-  background-color: #ffffff;
-  border: 1px solid #b8b3a2;
+  background-color: var(--ubs-color-text-inverse);
+  border: 1px solid var(--ubs-color-border-primary);
   border-radius: 4px;
   padding: 16px;
   font-family: 'Frutiger', Arial, sans-serif;
   font-size: 14px;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   min-width: 200px;
   max-width: 360px;
   opacity: 0;
@@ -63,8 +63,8 @@
   position: absolute;
   width: 10px;
   height: 10px;
-  background-color: #ffffff;
-  border: 1px solid #b8b3a2;
+  background-color: var(--ubs-color-text-inverse);
+  border: 1px solid var(--ubs-color-border-primary);
   transform: rotate(45deg);
 }
 

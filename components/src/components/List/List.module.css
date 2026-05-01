@@ -24,7 +24,7 @@
 
 /* ─── Divided variant ─── */
 .divided .listItem {
-  border-bottom: 1px solid #cccabc;
+  border-bottom: 1px solid var(--ubs-color-border-secondary);
 }
 
 .divided .listItem:last-child {
@@ -33,7 +33,7 @@
 
 /* ─── Hoverable ─── */
 .hoverable .listItem:hover {
-  background-color: #ecebe4;
+  background-color: var(--ubs-color-bg-secondary);
 }
 
 /* ─── Clickable ─── */
@@ -54,7 +54,7 @@
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  color: #5a5d5c;
+  color: var(--ubs-color-gray-v);
 }
 
 /* ─── Content ─── */
@@ -66,14 +66,14 @@
 .primary {
   font-size: 16px;
   font-weight: 400;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   line-height: 1.5;
 }
 
 .secondary {
   font-size: 14px;
   font-weight: 400;
-  color: #7a7870;
+  color: var(--ubs-color-gray-iv);
   line-height: 1.4;
   margin-top: 2px;
 }

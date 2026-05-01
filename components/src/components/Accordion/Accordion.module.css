@@ -16,15 +16,15 @@
 
 /* ─── Bordered variant ─── */
 .bordered .item {
-  border-bottom-color: #cccabc;
+  border-bottom-color: var(--ubs-color-border-secondary);
 }
 
 .bordered .item:last-child {
-  border-bottom-color: #cccabc;
+  border-bottom-color: var(--ubs-color-border-secondary);
 }
 
 .bordered {
-  border-top: 1px solid #cccabc;
+  border-top: 1px solid var(--ubs-color-border-secondary);
 }
 
 /* ─── Trigger button ─── */
@@ -39,7 +39,7 @@
   font-family: inherit;
   font-size: 16px;
   font-weight: 700;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   cursor: pointer;
   text-align: left;
   line-height: 1.5;
@@ -51,7 +51,7 @@
 }
 
 .trigger:hover {
-  background-color: #ecebe4;
+  background-color: var(--ubs-color-bg-secondary);
 }
 
 .trigger:focus-visible {
@@ -60,7 +60,7 @@
 }
 
 .trigger[aria-disabled='true'] {
-  color: #8e8d83;
+  color: var(--ubs-color-gray-iii);
   cursor: not-allowed;
 }
 
@@ -77,7 +77,7 @@
   height: 20px;
   flex-shrink: 0;
   transition: transform 0.25s ease;
-  color: #5a5d5c;
+  color: var(--ubs-color-gray-v);
 }
 
 .chevronOpen {
@@ -85,7 +85,7 @@
 }
 
 .trigger[aria-disabled='true'] .chevron {
-  color: #b8b3a2;
+  color: var(--ubs-color-border-primary);
 }
 
 /* ─── Panel ─── */
@@ -104,7 +104,7 @@
   padding: 0 0 16px;
   font-size: 14px;
   font-weight: 400;
-  color: #404040;
+  color: var(--ubs-color-gray-vi);
   line-height: 1.6;
 }
 

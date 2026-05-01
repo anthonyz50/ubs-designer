@@ -6,8 +6,8 @@
   font-family: 'Frutiger', Arial, sans-serif;
   text-shadow: none;
   text-align: left;
-  color: #000000;
-  background-color: #FFFFFF;
+  color: var(--ubs-color-text-primary);
+  background-color: var(--ubs-color-text-inverse);
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;

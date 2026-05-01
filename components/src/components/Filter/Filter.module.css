@@ -1,0 +1,400 @@
+/* ─── UBS Filter (FilterGroup) ────────────────────────────────────── */
+
+.filter {
+  font-family: var(--ubs-font-family-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Filter Bar ──────────────────────────────────────────────────── */
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-spacing-3xs);
+  flex-wrap: wrap;
+}
+
+/* ─── Search Wrapper (withSearch variant) ─────────────────────────── */
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+  min-width: 200px;
+  max-width: 320px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: var(--ubs-spacing-3xs);
+  display: inline-flex;
+  align-items: center;
+  color: var(--ubs-color-text-tertiary);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: var(--ubs-spacing-3xs) var(--ubs-spacing-3xs) var(--ubs-spacing-3xs) 36px;
+  font-family: var(--ubs-font-family-primary);
+  font-size: var(--ubs-font-size-small);
+  font-weight: var(--ubs-font-weight-regular);
+  line-height: var(--ubs-line-height-body);
+  color: var(--ubs-color-text-primary);
+  background-color: var(--ubs-color-bg-primary);
+  border: 1px solid var(--ubs-color-border-primary);
+  border-radius: var(--ubs-radius-md);
+  min-height: 36px;
+  transition:
+    border-color var(--ubs-duration-normal) var(--ubs-easing-default),
+    box-shadow var(--ubs-duration-normal) var(--ubs-easing-default);
+}
+
+.searchInput::placeholder {
+  color: var(--ubs-color-text-tertiary);
+}
+
+.searchInput:hover {
+  border-color: var(--ubs-color-gray-iii);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--ubs-color-border-focus);
+  box-shadow: 0 0 0 1px var(--ubs-color-border-focus);
+}
+
+/* ─── Filter Items ────────────────────────────────────────────────── */
+
+.filterItems {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-spacing-3xs);
+  flex-wrap: wrap;
+}
+
+.filterItemWrapper {
+  position: relative;
+}
+
+/* ─── Filter Trigger ──────────────────────────────────────────────── */
+
+.filterTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ubs-spacing-4xs);
+  padding: var(--ubs-spacing-4xs) var(--ubs-spacing-2xs);
+  min-height: 36px;
+  font-family: var(--ubs-font-family-primary);
+  font-size: var(--ubs-font-size-small);
+  font-weight: var(--ubs-font-weight-regular);
+  line-height: var(--ubs-line-height-body);
+  color: var(--ubs-color-text-primary);
+  background-color: var(--ubs-color-bg-primary);
+  border: 1px solid var(--ubs-color-border-primary);
+  border-radius: var(--ubs-radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color var(--ubs-duration-normal) var(--ubs-easing-default),
+    border-color var(--ubs-duration-normal) var(--ubs-easing-default),
+    color var(--ubs-duration-normal) var(--ubs-easing-default);
+}
+
+.filterTrigger:hover {
+  border-color: var(--ubs-color-gray-iii);
+  background-color: var(--ubs-color-bg-secondary);
+}
+
+.filterTrigger:focus-visible {
+  outline: var(--ubs-a11y-focus-width) solid var(--ubs-color-border-focus);
+  outline-offset: 2px;
+}
+
+.filterTriggerActive {
+  background-color: var(--ubs-color-black);
+  border-color: var(--ubs-color-black);
+  color: var(--ubs-color-white);
+}
+
+.filterTriggerActive:hover {
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-gray-vi);
+}
+
+.filterTriggerOpen {
+  border-color: var(--ubs-color-border-focus);
+}
+
+.filterLabel {
+  display: inline-flex;
+  align-items: center;
+}
+
+.filterValue {
+  font-weight: var(--ubs-font-weight-medium);
+}
+
+.filterChevron {
+  display: inline-flex;
+  align-items: center;
+  transition: transform var(--ubs-duration-normal) var(--ubs-easing-default);
+}
+
+.filterTriggerOpen .filterChevron {
+  transform: rotate(180deg);
+}
+
+/* ─── Filter Dropdown ─────────────────────────────────────────────── */
+
+.filterDropdown {
+  position: absolute;
+  top: calc(100% + var(--ubs-spacing-4xs));
+  left: 0;
+  min-width: 200px;
+  max-height: 280px;
+  overflow-y: auto;
+  background-color: var(--ubs-color-bg-primary);
+  border: 1px solid var(--ubs-color-border-secondary);
+  border-radius: var(--ubs-radius-lg);
+  padding: var(--ubs-spacing-4xs) 0;
+  z-index: var(--ubs-z-popover);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ─── Filter Option ───────────────────────────────────────────────── */
+
+.filterOption {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-spacing-3xs);
+  width: 100%;
+  padding: var(--ubs-spacing-3xs) var(--ubs-spacing-xs);
+  font-family: var(--ubs-font-family-primary);
+  font-size: var(--ubs-font-size-small);
+  font-weight: var(--ubs-font-weight-regular);
+  line-height: var(--ubs-line-height-body);
+  color: var(--ubs-color-text-primary);
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--ubs-duration-fast) var(--ubs-easing-default);
+}
+
+.filterOption:hover {
+  background-color: var(--ubs-color-bg-secondary);
+}
+
+.filterOption:focus-visible {
+  outline: var(--ubs-a11y-focus-width) solid var(--ubs-color-border-focus);
+  outline-offset: -2px;
+}
+
+.filterOptionSelected {
+  font-weight: var(--ubs-font-weight-medium);
+}
+
+.filterOptionLabel {
+  flex: 1;
+}
+
+/* ─── Checkbox (multi-select) ─────────────────────────────────────── */
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--ubs-color-border-primary);
+  border-radius: var(--ubs-radius-sm);
+  flex-shrink: 0;
+  transition:
+    background-color var(--ubs-duration-fast) var(--ubs-easing-default),
+    border-color var(--ubs-duration-fast) var(--ubs-easing-default);
+}
+
+.checkboxChecked {
+  background-color: var(--ubs-color-black);
+  border-color: var(--ubs-color-black);
+  color: var(--ubs-color-white);
+}
+
+/* ─── Show More Button ────────────────────────────────────────────── */
+
+.showMoreButton {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--ubs-spacing-4xs) var(--ubs-spacing-2xs);
+  min-height: 36px;
+  font-family: var(--ubs-font-family-primary);
+  font-size: var(--ubs-font-size-small);
+  font-weight: var(--ubs-font-weight-medium);
+  color: var(--ubs-color-red);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--ubs-duration-normal) var(--ubs-easing-default);
+}
+
+.showMoreButton:hover {
+  color: var(--ubs-color-bordeaux-i);
+}
+
+.showMoreButton:focus-visible {
+  outline: var(--ubs-a11y-focus-width) solid var(--ubs-color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--ubs-radius-sm);
+}
+
+/* ─── Reset Button ────────────────────────────────────────────────── */
+
+.resetButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ubs-spacing-4xs);
+  padding: var(--ubs-spacing-4xs) var(--ubs-spacing-2xs);
+  min-height: 36px;
+  font-family: var(--ubs-font-family-primary);
+  font-size: var(--ubs-font-size-small);
+  font-weight: var(--ubs-font-weight-medium);
+  color: var(--ubs-color-text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--ubs-radius-md);
+  transition:
+    color var(--ubs-duration-normal) var(--ubs-easing-default),
+    background-color var(--ubs-duration-normal) var(--ubs-easing-default);
+}
+
+.resetButton:hover {
+  color: var(--ubs-color-text-primary);
+  background-color: var(--ubs-color-bg-secondary);
+}
+
+.resetButton:focus-visible {
+  outline: var(--ubs-a11y-focus-width) solid var(--ubs-color-border-focus);
+  outline-offset: 2px;
+}
+
+.resetIcon {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .filterBar {
+    flex-wrap: wrap;
+  }
+
+  .searchWrapper {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .filterItems {
+    width: 100%;
+  }
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .searchInput {
+  background-color: #1A1A1A;
+  border-color: var(--ubs-color-gray-v);
+  color: var(--ubs-color-white);
+}
+
+[data-ubs-theme="dark"] .searchInput::placeholder {
+  color: var(--ubs-color-gray-iv);
+}
+
+[data-ubs-theme="dark"] .searchInput:hover {
+  border-color: var(--ubs-color-gray-iii);
+}
+
+[data-ubs-theme="dark"] .searchInput:focus {
+  border-color: var(--ubs-color-white);
+  box-shadow: 0 0 0 1px var(--ubs-color-white);
+}
+
+[data-ubs-theme="dark"] .filterTrigger {
+  background-color: #1A1A1A;
+  border-color: var(--ubs-color-gray-v);
+  color: var(--ubs-color-white);
+}
+
+[data-ubs-theme="dark"] .filterTrigger:hover {
+  border-color: var(--ubs-color-gray-iii);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-ubs-theme="dark"] .filterTriggerActive {
+  background-color: var(--ubs-color-white);
+  border-color: var(--ubs-color-white);
+  color: var(--ubs-color-black);
+}
+
+[data-ubs-theme="dark"] .filterTriggerActive:hover {
+  background-color: var(--ubs-color-gray-i);
+  border-color: var(--ubs-color-gray-i);
+}
+
+[data-ubs-theme="dark"] .filterTriggerOpen {
+  border-color: var(--ubs-color-white);
+}
+
+[data-ubs-theme="dark"] .filterDropdown {
+  background-color: #1A1A1A;
+  border-color: var(--ubs-color-gray-v);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-ubs-theme="dark"] .filterOption {
+  color: var(--ubs-color-white);
+}
+
+[data-ubs-theme="dark"] .filterOption:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-ubs-theme="dark"] .checkbox {
+  border-color: var(--ubs-color-gray-iv);
+}
+
+[data-ubs-theme="dark"] .checkboxChecked {
+  background-color: var(--ubs-color-white);
+  border-color: var(--ubs-color-white);
+  color: var(--ubs-color-black);
+}
+
+[data-ubs-theme="dark"] .showMoreButton {
+  color: #FF4D4D;
+}
+
+[data-ubs-theme="dark"] .showMoreButton:hover {
+  color: #FF6666;
+}
+
+[data-ubs-theme="dark"] .resetButton {
+  color: var(--ubs-color-gray-ii);
+}
+
+[data-ubs-theme="dark"] .resetButton:hover {
+  color: var(--ubs-color-white);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-ubs-theme="dark"] .filterTrigger:focus-visible,
+[data-ubs-theme="dark"] .filterOption:focus-visible,
+[data-ubs-theme="dark"] .showMoreButton:focus-visible,
+[data-ubs-theme="dark"] .resetButton:focus-visible {
+  outline-color: var(--ubs-color-white);
+}

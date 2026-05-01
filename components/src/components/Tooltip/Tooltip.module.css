@@ -8,8 +8,8 @@
 .tooltip {
   position: absolute;
   z-index: 9999;
-  background-color: #404040;
-  color: #ffffff;
+  background-color: var(--ubs-color-gray-vi);
+  color: var(--ubs-color-text-inverse);
   font-family: 'Frutiger', Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -59,7 +59,7 @@
   position: absolute;
   width: 8px;
   height: 8px;
-  background-color: #404040;
+  background-color: var(--ubs-color-gray-vi);
   transform: rotate(45deg);
 }
 

@@ -8,6 +8,7 @@ import type {
   ChartGridOptions,
   FormFieldsOptions,
   CTABlockOptions,
+  MastheadNavigationOptions,
 } from '../types';
 
 export function generateReact(config: LayoutConfig): string {
@@ -35,6 +36,16 @@ export function generateReact(config: LayoutConfig): string {
       case 'stats-row': imports.add('Stat'); break;
       case 'chart-grid': imports.add('DataViz'); break;
       case 'feature-grid': imports.add('Card'); break;
+      case 'masthead-navigation': {
+        const mnOpts = s.options as MastheadNavigationOptions;
+        if (mnOpts.navType === 'single' || mnOpts.navType === 'double') {
+          imports.add('Tabs');
+        }
+        if (mnOpts.navType === 'multi' || mnOpts.navType === 'mega') {
+          imports.add('MastheadNavigation');
+        }
+        break;
+      }
       case 'form-fields':
         const ff = s.options as FormFieldsOptions;
         ff.fieldTypes.forEach((t) => {
@@ -191,6 +202,83 @@ function renderSectionCode(section: SectionConfig, _index: number): string {
       inner = `<div style={{ display: 'flex', justifyContent: 'center', padding: '24px 0' }}>
               <CTA variant="${opts.variant}" label="${opts.label}" href="#" size="lg" animated />
             </div>`;
+      break;
+    }
+    case 'masthead-navigation': {
+      const mnOpts = section.options as MastheadNavigationOptions;
+      switch (mnOpts.navType) {
+        case 'single':
+          inner = `<Tabs
+              tabs={[
+                { label: 'Overview', value: 'overview' },
+                { label: 'Portfolio', value: 'portfolio' },
+                { label: 'Transactions', value: 'transactions' },
+                { label: 'Documents', value: 'documents' },
+                { label: 'Settings', value: 'settings' },
+              ]}
+              activeTab="overview"
+              onChange={handleTabChange}
+              variant="underline"
+            />`;
+          break;
+        case 'double':
+          inner = `{/* Primary tabs */}
+            <Tabs
+              tabs={[
+                { label: 'Wealth Management', value: 'wealth' },
+                { label: 'Investment Bank', value: 'ib' },
+                { label: 'Asset Management', value: 'am' },
+              ]}
+              activeTab="wealth"
+              onChange={handlePrimaryTabChange}
+              variant="underline"
+            />
+            {/* Secondary tabs */}
+            <Tabs
+              tabs={[
+                { label: 'Overview', value: 'overview' },
+                { label: 'Accounts', value: 'accounts' },
+                { label: 'Performance', value: 'performance' },
+              ]}
+              activeTab="overview"
+              onChange={handleSecondaryTabChange}
+              variant="contained"
+            />`;
+          break;
+        case 'multi':
+          inner = `<MastheadNavigation
+              items={[
+                { label: 'Home', href: '/', active: true },
+                { label: 'Products', children: [
+                  { label: 'Equities', href: '/equities', description: 'Global equity markets' },
+                  { label: 'Fixed Income', href: '/fi', description: 'Bonds and credit' },
+                ]},
+                { label: 'Research', children: [
+                  { label: 'Market Outlook', href: '/outlook' },
+                  { label: 'Sector Analysis', href: '/sectors' },
+                ]},
+              ]}
+              variant="primary"
+            />`;
+          break;
+        case 'mega':
+          inner = `<MastheadNavigation
+              items={[
+                { label: 'Dashboard', href: '/', active: true },
+                { label: 'Services', children: [
+                  { label: 'Accounts & Cards', href: '/accounts', description: 'Manage your accounts' },
+                  { label: 'Portfolio Management', href: '/portfolio', description: 'Investment solutions' },
+                  { label: 'Trading Platform', href: '/trading', description: 'Execute trades' },
+                  { label: 'Sustainable Investing', href: '/esg', description: 'ESG portfolios' },
+                ]},
+                { label: 'Markets', href: '/markets' },
+              ]}
+              variant="primary"
+            />`;
+          break;
+        default:
+          inner = `{/* masthead navigation */}`;
+      }
       break;
     }
     default:

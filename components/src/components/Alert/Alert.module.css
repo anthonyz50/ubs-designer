@@ -1,6 +1,6 @@
 /* ─── UBS Alert ───────────────────────────────────────────────────── */
 /* RAG status indicators with icon, title, and dismissible support.   */
-/* Colours: Error #BD000C, Warning #E4A911, Success #6F7A1A, Info #7A7870 */
+/* Colours: Error var(--ubs-color-bordeaux-i), Warning var(--ubs-color-rag-amber), Success var(--ubs-color-rag-green), Info var(--ubs-color-gray-iv) */
 
 .alert {
   display: flex;
@@ -31,42 +31,42 @@
 
 .error {
   background-color: #FDF2F2;
-  border-left-color: #BD000C;
-  color: #620004;
+  border-left-color: var(--ubs-color-bordeaux-i);
+  color: var(--ubs-color-bordeaux-iii);
 }
 
 .error .icon {
-  color: #BD000C;
+  color: var(--ubs-color-bordeaux-i);
 }
 
 .warning {
   background-color: #FEF9E7;
-  border-left-color: #E4A911;
+  border-left-color: var(--ubs-color-rag-amber);
   color: #6C5312;
 }
 
 .warning .icon {
-  color: #E4A911;
+  color: var(--ubs-color-rag-amber);
 }
 
 .success {
   background-color: #F4F6EC;
-  border-left-color: #6F7A1A;
+  border-left-color: var(--ubs-color-rag-green);
   color: #3D4410;
 }
 
 .success .icon {
-  color: #6F7A1A;
+  color: var(--ubs-color-rag-green);
 }
 
 .info {
   background-color: #F5F5F3;
-  border-left-color: #7A7870;
-  color: #404040;
+  border-left-color: var(--ubs-color-gray-iv);
+  color: var(--ubs-color-gray-vi);
 }
 
 .info .icon {
-  color: #7A7870;
+  color: var(--ubs-color-gray-iv);
 }
 
 /* ─── Icon ────────────────────────────────────────────────────────── */
@@ -140,12 +140,12 @@
 
 [data-ubs-theme="dark"] .warning {
   background-color: #3A3012;
-  border-left-color: #E4A911;
+  border-left-color: var(--ubs-color-rag-amber);
   color: #FEF0C7;
 }
 
 [data-ubs-theme="dark"] .warning .icon {
-  color: #E4A911;
+  color: var(--ubs-color-rag-amber);
 }
 
 [data-ubs-theme="dark"] .success {
@@ -160,14 +160,14 @@
 
 [data-ubs-theme="dark"] .info {
   background-color: #2A2A28;
-  border-left-color: #8E8D83;
+  border-left-color: var(--ubs-color-gray-iii);
   color: #D0CFC8;
 }
 
 [data-ubs-theme="dark"] .info .icon {
-  color: #8E8D83;
+  color: var(--ubs-color-gray-iii);
 }
 
 [data-ubs-theme="dark"] .dismiss:focus-visible {
-  outline-color: #FFFFFF;
+  outline-color: var(--ubs-color-text-inverse);
 }

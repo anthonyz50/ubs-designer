@@ -1,0 +1,350 @@
+/* ─── UX Guidelines Panel ─────────────────────────────────────── */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--ubs-font-family-primary, 'Frutiger', Arial, sans-serif);
+  color: var(--ubs-color-text-primary, #1c1c1c);
+}
+
+/* ─── Header ──────────────────────────────────────────────────── */
+
+.header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--ubs-color-border-secondary, #cccabc);
+  background: var(--ubs-color-bg-primary, #ffffff);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--ubs-color-text-primary, #1c1c1c);
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--ubs-color-text-secondary, #5a5d5c);
+  margin: 0;
+}
+
+.sourceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--ubs-color-red, #e60000);
+  text-decoration: none;
+  margin-top: 8px;
+  transition: color 200ms;
+}
+
+.sourceLink:hover {
+  color: var(--ubs-color-bordeaux-i, #bd000c);
+}
+
+/* ─── Tab Bar ─────────────────────────────────────────────────── */
+
+.tabBar {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--ubs-color-border-secondary, #cccabc);
+  background: var(--ubs-color-bg-primary, #ffffff);
+  padding: 0 24px;
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ubs-color-text-secondary, #5a5d5c);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 200ms, border-color 200ms;
+}
+
+.tab:hover {
+  color: var(--ubs-color-text-primary, #1c1c1c);
+}
+
+.tab[data-active='true'] {
+  color: var(--ubs-color-red, #e60000);
+  border-bottom-color: var(--ubs-color-red, #e60000);
+}
+
+/* ─── Scrollable Body ─────────────────────────────────────────── */
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+}
+
+/* ─── Category Overview ───────────────────────────────────────── */
+
+.categoryOverview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.categoryCard {
+  background: var(--ubs-color-bg-primary, #ffffff);
+  border: 1px solid var(--ubs-color-border-secondary, #cccabc);
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  transition: border-color 200ms, box-shadow 200ms;
+}
+
+.categoryCard:hover {
+  border-color: var(--ubs-color-red, #e60000);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.categoryIcon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.categoryTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--ubs-color-text-primary, #1c1c1c);
+}
+
+.categoryDescription {
+  font-size: 13px;
+  color: var(--ubs-color-text-secondary, #5a5d5c);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.categorySectionCount {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ubs-color-text-tertiary, #7a7870);
+  background: var(--ubs-color-bg-secondary, #ecebe4);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* ─── Section ─────────────────────────────────────────────────── */
+
+.section {
+  margin-bottom: 32px;
+}
+
+.sectionHeader {
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--ubs-color-text-primary, #1c1c1c);
+}
+
+.sectionDescription {
+  font-size: 13px;
+  color: var(--ubs-color-text-secondary, #5a5d5c);
+  margin: 0;
+}
+
+/* ─── Key Takeaways ───────────────────────────────────────────── */
+
+.takeaways {
+  background: var(--ubs-color-bg-secondary, #ecebe4);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.takeawaysTitle {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ubs-color-text-tertiary, #7a7870);
+  margin: 0 0 10px;
+}
+
+.takeawaysList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.takeawayItem {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ubs-color-text-primary, #1c1c1c);
+}
+
+.takeawayBullet {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ubs-color-red, #e60000);
+  margin-top: 6px;
+}
+
+/* ─── Guidelines Grid ─────────────────────────────────────────── */
+
+.guidelinesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.guidelineCard {
+  border: 1px solid var(--ubs-color-border-secondary, #cccabc);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--ubs-color-bg-primary, #ffffff);
+}
+
+.guidelineTitle {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: var(--ubs-color-text-primary, #1c1c1c);
+}
+
+.guidelineDescription {
+  font-size: 13px;
+  color: var(--ubs-color-text-secondary, #5a5d5c);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ─── Checklists ──────────────────────────────────────────────── */
+
+.checklistGroup {
+  margin-bottom: 24px;
+}
+
+.checklistGroupTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ubs-color-text-primary, #1c1c1c);
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--ubs-color-border-secondary, #cccabc);
+}
+
+.checklistItems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.checklistItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ubs-color-text-primary, #1c1c1c);
+  background: var(--ubs-color-bg-primary, #ffffff);
+  border: 1px solid var(--ubs-color-border-secondary, #cccabc);
+  cursor: pointer;
+  transition: background 200ms, border-color 200ms;
+}
+
+.checklistItem:hover {
+  background: var(--ubs-color-bg-secondary, #ecebe4);
+}
+
+.checklistItem[data-checked='true'] {
+  background: var(--ubs-color-bg-secondary, #ecebe4);
+  text-decoration: line-through;
+  color: var(--ubs-color-text-tertiary, #7a7870);
+}
+
+.checkboxIcon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid var(--ubs-color-border-primary, #b8b3a2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  transition: background 200ms, border-color 200ms;
+}
+
+.checklistItem[data-checked='true'] .checkboxIcon {
+  background: var(--ubs-color-red, #e60000);
+  border-color: var(--ubs-color-red, #e60000);
+}
+
+.checkmark {
+  color: var(--ubs-color-text-inverse, #ffffff);
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* ─── Back Button ─────────────────────────────────────────────── */
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ubs-color-red, #e60000);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 16px;
+  transition: color 200ms;
+}
+
+.backButton:hover {
+  color: var(--ubs-color-bordeaux-i, #bd000c);
+}
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .categoryOverview {
+    grid-template-columns: 1fr;
+  }
+
+  .guidelinesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .header,
+  .tabBar,
+  .body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

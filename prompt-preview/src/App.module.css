@@ -1,0 +1,210 @@
+/* ============================================================
+   App Layout
+   ============================================================ */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--ubs-bg-primary);
+}
+
+/* ---- Header ---- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 var(--ubs-space-5);
+  background-color: var(--ubs-neutral-90);
+  color: var(--ubs-white);
+  flex-shrink: 0;
+  z-index: var(--ubs-z-sticky);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-3);
+}
+
+.headerLogo {
+  height: 22px;
+  width: auto;
+}
+
+.headerTitle {
+  font-size: var(--ubs-header-4-size);
+  font-weight: var(--ubs-weight-medium);
+  letter-spacing: -0.01em;
+}
+
+.headerVersion {
+  font-size: var(--ubs-body-4-size);
+  padding: 2px var(--ubs-space-2);
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: var(--ubs-radius-sm);
+  font-weight: var(--ubs-weight-regular);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-3);
+}
+
+.headerStatus {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-2);
+  font-size: var(--ubs-body-3-size);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--ubs-radius-full);
+  background-color: var(--ubs-status-success);
+}
+
+.statusDot[data-generating='true'] {
+  background-color: var(--ubs-status-warning);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ---- Body ---- */
+.body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ---- Left sidebar (Prompt Panel) ---- */
+.leftSidebar {
+  width: 300px;
+  min-width: 300px;
+  border-right: 1px solid var(--ubs-border);
+  overflow-y: auto;
+  background-color: var(--ubs-bg-secondary);
+  flex-shrink: 0;
+}
+
+/* ---- Main content ---- */
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.mainTabs {
+  display: flex;
+  border-bottom: 2px solid var(--ubs-border);
+  padding: 0 var(--ubs-space-5);
+  background-color: var(--ubs-bg-primary);
+  flex-shrink: 0;
+}
+
+.mainTab {
+  padding: var(--ubs-space-3) var(--ubs-space-5);
+  font-size: var(--ubs-body-2-size);
+  font-weight: var(--ubs-weight-medium);
+  color: var(--ubs-text-secondary);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: color var(--ubs-transition-fast),
+              border-color var(--ubs-transition-fast);
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  white-space: nowrap;
+}
+
+.mainTab:hover {
+  color: var(--ubs-text-primary);
+}
+
+.mainTab[data-active='true'] {
+  color: var(--ubs-red);
+  border-bottom-color: var(--ubs-red);
+}
+
+.mainTab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.mainTabContent {
+  flex: 1;
+  overflow: auto;
+  padding: var(--ubs-space-5);
+}
+
+.mainTabContent[data-tab='components'] {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ---- Right sidebar ---- */
+.rightSidebar {
+  width: 320px;
+  min-width: 320px;
+  border-left: 1px solid var(--ubs-border);
+  overflow-y: auto;
+  background-color: var(--ubs-bg-secondary);
+  flex-shrink: 0;
+}
+
+.rightTabs {
+  display: flex;
+  border-bottom: 2px solid var(--ubs-border);
+  background-color: var(--ubs-bg-secondary);
+  flex-shrink: 0;
+}
+
+.rightTab {
+  flex: 1;
+  padding: var(--ubs-space-3) var(--ubs-space-3);
+  font-size: var(--ubs-body-3-size);
+  font-weight: var(--ubs-weight-medium);
+  color: var(--ubs-text-secondary);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: color var(--ubs-transition-fast),
+              border-color var(--ubs-transition-fast);
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.rightTab:hover {
+  color: var(--ubs-text-primary);
+}
+
+.rightTab[data-active='true'] {
+  color: var(--ubs-red);
+  border-bottom-color: var(--ubs-red);
+}
+
+.rightTab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.rightTabContent {
+  overflow-y: auto;
+}

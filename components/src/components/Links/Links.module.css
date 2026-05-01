@@ -1,0 +1,115 @@
+/* ─── UBS Links ───────────────────────────────────────────────────── */
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ubs-spacing-4xs);
+  font-family: var(--ubs-font-family-primary);
+  font-size: var(--ubs-font-size-body);
+  font-weight: var(--ubs-font-weight-regular);
+  line-height: var(--ubs-line-height-body);
+  color: var(--ubs-color-red);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--ubs-duration-normal) var(--ubs-easing-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.link:focus-visible {
+  outline: var(--ubs-a11y-focus-width) solid var(--ubs-color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--ubs-radius-sm);
+}
+
+/* ─── Inline Variant ──────────────────────────────────────────────── */
+
+.inline {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.inline:hover {
+  color: var(--ubs-color-bordeaux-i);
+}
+
+.inline:active {
+  color: var(--ubs-color-bordeaux-ii);
+}
+
+/* ─── Standalone Variant ──────────────────────────────────────────── */
+
+.standalone {
+  font-weight: var(--ubs-font-weight-medium);
+}
+
+.standalone:hover {
+  color: var(--ubs-color-bordeaux-i);
+}
+
+.standalone:hover .arrow {
+  transform: translateX(4px);
+}
+
+.standalone:active {
+  color: var(--ubs-color-bordeaux-ii);
+}
+
+/* ─── External Variant ────────────────────────────────────────────── */
+
+.external {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.external:hover {
+  color: var(--ubs-color-bordeaux-i);
+}
+
+.external:active {
+  color: var(--ubs-color-bordeaux-ii);
+}
+
+/* ─── Sub-elements ────────────────────────────────────────────────── */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.label {
+  display: inline;
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: transform var(--ubs-duration-normal) var(--ubs-easing-default);
+}
+
+.externalIcon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: var(--ubs-spacing-4xs);
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .link {
+  color: #FF4D4D;
+}
+
+[data-ubs-theme="dark"] .link:hover {
+  color: #FF6666;
+}
+
+[data-ubs-theme="dark"] .link:active {
+  color: #FF3333;
+}
+
+[data-ubs-theme="dark"] .link:focus-visible {
+  outline-color: var(--ubs-color-white);
+}

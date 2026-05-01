@@ -1,0 +1,257 @@
+/* ─── UBS MastheadNavigation ──────────────────────────────────────── */
+
+.mastheadNavigation {
+  font-family: var(--ubs-font-family-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: var(--ubs-layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--ubs-spacing-sm);
+}
+
+/* ─── Primary Variant ─────────────────────────────────────────────── */
+
+.primary {
+  background-color: var(--ubs-color-bg-primary);
+  border-bottom: 1px solid var(--ubs-color-border-secondary);
+}
+
+/* ─── Secondary Variant ───────────────────────────────────────────── */
+
+.secondary {
+  background-color: var(--ubs-color-bg-secondary);
+  border-bottom: 1px solid var(--ubs-color-border-secondary);
+}
+
+/* ─── Nav List ────────────────────────────────────────────────────── */
+
+.navList {
+  display: flex;
+  align-items: stretch;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+.navItem {
+  position: relative;
+}
+
+/* ─── Shared link/trigger styles ──────────────────────────────────── */
+
+.navLink,
+.navTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ubs-spacing-4xs);
+  padding: var(--ubs-spacing-xs) var(--ubs-spacing-2xs);
+  font-family: var(--ubs-font-family-primary);
+  font-size: var(--ubs-font-size-body);
+  font-weight: var(--ubs-font-weight-regular);
+  line-height: var(--ubs-line-height-body);
+  color: var(--ubs-color-text-primary);
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  transition:
+    color var(--ubs-duration-normal) var(--ubs-easing-default),
+    background-color var(--ubs-duration-normal) var(--ubs-easing-default);
+}
+
+.navLink:hover,
+.navTrigger:hover {
+  color: var(--ubs-color-red);
+}
+
+.navLink:focus-visible,
+.navTrigger:focus-visible {
+  outline: var(--ubs-a11y-focus-width) solid var(--ubs-color-border-focus);
+  outline-offset: -2px;
+}
+
+/* Active indicator (bottom bar) */
+.navLinkActive,
+.navTriggerActive {
+  font-weight: var(--ubs-font-weight-bold);
+  color: var(--ubs-color-red);
+}
+
+.navLinkActive::after,
+.navTriggerActive::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--ubs-spacing-2xs);
+  right: var(--ubs-spacing-2xs);
+  height: 3px;
+  background-color: var(--ubs-color-red);
+  border-radius: var(--ubs-radius-sm) var(--ubs-radius-sm) 0 0;
+}
+
+.navTriggerOpen {
+  background-color: var(--ubs-color-bg-secondary);
+}
+
+/* ─── Dropdown Chevron ────────────────────────────────────────────── */
+
+.dropdownChevron {
+  display: inline-flex;
+  align-items: center;
+  transition: transform var(--ubs-duration-normal) var(--ubs-easing-default);
+}
+
+.navTriggerOpen .dropdownChevron {
+  transform: rotate(180deg);
+}
+
+/* ─── Mega Menu ───────────────────────────────────────────────────── */
+
+.megaMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 280px;
+  background-color: var(--ubs-color-bg-primary);
+  border: 1px solid var(--ubs-color-border-secondary);
+  border-top: none;
+  border-radius: 0 0 var(--ubs-radius-lg) var(--ubs-radius-lg);
+  padding: var(--ubs-spacing-3xs) 0;
+  z-index: var(--ubs-z-dropdown);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.megaMenuList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.megaMenuItem {
+  display: flex;
+  flex-direction: column;
+  padding: var(--ubs-spacing-3xs) var(--ubs-spacing-xs);
+  text-decoration: none;
+  color: var(--ubs-color-text-primary);
+  transition: background-color var(--ubs-duration-fast) var(--ubs-easing-default);
+}
+
+.megaMenuItem:hover {
+  background-color: var(--ubs-color-bg-secondary);
+}
+
+.megaMenuItem:focus-visible {
+  outline: var(--ubs-a11y-focus-width) solid var(--ubs-color-border-focus);
+  outline-offset: -2px;
+}
+
+.megaMenuLabel {
+  font-size: var(--ubs-font-size-body);
+  font-weight: var(--ubs-font-weight-medium);
+  line-height: var(--ubs-line-height-body);
+  color: var(--ubs-color-text-primary);
+}
+
+.megaMenuDescription {
+  font-size: var(--ubs-font-size-small);
+  line-height: var(--ubs-line-height-body);
+  color: var(--ubs-color-text-secondary);
+  margin-top: 2px;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .navList {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .navList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navLink,
+  .navTrigger {
+    white-space: nowrap;
+    padding: var(--ubs-spacing-2xs) var(--ubs-spacing-xs);
+    font-size: var(--ubs-font-size-small);
+  }
+
+  .megaMenu {
+    left: 0;
+    right: 0;
+    min-width: 100%;
+    border-radius: 0;
+  }
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .primary {
+  background-color: var(--ubs-color-bg-inverse);
+  border-bottom-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .secondary {
+  background-color: #111111;
+  border-bottom-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .navLink,
+[data-ubs-theme="dark"] .navTrigger {
+  color: var(--ubs-color-white);
+}
+
+[data-ubs-theme="dark"] .navLink:hover,
+[data-ubs-theme="dark"] .navTrigger:hover {
+  color: #FF4D4D;
+}
+
+[data-ubs-theme="dark"] .navLinkActive,
+[data-ubs-theme="dark"] .navTriggerActive {
+  color: #FF4D4D;
+}
+
+[data-ubs-theme="dark"] .navLinkActive::after,
+[data-ubs-theme="dark"] .navTriggerActive::after {
+  background-color: #FF4D4D;
+}
+
+[data-ubs-theme="dark"] .navTriggerOpen {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-ubs-theme="dark"] .megaMenu {
+  background-color: #1A1A1A;
+  border-color: var(--ubs-color-gray-v);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-ubs-theme="dark"] .megaMenuItem {
+  color: var(--ubs-color-white);
+}
+
+[data-ubs-theme="dark"] .megaMenuItem:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-ubs-theme="dark"] .megaMenuLabel {
+  color: var(--ubs-color-white);
+}
+
+[data-ubs-theme="dark"] .megaMenuDescription {
+  color: var(--ubs-color-gray-ii);
+}
+
+[data-ubs-theme="dark"] .navLink:focus-visible,
+[data-ubs-theme="dark"] .navTrigger:focus-visible,
+[data-ubs-theme="dark"] .megaMenuItem:focus-visible {
+  outline-color: var(--ubs-color-white);
+}

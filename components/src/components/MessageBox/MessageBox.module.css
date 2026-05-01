@@ -1,0 +1,245 @@
+/* ─── UBS MessageBox ──────────────────────────────────────────────── */
+/* Prominent inline message box for important notifications.          */
+/* More visually impactful than Alert.                                */
+
+.messageBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: 4px;
+  border-left: 4px solid;
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-align: left;
+  animation: messageBoxFadeIn 250ms ease-out;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes messageBoxFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Variants ────────────────────────────────────────────────────── */
+
+.info {
+  background-color: #F5F5F0;
+  border-left-color: var(--ubs-color-gray-iv);
+  color: var(--ubs-color-gray-vi);
+}
+
+.info .icon {
+  color: var(--ubs-color-gray-iv);
+}
+
+.warning {
+  background-color: #FDF8EC;
+  border-left-color: var(--ubs-color-rag-amber);
+  color: var(--ubs-color-gray-v);
+}
+
+.warning .icon {
+  color: var(--ubs-color-rag-amber);
+}
+
+.error {
+  background-color: #FDF2F2;
+  border-left-color: var(--ubs-color-bordeaux-i);
+  color: var(--ubs-color-bordeaux-iii);
+}
+
+.error .icon {
+  color: var(--ubs-color-bordeaux-i);
+}
+
+.success {
+  background-color: #F4F6EC;
+  border-left-color: var(--ubs-color-rag-green);
+  color: var(--ubs-color-gray-vi);
+}
+
+.success .icon {
+  color: var(--ubs-color-rag-green);
+}
+
+/* ─── Icon ────────────────────────────────────────────────────────── */
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.icon {
+  display: block;
+}
+
+/* ─── Content ─────────────────────────────────────────────────────── */
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.description {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ─── Actions ─────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.actionButton {
+  padding: 8px 20px;
+  border-radius: 2px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+  text-align: center;
+}
+
+.actionPrimary {
+  background-color: var(--ubs-color-red);
+  border: 1px solid var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
+}
+
+.actionPrimary:hover {
+  background-color: var(--ubs-color-bordeaux-i);
+  border-color: var(--ubs-color-bordeaux-i);
+}
+
+.actionPrimary:focus-visible {
+  outline: 2px solid var(--ubs-color-red);
+  outline-offset: 2px;
+}
+
+.actionSecondary {
+  background-color: transparent;
+  border: 1px solid var(--ubs-color-gray-iv);
+  color: var(--ubs-color-gray-vi);
+}
+
+.actionSecondary:hover {
+  background-color: var(--ubs-color-bg-tertiary);
+}
+
+.actionSecondary:focus-visible {
+  outline: 2px solid var(--ubs-color-gray-iv);
+  outline-offset: 2px;
+}
+
+/* ─── Close Button ────────────────────────────────────────────────── */
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: opacity 150ms ease, background-color 150ms ease;
+}
+
+.closeButton:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .info {
+  background-color: #2A2A28;
+  border-left-color: var(--ubs-color-border-primary);
+  color: var(--ubs-color-bg-secondary);
+}
+
+[data-ubs-theme="dark"] .info .icon {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .warning {
+  background-color: #2E2A1C;
+  border-left-color: var(--ubs-color-rag-amber);
+  color: var(--ubs-color-bg-tertiary);
+}
+
+[data-ubs-theme="dark"] .warning .icon {
+  color: var(--ubs-color-rag-amber);
+}
+
+[data-ubs-theme="dark"] .error {
+  background-color: #2E1A1A;
+  border-left-color: var(--ubs-color-red);
+  color: #FFCCCC;
+}
+
+[data-ubs-theme="dark"] .error .icon {
+  color: var(--ubs-color-red);
+}
+
+[data-ubs-theme="dark"] .success {
+  background-color: #242A1A;
+  border-left-color: var(--ubs-color-rag-green);
+  color: #E8ECCC;
+}
+
+[data-ubs-theme="dark"] .success .icon {
+  color: var(--ubs-color-rag-green);
+}
+
+[data-ubs-theme="dark"] .actionPrimary {
+  background-color: var(--ubs-color-red);
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .actionSecondary {
+  border-color: var(--ubs-color-gray-iii);
+  color: var(--ubs-color-bg-secondary);
+}
+
+[data-ubs-theme="dark"] .actionSecondary:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-ubs-theme="dark"] .closeButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

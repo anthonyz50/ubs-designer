@@ -54,7 +54,7 @@
 /* ─── Button CTA variant ────────────────────────────────── */
 
 .button {
-  background-color: var(--ubs-color-red, #E60000);
+  background-color: var(--ubs-color-red, var(--ubs-color-red));
   color: var(--ubs-color-white, #FFFFFF);
   font-weight: var(--ubs-font-weight-bold, 700);
   padding: 12px 24px;
@@ -62,11 +62,11 @@
 }
 
 .button:hover {
-  background-color: var(--ubs-color-interactive-primary-hover, #BD000C);
+  background-color: var(--ubs-color-interactive-primary-hover, var(--ubs-color-bordeaux-i));
 }
 
 .button:active {
-  background-color: var(--ubs-color-interactive-primary-active, #8A000A);
+  background-color: var(--ubs-color-interactive-primary-active, var(--ubs-color-bordeaux-ii));
 }
 
 .button .arrow {
@@ -88,26 +88,26 @@
 
 .text {
   background: none;
-  color: var(--ubs-color-red, #E60000);
+  color: var(--ubs-color-red, var(--ubs-color-red));
   font-weight: var(--ubs-font-weight-medium, 500);
   padding: 0;
 }
 
 .text:hover {
-  color: var(--ubs-color-interactive-primary-hover, #BD000C);
+  color: var(--ubs-color-interactive-primary-hover, var(--ubs-color-bordeaux-i));
 }
 
 .text:active {
-  color: var(--ubs-color-interactive-primary-active, #8A000A);
+  color: var(--ubs-color-interactive-primary-active, var(--ubs-color-bordeaux-ii));
 }
 
 /* Text CTA arrow is always UBS Red */
 .text .arrow {
-  color: var(--ubs-color-red, #E60000);
+  color: var(--ubs-color-red, var(--ubs-color-red));
 }
 
 .text:hover .arrow {
-  color: var(--ubs-color-interactive-primary-hover, #BD000C);
+  color: var(--ubs-color-interactive-primary-hover, var(--ubs-color-bordeaux-i));
 }
 
 /* ─── URL CTA variant ───────────────────────────────────── */
@@ -115,7 +115,7 @@
 
 .url {
   background: none;
-  color: var(--ubs-color-red, #E60000);
+  color: var(--ubs-color-red, var(--ubs-color-red));
   font-weight: var(--ubs-font-weight-regular, 400);
   padding: 0;
   text-decoration: underline;
@@ -123,20 +123,20 @@
 }
 
 .url:hover {
-  color: var(--ubs-color-interactive-primary-hover, #BD000C);
+  color: var(--ubs-color-interactive-primary-hover, var(--ubs-color-bordeaux-i));
   text-decoration-thickness: 2px;
 }
 
 .url:active {
-  color: var(--ubs-color-interactive-primary-active, #8A000A);
+  color: var(--ubs-color-interactive-primary-active, var(--ubs-color-bordeaux-ii));
 }
 
 .url .arrow {
-  color: var(--ubs-color-red, #E60000);
+  color: var(--ubs-color-red, var(--ubs-color-red));
 }
 
 .url:hover .arrow {
-  color: var(--ubs-color-interactive-primary-hover, #BD000C);
+  color: var(--ubs-color-interactive-primary-hover, var(--ubs-color-bordeaux-i));
 }
 
 /* ─── Label ─────────────────────────────────────────────── */

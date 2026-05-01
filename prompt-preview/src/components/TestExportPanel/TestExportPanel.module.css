@@ -1,0 +1,229 @@
+/* ============================================================
+   Test Export Panel
+   ============================================================ */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--ubs-space-4);
+  gap: var(--ubs-space-4);
+  overflow-y: auto;
+}
+
+.sectionHeading {
+  font-size: var(--ubs-body-4-size);
+  font-weight: var(--ubs-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ubs-text-secondary);
+  margin-top: var(--ubs-space-2);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-1);
+}
+
+.label {
+  font-size: var(--ubs-body-2-size);
+  font-weight: var(--ubs-weight-medium);
+  color: var(--ubs-text-primary);
+}
+
+.input {
+  min-height: var(--ubs-min-click-area);
+  padding: var(--ubs-space-2) var(--ubs-space-3);
+  font-family: var(--ubs-font-family);
+  font-size: var(--ubs-body-2-size);
+  color: var(--ubs-text-primary);
+  background-color: var(--ubs-bg-primary);
+  border: 1px solid var(--ubs-border-strong);
+  border-radius: var(--ubs-radius-sm);
+  transition: border-color var(--ubs-transition-fast),
+              box-shadow var(--ubs-transition-fast);
+}
+
+.input:focus {
+  border-color: var(--ubs-focus);
+  box-shadow: 0 0 0 3px rgba(0, 155, 210, 0.15);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--ubs-text-tertiary);
+}
+
+.textarea {
+  composes: input;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ubs-space-2) 0;
+}
+
+.toggleLabel {
+  font-size: var(--ubs-body-2-size);
+  color: var(--ubs-text-primary);
+}
+
+.toggleSwitch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background-color: var(--ubs-neutral-40);
+  border-radius: var(--ubs-radius-full);
+  cursor: pointer;
+  transition: background-color var(--ubs-transition-fast);
+  flex-shrink: 0;
+  border: none;
+  padding: 0;
+}
+
+.toggleSwitch[data-on='true'] {
+  background-color: var(--ubs-status-success);
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--ubs-white);
+  border-radius: var(--ubs-radius-full);
+  box-shadow: var(--ubs-elevation-1);
+  transition: transform var(--ubs-transition-fast);
+  pointer-events: none;
+}
+
+.toggleSwitch[data-on='true'] .toggleThumb {
+  transform: translateX(20px);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--ubs-border);
+  margin: var(--ubs-space-1) 0;
+}
+
+/* ---- Feedback questions ---- */
+
+.questionList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-3);
+}
+
+.questionItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-2);
+  padding: var(--ubs-space-3);
+  background-color: var(--ubs-bg-primary);
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-md);
+}
+
+.questionRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-2);
+}
+
+.questionInput {
+  flex: 1;
+  min-height: 36px;
+  padding: var(--ubs-space-1) var(--ubs-space-3);
+  font-family: var(--ubs-font-family);
+  font-size: var(--ubs-body-3-size);
+  color: var(--ubs-text-primary);
+  background-color: var(--ubs-bg-primary);
+  border: 1px solid var(--ubs-border-strong);
+  border-radius: var(--ubs-radius-sm);
+  transition: border-color var(--ubs-transition-fast);
+}
+
+.questionInput:focus {
+  border-color: var(--ubs-focus);
+  box-shadow: 0 0 0 3px rgba(0, 155, 210, 0.15);
+  outline: none;
+}
+
+.typeSelect {
+  min-height: 36px;
+  padding: var(--ubs-space-1) var(--ubs-space-3);
+  font-family: var(--ubs-font-family);
+  font-size: var(--ubs-body-3-size);
+  color: var(--ubs-text-primary);
+  background-color: var(--ubs-bg-primary);
+  border: 1px solid var(--ubs-border-strong);
+  border-radius: var(--ubs-radius-sm);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%235A5D5C' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: var(--ubs-space-6);
+  cursor: pointer;
+}
+
+.removeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  border-radius: var(--ubs-radius-sm);
+  cursor: pointer;
+  color: var(--ubs-text-tertiary);
+  transition: background-color var(--ubs-transition-fast),
+              color var(--ubs-transition-fast);
+  flex-shrink: 0;
+}
+
+.removeBtn:hover {
+  background-color: #f5ccce;
+  color: var(--ubs-status-error);
+}
+
+/* ---- Info box ---- */
+
+.infoBox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ubs-space-3);
+  padding: var(--ubs-space-3) var(--ubs-space-4);
+  background-color: var(--ubs-charlotte);
+  border-radius: var(--ubs-radius-md);
+  font-size: var(--ubs-body-3-size);
+  color: var(--ubs-status-info);
+  line-height: 1.5;
+}
+
+/* ---- Export button ---- */
+
+.exportRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-2);
+  margin-top: var(--ubs-space-2);
+}
+
+.successAlert {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-2);
+  padding: var(--ubs-space-2) var(--ubs-space-3);
+  background-color: #e8edc9;
+  color: #4a5211;
+  border-radius: var(--ubs-radius-sm);
+  font-size: var(--ubs-body-3-size);
+}

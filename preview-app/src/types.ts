@@ -20,7 +20,8 @@ export type SectionType =
   | 'table'
   | 'content-block'
   | 'card-grid'
-  | 'cta-block';
+  | 'cta-block'
+  | 'masthead-navigation';
 
 export type ChartTypeOption = 'donut' | 'bar' | 'line';
 
@@ -33,6 +34,8 @@ export type FormFieldType =
   | 'radio'
   | 'toggle'
   | 'date';
+
+export type MastheadNavType = 'single' | 'double' | 'multi' | 'mega';
 
 export type TextAlignment = 'left' | 'center' | 'right';
 export type CardVariantOption = 'default' | 'pastel1' | 'pastel2';
@@ -79,6 +82,10 @@ export interface CTABlockOptions {
   label: string;
 }
 
+export interface MastheadNavigationOptions {
+  navType: MastheadNavType;
+}
+
 export type SectionOptions =
   | StatsRowOptions
   | ChartGridOptions
@@ -87,7 +94,8 @@ export type SectionOptions =
   | TableOptions
   | ContentBlockOptions
   | CardGridOptions
-  | CTABlockOptions;
+  | CTABlockOptions
+  | MastheadNavigationOptions;
 
 export interface SectionConfig {
   id: string;

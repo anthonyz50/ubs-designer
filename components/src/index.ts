@@ -5,6 +5,9 @@
  * Enforces UBS brand guidelines across all components.
  */
 
+// ─── Global CSS tokens (non-module, defines :root variables) ─────────
+import './styles/globals.css';
+
 // ─── Components ──────────────────────────────────────────────────────
 
 export * from './components';

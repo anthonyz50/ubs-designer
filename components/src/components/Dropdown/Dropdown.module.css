@@ -1,0 +1,260 @@
+/* ─── UBS Dropdown ───────────────────────────────────────────────── */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.label {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--ubs-color-text-primary);
+}
+
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ─── Trigger ─────────────────────────────────────────────────────── */
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background-color: var(--ubs-color-text-inverse);
+  border: 2px solid var(--ubs-color-border-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-align: left;
+  transition: border-color 200ms ease;
+}
+
+.trigger:hover:not(:disabled) {
+  border-color: var(--ubs-color-gray-iv);
+}
+
+.triggerOpen {
+  border-color: var(--ubs-color-text-primary);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.error .trigger {
+  border-color: var(--ubs-color-bordeaux-i);
+}
+
+/* ─── Sizes ───────────────────────────────────────────────────────── */
+
+.small .trigger {
+  padding: 6px 12px;
+  font-size: 14px;
+  min-height: 32px;
+}
+
+.medium .trigger {
+  padding: 10px 16px;
+  font-size: 16px;
+  min-height: 40px;
+}
+
+.large .trigger {
+  padding: 14px 20px;
+  font-size: 18px;
+  min-height: 48px;
+}
+
+/* ─── Trigger content ─────────────────────────────────────────────── */
+
+.triggerValue {
+  flex: 1;
+  color: var(--ubs-color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.triggerPlaceholder {
+  flex: 1;
+  color: var(--ubs-color-gray-iii);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--ubs-color-gray-v);
+  transition: transform 200ms ease;
+}
+
+.triggerOpen .chevron {
+  transform: rotate(180deg);
+}
+
+/* ─── Listbox ─────────────────────────────────────────────────────── */
+
+.listbox {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-height: 280px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  background-color: var(--ubs-color-text-inverse);
+  border: 1px solid var(--ubs-color-border-secondary);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.groupLabel {
+  display: block;
+  padding: 8px 16px 4px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ubs-color-gray-iii);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.group {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ubs-color-text-primary);
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.option:hover,
+.optionFocused {
+  background-color: var(--ubs-color-bg-tertiary);
+}
+
+.optionSelected {
+  font-weight: 500;
+}
+
+.optionDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.optionDisabled:hover {
+  background-color: transparent;
+}
+
+.optionLabel {
+  flex: 1;
+}
+
+.checkmark {
+  flex-shrink: 0;
+  color: var(--ubs-color-red);
+}
+
+/* ─── Helper/Error text ───────────────────────────────────────────── */
+
+.errorText {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ubs-color-bordeaux-i);
+}
+
+.helperText {
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ubs-color-gray-iii);
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .label {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .trigger {
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .trigger:hover:not(:disabled) {
+  border-color: var(--ubs-color-gray-iii);
+}
+
+[data-ubs-theme="dark"] .triggerOpen {
+  border-color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .trigger:focus-visible {
+  outline-color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .error .trigger {
+  border-color: var(--ubs-color-bordeaux-i);
+}
+
+[data-ubs-theme="dark"] .triggerValue {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .triggerPlaceholder {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .chevron {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .listbox {
+  background-color: var(--ubs-color-gray-vi);
+  border-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .groupLabel {
+  color: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .option {
+  color: var(--ubs-color-text-inverse);
+}
+
+[data-ubs-theme="dark"] .option:hover,
+[data-ubs-theme="dark"] .optionFocused {
+  background-color: var(--ubs-color-gray-v);
+}
+
+[data-ubs-theme="dark"] .helperText {
+  color: var(--ubs-color-border-primary);
+}

@@ -1,0 +1,163 @@
+/* ─── UBS FormValidation ──────────────────────────────────────────── */
+/* Form-level validation message display with error summary.          */
+
+/* ─── Summary Variant ─────────────────────────────────────────────── */
+
+.summary {
+  padding: 16px 20px;
+  border-left: 4px solid var(--ubs-color-bordeaux-i);
+  border-radius: 4px;
+  background-color: #FDF2F2;
+  font-family: 'Frutiger', Arial, sans-serif;
+  text-align: left;
+  animation: validationFadeIn 200ms ease-out;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes validationFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.summaryHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.summaryIcon {
+  flex-shrink: 0;
+  color: var(--ubs-color-bordeaux-i);
+}
+
+.summaryTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ubs-color-bordeaux-iii);
+}
+
+.errorList {
+  margin: 0;
+  padding: 0 0 0 30px;
+  list-style: disc;
+}
+
+.errorItem {
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ubs-color-bordeaux-iii);
+}
+
+.errorItem:last-child {
+  margin-bottom: 0;
+}
+
+.fieldName {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.errorMessage {
+  font-weight: 400;
+}
+
+.fieldLink {
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ubs-color-bordeaux-iii);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.fieldLink:hover {
+  color: var(--ubs-color-bordeaux-i);
+}
+
+.fieldLink:focus-visible {
+  outline: 2px solid var(--ubs-color-bordeaux-i);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ─── Inline Variant ──────────────────────────────────────────────── */
+
+.inlineContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inlineError {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-family: 'Frutiger', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ubs-color-bordeaux-i);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.inlineIcon {
+  flex-shrink: 0;
+  color: var(--ubs-color-bordeaux-i);
+}
+
+.inlineMessage {
+  font-weight: 400;
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .summary {
+  background-color: #2E1A1A;
+  border-left-color: var(--ubs-color-red);
+}
+
+[data-ubs-theme="dark"] .summaryTitle {
+  color: #FFCCCC;
+}
+
+[data-ubs-theme="dark"] .summaryIcon {
+  color: var(--ubs-color-red);
+}
+
+[data-ubs-theme="dark"] .errorItem {
+  color: #FFCCCC;
+}
+
+[data-ubs-theme="dark"] .fieldLink {
+  color: #FFCCCC;
+}
+
+[data-ubs-theme="dark"] .fieldLink:hover {
+  color: var(--ubs-color-red);
+}
+
+[data-ubs-theme="dark"] .inlineError {
+  color: var(--ubs-color-red);
+}
+
+[data-ubs-theme="dark"] .inlineIcon {
+  color: var(--ubs-color-red);
+}

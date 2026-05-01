@@ -24,7 +24,7 @@
   border-radius: 4px;
   font-family: 'Frutiger', Arial, sans-serif;
   font-size: 14px;
-  color: #ffffff;
+  color: var(--ubs-color-text-inverse);
   pointer-events: auto;
   position: relative;
   overflow: hidden;
@@ -61,20 +61,20 @@
 /* ── Variants ─────────────────────────────── */
 
 .success {
-  background-color: #6f7a1a;
+  background-color: var(--ubs-color-rag-green);
 }
 
 .error {
-  background-color: #bd000c;
+  background-color: var(--ubs-color-bordeaux-i);
 }
 
 .warning {
-  background-color: #e4a911;
-  color: #000000;
+  background-color: var(--ubs-color-rag-amber);
+  color: var(--ubs-color-text-primary);
 }
 
 .info {
-  background-color: #5a5d5c;
+  background-color: var(--ubs-color-gray-v);
 }
 
 /* ── Content ──────────────────────────────── */
@@ -118,7 +118,7 @@
 }
 
 .warning .action:focus-visible {
-  outline-color: #000000;
+  outline-color: var(--ubs-color-text-primary);
 }
 
 /* ── Close button ─────────────────────────── */
@@ -151,7 +151,7 @@
 }
 
 .warning .close:focus-visible {
-  outline-color: #000000;
+  outline-color: var(--ubs-color-text-primary);
 }
 
 /* ── Progress bar ─────────────────────────── */

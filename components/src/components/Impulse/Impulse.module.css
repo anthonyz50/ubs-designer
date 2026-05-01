@@ -1,6 +1,6 @@
 /* ─── UBS Impulse ─────────────────────────────────────────────────── */
 /* The distinctive UBS red vertical line next to text.                */
-/* Always UBS Red #E60000. Never centred with keyline.                */
+/* Always UBS Red var(--ubs-color-red). Never centred with keyline.                */
 /* Line must not exceed baseline of second line of text.              */
 
 .impulse {
@@ -14,7 +14,7 @@
   flex-shrink: 0;
   width: var(--impulse-line-width, 4px);
   margin-right: var(--impulse-spacing, 14px);
-  background-color: #E60000;
+  background-color: var(--ubs-color-red);
   border-radius: 0;
   align-self: stretch;
 

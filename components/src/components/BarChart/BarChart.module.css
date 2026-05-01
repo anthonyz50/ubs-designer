@@ -1,0 +1,120 @@
+/* ─── UBS BarChart ────────────────────────────────────────────────── */
+/* Pure SVG bar chart with grouped/stacked support.                   */
+
+.container {
+  display: inline-block;
+  width: 100%;
+  max-width: 600px;
+  font-family: 'Frutiger', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.svg {
+  overflow: visible;
+}
+
+/* ─── Grid ────────────────────────────────────────────────────────── */
+
+.gridLine {
+  stroke: var(--ubs-color-bg-secondary);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+/* ─── Axes ────────────────────────────────────────────────────────── */
+
+.axis {
+  stroke: var(--ubs-color-gray-iii);
+  stroke-width: 1;
+}
+
+.axisLabel {
+  font-size: 12px;
+  font-weight: 600;
+  fill: var(--ubs-color-gray-v);
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+.tickLabel {
+  font-size: 11px;
+  font-weight: 400;
+  fill: var(--ubs-color-gray-iv);
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+/* ─── Value Labels ────────────────────────────────────────────────── */
+
+.valueLabel {
+  font-size: 10px;
+  font-weight: 600;
+  fill: var(--ubs-color-gray-vi);
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+/* ─── Legend ───────────────────────────────────────────────────────── */
+
+.legendText {
+  font-size: 11px;
+  font-weight: 400;
+  fill: var(--ubs-color-gray-vi);
+  font-family: 'Frutiger', Arial, sans-serif;
+}
+
+/* ─── Animation (vertical) ────────────────────────────────────────── */
+
+.animateBar {
+  animation: barGrowV 500ms ease-out forwards;
+  transform-origin: bottom;
+}
+
+@keyframes barGrowV {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* ─── Animation (horizontal) ──────────────────────────────────────── */
+
+.animateBarH {
+  animation: barGrowH 500ms ease-out forwards;
+  transform-origin: left;
+}
+
+@keyframes barGrowH {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────────── */
+
+[data-ubs-theme="dark"] .gridLine {
+  stroke: var(--ubs-color-gray-vi);
+}
+
+[data-ubs-theme="dark"] .axis {
+  stroke: var(--ubs-color-gray-iv);
+}
+
+[data-ubs-theme="dark"] .axisLabel {
+  fill: var(--ubs-color-border-secondary);
+}
+
+[data-ubs-theme="dark"] .tickLabel {
+  fill: var(--ubs-color-border-primary);
+}
+
+[data-ubs-theme="dark"] .valueLabel {
+  fill: var(--ubs-color-bg-secondary);
+}
+
+[data-ubs-theme="dark"] .legendText {
+  fill: var(--ubs-color-border-secondary);
+}

@@ -1,0 +1,440 @@
+/* ============================================================
+   Design System Editor
+   ============================================================ */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* ---- Profile bar ---- */
+.profileBar {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-2);
+  padding: var(--ubs-space-4);
+  border-bottom: 1px solid var(--ubs-border);
+  flex-shrink: 0;
+}
+
+.profileSelect {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---- Sections ---- */
+.sections {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--ubs-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-5);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-3);
+}
+
+.sectionTitle {
+  font-size: var(--ubs-header-5-size);
+  font-weight: var(--ubs-weight-bold);
+  color: var(--ubs-text-primary);
+  padding-bottom: var(--ubs-space-2);
+  border-bottom: 1px solid var(--ubs-border);
+}
+
+.subSectionTitle {
+  font-size: var(--ubs-body-4-size);
+  font-weight: var(--ubs-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ubs-text-secondary);
+  margin-top: var(--ubs-space-2);
+}
+
+/* ---- Colour grid ---- */
+.colourGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ubs-space-2);
+}
+
+.colourItem {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-2);
+  padding: var(--ubs-space-1);
+  border-radius: var(--ubs-radius-sm);
+}
+
+.colourSwatch {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--ubs-radius-sm);
+  border: 1px solid var(--ubs-border-strong);
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.colourPickerInput {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.colourInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  flex: 1;
+}
+
+.colourLabel {
+  font-size: var(--ubs-body-4-size);
+  font-weight: var(--ubs-weight-medium);
+  color: var(--ubs-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.colourHexInput {
+  width: 80px;
+  padding: var(--ubs-space-1) var(--ubs-space-2);
+  font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+  font-size: var(--ubs-body-4-size);
+  color: var(--ubs-text-primary);
+  background-color: var(--ubs-bg-primary);
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-sm);
+  text-transform: uppercase;
+}
+
+.colourHexInput:focus {
+  border-color: var(--ubs-focus);
+  box-shadow: 0 0 0 2px rgba(0, 155, 210, 0.15);
+  outline: none;
+}
+
+/* ---- Form rows ---- */
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ubs-space-3);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-1);
+}
+
+.fieldFull {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-1);
+  grid-column: 1 / -1;
+}
+
+.fieldLabel {
+  font-size: var(--ubs-body-4-size);
+  font-weight: var(--ubs-weight-medium);
+  color: var(--ubs-text-secondary);
+}
+
+.fieldInput {
+  padding: var(--ubs-space-1) var(--ubs-space-2);
+  font-size: var(--ubs-body-3-size);
+  color: var(--ubs-text-primary);
+  background-color: var(--ubs-bg-primary);
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-sm);
+  font-family: var(--ubs-font-family);
+  min-height: 32px;
+}
+
+.fieldInput:focus {
+  border-color: var(--ubs-focus);
+  box-shadow: 0 0 0 2px rgba(0, 155, 210, 0.15);
+  outline: none;
+}
+
+.fieldSelect {
+  padding: var(--ubs-space-1) var(--ubs-space-2);
+  font-size: var(--ubs-body-3-size);
+  color: var(--ubs-text-primary);
+  background-color: var(--ubs-bg-primary);
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-sm);
+  font-family: var(--ubs-font-family);
+  min-height: 32px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%235A5D5C' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: var(--ubs-space-6);
+}
+
+.fieldSelect:focus {
+  border-color: var(--ubs-focus);
+  box-shadow: 0 0 0 2px rgba(0, 155, 210, 0.15);
+  outline: none;
+}
+
+/* ---- Spacing preview ---- */
+.spacingPreview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-1);
+  padding: var(--ubs-space-3);
+  background-color: var(--ubs-bg-primary);
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-sm);
+}
+
+.spacingBar {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-2);
+}
+
+.spacingBarFill {
+  height: 12px;
+  background-color: var(--ubs-status-info);
+  border-radius: var(--ubs-radius-sm);
+  opacity: 0.6;
+  transition: width var(--ubs-transition-fast);
+}
+
+.spacingBarLabel {
+  font-size: 10px;
+  font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+  color: var(--ubs-text-tertiary);
+  flex-shrink: 0;
+  min-width: 44px;
+}
+
+/* ---- Radius preview ---- */
+.radiusPreview {
+  display: flex;
+  gap: var(--ubs-space-3);
+  flex-wrap: wrap;
+  padding: var(--ubs-space-3);
+  background-color: var(--ubs-bg-primary);
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-sm);
+}
+
+.radiusBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ubs-space-1);
+}
+
+.radiusSquare {
+  width: 48px;
+  height: 48px;
+  background-color: var(--ubs-status-info);
+  opacity: 0.3;
+  border: 2px solid var(--ubs-status-info);
+}
+
+.radiusLabel {
+  font-size: 10px;
+  font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+  color: var(--ubs-text-tertiary);
+}
+
+/* ---- Shadow preview ---- */
+.shadowPreview {
+  display: flex;
+  gap: var(--ubs-space-4);
+  flex-wrap: wrap;
+  padding: var(--ubs-space-4);
+  background-color: var(--ubs-bg-tertiary);
+  border-radius: var(--ubs-radius-sm);
+}
+
+.shadowBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ubs-space-2);
+}
+
+.shadowSquare {
+  width: 64px;
+  height: 48px;
+  background-color: var(--ubs-bg-primary);
+  border-radius: var(--ubs-radius-md);
+}
+
+.shadowLabel {
+  font-size: 10px;
+  font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+  color: var(--ubs-text-tertiary);
+}
+
+/* ---- Live component preview ---- */
+.previewSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-3);
+}
+
+.previewContainer {
+  padding: var(--ubs-space-5);
+  background-color: var(--ubs-bg-primary);
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-5);
+}
+
+.previewRow {
+  display: flex;
+  gap: var(--ubs-space-3);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.previewLabel {
+  font-size: var(--ubs-body-4-size);
+  font-weight: var(--ubs-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ubs-text-tertiary);
+  margin-bottom: var(--ubs-space-1);
+}
+
+/* ---- Save modal overlay ---- */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--ubs-z-modal);
+  padding: var(--ubs-space-5);
+}
+
+.modal {
+  background-color: var(--ubs-bg-primary);
+  border-radius: var(--ubs-radius-lg);
+  box-shadow: var(--ubs-elevation-3);
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ubs-space-4) var(--ubs-space-5);
+  border-bottom: 1px solid var(--ubs-border);
+}
+
+.modalTitle {
+  font-size: var(--ubs-header-4-size);
+  font-weight: var(--ubs-weight-medium);
+  color: var(--ubs-text-primary);
+}
+
+.modalBody {
+  padding: var(--ubs-space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ubs-space-4);
+}
+
+.modalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--ubs-space-3);
+  padding: var(--ubs-space-4) var(--ubs-space-5);
+  border-top: 1px solid var(--ubs-border);
+}
+
+/* ---- Shadow input (wide) ---- */
+.shadowInput {
+  width: 100%;
+  padding: var(--ubs-space-1) var(--ubs-space-2);
+  font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+  font-size: var(--ubs-body-4-size);
+  color: var(--ubs-text-primary);
+  background-color: var(--ubs-bg-primary);
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-sm);
+  min-height: 32px;
+}
+
+.shadowInput:focus {
+  border-color: var(--ubs-focus);
+  box-shadow: 0 0 0 2px rgba(0, 155, 210, 0.15);
+  outline: none;
+}
+
+/* ---- Preview card ---- */
+.previewCard {
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-md);
+  box-shadow: var(--ubs-elevation-1);
+  background-color: var(--ubs-bg-primary);
+  overflow: hidden;
+  max-width: 280px;
+}
+
+.previewCardHeader {
+  padding: var(--ubs-space-3) var(--ubs-space-4);
+  border-bottom: 1px solid var(--ubs-border);
+  font-size: var(--ubs-body-2-size);
+  font-weight: var(--ubs-weight-medium);
+  color: var(--ubs-text-primary);
+}
+
+.previewCardBody {
+  padding: var(--ubs-space-3) var(--ubs-space-4);
+  font-size: var(--ubs-body-3-size);
+  color: var(--ubs-text-secondary);
+}
+
+/* ---- Preview table ---- */
+.previewTable {
+  width: 100%;
+  max-width: 280px;
+  border-collapse: collapse;
+  font-size: var(--ubs-body-3-size);
+}
+
+.previewTable th {
+  padding: var(--ubs-space-2) var(--ubs-space-3);
+  font-weight: var(--ubs-weight-medium);
+  text-align: left;
+  background-color: var(--ubs-bg-secondary);
+  border-bottom: 2px solid var(--ubs-border);
+  color: var(--ubs-text-primary);
+}
+
+.previewTable td {
+  padding: var(--ubs-space-2) var(--ubs-space-3);
+  border-bottom: 1px solid var(--ubs-border);
+  color: var(--ubs-text-primary);
+}

@@ -11,11 +11,13 @@ import type {
   ContentBlockOptions,
   CardGridOptions,
   CTABlockOptions,
+  MastheadNavigationOptions,
   ChartTypeOption,
   FormFieldType,
   TextAlignment,
   CardVariantOption,
   CTAVariantOption,
+  MastheadNavType,
 } from '../types';
 import styles from './SectionBuilder.module.css';
 
@@ -28,6 +30,7 @@ const SECTION_TYPES: { value: SectionType; label: string }[] = [
   { value: 'content-block', label: 'Content Block' },
   { value: 'card-grid', label: 'Card Grid' },
   { value: 'cta-block', label: 'CTA Block' },
+  { value: 'masthead-navigation', label: 'Masthead Navigation' },
 ];
 
 function getDefaultOptions(type: SectionType): SectionOptions {
@@ -40,6 +43,7 @@ function getDefaultOptions(type: SectionType): SectionOptions {
     case 'content-block': return { withIllustration: true, textAlignment: 'left' } satisfies ContentBlockOptions;
     case 'card-grid': return { count: 3, variant: 'default' } satisfies CardGridOptions;
     case 'cta-block': return { variant: 'button', label: 'Get Started' } satisfies CTABlockOptions;
+    case 'masthead-navigation': return { navType: 'single' } satisfies MastheadNavigationOptions;
   }
 }
 
@@ -363,6 +367,27 @@ function renderSubOptions(
               onChange={(e) => update({ label: e.target.value })}
               placeholder="CTA text..."
             />
+          </div>
+        </div>
+      );
+    }
+
+    case 'masthead-navigation': {
+      const opts = section.options as MastheadNavigationOptions;
+      return (
+        <div className={styles.row}>
+          <div className={styles.field}>
+            <label className={styles.label}>Navigation Type</label>
+            <select
+              className={styles.select}
+              value={opts.navType}
+              onChange={(e) => update({ navType: e.target.value as MastheadNavType })}
+            >
+              <option value="single">Single-level</option>
+              <option value="double">Double-level</option>
+              <option value="multi">Multi-level</option>
+              <option value="mega">Mega Drop-down</option>
+            </select>
           </div>
         </div>
       );

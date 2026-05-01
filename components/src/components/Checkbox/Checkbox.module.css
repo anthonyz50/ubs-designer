@@ -36,9 +36,9 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 2px solid #000000;
+  border: 2px solid var(--ubs-color-border-focus);
   border-radius: 4px;
-  background-color: #FFFFFF;
+  background-color: var(--ubs-color-text-inverse);
   transition: background-color 150ms ease, border-color 150ms ease;
 }
 
@@ -62,8 +62,8 @@
 /* ─── Checked state ───────────────────────────────────────────────── */
 
 .nativeInput:checked + .box {
-  background-color: #FFFFFF;
-  border-color: #000000;
+  background-color: var(--ubs-color-text-inverse);
+  border-color: var(--ubs-color-text-primary);
 }
 
 /* ─── Checkmark / Indeterminate icons ─────────────────────────────── */
@@ -71,7 +71,7 @@
 .checkIcon,
 .indeterminateIcon {
   display: none;
-  color: #E60000;
+  color: var(--ubs-color-red);
 }
 
 .nativeInput:checked + .box .checkIcon {
@@ -97,7 +97,7 @@
 /* ─── Error state ─────────────────────────────────────────────────── */
 
 .error .box {
-  border-color: #BD000C;
+  border-color: var(--ubs-color-bordeaux-i);
 }
 
 /* ─── Label ───────────────────────────────────────────────────────── */
@@ -106,7 +106,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
-  color: #000000;
+  color: var(--ubs-color-text-primary);
   text-align: left;
   text-shadow: none;
   user-select: none;
@@ -118,7 +118,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.4;
-  color: #BD000C;
+  color: var(--ubs-color-bordeaux-i);
   text-align: left;
   text-shadow: none;
   margin: 0;
