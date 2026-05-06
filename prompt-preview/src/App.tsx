@@ -53,6 +53,7 @@ import { TestExportPanel } from './components/TestExportPanel/TestExportPanel';
 import { DesignSystemEditor } from './components/DesignSystemEditor/DesignSystemEditor';
 import { ComponentLibrary } from './components/ComponentLibrary/ComponentLibrary';
 import { UxGuidelines } from './components/UxGuidelines/UxGuidelines';
+import { CritiquePanel } from './components/CritiquePanel/CritiquePanel';
 
 // Bootstrap + UBS theme for iframe injection
 import bootstrapUbsCss from './styles/bootstrap-ubs.css?raw';
@@ -117,6 +118,7 @@ const EXAMPLES = [
 
 type MainTab =
   | 'preview'
+  | 'critique'
   | 'review'
   | 'testing'
   | 'code'
@@ -380,11 +382,22 @@ export default function App() {
 
   // ── Tab definitions ───────────────────────────────────────────
 
+  // ── Critique → preview bridge ─────────────────────────────
+  const handleCritiqueRedesign = useCallback((page: GeneratedPage) => {
+    setAiPage(page);
+    // Don't switch tabs automatically — let the user explore the critique first
+  }, []);
+
   const mainTabs: TabItem[] = [
     {
       value: 'preview',
       label: 'Preview',
       icon: <Icon name="search" size="sm" />,
+    },
+    {
+      value: 'critique',
+      label: 'Critique',
+      icon: <Icon name="shield" size="sm" />,
     },
     {
       value: 'review',
@@ -636,6 +649,13 @@ export default function App() {
               </div>
             </div>
           )
+        )}
+
+        {/* ─── Critique ────────────────────────────────────── */}
+        {activeTab === 'critique' && (
+          <div className={styles.tabContent}>
+            <CritiquePanel onRedesignReady={handleCritiqueRedesign} />
+          </div>
         )}
 
         {/* ─── UX Review ───────────────────────────────────── */}
