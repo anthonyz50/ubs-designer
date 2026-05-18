@@ -1,0 +1,112 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--ubs-bg-primary);
+  border-left: 1px solid var(--ubs-border);
+  overflow-y: auto;
+}
+
+.header {
+  padding: var(--ubs-space-4) var(--ubs-space-4) var(--ubs-space-3);
+  border-bottom: 1px solid var(--ubs-border);
+  flex-shrink: 0;
+}
+
+.headerLabel {
+  font-size: var(--ubs-font-size-xs);
+  font-weight: var(--ubs-font-weight-medium);
+  color: var(--ubs-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.content {
+  flex: 1;
+  padding: var(--ubs-space-4);
+  overflow-y: auto;
+}
+
+.fieldGroup {
+  margin-bottom: var(--ubs-space-4);
+}
+
+.fieldLabel {
+  font-size: var(--ubs-font-size-xs);
+  font-weight: var(--ubs-font-weight-medium);
+  color: var(--ubs-text-secondary);
+  margin-bottom: var(--ubs-space-1);
+  display: block;
+}
+
+.fieldInput {
+  width: 100%;
+  padding: var(--ubs-space-2) var(--ubs-space-3);
+  font-size: var(--ubs-font-size-sm);
+  font-family: var(--ubs-font-family);
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-sm);
+  background: var(--ubs-bg-primary);
+  color: var(--ubs-text-primary);
+}
+
+.fieldInput:focus {
+  outline: none;
+  border-color: var(--ubs-focus);
+  box-shadow: 0 0 0 3px rgba(230, 0, 0, 0.12);
+}
+
+.cardSection {
+  padding: var(--ubs-space-3);
+  background: var(--ubs-bg-secondary);
+  border-radius: var(--ubs-radius-md);
+  margin-bottom: var(--ubs-space-3);
+}
+
+.cardSectionTitle {
+  font-size: var(--ubs-font-size-xs);
+  font-weight: var(--ubs-font-weight-bold);
+  color: var(--ubs-text-primary);
+  margin-bottom: var(--ubs-space-2);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--ubs-border);
+  margin: var(--ubs-space-4) 0;
+}
+
+.jsonEditor {
+  width: 100%;
+  min-height: 200px;
+  padding: var(--ubs-space-3);
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  font-size: var(--ubs-font-size-xs);
+  line-height: 1.6;
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-sm);
+  background: var(--ubs-bg-primary);
+  color: var(--ubs-text-primary);
+  resize: vertical;
+  tab-size: 2;
+}
+
+.jsonEditor:focus {
+  outline: none;
+  border-color: var(--ubs-focus);
+  box-shadow: 0 0 0 3px rgba(230, 0, 0, 0.12);
+}
+
+.jsonError {
+  font-size: var(--ubs-font-size-xs);
+  color: var(--ubs-rag-red);
+  margin-top: var(--ubs-space-1);
+}
+
+.actions {
+  display: flex;
+  gap: var(--ubs-space-2);
+  padding: var(--ubs-space-4);
+  border-top: 1px solid var(--ubs-border);
+  flex-shrink: 0;
+}

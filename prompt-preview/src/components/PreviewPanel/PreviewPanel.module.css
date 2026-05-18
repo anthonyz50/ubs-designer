@@ -1,0 +1,71 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--ubs-bg-secondary);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--ubs-space-2);
+  padding: var(--ubs-space-3) var(--ubs-space-4);
+  background: var(--ubs-bg-primary);
+  border-bottom: 1px solid var(--ubs-border);
+  flex-shrink: 0;
+}
+
+.toolbarLabel {
+  font-size: var(--ubs-font-size-xs);
+  font-weight: var(--ubs-font-weight-medium);
+  color: var(--ubs-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: auto;
+}
+
+.viewportBtn {
+  padding: var(--ubs-space-1) var(--ubs-space-2);
+  font-size: var(--ubs-font-size-xs);
+  font-weight: var(--ubs-font-weight-medium);
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-sm);
+  background: var(--ubs-bg-primary);
+  color: var(--ubs-text-secondary);
+  cursor: pointer;
+  transition: all var(--ubs-transition-fast);
+  font-family: var(--ubs-font-family);
+}
+
+.viewportBtn:hover {
+  border-color: var(--ubs-gray-iii);
+}
+
+.viewportBtnActive {
+  background: var(--ubs-black);
+  color: var(--ubs-white);
+  border-color: var(--ubs-black);
+}
+
+.previewArea {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  padding: var(--ubs-space-4);
+}
+
+.previewContainer {
+  width: 100%;
+  background: var(--ubs-bg-primary);
+  border: 1px solid var(--ubs-border);
+  border-radius: var(--ubs-radius-md);
+  box-shadow: var(--ubs-shadow-md);
+  overflow: auto;
+  min-height: 400px;
+}
+
+.previewMobile {
+  width: 375px;
+  flex-shrink: 0;
+}

@@ -1,0 +1,14 @@
+.renderer {
+  font-family: var(--ubs-font-family);
+  color: var(--ubs-text-primary);
+  background: var(--ubs-bg-primary);
+  min-height: 200px;
+}
+
+.renderer section {
+  margin-bottom: var(--ubs-space-6);
+}
+
+.renderer section:last-child {
+  margin-bottom: 0;
+}
